@@ -55,8 +55,18 @@ module RTeX
       
       module HelperMethods
         # Similar to h()
-        def latex_escape(s)
-          RTeX::Document.escape(s)
+        def latex_escape(*args)
+          # Due to Rails 2.2 I18n implementation, the caller may have
+          # intended #l to call #localize instead of #latex_escape,
+          # so we need to check whether we're rendering rtex, and if
+          # not, pass control on to localize, if it's defined.
+          if Thread.current[:_rendering_rtex]
+            RTeX::Document.escape(*args)
+          elsif self.respond_to?(:localize)
+            # WARNING: Possibly undefined behavior on pre-Rails 2.2
+            # applications that also have a #localize method.
+            localize(*args)
+          end
         end
         alias :l :latex_escape
       end
