@@ -15,6 +15,8 @@ module ActiveScaffold::Actions
       
       if base.respond_to?(:generic_view_paths) && ! base.generic_view_paths.empty?
         base.generic_view_paths.insert(0, sortable_plugin_path)
+      elsif base.respond_to?(:view_paths)
+        base.prepend_view_path(sortable_plugin_path)
       else  
         config.inherited_view_paths << sortable_plugin_path
       end
@@ -46,8 +48,11 @@ module ActiveScaffold::Actions
     def reorder
       m = active_scaffold_config.model
       column_name = m.connection.quote_column_name(active_scaffold_config.sortable.column)
-      
-      id_list = params[active_scaffold_tbody_id].map{|i| i.gsub(/[^0-9]/, '').to_i}
+
+      tbody_keys = params.keys.find_all{|k| k.match(/-tbody/) }
+      raise "Invalid parameters for active_scaffold_sortable" unless tbody_keys.size == 1
+
+      id_list = params[tbody_keys.first].map{|i| i.gsub(/[^0-9]/, '').to_i}
       id_list.each_index{|index|
         m.update_all(["#{column_name} = ?", index+1], ["id = ?", id_list[index]])
       }
