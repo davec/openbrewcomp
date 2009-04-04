@@ -120,10 +120,10 @@ of Ruby on Rails,
 1. Download the source, either `git clone git://github.com/davec/openbrewcomp`
    or download a zip or tar archive by clicking the _download_ button at the
    top of the project’s github page and unzip/untar it to a local directory.
-2. Run `rake gems:install` to install the required gems.
-3. Run `rake setup` to generate required configuration files.
-4. Copy `config/database.yml.example` to` config/database.yml` and edit it for
+2. Copy `config/database.yml.example` to `config/database.yml` and edit it for
    your environment.
+3. Run `rake setup` to generate the required configuration files.
+4. Run `rake gems:install` to install the required gems.
 5. Edit `db/migrate/data/contacts.yml` and set the contact information for your
    competition coordinator and webmaster.
 6. (optional) Edit `db/migrate/data/clubs.yml` to set an initial list of clubs
