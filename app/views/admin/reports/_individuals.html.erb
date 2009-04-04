@@ -1,0 +1,29 @@
+<table class="reporttable">
+  <thead>
+    <tr class="table-header">
+      <th>Name</th>
+      <th>Club</th>
+      <th class="numeric">Entries</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr class="table-footer">
+      <th colspan="3">&nbsp;</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% if individuals.length > 0 -%>
+      <% individuals.each do |elem| -%>
+        <tr class="<%= cycle('even-record', 'odd-record') %>">
+          <td><%= h elem[0] %></td>
+          <td><%= h elem[1] %></td>
+          <td class="numeric"><%= elem[2] %></td>
+        </tr>
+      <% end -%>
+    <% else -%>
+      <tr>
+        <td colspan="3" align="center"><em>No individual entries could be found</em></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

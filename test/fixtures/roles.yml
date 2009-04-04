@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+dba: 
+  name: Database Admin
+  users: admin, dba
+contact: 
+  name: Contact Admin
+  users: contact_admin
+news: 
+  name: News Admin
+  users: news_admin
+user: 
+  name: User Admin
+  users: user_admin
+style: 
+  name: Style Admin
+  users: style_admin
+registration: 
+  name: Registration Admin
+  users: registration_admin
+testrole:
+  name: Test Role
+  description: Role used for testing
+competition:
+  name: Competition Admin
+  users: competition_admin

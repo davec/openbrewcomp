@@ -1,0 +1,22 @@
+<% @page_title = "#{competition_name} MCAB Report"
+   button_label = 'Export to CSV' %>
+
+<div id="mcab-report">
+  <p>
+    The following are the MCAB qualifiers from <%= competition_name -%>:
+  </p>
+
+  <div id="mcab-data">
+    <div id="qualifiers">
+      <ol>
+        <%= render(:partial => 'mcab', :collection => @mcab_qes) %>
+      </ol>
+    </div>
+    <% form_for :report,
+                :url => { :format => 'csv' } do |form| %>
+      <div class="form-buttons">
+        <%= submit_tag button_label %>
+      </div>
+    <% end -%>
+  </div>
+</div>

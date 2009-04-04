@@ -1,0 +1,91 @@
+body {
+  background: white;
+  font-size: 12pt;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  page-break-after: avoid;
+}
+
+p { margin: 0 }
+p + p { text-indent: 1.4em }
+
+a:link, a:visited {
+  color: #00c;
+  text-decoration: none;
+}
+
+thead {
+  display: table-header-group;
+}
+tr {
+  page-break-inside: avoid;
+}
+
+#content {
+  border: 0;
+  margin: 0 1em;
+  padding: 0;
+  width: auto;
+}
+
+#header, #navigation, #footer, #user-info, #countdown,
+#feed-link, #print-all-bottle-labels, .noprint, .booklinks,
+.icon, .close-button, .active-scaffold-header .actions,
+h1 a.title-link {
+  display: none;
+}
+
+#reports-menu {
+  font-family: sans-serif;
+  margin-bottom: 2ex;
+}
+#reports-menu #type-selector {
+  display: none;
+}
+#reports-menu #menu-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#reports-menu #menu-item {
+  margin: 0;
+}
+#reports-menu .menu-item a {
+  color: black;
+}
+#reports-menu .menu-item .on a {
+  font-size: 130%;
+  font-weight: bold;
+}
+#reports-menu .menu-item .off a {
+  color: #ccc;
+  font-size: 60%;
+}
+#reports-view .reporttable {
+  margin: 0 auto;
+}
+
+.reporttable tr.table-header th {
+  font-size: 110%;
+}
+
+.resultstable th {
+  border-bottom: 1px solid #333;
+}
+
+div.botLabInst {
+  display: none;
+}
+
+/*
+ * Specify a known set of fonts for the bottle labels
+ * to avoid picking up user-specified fonts that play
+ * havoc with the formatting.
+ */
+.bottlelabel {
+  font-family: "Times New Roman", Times, serif;
+}
+.bottlelabel td.regcode {
+  font-family: Arial, Helvetica, sans-serif;
+}

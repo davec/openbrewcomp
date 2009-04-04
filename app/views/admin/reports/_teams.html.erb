@@ -1,0 +1,29 @@
+<table class="reporttable">
+  <thead>
+    <tr class="table-header">
+      <th>Team Name</th>
+      <th>Club</th>
+      <th class="numeric">Entries</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr class="table-footer">
+      <th colspan="3">&nbsp;</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% if teams.length > 0 -%>
+      <% teams.each do |elem| -%>
+        <tr class="<%= cycle('even-record', 'odd-record') %>">
+          <td><%= h elem[0] %></td>
+          <td><%= h elem[1] %></td>
+          <td class="numeric"><%= elem[2] %></td>
+        </tr>
+      <% end -%>
+    <% else -%>
+      <tr>
+        <td colspan="2" align="center"><em>No team entries could be found</em></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

@@ -1,0 +1,61 @@
+<% @page_title = "#{competition_name} Flight Management" -%>
+
+<div id="message-test"></div>
+
+<div id="flight-management-menu">
+  <ul id="menu-items">
+    <% @rounds.each do |round| method = "round_#{round.position}" -%>
+      <li class="menu-item">
+        <div class="action-link off" id="<%= method %>">
+          <%= link_to_remote(round.name,
+                             { :update => 'flight-management-view',
+                               :method => 'get',
+                               :url => { :action => method },
+                               :before => "$('flight-management-loading-indicator').style.visibility = 'visible'",
+                               :complete => "$('flight-management-loading-indicator').style.visibility = 'hidden';hiliteMenuItem('#{method}')" },
+                             { :onfocus => 'if (this.blur()) this.blur();', # zap the active link borders
+                               :id => "#{method}-action_link",
+                               :href => url_for(:action => method) }) -%>
+        </div>
+      </li>
+    <% end -%>
+    <li class="menu-item">
+      <% method = 'all_flights' %>
+      <div class="action-link off" id="<%= method %>">
+        <%= link_to_remote('All Flights',
+                           { :update => 'flight-management-view',
+                             :method => 'get',
+                             :url => { :action => method },
+                             :before => "$('flight-management-loading-indicator').style.visibility = 'visible'",
+                             :complete => "$('flight-management-loading-indicator').style.visibility = 'hidden';hiliteMenuItem('#{method}')" },
+                           { :onfocus => 'if (this.blur()) this.blur();', # zap the active link borders
+                             :id => "#{method}-action_link",
+                             :href => url_for(:action => method) }) -%>
+      </div>
+    </li>
+  </ul>
+  <div class="clearfloat"></div>
+</div>
+
+<div id="flight-management-loading-indicator" style="visibility:hidden;">
+  Loading ... <%= image_tag("active_scaffold/default/indicator.gif",
+                            #:id => "#{method}-spinner",
+                            :class => "loading-indicator",
+                            #:style => "visibility:hidden;",
+                            :size => "16x16") %>
+</div>
+
+<div id="flight-management-view" class="scrollable"></div>
+
+<script type="text/javascript">
+  function _swapClassNames(e, oldname, newname) {
+    e.removeClassName(oldname);
+    e.addClassName(newname);
+  }
+  function hiliteMenuItem(mi) {
+    $A($('menu-items').getElementsByClassName('on')).each(function(e) {
+      _swapClassNames(e, 'on', 'off');
+    });
+    _swapClassNames($(mi), 'off', 'on');
+  }
+</script>

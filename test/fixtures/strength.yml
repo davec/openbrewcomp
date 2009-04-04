@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+light:
+  description: Hydromel/Light
+  position: 1
+standard:
+  description: Standard
+  position: 2
+strong:
+  description: Sack/Strong
+  position: 3

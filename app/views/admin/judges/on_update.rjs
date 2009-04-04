@@ -1,0 +1,22 @@
+# Modified copy of active_scaffold/frontends/default/view/on_update.rjs
+# to update the competition organizer and unallocated staff points values.
+
+cancel_selector = "##{element_form_id(:action => :update)} a.cancel".to_json
+
+if controller.send :successful?
+  page << "$$(#{cancel_selector}).first().link.close_with_refresh();"
+
+  #### BEGIN ADDITION ####
+
+  page.replace 'competition-organizer', :partial => 'competition_organizer' if @is_admin_view
+  page.replace 'unallocated-staff-points', :partial => 'unallocated_staff_points' if @is_admin_view
+
+  #### END ADDITION ####
+
+  page.replace active_scaffold_calculations_id, :partial => 'list_calculations' if active_scaffold_config.list.columns.any? {|c| c.calculation?}
+else
+  page << "l = $$(#{cancel_selector}).first().link;"
+  page.replace element_form_id(:action => :update), :partial => 'update_form'
+  page << "l.register_cancel_hooks();"
+end
+page.replace_html active_scaffold_messages_id, :partial => 'messages'

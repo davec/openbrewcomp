@@ -1,0 +1,147 @@
+% flights/print.rtex
+
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+%\usepackage{lscape}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[noheadfoot, letterpaper, scale=1.0,
+            body={7.5in,10.0in}, hmargin=0.5in, vmargin=0.5in]{geometry}
+
+\pagestyle{empty}
+
+\parindent 0pt
+
+% Allow \raggedright in last column of array/tabular specifiers
+\newcommand\PBS[1]{\let\temp\\#1\let\\\temp}
+
+% \shade automatically alternates between shaded and non-shaded table rows
+\newcount\tableLineCount
+\def\setupshade{\global\tableLineCount0}
+\def\shade{%
+  \noalign{
+    \global\advance\tableLineCount by 1%
+      \ifodd\tableLineCount
+        \gdef\next{\rowcolor[gray]{1}}%
+      \else
+        \gdef\next{\rowcolor[gray]{.87}}%
+      \fi
+  }\next
+}
+
+\makeatletter
+\newcommand{\LTtoprule}{\cmidrule[\heavyrulewidth]{1-\LT@cols}}
+\newcommand{\LTmidrule}{\cmidrule[\lightrulewidth]{1-\LT@cols}}
+\newcommand{\LTbottomrule}{\cmidrule[\heavyrulewidth]{1-\LT@cols}}
+\makeatother
+
+\newcommand{\checkmark}{\textsf{X}}  % \ding{52} (for a check mark) doesn't work
+                                     % with UTF8 encoding so we use something a
+                                     % bit more pedestrian.
+\newcommand{\na}{\textsf{\scriptsize N/A}}
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+
+\newcommand\Section[1]{
+  \clearpage
+  \begin{center}
+    \textbf{\LARGE #1}
+    \vspace*{12pt}
+  \end{center}
+}
+
+\begin{document}
+
+<% @flights.each do |flight| -%>
+
+  \Section{Pull Sheet}
+  \textbf{\Large <%= l(flight.name) %> \hfill <%= l(flight.round.name) %>}
+
+  \vspace*{4ex}
+
+  \renewcommand{\arraystretch}{2.0}
+    \begin{longtable}{p{0.75in}>{\large}r>{\large}l>{\PBS\raggedright}p{1.25in}p{0.75in}>{\large}r>{\large}l>{\PBS\raggedright}p{1.25in}}
+       & \multicolumn{1}{c}{\textbf{\large Entry}} & \multicolumn{1}{c}{\textbf{\large Style}} & &
+       & \multicolumn{1}{c}{\textbf{\large Entry}} & \multicolumn{1}{c}{\textbf{\large Style}} & \\
+      \LTmidrule
+      \endhead
+      <% reset_cycle
+         flight.entries.sort_by{|e| [e.style.bjcp_category,e.style.bjcp_subcategory,e.bottle_code]}.in_groups_of((flight.entries.length/2.0).ceil).transpose.each do |slice| -%>
+        <% slice.compact.each do |entry| -%>
+          <%= cycle('','&') -%> \hfill \blank{2em} & \textbf{<%= entry.bottle_code -%>} & <%= entry.style.category -%> & <%= 'Odd/Big Bottle' if entry.odd_bottle? -%>
+        <% end -%> \\
+      <% end -%>
+    \end{longtable}
+  \renewcommand{\arraystretch}{1.0}
+
+  %\landscape
+  \Section{Judge Sheet}
+  \renewcommand{\arraystretch}{1.7}
+  \begin{tabular}[t]{>{\bfseries \Large}l}
+    Flight <%= flight.id %> \\
+    <%= l(flight.name) %> \\
+    <%= l(flight.round.name) %> \\
+    <%= flight.entries.length %> Entries
+  \end{tabular} \
+  \hfill \
+  \renewcommand{\arraystretch}{1.0}
+  \begin{tabular}[t]{>{\bfseries \large}rp{2.5in}}
+    <% 1.upto(flight.max_judges) do |i| -%>
+       Judge <%= i %> & \\ \cline{2-2} \\ [-0.5ex]
+    <% end -%>
+       Steward & \\ \cline{2-2}
+  \end{tabular}
+
+  \vspace*{2ex}
+
+  \setupshade
+  \renewcommand{\arraystretch}{1.5}
+    \begin{longtable}[l]{>{\large}r>{\PBS\raggedright\normalsize}p{2.25in}cc>{\PBS\raggedright}p{3.00in}}
+      <% if flight.round == Round.bos -%>
+        <% mcab_header = competition_data.mcab? ? 'MCAB' : '' -%>
+        \multicolumn{1}{c}{\textbf{\large Entry}} & \multicolumn{1}{c}{\textbf{\large Style}} & \multicolumn{1}{c}{\textbf{\large <%= mcab_header %>}} & \multicolumn{1}{c}{\textbf{\large Place}} & \multicolumn{1}{c}{\textbf{\large Notes}} \\
+        %\LTmidrule
+        \endhead
+        %\LTbottomrule
+        \multicolumn{5}{r}{\emph{\footnotesize continued on next page}} \\
+        \endfoot
+        %\LTbottomrule
+        \endlastfoot
+        <% flight.entries.sort_by{|e| [e.style.bjcp_category,e.style.bjcp_subcategory]}.each do |entry| -%>
+          \shade \textbf{<%= entry.bottle_code -%>} & <%= l(entry.category) -%> &
+          <% if competition_data.mcab? -%>
+            <% if entry.style.mcab_style? -%>
+              <% if entry.mcab_qe? -%>
+                \checkmark
+              <% else -%>
+                \blank{2em}
+              <% end -%>
+            <% else -%>
+              \na
+            <% end -%> &
+          <% end -%> &
+          \blank{2em} & <%= rtex_style_notes(entry) -%> \\
+        <% end -%>
+      <% else -%>
+        <% flag_column = flight.round == Round.second ? 'Place' : 'Advance' -%>
+        \multicolumn{1}{c}{\textbf{\large Entry}} & \multicolumn{1}{c}{\textbf{\large Style}} & \multicolumn{1}{c}{\textbf{\large Score}} & \multicolumn{1}{c}{\textbf{\large <%= flag_column %>}} & \multicolumn{1}{c}{\textbf{\large Notes}} \\
+        %\LTmidrule
+        \endhead
+        <% first_time_id = Style.first_time[:id]
+           is_first_time_category = flight.award.style_ids.length == 1 && flight.award.style_ids[0] == first_time_id
+           sort_keys = is_first_time_category \
+             ? lambda{|e| [e.base_style.bjcp_category,e.base_style.bjcp_subcategory,e.bottle_code]} \
+             : lambda{|e| [e.style.bjcp_category,e.style.bjcp_subcategory,e.bottle_code]}
+           flight.entries.sort_by{|e| sort_keys.call(e)}.each do |entry| -%>
+          \shade \textbf{<%= entry.bottle_code -%>} & <%= l(entry.category) -%> & \blank{3em} & \blank{2em} & <%= rtex_style_notes(entry) -%> \\
+        <% end -%>
+      <% end -%>
+    \end{longtable}
+  \renewcommand{\arraystretch}{1.0}
+  %\endlandscape
+
+<% end -%>
+
+\end{document}

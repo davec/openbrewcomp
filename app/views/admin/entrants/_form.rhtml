@@ -1,0 +1,92 @@
+<% # Convert the ActiveColumns object to a hash, based on the column name
+   colhash = Hash.new
+   columns.each {|column| colhash[column.name] = column}
+   id = params[:eid] || params[:id]
+%>
+<% # TODO: Rework for I18N, based on the format of the address_format column;
+   # will probably require a bit of DOM voodoo to dynamically reorder the
+   # fields as appropriate for the selected country.
+   #
+   # For now we're only concerned with US and Canada addressing.
+%>
+<div class="form-instructions">
+  <p>
+    Required fields are denoted by a <b>bold</b> heading; exceptions are
+    marked with an asterisk (<b>*</b>) and are as follows:
+    either an email address or a phone number is required.
+  </p>
+  <p>
+    <em>Note:</em> If you want to receive your scoresheets, you must
+    provide a valid postal address.
+  </p>
+</div>
+<ol class="form float-style-form">
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:is_team]), :locals => { :column => colhash[:is_team] } -%>
+  </li>
+</ol>
+<div id="team-data_<%= id %>"<%= ' style="display:none"' unless @record.is_team? -%>>
+  <ol class="form float-style-form">
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:team_name]), :locals => { :column => colhash[:team_name] } -%>
+    </li>
+  </ol>
+  <ol class="form float-style-form">
+    <li class="form-element">
+      <%= render :partial => form_partial_for_column(colhash[:team_members]), :locals => { :column => colhash[:team_members] } -%>
+    </li>
+  </ol>
+</div>
+<div id="individual-data_<%= id %>"<%= ' style="display:none"' if @record.is_team? -%>>
+  <ol class="form float-style-form">
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:first_name]), :locals => { :column => colhash[:first_name] } -%>
+    </li>
+    <li class="form-element">
+      <%= render :partial => form_partial_for_column(colhash[:middle_name]), :locals => { :column => colhash[:middle_name] } -%>
+    </li>
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:last_name]), :locals => { :column => colhash[:last_name] } -%>
+    </li>
+  </ol>
+</div>
+<ol class="form float-style-form">
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:address1]), :locals => { :column => colhash[:address1] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element">
+    <%= render :partial => form_partial_for_column(colhash[:address2]), :locals => { :column => colhash[:address2] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:city]), :locals => { :column => colhash[:city] } -%>
+  </li>
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:region]), :locals => { :column => colhash[:region] } -%>
+  </li>
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:postcode]), :locals => { :column => colhash[:postcode] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:email]), :locals => { :column => colhash[:email] } -%>
+  </li>
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:phone]), :locals => { :column => colhash[:phone] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:club]), :locals => { :column => colhash[:club] } -%>
+  </li>
+  <li id="other-club-data_<%= id %>" class="form-element required"<%= ' style="display:none"' unless @record.club_id == Club.other[:id] -%>>
+    <%= render :partial => form_partial_for_column(colhash[:club_name]), :locals => { :column => colhash[:club_name] } -%>
+  </li>
+</ol>
+<script type="text/javascript">
+toggleOtherClubData('<%= id %>',<%= Club.other.id -%>);
+</script>

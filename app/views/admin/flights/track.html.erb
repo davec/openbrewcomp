@@ -1,0 +1,21 @@
+<% @page_title = "#{competition_name} Flight Tracker" -%>
+
+<table id="flight-tracker">
+  <caption><%= @table_caption -%></caption>
+  <thead>
+    <tr>
+      <th>Flights<br />Completed</th>
+      <th>Flights In<br />Progress</th>
+      <th>Flights<br />Remaining</th>
+      <th>Total<br />Flights</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="completed"><%= @flights_completed -%></span></td>
+      <td><span class="assigned"><%= @flights_in_progress -%></span></td>
+      <td><span class="unassigned"><%= @flights_remaining -%></span></td>
+      <td><span class="total"><%= @total_flights -%></span></td>
+    </tr>
+  </tbody>
+</table>

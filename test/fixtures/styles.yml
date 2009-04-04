@@ -1,0 +1,1300 @@
+style_1A: 
+  name: Lite American Lager
+  description_url: http://www.bjcp.org/finalstyles/Category01.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LL
+  bjcp_category: 1
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_1B: 
+  name: Standard American Lager
+  description_url: http://www.bjcp.org/finalstyles/Category01.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LL
+  bjcp_category: 1
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_1C: 
+  name: Premium American Lager
+  description_url: http://www.bjcp.org/finalstyles/Category01.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LL
+  bjcp_category: 1
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_1D: 
+  name: Munich Helles
+  description_url: http://www.bjcp.org/finalstyles/Category01.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LL
+  bjcp_category: 1
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_1E: 
+  name: Dortmunder Export
+  description_url: http://www.bjcp.org/finalstyles/Category01.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LL
+  bjcp_category: 1
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: E
+style_2A: 
+  name: German Pilsner
+  description_url: http://www.bjcp.org/finalstyles/Category02.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: PILS
+  bjcp_category: 2
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_2B: 
+  name: Bohemian Pilsner
+  description_url: http://www.bjcp.org/finalstyles/Category02.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: PILS
+  bjcp_category: 2
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_2C: 
+  name: Classic American Pilsner
+  description_url: http://www.bjcp.org/finalstyles/Category02.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: PILS
+  bjcp_category: 2
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_3A: 
+  name: Vienna Lager
+  description_url: http://www.bjcp.org/finalstyles/Category03.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: EAL
+  bjcp_category: 3
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_3B: 
+  name: Oktoberfest/Märzen
+  description_url: http://www.bjcp.org/finalstyles/Category03.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: EAL
+  bjcp_category: 3
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_4A: 
+  name: Dark American Lager
+  description_url: http://www.bjcp.org/finalstyles/Category04.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: DL
+  bjcp_category: 4
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_4B: 
+  name: Munich Dunkel
+  description_url: http://www.bjcp.org/finalstyles/Category04.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: DL
+  bjcp_category: 4
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_4C: 
+  name: Schwarzbier (Black Beer)
+  description_url: http://www.bjcp.org/finalstyles/Category04.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: DL
+  bjcp_category: 4
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_5A: 
+  name: Maibock/Helles Bock
+  description_url: http://www.bjcp.org/finalstyles/Category05.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BOCK
+  bjcp_category: 5
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_5B: 
+  name: Traditional Bock
+  description_url: http://www.bjcp.org/finalstyles/Category05.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BOCK
+  bjcp_category: 5
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_5C: 
+  name: Doppelbock
+  description_url: http://www.bjcp.org/finalstyles/Category05.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BOCK
+  bjcp_category: 5
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_5D: 
+  name: Eisbock
+  description_url: http://www.bjcp.org/finalstyles/Category05.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BOCK
+  bjcp_category: 5
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_6A: 
+  name: Cream Ale
+  description_url: http://www.bjcp.org/finalstyles/Category06.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LH
+  bjcp_category: 6
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_6B: 
+  name: Blonde Ale
+  description_url: http://www.bjcp.org/finalstyles/Category06.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LH
+  bjcp_category: 6
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_6C: 
+  name: Kölsch
+  description_url: http://www.bjcp.org/finalstyles/Category06.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LH
+  bjcp_category: 6
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_6D: 
+  name: American Wheat or Rye Beer
+  description_url: http://www.bjcp.org/finalstyles/Category06.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: LH
+  bjcp_category: 6
+  optional_classic_style: false
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: D
+style_7A: 
+  name: Northern German Altbier
+  description_url: http://www.bjcp.org/finalstyles/Category07.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: AH
+  bjcp_category: 7
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_7B: 
+  name: California Common Beer
+  description_url: http://www.bjcp.org/finalstyles/Category07.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: AH
+  bjcp_category: 7
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_7C: 
+  name: Düsseldorf Altbier
+  description_url: http://www.bjcp.org/finalstyles/Category07.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: AH
+  bjcp_category: 7
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_8A: 
+  name: Standard/Ordinary Bitter
+  description_url: http://www.bjcp.org/finalstyles/Category08.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: EPA
+  bjcp_category: 8
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_8B: 
+  name: Special/Best/Premium Bitter
+  description_url: http://www.bjcp.org/finalstyles/Category08.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: EPA
+  bjcp_category: 8
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_8C: 
+  name: Extra Special/Strong Bitter (English Pale Ale)
+  description_url: http://www.bjcp.org/finalstyles/Category08.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: EPA
+  bjcp_category: 8
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_9A: 
+  name: Scottish Light 60/-
+  description_url: http://www.bjcp.org/finalstyles/Category09.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SI
+  bjcp_category: 9
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_9B: 
+  name: Scottish Heavy 70/-
+  description_url: http://www.bjcp.org/finalstyles/Category09.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SI
+  bjcp_category: 9
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_9C: 
+  name: Scottish Export 80/-
+  description_url: http://www.bjcp.org/finalstyles/Category09.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SI
+  bjcp_category: 9
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_9D: 
+  name: Irish Red Ale
+  description_url: http://www.bjcp.org/finalstyles/Category09.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SI
+  bjcp_category: 9
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_9E: 
+  name: Strong Scotch Ale
+  description_url: http://www.bjcp.org/finalstyles/Category09.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SI
+  bjcp_category: 9
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: E
+style_10A: 
+  name: American Pale Ale
+  description_url: http://www.bjcp.org/finalstyles/Category10.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: AA
+  bjcp_category: 10
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_10B: 
+  name: American Amber Ale
+  description_url: http://www.bjcp.org/finalstyles/Category10.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: AA
+  bjcp_category: 10
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_10C: 
+  name: American Brown Ale
+  description_url: http://www.bjcp.org/finalstyles/Category10.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: AA
+  bjcp_category: 10
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_11A: 
+  name: Mild
+  description_url: http://www.bjcp.org/finalstyles/Category11.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: EBA
+  bjcp_category: 11
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_11B: 
+  name: Southern English Brown Ale
+  description_url: http://www.bjcp.org/finalstyles/Category11.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: EBA
+  bjcp_category: 11
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_11C: 
+  name: Northern English Brown Ale
+  description_url: http://www.bjcp.org/finalstyles/Category11.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: EBA
+  bjcp_category: 11
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_12A: 
+  name: Brown Porter
+  description_url: http://www.bjcp.org/finalstyles/Category12.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: PORTER
+  bjcp_category: 12
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_12B: 
+  name: Robust Porter
+  description_url: http://www.bjcp.org/finalstyles/Category12.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: PORTER
+  bjcp_category: 12
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_12C: 
+  name: Baltic Porter
+  description_url: http://www.bjcp.org/finalstyles/Category12.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: PORTER
+  bjcp_category: 12
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_13A: 
+  name: Dry Stout
+  description_url: http://www.bjcp.org/finalstyles/Category13.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: STOUT
+  bjcp_category: 13
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_13B: 
+  name: Sweet Stout
+  description_url: http://www.bjcp.org/finalstyles/Category13.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: STOUT
+  bjcp_category: 13
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_13C: 
+  name: Oatmeal Stout
+  description_url: http://www.bjcp.org/finalstyles/Category13.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: STOUT
+  bjcp_category: 13
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_13D: 
+  name: Foreign Extra Stout
+  description_url: http://www.bjcp.org/finalstyles/Category13.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: STOUT
+  bjcp_category: 13
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_13E: 
+  name: American Stout
+  description_url: http://www.bjcp.org/finalstyles/Category13.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: STOUT
+  bjcp_category: 13
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: E
+style_13F: 
+  name: Russian Imperial Stout
+  description_url: http://www.bjcp.org/finalstyles/Category13.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: STOUT
+  bjcp_category: 13
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: F
+style_14A: 
+  name: English IPA
+  description_url: http://www.bjcp.org/finalstyles/Category14.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: IPA
+  bjcp_category: 14
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_14B: 
+  name: American IPA
+  description_url: http://www.bjcp.org/finalstyles/Category14.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: IPA
+  bjcp_category: 14
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_14C: 
+  name: Imperial IPA
+  description_url: http://www.bjcp.org/finalstyles/Category14.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: IPA
+  bjcp_category: 14
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_15A: 
+  name: Weizen/Weissbier
+  description_url: http://www.bjcp.org/finalstyles/Category15.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: GWR
+  bjcp_category: 15
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_15B: 
+  name: Dunkelweizen
+  description_url: http://www.bjcp.org/finalstyles/Category15.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: GWR
+  bjcp_category: 15
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_15C: 
+  name: Weizenbock
+  description_url: http://www.bjcp.org/finalstyles/Category15.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: GWR
+  bjcp_category: 15
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_15D: 
+  name: Roggenbier (German Rye Beer)
+  description_url: http://www.bjcp.org/finalstyles/Category15.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: GWR
+  bjcp_category: 15
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_16A: 
+  name: Witbier
+  description_url: http://www.bjcp.org/finalstyles/Category16.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BFA
+  bjcp_category: 16
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_16B: 
+  name: Belgian Pale Ale
+  description_url: http://www.bjcp.org/finalstyles/Category16.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BFA
+  bjcp_category: 16
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_16C: 
+  name: Saison
+  description_url: http://www.bjcp.org/finalstyles/Category16.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BFA
+  bjcp_category: 16
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_16D: 
+  name: Bière de Garde
+  description_url: http://www.bjcp.org/finalstyles/Category16.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BFA
+  bjcp_category: 16
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_16E: 
+  name: Belgian Specialty Ale
+  description_url: http://www.bjcp.org/finalstyles/Category16.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BFA
+  bjcp_category: 16
+  optional_classic_style: false
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: E
+style_17A: 
+  name: Berliner Weisse
+  description_url: http://www.bjcp.org/finalstyles/Category17.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SOUR
+  bjcp_category: 17
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_17B: 
+  name: Flanders Red Ale
+  description_url: http://www.bjcp.org/finalstyles/Category17.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SOUR
+  bjcp_category: 17
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_17C: 
+  name: Flander Brown Ale/Oud Bruin
+  description_url: http://www.bjcp.org/finalstyles/Category17.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SOUR
+  bjcp_category: 17
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_17D: 
+  name: Straight (Unblended) Lambic
+  description_url: http://www.bjcp.org/finalstyles/Category17.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SOUR
+  bjcp_category: 17
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_17E: 
+  name: Gueuze
+  description_url: http://www.bjcp.org/finalstyles/Category17.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SOUR
+  bjcp_category: 17
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: E
+style_17F: 
+  name: Fruit Lambic
+  description_url: http://www.bjcp.org/finalstyles/Category17.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SOUR
+  bjcp_category: 17
+  optional_classic_style: false
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: F
+style_18A: 
+  name: Belgian Blond Ale
+  description_url: http://www.bjcp.org/finalstyles/Category18.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BSA
+  bjcp_category: 18
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_18B: 
+  name: Belgian Dubbel
+  description_url: http://www.bjcp.org/finalstyles/Category18.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BSA
+  bjcp_category: 18
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_18C: 
+  name: Belgian Tripel
+  description_url: http://www.bjcp.org/finalstyles/Category18.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BSA
+  bjcp_category: 18
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_18D: 
+  name: Belgian Golden Strong Ale
+  description_url: http://www.bjcp.org/finalstyles/Category18.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BSA
+  bjcp_category: 18
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_18E: 
+  name: Belgian Dark Strong Ale
+  description_url: http://www.bjcp.org/finalstyles/Category18.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: BSA
+  bjcp_category: 18
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: E
+style_19A: 
+  name: Old Ale
+  description_url: http://www.bjcp.org/finalstyles/Category19.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SA
+  bjcp_category: 19
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_19B: 
+  name: English Barleywine
+  description_url: http://www.bjcp.org/finalstyles/Category19.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SA
+  bjcp_category: 19
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: B
+style_19C: 
+  name: American Barleywine
+  description_url: http://www.bjcp.org/finalstyles/Category19.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SA
+  bjcp_category: 19
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_20: 
+  name: Fruit Beer
+  description_url: http://www.bjcp.org/finalstyles/Category20.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: false
+  award: FRUIT
+  bjcp_category: 20
+  optional_classic_style: true
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: ''
+style_21A: 
+  name: Spice, Herb, or Vegetable Beer
+  description_url: http://www.bjcp.org/finalstyles/Category21.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: false
+  award: SHV
+  bjcp_category: 21
+  optional_classic_style: true
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: A
+style_21B: 
+  name: Christmas/Winter Specialty Spiced Beer
+  description_url: http://www.bjcp.org/finalstyles/Category21.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: false
+  award: SHV
+  bjcp_category: 21
+  optional_classic_style: true
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: B
+style_22A: 
+  name: Classic Rauchbier
+  description_url: http://www.bjcp.org/finalstyles/Category22.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SWB
+  bjcp_category: 22
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_22B: 
+  name: Other Smoked Beer
+  description_url: http://www.bjcp.org/finalstyles/Category22.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SWB
+  bjcp_category: 22
+  optional_classic_style: true
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: B
+style_22C: 
+  name: Wood-Aged Beer
+  description_url: http://www.bjcp.org/finalstyles/Category22.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: true
+  award: SWB
+  bjcp_category: 22
+  optional_classic_style: true
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: C
+style_23: 
+  name: Specialty Beer
+  description_url: http://www.bjcp.org/finalstyles/Category23.html
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: false
+  award: SPC
+  bjcp_category: 23
+  optional_classic_style: true
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: ''
+style_24A: 
+  name: Dry Mead
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: false
+  mcab_style: false
+  award: MTRD
+  bjcp_category: 24
+  optional_classic_style: false
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: A
+style_24B: 
+  name: Semi-sweet Mead
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: false
+  mcab_style: false
+  award: MTRD
+  bjcp_category: 24
+  optional_classic_style: false
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: B
+style_24C: 
+  name: Sweet Mead
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: false
+  mcab_style: false
+  award: MTRD
+  bjcp_category: 24
+  optional_classic_style: false
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: C
+style_25A: 
+  name: Cyser (Apple Melomel)
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  mcab_style: false
+  award: MFRT
+  bjcp_category: 25
+  optional_classic_style: false
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: A
+style_25B: 
+  name: Pyment (Grape Melomel)
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  mcab_style: false
+  award: MFRT
+  bjcp_category: 25
+  optional_classic_style: false
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: B
+style_25C: 
+  name: Other Fruit Melomel
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  mcab_style: false
+  award: MFRT
+  bjcp_category: 25
+  optional_classic_style: false
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: C
+style_26A: 
+  name: Metheglin
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  mcab_style: false
+  award: MOTH
+  bjcp_category: 26
+  optional_classic_style: false
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: A
+style_26B: 
+  name: Braggot
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  mcab_style: false
+  award: MOTH
+  bjcp_category: 26
+  optional_classic_style: true
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: B
+style_26C: 
+  name: Open Category Mead
+  description_url: http://www.bjcp.org/finalstyles/Category24.html
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  mcab_style: false
+  award: MOTH
+  bjcp_category: 26
+  optional_classic_style: false
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: C
+style_27A: 
+  name: Common Cider
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: STCP
+  bjcp_category: 27
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: A
+style_27B: 
+  name: English Cider
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: STCP
+  bjcp_category: 27
+  optional_classic_style: false
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: B
+style_27C: 
+  name: French Cider
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: STCP
+  bjcp_category: 27
+  optional_classic_style: false
+  styleinfo: o
+  point_qualifier: true
+  bjcp_subcategory: C
+style_27D: 
+  name: Common Perry
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: STCP
+  bjcp_category: 27
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: D
+style_27E: 
+  name: Traditional Perry
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: STCP
+  bjcp_category: 27
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: E
+style_28A: 
+  name: New England Cider
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: SPCP
+  bjcp_category: 28
+  optional_classic_style: false
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: A
+style_28B: 
+  name: Fruit Cider
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: SPCP
+  bjcp_category: 28
+  optional_classic_style: false
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: B
+style_28C: 
+  name: Applewine
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: SPCP
+  bjcp_category: 28
+  optional_classic_style: false
+  styleinfo: n
+  point_qualifier: true
+  bjcp_subcategory: C
+style_28D: 
+  name: Other Specialty Cider/Perry
+  description_url: http://www.bjcp.org/finalstyles/Category27.html
+  require_carbonation: true
+  require_strength: false
+  require_sweetness: true
+  mcab_style: false
+  award: SPCP
+  bjcp_category: 28
+  optional_classic_style: false
+  styleinfo: r
+  point_qualifier: true
+  bjcp_subcategory: D
+special:
+  name: Competition Special
+  description_url: styles/special
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: false
+  award: special
+  bjcp_category: 29
+  optional_classic_style: true
+  styleinfo: r
+  point_qualifier: false
+  bjcp_subcategory: ''
+first_time:
+  name: First-Time Entrant
+  description_url: styles/first_time
+  require_carbonation: false
+  require_strength: false
+  require_sweetness: false
+  mcab_style: false
+  award: first_time
+  bjcp_category: 30
+  optional_classic_style: true
+  styleinfo: o
+  point_qualifier: false
+  bjcp_subcategory: ''

@@ -1,0 +1,11 @@
+the_one_and_only:
+  name: Testing
+  competition_number: 123456
+  local_timezone: UTC
+  competition_date: <%= 2.months.from_now.utc.to_date.to_s(:db) %>
+  entry_registration_start_time_utc: <%= 1.month.ago.utc.to_s(:db) %>
+  entry_registration_end_time_utc: <%= 1.month.from_now.utc.to_s(:db) %>
+  judge_registration_start_time_utc: <%= 1.month.ago.utc.to_s(:db) %>
+  judge_registration_end_time_utc: <%= 1.month.from_now.utc.to_s(:db) %>
+  competition_start_time_utc: <%= 2.months.from_now.utc.yesterday.to_s(:db) %>
+  mcab: true

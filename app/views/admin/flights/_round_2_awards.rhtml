@@ -1,0 +1,24 @@
+<div id="flights-view">
+  <div id="<%= print_flight_sheets_div_id %>"<%=' style="visibility: hidden;"' unless (Round.has_flights?(2) && !Round.completed?(2)) %>>
+    <%= link_to_with_icon("Print all #{h(Round.second.name.downcase)} flight sheets",
+                          print_admin_flights_path(:round => 2),
+                          { :extname => '.pdf', :popup => true }) %>
+    <br />
+    Note: Flight sheets will only be generated for flights that have not yet been judged.
+  </div>
+  <ul class="uncompacted flights">
+    <% @round_2_awards.each do |award|
+         dom_id = award_container_id(award) -%>
+      <li id="<%= dom_id %>-item">
+        <%= render(:partial => 'round_2_award',
+                   :locals => { :dom_id => dom_id },
+                   :object => award) -%>
+      </li>
+    <% end -%>
+  </ul>
+</div>
+<script type="text/javascript">
+  $A($('flights-view').getElementsByClassName('empty-message')).each(function(e) {
+    e.update('Awaiting completion of <%= Round.first.name.downcase -%> flights')
+  });
+</script>

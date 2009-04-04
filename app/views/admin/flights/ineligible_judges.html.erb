@@ -1,0 +1,7 @@
+<% @page_title = "Ineligible Judges for #{h @award_name}" %>
+
+<div id="flight-management-view">
+  <%= render :partial => "ineligible_judges",
+             :locals => { :award_name => @award_name,
+                          :ineligible_judges => @ineligible_judges } %>
+</div>

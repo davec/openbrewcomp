@@ -1,0 +1,41 @@
+<% total_entries = regions.inject(0){|sum,a| sum + a.entry_count.to_i} -%>
+
+<table class="reporttable">
+  <thead>
+    <tr class="table-header">
+      <th class="left" width="10%">Country</th>
+      <th class="left">State/Province</th>
+      <th class="numeric">Entries</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr class="table-footer">
+      <th colspan="3">&nbsp;</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% # NOTE: `regions' comes in as an array containing one row per region,
+       # sorted first by country then by region withing each country, but
+       # once group_by() converts it to a hash, we lose the country ordering
+       # (the region ordering doesn't seem to be affected, but I don't know
+       # if there's any guarantee that it won't be, so we'll sort both groups
+       # to be safe).
+       regions.group_by(&:country_name).sort.each do |country| -%>
+      <tr class="category-header">
+        <th colspan="2"><%= h country[0] %></th>
+        <th class="numeric"><%= number_with_delimiter(country[1].inject(0){|sum,r| sum + r.entry_count.to_i}) %></th>
+      </tr>
+      <% country[1].sort{|x,y| x.name <=> y.name}.each do |region| -%>
+        <tr>
+          <td>&nbsp;</td>
+          <td><%= h region.name %></td>
+          <td class="numeric"><%= number_with_delimiter(region.entry_count) %></td>
+        </tr>
+      <% end -%>
+    <% end -%>
+    <tr class="total">
+      <th colspan="2">Total</th>
+      <th class="numeric"><%= number_with_delimiter(total_entries) %></th>
+    </tr>
+  </tbody>
+</table>

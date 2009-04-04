@@ -1,0 +1,65 @@
+% reults/entry_covers.rtex
+
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pifont}
+\usepackage[absolute]{textpos}
+\usepackage[noheadfoot, letterpaper, scale=1.0,
+            body={6.5in,9.0in}, hmargin=1.0in, vmargin=1.0in]{geometry}
+
+\pagestyle{empty}
+
+\parindent 0pt
+\parskip 0.5\baselineskip
+
+\setlength{\unitlength}{0.1in}
+
+% textpos settings
+\textblockorigin{0.5in}{0.5in}     % Same as the origin specified to geometry
+\setlength{\TPHorizModule}{1.0in}  % Make life simple with a 1 inch square grid
+\setlength{\TPVertModule}{\TPHorizModule}
+
+\begin{document}
+  <% @entries.sort{|x,y| x.bottle_code <=> y.bottle_code}.each do |entry|
+       mini_bos = entry.style.award.flights.select{|f| f.round == Round.first}.length > 1 %>
+
+    \clearpage
+    \begin{center}
+      \Huge{\textbf{<%= @competition_name -%>}}
+
+      \LARGE{Entry Cover Sheet}
+
+      \rule{\textwidth}{0.04in}
+
+      \LARGE{Entry}
+
+      \huge{\textbf{<%= entry.bottle_code -%>}}
+
+      \large{<%= l entry.category -%>}
+
+      <%- if mini_bos && entry.second_round -%>
+        \normalsize{\textit{Advanced to <%= Round.second.name %>}}
+      <%- end -%>
+
+      \vspace*{2ex}
+
+      \LARGE{Assigned Score}
+
+      \huge{\textbf{<%= entry.score ? l("%.1f" % entry.score) : 'N/A' -%>}}
+
+      <%- if entry.place -%>
+        \vspace*{2ex}
+
+        \LARGE{Place}
+
+        <%- if entry.place.to_i > 3 -%>
+          \Large{\textbf{Honorable \\ Mention}}
+        <%- else -%>
+          \huge{\textbf{<%= entry.place -%>}}
+        <%- end -%>
+      <%- end -%>
+    \end{center}
+
+<% end -%>
+\end{document}

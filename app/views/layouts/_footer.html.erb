@@ -1,0 +1,9 @@
+<div id="footer">
+  <span id="copyright">
+    Copyright &copy; <%= Time.now.year %> <%= APP_CONFIG[:club_name] %>
+  </span>
+  <ul id="footlinks">
+    <li class="firstlink"><%= link_to('News', news_path) %></li>
+    <li class="lastlink"><%= link_to('Contact Us', contacts_path) %></li>
+  </ul>
+</div>

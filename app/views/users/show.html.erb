@@ -1,0 +1,15 @@
+<% @page_title = "Profile for #{h @user.login}"
+   #@page_header = "#{@page_title} #{link_to('(edit)', edit_user_path(@user), :class => 'title-link')}"
+   @user.password = @user.password_confirmation = nil %>
+
+<div id="user-profile">
+  <dl>
+    <dt>Username</dt><dd><%= h @user.login %></dd>
+    <dt>Name</dt><dd><%= h @user.name %></dd>
+    <dt>Email</dt><dd><%= h @user.email %></dd>
+    <dt>Password</dt><dd><%= link_to '(change)', change_password_user_path(@user) %></dd>
+  </dl>
+  <div class="buttons">
+    <%= button_to 'Edit', edit_user_path(@user), :method => :get %>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<% @page_title = "#{competition_name}" %>
+<% @page_description = "Online registration for the #{competition_name} Homebrew Competition" %>
+<% @suppress_page_header = true %>
+
+<% if @days_to_go > 0 -%>
+  <div id="countdown">
+    <%= pluralize(@days_to_go, 'day') -%> until <%= @event_name -%>
+  </div>
+<% end -%>
+
+<p>
+  Welcome to the online registration system for the name of your competition.
+</p>
+
+<p>
+  You may proceed directly to the <%= link_to('online registration',
+                                              online_registration_path) %>,
+  or you may prefer to look around and check out the
+  <%= link_to('competition rules', rules_path) %> first.
+</p>
+
+<p>
+  For more information, contact <%= coordinator_name %> by email at
+  <%= mail_to coordinator_email, nil,
+              :title => "#{competition_name} contact email address" %>.
+</p>
+
+<table class="orgtable" summary="Links to related organizations">
+  <tr>
+    <td>
+      <%= link_to(image_tag('bjcp.gif',
+                            :alt => 'BJCP Sanctioned Competition',
+                            :size => '74x116'),
+                  'http://www.bjcp.org/',
+                  { :title => 'BJCP Web Site' }) %>
+    </td>
+    <td align="center" valign="middle">
+      <%= link_to(image_tag('aha.gif',
+                            :alt => 'AHA Sanctioned Competition',
+                            :size => '255x55'),
+                  'http://www.beertown.org/homebrewing/index.html',
+                  { :title => 'AHA Homebrewing Web Site' }) %>
+    </td>
+  </tr>
+</table>

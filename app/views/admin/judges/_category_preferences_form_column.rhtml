@@ -1,0 +1,19 @@
+<ol id="category-preferences">
+  <% scope ||= nil
+     options = form_element_input_options(column, scope)
+     categories = Category.is_public.sort_by(&:position).collect {|c| [ c.name_with_index, c.id ]}
+     temp_id = generate_temporary_id.to_i
+
+     1.upto(CategoryPreference::MAX_PREFERENCES) do |i|
+       category_id = @record.category_preferences[i-1].category_id rescue temp_id+i
+       selected_id = @record.category_preferences[i-1].category_id rescue ''
+       select_base_id = "#{options[:id]}_#{i}_category"
+  -%>
+    <li>
+      <label for="<%= "#{select_base_id}_id" %>"><%= i == 1 ? column.label : '' %></label>
+      <%= select("#{select_base_id}", "id", [[ "No preference", '' ]] + categories,
+                 { :selected => selected_id },
+                 { :name => "record[category_preferences][#{i}][category][id]" }) -%>
+    </li>
+  <% end -%>
+</ol>

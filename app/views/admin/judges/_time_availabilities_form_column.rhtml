@@ -1,0 +1,49 @@
+<ol id="time-availabilities">
+  <% def time_display(hour)
+       case hour
+       when 0, 24
+         "12 AM"
+       when 1..11
+         "#{hour} AM"
+       when 12
+         "12 PM"
+       when 13..23
+         "#{hour - 12} PM"
+       end
+     end
+     date_db_format = '%Y-%m-%dT%H:%M'
+     scope ||= nil
+     options = form_element_input_options(column, scope)
+     temp_id = generate_temporary_id.to_i
+
+     JudgingSession.dates.each_with_index do |day, i|
+       next if day < Time.now.to_date  # No point displaying previous judging dates
+       available_times = @record.existing_record_check? ? @record.time_availabilities.select{|t| t.start_time.to_date == day}[0] : nil
+       # TODO: time_range should be based on the day's judging sessions
+       time_range = (TimeAvailability::TIME_RANGE.begin..TimeAvailability::TIME_RANGE.end).to_a.collect{|hour| [ time_display(hour), (day + hour.hours).strftime(date_db_format) ]}
+       if available_times
+         selected_start = available_times.start_time.strftime(date_db_format)
+         selected_end = available_times.end_time.strftime(date_db_format)
+       else
+         selected_start = time_range.first.last
+         selected_end = time_range.last.last
+       end
+  -%>
+    <li>
+      <%= check_box_tag("#{options[:id]}_#{i+1}", 1, !available_times.nil?,
+                        :name => "record[time_availabilities][#{i+1}][available]",
+                        :onclick => 'toggleTimeAvailability(this.id)') %>
+      <span class="selectLabel">I am available to judge from</span>
+      <%= select("#{options[:id]}_#{i+1}", "start_time", time_range,
+                 { :selected => selected_start },
+                 { :name => "record[time_availabilities][#{i+1}][start_time]",
+                   :disabled => available_times.nil? }) %>
+      <span class="selectLabel">to</span>
+      <%= select("#{options[:id]}_#{i+1}", "end_time", time_range,
+                 { :selected => selected_end },
+                 { :name => "record[time_availabilities][#{i+1}][end_time]",
+                   :disabled => available_times.nil? }) %>
+      <span class="selectLabel">on <%= h(day.to_s(:long)) %>.</span>
+    </li>
+  <% end -%>
+</ol>

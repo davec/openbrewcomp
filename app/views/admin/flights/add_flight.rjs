@@ -1,0 +1,7 @@
+page.hide 'auto-assign-flights'
+container_id = award_container_id(@award)
+assignment_id = flights_container_id(@award)
+page[container_id]['style'].width = "#{flight_container_width_in_ems * @flight_count}em"
+page.replace_html assignment_id, :partial => 'flights',
+                                 :locals => { :award => @award,
+                                              :flights_action => :add }

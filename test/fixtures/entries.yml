@@ -1,0 +1,270 @@
+# Individual1 has no excess entries (+ includes 3 entries in the Competition
+# Special category, but none are checked in)
+i1_1D:
+  style: style_1D
+  entrant: Individual_US
+  user: testuser1
+  bottle_code: 1014
+  second_round: true
+  place: 1
+  mcab_qe: true
+i1_2B:
+  style: style_2B
+  entrant: Individual_US
+  user: testuser1
+  bottle_code: 1022
+  second_round: true
+  place: 2
+i1_3A:
+  style: style_3A
+  entrant: Individual_US
+  user: testuser1
+  bottle_code: 1031
+  second_round: true
+  place: 3
+i1_4C:
+  style: style_4C
+  entrant: Individual_US
+  user: testuser1
+  bottle_code: 1043
+  second_round: true
+  place: 1
+  mcab_qe: true
+  bos_place: 1
+i1_5D:
+  style: style_5D
+  entrant: Individual_US
+  user: testuser1
+  bottle_code: 1054
+  second_round: true
+  place: 1
+  mcab_qe: true
+i1_22B:
+  style: style_22B
+  style_info: Inappropriate style information
+  entrant: Individual_US
+  user: testuser1
+  bottle_code: 1222
+  second_round: true
+  place: 1
+  mcab_qe: true
+  bos_place: 2
+i1_29a:
+  style: special
+  style_info: Style information
+  entrant: Individual_US
+  user: testuser1
+i1_29b:
+  style: special
+  style_info: Style information
+  entrant: Individual_US
+  user: testuser1
+i1_29c:
+  style: special
+  style_info: Style information
+  entrant: Individual_US
+  user: testuser1
+
+# Individual2 has no excess entries
+i2_1A:
+  style: style_1A
+  entrant: Individual_CA
+  user: admin
+  bottle_code: 2011
+i2_1C:
+  style: style_1C
+  entrant: Individual_CA
+  user: admin
+  bottle_code: 2013
+  second_round: true
+i2_4A:
+  style: style_4A
+  entrant: Individual_CA
+  user: admin
+  bottle_code: 2041
+
+# Individual3 has no excess entries
+i3_1E:
+  style: style_1E
+  entrant: Individual2_US
+  user: admin
+  bottle_code: 3015
+i3_3A:
+  style: style_3A
+  entrant: Individual2_US
+  user: admin
+  bottle_code: 3031
+  second_round: true
+  place: 2
+i3_4B:
+  style: style_4B
+  entrant: Individual2_US
+  user: admin
+  bottle_code: 3042
+  second_round: true
+  place: 3
+i3_5A:
+  style: style_5A
+  entrant: Individual2_US
+  user: admin
+  bottle_code: 3051
+  second_round: true
+
+# Team1 has entries in all lager sub-categories (which translates to an
+# excess of 7 entries)
+t1_1A:
+  style: style_1A
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4011
+  second_round: true
+  place: 2
+t1_1B:
+  style: style_1B
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4012
+t1_1C:
+  style: style_1C
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4013
+t1_1D:
+  style: style_1D
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4014
+t1_1E:
+  style: style_1E
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4015
+  second_round: true
+  place: 3
+t1_2A:
+  style: style_2A
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4021
+  second_round: true
+t1_2B:
+  style: style_2B
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4022
+  second_round: true
+  place: 1
+  mcab_qe: true
+t1_2C:
+  style: style_2C
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4023
+  second_round: true
+  place: 3
+t1_3A:
+  style: style_3A
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4031
+  second_round: true
+t1_3B:
+  style: style_3B
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4032
+  second_round: true
+t1_4A:
+  style: style_4A
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4041
+t1_4B:
+  style: style_4B
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4042
+t1_4C:
+  style: style_4C
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4043
+t1_5A:
+  style: style_5A
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4051
+  second_round: true
+t1_5B:
+  style: style_5B
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4052
+  second_round: true
+t1_5C:
+  style: style_5C
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4053
+  second_round: true
+  place: 2
+t1_5D:
+  style: style_5D
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4054
+  second_round: true
+  place: 3
+t1_22A:
+  style: style_22A
+  entrant: Team1
+  user: testuser2
+  bottle_code: 4221
+  second_round: true
+  place: 2
+
+# Team2 has 5 entries, 3 of which are in the Dark Lager
+# category but only 2 of which are actually checked in
+t2_3B:
+  style: style_3B
+  entrant: Team2
+  user: testuser3
+  bottle_code: 5032
+  second_round: true
+  place: 1
+  mcab_qe: true
+t2_4A:
+  style: style_4A
+  entrant: Team2
+  user: testuser3
+t2_4B:
+  style: style_4B
+  entrant: Team2
+  user: testuser3
+  bottle_code: 5042
+  second_round: true
+t2_4C:
+  style: style_4C
+  entrant: Team2
+  user: testuser3
+  bottle_code: 5043
+  second_round: true
+  place: 2
+
+# Team3 has 4 entries in the Bock category (none checked in)
+t3_5A:
+  style: style_5A
+  entrant: Team3
+  user: j_random_user
+t3_5B:
+  style: style_5B
+  entrant: Team3
+  user: j_random_user
+t3_5C:
+  style: style_5C
+  entrant: Team3
+  user: j_random_user
+t3_5D:
+  style: style_5D
+  entrant: Team3
+  user: j_random_user

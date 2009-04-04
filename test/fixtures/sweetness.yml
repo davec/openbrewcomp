@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+dry:
+  description: Dry
+  position: 1
+medium:
+  description: Semi-Sweet/Medium
+  position: 2
+sweet:
+  description: Sweet
+  position: 3

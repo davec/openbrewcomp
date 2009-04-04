@@ -1,0 +1,74 @@
+<% @page_title = "#{competition_name} Entry Forms"
+   show_xpdf_link = /Windows/.match(request.env['HTTP_USER_AGENT']).nil?
+   cat6d = Style.find_by_bjcp_category_and_bjcp_subcategory('6','D') %>
+
+<p>
+  All the forms you need to enter <%= competition_name %> can be found on this page.
+  You will need a PDF viewer program to read the forms. If you need a PDF
+  viewer, <% if show_xpdf_link %>either get
+  <%= link_to(image_tag('getxpdf.png',
+                        :class => 'icon',
+                        :alt => 'Xpdf',
+                        :size => '88x31'),
+              'http://www.foolabs.com/xpdf/download.html') %> or<% end %>
+  <%= link_to(image_tag('get_adobe_reader.gif',
+                        :class => 'icon',
+                        :alt => 'get Adobe Reader',
+                        :size => '112x33'),
+              'http://www.adobe.com/products/acrobat/readstep2.html') %>.
+</p>
+
+<p>
+  Shipping instructions, mailing address, and drop-off locations are listed on
+  the <%= link_to('shipping information page', shipping_path) %>.
+</p>
+
+<h2>Registration Form</h2>
+
+<p>
+  Fill out a <%= link_to_with_icon('registration form', doc_path('registration.pdf'), :popup => true) %>
+  and include it, along with your check, payable to
+  <span class="payable">Your Club Name</span>, with your entries.
+</p>
+
+<h2><a name="recipe-form"></a>Recipe Form</h2>
+
+<p>
+  If you do not wish, or are unable, to
+  <%= link_to('register online', online_registration_path) %>, you must fill out one
+  <%= link_to_with_icon('recipe form', doc_path('recipe.pdf'), :popup => true) %>
+  for each entry and include them with your registration form.
+</p>
+
+<p>
+  Please fill out the recipe form as completely as possible. This will help
+  ensure that your entry is placed in the correct category, and that the judges
+  have the necessary information to accurately judge your entry.
+</p>
+
+<p>
+  You must fill in the <em>Pertinent Style Information</em> section for the
+  following styles:
+  <% cache(:section => 'reqinfo') do -%>
+    <% styles_with_required_styleinfo.each do |s| -%>
+      <%= link_to("#{s.name} (#{s.category})", s.description_url) %>,
+    <% end -%>
+  <% end -%>
+  and rye beers entered in <%= link_to("#{cat6d.name} (#{cat6d.category})", cat6d.description_url) %>.
+  This section is optional for all other categories.
+</p>
+
+<p>
+  Use of the &ldquo;official&rdquo; recipe form is preferred, but not required.
+  If you use an alternate form, be sure that it contains similar information.
+  In particular, make sure that the correct category code is included.
+</p>
+
+<h2>Bottle Labels</h2>
+
+<p>
+  Attach one <%= link_to_with_icon('bottle label', doc_path('bottle_labels.pdf'), :popup => true) %>
+  to each bottle with a rubber band &mdash; <strong>no tape or glue</strong>.
+  Indicate the BJCP category and sub-category on the bottle label and include
+  the beer name, especially if you have two entries in the same category.
+</p>

@@ -1,0 +1,155 @@
+% reults/entrant_covers.rtex
+
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pifont}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{longtable}
+%\usepackage{graphicx}
+\usepackage{epic}
+\usepackage[absolute]{textpos}
+\usepackage[noheadfoot, letterpaper, scale=1.0,
+            body={7.5in,10.0in}, hmargin=0.5in, vmargin=0.5in]{geometry}
+
+\pagestyle{empty}
+
+\parindent 0pt
+\parskip 0.5\baselineskip
+
+\setlength{\unitlength}{0.1in}
+
+% textpos settings
+\textblockorigin{0.5in}{0.5in}     % Same as the origin specified to geometry
+\setlength{\TPHorizModule}{1.0in}  % Make life simple with a 1 inch square grid
+\setlength{\TPVertModule}{\TPHorizModule}
+
+%%%
+%%% Define the return address. Modify to suit your needs.
+%%%
+\newsavebox{\ReturnAddr}
+\sbox{\ReturnAddr}
+  {
+    \begin{minipage}[b]{2.6in}
+      %%%
+      %%% Replace `APP_CONFIG[:club_name]' with your own text if you do not
+      %%% want to use the default value, or if you need to apply additional
+      %%% formatting of your club's name.
+      %%%
+      \fontsize{18}{20}\fontfamily{phv}\fontseries{b}\selectfont
+      \parbox{\linewidth}{\scschape <%= l(APP_CONFIG[:club_name]) %>}
+
+      \vspace{1mm}
+
+      %%%
+      %%% Fill in your address information (your club name is in the parbox
+      %%% above) -- remember, \\ forces a line break.
+      %%%
+      \fontsize{12}{16}\fontfamily{phv}\fontseries{b}\selectfont
+      Street Address/PO Box \\ City, ST 00000
+
+    \end{minipage}
+  }
+
+\newenvironment{address}[1]
+  {
+    \begin{textblock}{5}(3,3)
+      \fontsize{12}{14}\fontfamily{phv}\fontseries{m}\selectfont #1
+    \end{textblock}
+  }
+
+\newenvironment{club}[1]
+  {
+    \begin{textblock}{7}(0,4.5)
+      \fontsize{12}{14}\fontfamily{phv}\fontseries{m}\selectfont #1
+    \end{textblock}
+  }
+
+% Allow \raggedright in last column of array/tabular specifiers
+\newcommand\PBS[1]{\let\temp\\#1\let\\\temp}
+
+\newcommand{\sendaward}{\ding{72}}     % solid 5-pointed star
+\newcommand{\sendbosaward}{\ding{74}}  % circled open 5-pointed star
+
+% \shade automatically alternates between shaded and non-shaded table rows
+\newcount\tableLineCount
+\def\setupshade{\global\tableLineCount0}
+\def\shade{%
+  \noalign{
+    \global\advance\tableLineCount by 1%
+      \ifodd\tableLineCount
+        \gdef\next{\rowcolor[gray]{1}}%
+      \else
+        \gdef\next{\rowcolor[gray]{.87}}%
+      \fi
+  }\next
+}
+
+\newcommand{\checkmark}{\textsf{X}}  % \ding{52} (for a check mark) doesn't work
+                                     % with UTF8 encoding so we use something a
+                                     % bit more pedestrian.
+\newcommand{\na}{\textsf{\scriptsize N/A}}
+\newcommand{\blank}{\underline{\hspace{2em}}}
+
+\begin{document}
+
+  <% @entrants.sort_by{|e| [e.club.name,e.dictionary_name]}.each do |entrant| -%>
+    \clearpage
+    \vspace*{.465\textheight}
+    \rule{\textwidth}{0.04in}
+
+    \begin{textblock}{3}(0,0)
+      \usebox{\ReturnAddr}
+    \end{textblock}
+
+    %\begin{textblock}{4}(3,3)
+      \address{<%= l(entrant.postal_address).upcase.gsub("\n"," \\\\newline ") %>}
+    %\end{textblock}
+
+    %\begin{textblock}{4}(0,4.5)
+      \club{<%= l(entrant.club.name) %>}
+    %\end{textblock}
+
+    \setupshade
+    \renewcommand{\arraystretch}{1.7}
+      \begin{longtable}{>{\bfseries\large}r%           Entry
+                        >{\PBS\raggedright}p{2.50in}%  Style
+                        >{\PBS\raggedright}p{2.25in}%  Entry Name
+                        >{\large}c%                    Place
+                        >{\PBS\raggedright}p{1.00in}}% Notes
+          \multicolumn{1}{c}{\bfseries\large Entry} &
+          \multicolumn{1}{c}{\bfseries\large Style} &
+          \multicolumn{1}{c}{\bfseries\large Entry Name} &
+          \multicolumn{1}{c}{\bfseries\large Place} &
+          \multicolumn{1}{c}{\bfseries\large Notes} \\
+        \endfirsthead
+          \multicolumn{3}{l}{\bfseries <%= l(entrant.name) -%>} &
+          \multicolumn{2}{r}{\emph{\footnotesize continued from previous page}} \\
+          \multicolumn{1}{c}{\bfseries\large Entry} &
+          \multicolumn{1}{c}{\bfseries\large Style} &
+          \multicolumn{1}{c}{\bfseries\large Entry Name} &
+          \multicolumn{1}{c}{\bfseries\large Place} &
+          \multicolumn{1}{c}{\bfseries\large Notes} \\
+        \endhead
+          \multicolumn{3}{l}{} &
+          \multicolumn{2}{r}{\emph{\footnotesize continued on next page}} \\
+        \endfoot
+        \endlastfoot
+        <% entrant.entries.sort_by{|e| [e.style.bjcp_category,e.style.bjcp_subcategory,e.bottle_code]}.each do |entry|
+             place = entry.place.to_s || ''
+             #place << '~\sendaward' if entry.send_award?
+             #place << '~\sendbosaward' if entry.send_bos_award?
+             notes = ''
+             notes << Round.second.name if entry.second_round?
+             notes << '\newline \sendaward~Send Award' if entry.send_award?
+             notes << '\newline \sendbosaward~Send BOS' if entry.send_bos_award?
+        %>
+          \shade <%= entry.bottle_code -%> & <%= l(entry.category) -%> & <%= l(entry.name) -%> & <%= place -%> & <%= notes -%> \\
+        <% end -%>
+      \end{longtable}
+    \renewcommand{\arraystretch}{1.0}
+
+<% end -%>
+
+\end{document}

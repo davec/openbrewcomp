@@ -1,0 +1,3041 @@
+<% i = 0 %>
+AD: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish
+  country_code: AD
+  name: "Andorra"
+  postcode_pattern: /^AD\d{3})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+AE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: emirate
+  country_code: AE
+  name: "United Arab Emirates (\xD8\xA7\xD9\x84\xD8\xA5\xD9\x85\xD8\xA7\xD8\xB1\xD8\xA7\xD8\xAA \xD8\xA7\xD9\x84\xD8\xB9\xD8\xB1\xD8\xA8\xD9\x8A\xD9\x91\xD8\xA9 \xD8\xA7\xD9\x84\xD9\x85\xD8\xAA\xD9\x91\xD8\xAD\xD8\xAF)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: AF
+  name: "Afghanistan (\xD8\xA7\xD9\x81\xD8\xBA\xD8\xA7\xD9\x86\xD8\xB3\xD8\xAA\xD8\xA7\xD9\x86)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish/dependency
+  country_code: AG
+  name: "Antigua and Barbuda"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: AI
+  name: "Anguilla"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: AL
+  name: "Albania (Shqip\xC3\xABria)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: AM
+  name: "Armenia (\xD5\x80\xD5\xA1\xD5\xB5\xD5\xA1\xD5\xBD\xD5\xBF\xD5\xA1\xD5\xB6)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+AN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: island region
+  country_code: AN
+  name: "Netherlands Antilles"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: AO
+  name: "Angola"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AQ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: claim
+  country_code: AQ
+  name: "Antarctica"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: AR
+  name: "Argentina"
+  postcode_pattern: /^([A-Z]\d{4}[A-Z]{3})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+AS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: AS
+  name: "American Samoa"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+AT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: AT
+  name: "Austria (\xC3\x96sterreich)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+AU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state/territory
+  country_code: AU
+  name: "Australia"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: ""
+  address_format: "\"#{name}\\n#{address}\\n#{city}  #{region.region_code}  #{postcode}\""
+  country_address_name: 
+AW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: AW
+  name: "Aruba"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+AX: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: AX
+  name: "\xC3\x85land Islands"
+  postcode_pattern: /^(AX-?)?(\d{5})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"AX-#{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: "\xC3\x85land\nFinland"
+AZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: rayon/city
+  country_code: AZ
+  name: "Azerbaijan (Az\xC9\x99rbaycan)"
+  postcode_pattern: /^(AZ\s*)?(\d{4})$/i
+  region_name_optional: false
+  address_alignment: r
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"AZ #{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+BA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: entity/district
+  country_code: BA
+  name: "Bosnia and Herzegovina (Bosna i Hercegovina)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+BB: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish
+  country_code: BB
+  name: "Barbados"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BD: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: division
+  country_code: BD
+  name: "Bangladesh (\xE0\xA6\xAC\xE0\xA6\xBE\xE0\xA6\x82\xE0\xA6\xB2\xE0\xA6\xBE\xE0\xA6\xA6\xE0\xA7\x87\xE0\xA6\xB6)"
+  postcode_pattern: ^\d{4}(\d{2})?$
+  region_name_optional: false
+  address_alignment: r
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\" + (!postcode.blank? ? \" \xE2\x80\x93 #{postcode}\" : \"\")"
+  country_address_name: 
+BE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: BE
+  name: "Belgium (Belgi\xC3\xAB)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+BF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: BF
+  name: "Burkina Faso"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: BG
+  name: "Bulgaria (\xD0\x91\xD1\x8A\xD0\xBB\xD0\xB3\xD0\xB0\xD1\x80\xD0\xB8\xD1\x8F)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+BH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: governorate
+  country_code: BH
+  name: "Bahrain (\xD8\xA8\xD8\xAD\xD8\xB1\xD9\x8A\xD9\x86)"
+  postcode_pattern: ^\d{3,4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+BI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: BI
+  name: "Burundi"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BJ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: BJ
+  name: "Benin (B\xC3\xA9nin)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: BL
+  name: "Saint Barth\xC3\xA9lemy"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+BM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish/municipality
+  country_code: BM
+  name: "Bermuda"
+  postcode_pattern: /^([A-Z]{2})\s*((\d|[A-Z]){2})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+BN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: BN
+  name: "Brunei (Brunei Darussalam)"
+  postcode_pattern: /^([A-Z]{2}\d{4}$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+BO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: BO
+  name: "Bolivia"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: BR
+  name: "Brazil (Brasil)"
+  postcode_pattern: ^(\d{5})[-\s]*(\d{3})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1-\\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{city}-#{region.region_code}\\n#{postcode}\""
+  country_address_name: 
+BS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: BS
+  name: "Bahamas"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: BT
+  name: "Bhutan (\xE0\xBD\xA0\xE0\xBD\x96\xE0\xBE\xB2\xE0\xBD\xB4\xE0\xBD\x82\xE0\xBC\x8B\xE0\xBD\xA1\xE0\xBD\xB4\xE0\xBD\xA3)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BV: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: BV
+  name: "Bouvet Island"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: BW
+  name: "Botswana"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+BY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/municipality
+  country_code: BY
+  name: "Belarus (\xD0\x91\xD0\xB5\xD0\xBB\xD0\xB0\xD1\x80\xD1\x83\xCC\x81\xD1\x81\xD1\x8C)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+BZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: BZ
+  name: "Belize"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CA: 
+  id: <%= i += 1 %>
+  is_selectable: true
+  region_name: province/territory
+  country_code: CA
+  name: "Canada"
+  postcode_pattern: /^([A-Z]\d[A-Z])\s*(\d[A-Z]\d)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{region.region_code}  #{postcode}\""
+  country_address_name: 
+CC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: CC
+  name: "Cocos (Keeling) Islands"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CD: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: CD
+  name: "Congo, Democratic Republic of the"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: prefecture
+  country_code: CF
+  name: "Central African Republic (R\xC3\xA9publique Centrafricaine)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: CG
+  name: "Congo"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: canton
+  country_code: CH
+  name: "Switzerland (Schweiz)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+CI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: CI
+  name: "C\xC3\xB4te d'Ivoire"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: CK
+  name: "Cook Islands"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: CL
+  name: "Chile"
+  postcode_pattern: ^\d{7}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+CM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: CM
+  name: "Cameroon (Cameroun)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: CN
+  name: "China (\xE4\xB8\xAD\xE5\x9B\xBD)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+CO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: CO
+  name: "Colombia"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: CR
+  name: "Costa Rica"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+CU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: CU
+  name: "Cuba"
+  postcode_pattern: /^(CP\s*)?(\d{5})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"CP #{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+CV: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: island
+  country_code: CV
+  name: "Cape Verde (Cabo Verde)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\\n#{region.name}\""
+  country_address_name: 
+CX: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: CX
+  name: "Christmas Island"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+CY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: CY
+  name: "Cyprus (\xCE\x9A\xCF\x85\xCF\x80\xCF\x81\xCE\xBF\xCF\x82)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+CZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region/city
+  country_code: CZ
+  name: "Czech Republic (\xC4\x8Cesko)"
+  postcode_pattern: ^(\d{3})\s*(\d{2})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}  #{city}\""
+  country_address_name: 
+DE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: DE
+  name: "Germany (Deutschland)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+DJ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region/city
+  country_code: DJ
+  name: "Djibouti"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+DK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: DK
+  name: "Denmark (Danmark)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}  #{city}\""
+  country_address_name: 
+DM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish
+  country_code: DM
+  name: "Dominica"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+DO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/district
+  country_code: DO
+  name: "Dominican Republic"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+DZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: DZ
+  name: "Algeria (\xD8\xA7\xD9\x84\xD8\xAC\xD9\x85\xD9\x87\xD9\x88\xD8\xB1\xD9\x8A\xD8\xA9 \xD8\xA7\xD9\x84\xD8\xAC\xD8\xB2\xD8\xA7\xD8\xA6\xD8\xB1\xD9\x8A\xD8\xA9)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+EC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: EC
+  name: "Ecuador"
+  postcode_pattern: /^([A-Z]\d{4}[A-Z])$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}\\n#{city}\""
+  country_address_name: 
+EE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: EE
+  name: "Estonia (Eesti)"
+  postcode_pattern: ^(EE-)?(\d{5})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+EG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: governorate
+  country_code: EG
+  name: "Egypt (\xD9\x85\xD8\xB5\xD8\xB1)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+EH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: EH
+  name: "Western Sahara (\xD8\xB5\xD8\xAD\xD8\xB1\xD8\xA7\xD9\x88\xD9\x8A\xD8\xA9)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+ER: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: ER
+  name: "Eritrea (Ertra)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+ES: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  # Alternatively, regions may be communities/municipalities (adjust the data file as appropriate)
+  #region_name: community/municipality
+  country_code: ES
+  name: "Spain (Espa\xC3\xB1a)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city} (#{region.name})\""
+  country_address_name: 
+ET: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state/administration
+  country_code: ET
+  name: "Ethiopia (Ityop'iya)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+FI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: FI
+  name: "Finland (Suomi)"
+  postcode_pattern: ^(FI-?)?(\d{5})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"FI-#{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+FJ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: division/dependency
+  country_code: FJ
+  name: "Fiji"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+FK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: FK
+  name: "Falkland Islands"
+  postcode_pattern: /^(FIQQ)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+FM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: FM
+  name: "Micronesia, Federated States of"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+FO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: FO
+  name: "Faroe Islands"
+  postcode_pattern: /^(FO-?\d{3})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+FR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: FR
+  name: "France"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+GA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: GA
+  name: "Gabon"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+GD: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish/depencency
+  country_code: GD
+  name: "Grenada"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+GE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: GE
+  name: "Georgia (\xE1\x83\xA1\xE1\x83\x90\xE1\x83\xA5\xE1\x83\x90\xE1\x83\xA0\xE1\x83\x97\xE1\x83\x95\xE1\x83\x94\xE1\x83\x9A\xE1\x83\x9D)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+GF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: arrondissement
+  country_code: GF
+  name: "French Guiana"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+GG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish/dependency
+  country_code: GG
+  name: "Guernsey"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{country.name.upcase}\\n#{postcode}\""
+  country_address_name: Channel Islands
+GH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: GH
+  name: "Ghana"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+GI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: GI
+  name: "Gibraltar"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+GL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: part
+  country_code: GL
+  name: "Greenland"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}  #{city}\""
+  country_address_name: 
+GM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: division/city
+  country_code: GM
+  name: "Gambia"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+GN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: prefecture
+  country_code: GN
+  name: "Guinea (Guin\xC3\xA9e)"
+  postcode_pattern: ^\d{3}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{postcode} #{address} #{city}\""
+  country_address_name: 
+GP: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: arrondissement
+  country_code: GP
+  name: "Guadeloupe"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+GQ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: GQ
+  name: "Equatorial Guinea (Guinea Ecuatorial)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+GR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: prefecture
+  country_code: GR
+  name: "Greece ('E\xCE\xBB\xCE\xBB\xCE\xB1\xCF\x82)"
+  postcode_pattern: ^(\d{3})\s*(\d{2})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+GS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: GS
+  name: "South Georgia and the South Sandwich Islands"
+  postcode_pattern: /^(SIQQ)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: South Georgia
+GT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: GT
+  name: "Guatemala"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}-#{region.name.upcase}\""
+  country_address_name: 
+GU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: GU
+  name: "Guam"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+GW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region/sector
+  country_code: GW
+  name: "Guinea-Bissau (Guin\xC3\xA9-Bissau)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+GY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: GY
+  name: "Guyana"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+HK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: HK
+  name: "Hong Kong"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+HM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: HM
+  name: "Heard Island and McDonald Islands"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+HN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: HN
+  name: "Honduras"
+  postcode_pattern: /^([A-Z]{2}\d{4})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}, #{region.name}\""
+  country_address_name: 
+HR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county/city
+  country_code: HR
+  name: "Croatia (Hrvatska)"
+  postcode_pattern: /^(HR[-\s]*)?(\d{5})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"HR-#{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+HT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: HT
+  name: "Haiti (Ha\xC3\xAFti)"
+  postcode_pattern: /^(HT)?(\d{4})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"HT#{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+HU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: HU
+  name: "Hungary (Magyarorsz\xC3\xA1g)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{city}\\n#{address}\\n#{postcode}\""
+  country_address_name: 
+ID: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: ID
+  name: "Indonesia"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+IE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: IE
+  name: "Ireland (\xC3\x89ire)"
+  postcode_pattern: (^\d{1,2})?
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\" + (!region.nil? && region.name.split(\"(\").first.squish.casecmp(city.squish.split(\" \").first) != 0 ? \"\\nCo #{region.name.split(\"(\").first.squish}\" : \"\")"
+  country_address_name: 
+IL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: IL
+  name: "Israel (\xD7\x99\xD7\xA9\xD7\xA8\xD7\x90\xD7\x9C)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+IM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: sheading
+  country_code: IM
+  name: "Isle of Man"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+IN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state/territory
+  country_code: IN
+  name: "India"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+IO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: IO
+  name: "British Indian Ocean Territory"
+  postcode_pattern: /^(BBND)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+IQ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: IQ
+  name: "Iraq (\xD8\xA7\xD9\x84\xD8\xB9\xD8\xB1\xD8\xA7\xD9\x82)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{region.name}\\n#{postcode}\""
+  country_address_name: 
+IR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: IR
+  name: "Iran (\xD8\xA7\xDB\x8C\xD8\xB1\xD8\xA7\xD9\x86)"
+  postcode_pattern: ^\d{10}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+IS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: IS
+  name: "Iceland (\xC3\x8Dsland)"
+  postcode_pattern: ^\d{3}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+IT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: IT
+  name: "Italy (Italia)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city} #{region.region_code}\""
+  country_address_name: 
+JE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish
+  country_code: JE
+  name: "Jersey"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{country.name.upcase}\\n#{postcode}\""
+  country_address_name: Channel Islands
+JM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish
+  country_code: JM
+  name: "Jamaica"
+  postcode_pattern: (^\d{1,2})?
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+JO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: JO
+  name: "Jordan (\xD8\xA7\xD9\x84\xD8\xA7\xD8\xB1\xD8\xAF)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: r
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+JP: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: prefecture
+  country_code: JP
+  name: "Japan (\xE6\x97\xA5\xE6\x9C\xAC)"
+  postcode_pattern: ^(\d{3})[-\s]*(\d{4})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1-\\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+KE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: KE
+  name: "Kenya"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+KG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/city
+  country_code: KG
+  name: "Kyrgyzstan (\xD0\x9A\xD1\x8B\xD1\x80\xD0\xB3\xD1\x8B\xD0\xB7\xD1\x81\xD1\x82\xD0\xB0\xD0\xBD)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{postcode} #{city}\\n#{address}\\n#{name}\""
+  country_address_name: 
+KH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/municipality
+  country_code: KH
+  name: "Cambodia (Kampuchea)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+KI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: island group
+  country_code: KI
+  name: "Kiribati"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+KM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: island
+  country_code: KM
+  name: "Comoros (Comores)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+KN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish
+  country_code: KN
+  name: "Saint Kitts and Nevis"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+KP: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/city
+  country_code: KP
+  name: "North Korea (\xEC\xA1\xB0\xEC\x84\xA0)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+KR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/city
+  country_code: KR
+  name: "South Korea (\xED\x95\x9C\xEA\xB5\xAD)"
+  postcode_pattern: ^(\d{3})-?(\d{3})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1-\\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: Korea
+KW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: governorate
+  country_code: KW
+  name: "Kuwait (\xD8\xA7\xD9\x84\xD9\x83\xD9\x88\xD9\x8A\xD8\xAA)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+KY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: KY
+  name: "Cayman Islands"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+KZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/city
+  country_code: KZ
+  name: "Kazakhstan (\xD2\x9A\xD0\xB0\xD0\xB7\xD0\xB0\xD2\x9B\xD1\x81\xD1\x82\xD0\xB0\xD0\xBD)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{region.name.upcase}\\n#{postcode}\""
+  country_address_name: 
+LA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/prefecture
+  country_code: LA
+  name: "Laos  (\xE0\xBA\x99\xE0\xBA\xA5\xE0\xBA\xB2\xE0\xBA\xA7)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+LB: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: governorate
+  country_code: LB
+  name: "Lebanon (\xD9\x84\xD8\xA8\xD9\x86\xD8\xA7\xD9\x86)"
+  postcode_pattern: ^(\d{4})(\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip"
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+LC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: LC
+  name: "Saint Lucia"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+LI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: commune
+  country_code: LI
+  name: "Liechtenstein"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+LK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  # Alternatively, regions may be provinces (adjust the data file as appropriate)
+  #region_name: province
+  country_code: LK
+  name: "Sri Lanka"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+LR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: LR
+  name: "Liberia"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+LS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: LS
+  name: "Lesotho"
+  postcode_pattern: ^\d{3}$
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+LT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: LT
+  name: "Lithuania (Lietuva)"
+  postcode_pattern: /^(LT-?)?(\d{5})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"LT-#{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+LU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: LU
+  name: "Luxembourg (L\xC3\xABtzebuerg)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+LV: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district/city
+  country_code: LV
+  name: "Latvia (Latvija)"
+  postcode_pattern: /^(LV-?)?(\d{4})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\" + (!postcode.blank? ? \", LV-#{postcode}\" : \"\")"
+  country_address_name: 
+LY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: LY
+  name: "Libya (\xD9\x84\xD9\x8A\xD8\xA8\xD9\x8A\xD8\xA9)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+MA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: MA
+  name: "Morocco (\xD9\x85\xD8\xBA\xD8\xB1\xD8\xA8)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+MC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: commune
+  country_code: MC
+  name: "Monaco"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+MD: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district/city/territory
+  country_code: MD
+  name: "Moldova"
+  postcode_pattern: /^(MD-?)?(\d{4})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"MD-#{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+ME: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: ME
+  name: "Montenegro (\xD0\xA6\xD1\x80\xD0\xBD\xD0\xB0 \xD0\x93\xD0\xBE\xD1\x80\xD0\xB0)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+MF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: MF
+  name: "Saint Martin"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+MG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: MG
+  name: "Madagascar (Madagasikara)"
+  postcode_pattern: ^\d{3}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+MH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: MH
+  name: "Marshall Islands"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+MK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: MK
+  name: "Macedonia (\xD0\x9C\xD0\xB0\xD0\xBA\xD0\xB5\xD0\xB4\xD0\xBE\xD0\xBD\xD0\xB8\xD1\x98\xD0\xB0)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+ML: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region/district
+  country_code: ML
+  name: "Mali"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+MM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: division/state
+  country_code: MM
+  name: "Myanmar (\xD4\xBC\xD5\xA5\xD5\xBC\xD5\xB6\xD5\xA1\xD5\xB5\xD5\xAB\xD5\xB6 \xD5\x82\xD5\xA1\xD6\x80\xD5\xA1\xD5\xA2\xD5\xA1\xD5\xB2)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\" + (!postcode.blank? ? \", #{postcode}\" : \"\")"
+  country_address_name: 
+MN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/municipality
+  country_code: MN
+  name: "Mongolia (\xD0\x9C\xD0\xBE\xD0\xBD\xD0\xB3\xD0\xBE\xD0\xBB \xD0\xA3\xD0\xBB\xD1\x81)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+MO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: MO
+  name: "Macao"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+MP: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: MP
+  name: "Northern Mariana Islands"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+MQ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: arrondissement
+  country_code: MQ
+  name: "Martinique"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+MR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region/district
+  country_code: MR
+  name: "Mauritania (\xD9\x85\xD9\x88\xD8\xB1\xD9\x8A\xD8\xAA\xD8\xA7\xD9\x86\xD9\x8A\xD8\xA9)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+MS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish
+  country_code: MS
+  name: "Montserrat"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+MT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: MT
+  name: "Malta"
+  postcode_pattern: /^([A-Z]{3})\s*(\d{2,3})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+MU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district/dependency/region
+  country_code: MU
+  name: "Mauritius"
+  postcode_pattern: /^\d{3}[A-Z]{2}\d{3}$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}\\n#{city}\""
+  country_address_name: 
+MV: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: atoll/city
+  country_code: MV
+  name: "Maldives (\xDE\x8E\xDE\xAA\xDE\x96\xDE\xAD\xDE\x87\xDE\xB0\xDE\x83\xDE\xA7 \xDE\x94\xDE\xA7\xDE\x87\xDE\xB0\xDE\x83\xDE\xA8\xDE\x80\xDE\xAB\xDE\x89\xDE\xB0\xDE\x96)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+MW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: MW
+  name: "Malawi"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+MX: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: MX
+  name: "Mexico (M\xC3\xA9xico)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}, #{region.region_code}\""
+  country_address_name: 
+MY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: MY
+  name: "Malaysia"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}, #{region.name}\""
+  country_address_name: 
+MZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: MZ
+  name: "Mozambique (Mo\xC3\xA7ambique)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\\n#{region.name}\""
+  country_address_name: 
+NA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: NA
+  name: "Namibia"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+NC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: NC
+  name: "New Caledonia"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+NE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: NE
+  name: "Niger"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+NF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: NF
+  name: "Norfolk Island"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+NG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: NG
+  name: "Nigeria"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\\n#{region.name}\""
+  country_address_name: 
+NI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: NI
+  name: "Nicaragua"
+  postcode_pattern: ^((\d{4})-?)?(\d{3})-?(\d{3})-?(\d)$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2 \\3 \\4 \\5'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}\\n#{city}, #{region.name}\""
+  country_address_name: 
+NL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: NL
+  name: "Netherlands (Nederland)"
+  postcode_pattern: /^(\d{4})\s*([A-Z]{2})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+NO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: "NO"
+  name: "Norway (Norge)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+NP: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: NP
+  name: "Nepal (\xE0\xA4\xA8\xE0\xA5\x87\xE0\xA4\xAA\xE0\xA4\xBE\xE0\xA4\xB2)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+NR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: NR
+  name: "Nauru (Naoero)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{region.name}\""
+  country_address_name: 
+NU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: NU
+  name: "Niue"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+NZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: NZ
+  name: "New Zealand"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+OM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: governorate/region
+  country_code: OM
+  name: "Oman (\xD8\xB9\xD9\x85\xD8\xA7\xD9\x86)"
+  postcode_pattern: ^\d{3}$
+  region_name_optional: false
+  address_alignment: r
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}\\n#{city}\""
+  country_address_name: 
+PA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/comarca
+  country_code: PA
+  name: "Panama (Panam\xC3\xA1)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+PE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region/province
+  country_code: PE
+  name: "Peru (Per\xC3\xBA)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+PF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: subdivision
+  country_code: PF
+  name: "French Polynesia"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+PG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: PG
+  name: "Papua New Guinea"
+  postcode_pattern: ^\d{3}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode} #{region.region_code}\""
+  country_address_name: 
+PH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/region
+  country_code: PH
+  name: "Philippines (Pilipinas)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+PK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: PK
+  name: "Pakistan (\xD9\xBE\xD8\xA7\xDA\xA9\xD8\xB3\xD8\xAA\xD8\xA7\xD9\x86)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\" + (!postcode.blank? ? \"\xE2\x80\x93#{postcode}\" : \"\")"
+  country_address_name: 
+PL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: voivodship
+  country_code: PL
+  name: "Poland (Polska)"
+  postcode_pattern: ^(\d{2})[-\s]*(\d{3})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1-\\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+PM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: commune
+  country_code: PM
+  name: "Saint Pierre and Miquelon"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+PN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: PN
+  name: "Pitcairn"
+  postcode_pattern: /^(PCRN)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+PR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: PR
+  name: "Puerto Rico"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+PS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: PS
+  name: "Palestine"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{region.name}\""
+  country_address_name: 
+PT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district/region
+  country_code: PT
+  name: "Portugal"
+  postcode_pattern: ^(\d{4})[-\s]*(\d{3})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1-\\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+PW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: PW
+  name: "Palau (Belau)"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+PY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: PY
+  name: "Paraguay"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+QA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: QA
+  name: "Qatar (\xD9\x82\xD8\xB7\xD8\xB1)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+RE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: arrondissement
+  country_code: RE
+  name: "Reunion"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+RO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county/city
+  country_code: RO
+  name: "Romania (Rom\xC3\xA2nia)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+RS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: RS
+  name: "Serbia (\xD0\xA1\xD1\x80\xD0\xB1\xD0\xB8\xD1\x98\xD0\xB0)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+RU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: federal subject
+  country_code: RU
+  name: "Russia (\xD0\xA0\xD0\xBE\xD1\x81\xD1\x81\xD0\xB8\xD1\x8F)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+RW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: RW
+  name: "Rwanda"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+SA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: emirate
+  country_code: SA
+  name: "Saudi Arabia (\xD8\xA7\xD9\x84\xD8\xB9\xD8\xB1\xD8\xA8\xD9\x8A\xD8\xA9 \xD8\xA7\xD9\x84\xD8\xB3\xD8\xB9\xD9\x88\xD8\xAF\xD9\x8A\xD8\xA9)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+SB: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: SB
+  name: "Solomon Islands"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+SC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: SC
+  name: "Seychelles"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+SD: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: SD
+  name: "Sudan (\xD8\xA7\xD9\x84\xD8\xB3\xD9\x88\xD8\xAF\xD8\xA7\xD9\x86)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}\\n#{city}\""
+  country_address_name: 
+SE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: SE
+  name: "Sweden (Sverige)"
+  postcode_pattern: ^(SE-?)?(\d{3})\s*(\d{2})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2 \\3'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"SE-#{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+SG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: SG
+  name: "Singapore (Singapura)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+SH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: dependency
+  country_code: SH
+  name: "Saint Helena"
+  postcode_pattern: /^(STHL)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+SI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: SI
+  name: "Slovenia (Slovenija)"
+  postcode_pattern: ^(SI-?)?(\d{4})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"SI-#{postcode} \" : \"\") + \"#{city}\""
+  country_address_name: 
+SJ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: territory
+  country_code: SJ
+  name: "Svalbard and Jan Mayen"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+SK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: SK
+  name: "Slovakia (Slovensko)"
+  postcode_pattern: ^(\d{3})\s*(\d{2})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}  #{city}\""
+  country_address_name: 
+SL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/area
+  country_code: SL
+  name: "Sierra Leone"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+SM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: SM
+  name: "San Marino"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+SN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: SN
+  name: "Senegal (S\xC3\xA9n\xC3\xA9gal)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+SO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: SO
+  name: "Somalia (Soomaaliya)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{region.region_code} #{postcode}\""
+  country_address_name: 
+SR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: SR
+  name: "Suriname"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+ST: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: municipality
+  country_code: ST
+  name: "S\xC3\xA3o Tom\xC3\xA9 and Pr\xC3\xADncipe"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+SV: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: SV
+  name: "El Salvador"
+  postcode_pattern: /^(CP\s*)?(\d{4})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n\" + (!postcode.blank? ? \"CP #{postcode} \xE2\x80\x93 \" : \"\") + \"#{city}\""
+  country_address_name: 
+SY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: SY
+  name: "Syria (\xD8\xB3\xD9\x88\xD8\xB1\xD9\x8A\xD8\xA9)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+SZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: SZ
+  name: "Swaziland"
+  postcode_pattern: ^([A-Z])(\d{3})$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1\\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+TC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: TC
+  name: "Turks and Caicos Islands"
+  postcode_pattern: /^(TKCA)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: c
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+TD: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: TD
+  name: "Chad (Tchad)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+TF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: TF
+  name: "French Southern Territories"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+TG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: TG
+  name: "Togo"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+TH: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: TH
+  name: "Thailand (\xE0\xB8\xA3\xE0\xB8\xB2\xE0\xB8\x8A\xE0\xB8\xAD\xE0\xB8\xB2\xE0\xB8\x93\xE0\xB8\xB2\xE0\xB8\x88\xE0\xB8\xB1\xE0\xB8\x81\xE0\xB8\xA3\xE0\xB9\x84\xE0\xB8\x97\xE0\xB8\xA2)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+TJ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: TJ
+  name: "Tajikistan (\xD0\xA2\xD0\xBE\xD2\xB7\xD0\xB8\xD0\xBA\xD0\xB8\xD1\x81\xD1\x82\xD0\xBE\xD0\xBD)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+TK: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: atoll
+  country_code: TK
+  name: "Tokelau"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+TL: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: TL
+  name: "East Timor (Timor-Leste)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+TM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: TM
+  name: "Turkmenistan (T\xC3\xBCrkmenistan)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+TN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: governorate
+  country_code: TN
+  name: "Tunisia (\xD8\xAA\xD9\x88\xD9\x86\xD8\xB3)"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+TO: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: division
+  country_code: TO
+  name: "Tonga"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+TR: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: TR
+  name: "Turkey (T\xC3\xBCrkiye)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+TT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region/borough
+  country_code: TT
+  name: "Trinidad and Tobago"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+TV: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: island
+  country_code: TV
+  name: "Tuvalu"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{region.name}\""
+  country_address_name: 
+TW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/municipality
+  country_code: TW
+  name: "Taiwan (\xE5\x8F\xB0\xE7\x81\xA3)"
+  postcode_pattern: ^\d{3}(\d{2})?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+TZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: TZ
+  name: "Tanzania"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+UA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: UA
+  name: "Ukraine (\xD0\xA3\xD0\xBA\xD1\x80\xD0\xB0\xD1\x97\xD0\xBD\xD0\xB0)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+UG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: UG
+  name: "Uganda"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+UM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: territory
+  country_code: UM
+  name: "United States Minor Outlying Islands"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+US: 
+  id: <%= i += 1 %>
+  is_selectable: true
+  region_name: state
+  country_code: US
+  name: "United States"
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{region.region_code}  #{postcode}\""
+  country_address_name: 
+UY: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: department
+  country_code: UY
+  name: "Uruguay"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city} #{region.name}\""
+  country_address_name: 
+UZ: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: UZ
+  name: "Uzbekistan (O'zbekiston)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+VA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: VA
+  name: "Vatican City (Citt\xC3\xA0 del Vaticano)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+VC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: parish
+  country_code: VC
+  name: "Saint Vincent and the Grenadines"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+VE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: state
+  country_code: VE
+  name: "Venezuela"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}, #{region.region_code}\""
+  country_address_name: 
+VG: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: VG
+  name: "British Virgin Islands"
+  postcode_pattern: /^(VG)?(\d{4})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\2'"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\" + (!postcode.blank? ? \" VG#{postcode}\" : \"\")"
+  country_address_name: 
+VI: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: VI
+  name: "Virgin Islands, U.S."
+  postcode_pattern: ^(\d{5})([-\s]*(\d{4}))?$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.strip.sub(' ','-')"
+  address_format: "\"#{name}\\n#{address}\\n#{city}, #{country.country_code}  #{postcode}\""
+  country_address_name: 
+VN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province/municipality
+  country_code: VN
+  name: "Viet Nam (Vi\xE1\xBB\x87t Nam)"
+  postcode_pattern: ^\d{6}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city} #{postcode}\""
+  country_address_name: 
+VU: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: VU
+  name: "Vanuatu"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+WF: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: kingdom
+  country_code: WF
+  name: "Wallis and Futuna"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+WS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: district
+  country_code: WS
+  name: "Samoa"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+XA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: XA
+  name: "Ascension"
+  postcode_pattern: /^(ASCN)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+XB: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: XB
+  name: "British Antarctic Territory"
+  postcode_pattern: /^(BIQQ)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{postcode}\""
+  country_address_name: 
+XC: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: region
+  country_code: XC
+  name: "Scotland"
+  postcode_pattern: /^([A-Z]?[A-Z]\d(\d|[A-Z])?)\s*(\d[A-Z]{2})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+XE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: ceremonial county
+  country_code: XE
+  name: "England"
+  postcode_pattern: /^([A-Z]?[A-Z]\d(\d|[A-Z])?)\s*(\d[A-Z]{2})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+XN: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: XN
+  name: "Northern Ireland"
+  postcode_pattern: /^([A-Z]?[A-Z]\d(\d|[A-Z])?)\s*(\d[A-Z]{2})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+XS: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: XS
+  name: "Kosovo (UNMIK)"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+XT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: XT
+  name: "Tristan da Cunha"
+  postcode_pattern: /^(TDCU)\s*(1ZZ)$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\2'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+XW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: county
+  country_code: XW
+  name: "Wales"
+  postcode_pattern: /^([A-Z]?[A-Z]\d(\d|[A-Z])?)\s*(\d[A-Z]{2})$/i
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: "'\\1 \\3'.upcase"
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+YE: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: governorate/municipality
+  country_code: YE
+  name: "Yemen (\xD8\xA7\xD9\x84\xD9\x8A\xD9\x85\xD9\x86)"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 
+YT: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: 
+  country_code: YT
+  name: "Mayotte"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: France
+ZA: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: ZA
+  name: "South Africa"
+  postcode_pattern: ^\d{4}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\\n#{postcode}\""
+  country_address_name: 
+ZM: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: ZM
+  name: "Zambia"
+  postcode_pattern: ^\d{5}$
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{postcode} #{city}\""
+  country_address_name: 
+ZW: 
+  id: <%= i += 1 %>
+  is_selectable: false
+  region_name: province
+  country_code: ZW
+  name: "Zimbabwe"
+  postcode_pattern: 
+  region_name_optional: false
+  address_alignment: l
+  postcode_canonify: 
+  address_format: "\"#{name}\\n#{address}\\n#{city}\""
+  country_address_name: 

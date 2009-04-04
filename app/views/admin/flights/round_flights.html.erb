@@ -1,0 +1,6 @@
+<% @page_header = "#{h @round.name} Flights"
+   @page_title = "#{competition_name} #{@page_header}" %>
+
+<div id="flight-management-view">
+  <%= render :partial => "round_#{@round.position}_awards" %>
+</div>

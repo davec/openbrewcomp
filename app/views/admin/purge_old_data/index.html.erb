@@ -1,0 +1,31 @@
+<% @page_title = 'Purge Old Data' %>
+
+<% if @allowed -%>
+  <p>
+    This page allows you to purge old data from the
+    <%= PurgeOldData.tables_to_clear.to_sentence.gsub('_',' ') -%> tables
+    and the BJCP points and organizer designation saved in the judges table.
+    Such a purge should be done prior to enabling online registration for
+    a new competition to prevent the previous year&rsquo;s data from
+    inteferring with the data for a new competition.
+  </p>
+
+  <p>
+    <strong>WARNING:</strong> Do not purge old data until you are positive
+    that you no longer need the old data. A database backup is highly
+    recommended before you proceed.
+  </p>
+
+  <div id="purge-form">
+    <% form_for(:tables, :url => { :action => 'purge' }) do |form| -%>
+      <div>
+        <%= submit_tag 'Zap &rsquo;em!' %>
+      </div>
+    <% end -%>
+  </div>
+<% else -%>
+  <p>
+    Competition data cannot be purged until after the competition has
+    concluded on <%= @competition_date -%>.
+  </p>
+<% end -%>

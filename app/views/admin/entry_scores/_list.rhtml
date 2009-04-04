@@ -1,0 +1,11 @@
+<%= render :super, :locals => local_assigns -%>
+<script type="text/javascript">
+  td = $$('#<%= active_scaffold_tbody_id -%> td.scores-column');
+  if (td.length > 0) {
+    td.each(function(obj) {
+      a = obj.firstDescendant();
+      label = a.innerHTML;
+      a.replace('<span>' + label + '</span>');
+    });
+  }
+</script>

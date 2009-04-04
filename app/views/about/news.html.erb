@@ -1,0 +1,20 @@
+<% @page_title = "#{competition_name} News" %>
+
+<% cache do %>
+
+<div id="feed-link">
+<%= link_to(image_tag('feed.png', :title => 'RSS Feed', :alt => 'RSS Feed', :size => '16x16'), rss_feed_path) %>
+</div>
+<div class="clearfloat"></div>
+<div class="news">
+  <dl>
+    <% unless @news_items.empty? %>
+      <%= render :partial => 'news_item', :collection => @news_items %>
+    <% else %>
+      <dt>No news</dt>
+      <dd></dd>
+    <% end %>
+  </dl>
+</div>
+
+<% end %>

@@ -1,0 +1,136 @@
+<% # Convert the ActiveColumns object to a hash, based on the column name
+   colhash = Hash.new
+   columns.each {|column| colhash[column.name] = column}
+   id = params[:eid] || params[:id]
+   adjustable_required_fields = @is_admin_view ? '' : 'required'
+%>
+<% # TODO: Rework for I18N, based on the format of the address_format column;
+   # will probably require a bit of DOM voodoo to dynamically reorder the
+   # fields as appropriate for the selected country.
+   #
+   # For now we're only concerned with US and Canada addressing.
+%>
+<div class="form-instructions">
+  <% if flash[:edit_selector] -%>
+    <p>
+      Please tell us whether you will help judge or steward at the competition
+      and correct any errors in your contact information.
+    </p>
+  <% end -%>
+  <p>
+    Required fields are denoted by a <b>bold</b> heading<% unless @is_admin_view -%>;
+    exceptions are marked with an asterisk (<b>*</b>) and are as follows:
+    either an email address or a phone number is required<% end -%>.
+  </p>
+</div>
+<% unless @is_admin_view || @record.new_record? -%>
+  <ol class="form float-style-form">
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:confirmed]), :locals => { :column => colhash[:confirmed] } -%>
+    </li>
+  </ol>
+<% end -%>
+<ol class="form float-style-form">
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:first_name]), :locals => { :column => colhash[:first_name] } -%>
+  </li>
+  <li class="form-element">
+    <%= render :partial => form_partial_for_column(colhash[:middle_name]), :locals => { :column => colhash[:middle_name] } -%>
+  </li>
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:last_name]), :locals => { :column => colhash[:last_name] } -%>
+  </li>
+  <li class="form-element">
+    <%= render :partial => form_partial_for_column(colhash[:goes_by]), :locals => { :column => colhash[:goes_by] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <% if @is_admin_view -%>
+    <li class="form-element">
+      <%= render :partial => form_partial_for_column(colhash[:checked_in]), :locals => { :column => colhash[:checked_in] } -%>
+    </li>
+  <% end -%>
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:judge_rank]), :locals => { :column => colhash[:judge_rank] } -%>
+  </li>
+  <li id="judge-number-data_<%= id -%>" class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:judge_number]), :locals => { :column => colhash[:judge_number] } -%>
+  </li>
+  <% if @is_admin_view && !@record.new_record? -%>
+    <li class="form-element">
+      <%= render :partial => form_partial_for_column(colhash[:organizer]), :locals => { :column => colhash[:organizer] } -%>
+    </li>
+    <li id="staff-points-data_<%= id -%>"class="form-element">
+      <%= render :partial => form_partial_for_column(colhash[:staff_points]), :locals => { :column => colhash[:staff_points] } -%>
+    </li>
+  <% end -%>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element <%= adjustable_required_fields %>">
+    <%= render :partial => form_partial_for_column(colhash[:address1]), :locals => { :column => colhash[:address1] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element">
+    <%= render :partial => form_partial_for_column(colhash[:address2]), :locals => { :column => colhash[:address2] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element <%= adjustable_required_fields %>">
+    <%= render :partial => form_partial_for_column(colhash[:city]), :locals => { :column => colhash[:city] } -%>
+  </li>
+  <li class="form-element <%= adjustable_required_fields %>">
+    <%= render :partial => form_partial_for_column(colhash[:region]), :locals => { :column => colhash[:region] } -%>
+  </li>
+  <li class="form-element <%= adjustable_required_fields %>">
+    <%= render :partial => form_partial_for_column(colhash[:postcode]), :locals => { :column => colhash[:postcode] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element <%= adjustable_required_fields %>">
+    <%= render :partial => form_partial_for_column(colhash[:email]), :locals => { :column => colhash[:email] } -%>
+  </li>
+  <li class="form-element <%= adjustable_required_fields %>">
+    <%= render :partial => form_partial_for_column(colhash[:phone]), :locals => { :column => colhash[:phone] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element">
+    <%= render :partial => form_partial_for_column(colhash[:club]), :locals => { :column => colhash[:club] } -%>
+  </li>
+  <li id="other-club-data_<%= id -%>" class="form-element"<%= ' style="display:none"' unless @record.club_id == Club.other.id -%>>
+    <%= render :partial => form_partial_for_column(colhash[:club_name]), :locals => { :column => colhash[:club_name] } -%>
+  </li>
+</ol>
+<% unless @is_admin_view -%>
+  <div class="form-instructions">
+    <p style="padding-top:1em;">
+      Please let us know what time you will be available to judge and what
+      categories you prefer to judge, if you have a preference. We cannot
+      guarantee that you will be assigned to your preferred categories, but
+      we will do our best to accomodate you.
+    </p>
+  </div>
+<% end -%>
+<ol class="form float-style-form">
+  <li class="form-element">
+    <%= render :partial => form_partial_for_column(colhash[:time_availabilities]), :locals => { :column => colhash[:time_availabilities] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element">
+    <%= render :partial => form_partial_for_column(colhash[:category_preferences]), :locals => { :column => colhash[:category_preferences] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element">
+    <%= render :partial => form_partial_for_column(colhash[:comments]), :locals => { :column => colhash[:comments] } -%>
+  </li>
+</ol>
+<script type="text/javascript">
+showJudgeRankParams('<%= id -%>');
+<% if @is_admin_view && !@record.new_record? -%>
+  toggleStaffPoints('<%= id -%>');
+<% end -%>
+toggleOtherClubData('<%= id -%>',<%= Club.other.id -%>);
+</script>

@@ -1,0 +1,9 @@
+<% @page_title = 'Ineligible Judge List' %>
+
+<div id="ineligible-judge-list">
+  <% @awards.each do |award | -%>
+    <%= render :partial => 'ineligible_judges',
+               :object => award.find_all_entrants,
+               :locals => { :award_name => award.name } %>
+  <% end -%>
+</div>

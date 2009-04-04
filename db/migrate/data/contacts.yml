@@ -1,0 +1,19 @@
+# Define contacts for the competition.
+#
+# The default template is set up to look for roles with the names webmaster and
+# coordinator.  Adjust the descriptive names to fit your needs and specify
+# valid email addresses for each.
+#
+# Additional contacts (e.g., sponsorship coordinator, judge coordinator, etc.)
+# can be added as required and referenced in the appropriate views.
+
+webmaster:
+  id: 1
+  role: webmaster
+  name: the webmaster
+  email: webmaster@example.com
+coordinator:
+  id: 2
+  role: coordinator
+  name: the competition coordinator
+  email: comp@example.com

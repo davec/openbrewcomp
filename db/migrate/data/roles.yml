@@ -1,0 +1,32 @@
+dba: 
+  id: 1
+  name: Database Admin
+  description: Database administrator. All powerful, has access to the entire system.
+contact: 
+  id: 2
+  name: Contact Admin
+  description: Contact administrator. Has rights to modify the list of competition contacts.
+news: 
+  id: 3
+  name: News Admin
+  description: News administrator. Has rights to create and update news items.
+user: 
+  id: 4
+  name: User Admin
+  description: User administrator. Has rights to modify registered users. Can add new users as needed, e.g., temporary staff for entry processing.
+style: 
+  id: 5
+  name: Style Admin
+  description: Style administrator. Has rights to modify the categories, awards, and styles being judged.
+registration: 
+  id: 6
+  name: Registration Admin
+  description: Registration administrator. Has rights to all competition-related functions needed prior to the competition, e.g., entry management.
+competition:
+  id: 7
+  name: Competition Admin
+  description: Competition administrator. Has rights to all competition-related functions needed during and after the competition, e.g., flight management, competition results, BJCP report generation.
+dataslave:
+  id: 8
+  name: Data Entry
+  description: Limited-access role assigned to competition staff for entering competition entries into the system.  Can create and update, but not delete, entrants and entries.

@@ -1,0 +1,46 @@
+<% @page_title = 'BJCP Judge List Import' %>
+
+<p>
+  This page allows you to import a list of judges as supplied by the BJCP to
+  the <%= competition_name %> database. The contents of the current judges
+  table will be unchanged; thus if the existing table has not been purged, you
+  will end up with duplicates. The judge list import action should normally be
+  performed after <%= link_to('purging a database', admin_purge_path) %>.
+</p>
+
+<p>
+  The judges list is expected to be a tab-separated file, with no column header,
+  containing the following columns (in order): first name, last name, street
+  address, city, state, zip code, country, phone number, &ldquo;goes by&rdquo;,
+  email address, judge number, and judge rank. This is the file specification
+  as used by the BJCP in 2008. Before importing, please verify that the format
+  of the file has not changed.
+</p>
+
+<div id="import-form">
+  <% form_for(:file,
+              :url => { :action => 'import_judges' },
+              :html => { :multipart => true }) do |form| %>
+    <p>
+      <label for="file">Judges File</label>
+      <%= form.file_field :file_data,
+                          :class => 'text-input' %>
+    </p>
+
+    <% if flash[:judge_import_errors] -%>
+      <div class="large-flash">
+        <ul class="flash-error"><%= flash[:judge_import_errors].collect{|e| "<li>#{h e}</li>"} -%></ul>
+      </div>
+    <% end -%>
+
+    <% if flash[:judge_import_warnings] -%>
+      <div class="large-flash">
+        <ul class="flash-warning"><%= flash[:judge_import_warnings].collect{|e| "<li>#{h e}</li>"} -%></ul>
+      </div>
+    <% end -%>
+
+    <div class="form-buttons">
+      <%= submit_tag 'Import', :disable_with => 'Importing...' %>
+    </div>
+  <% end %>
+</div>

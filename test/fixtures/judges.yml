@@ -1,0 +1,160 @@
+organizer:
+  first_name: Competition
+  last_name: Organizer
+  address1: 4512 Oak St
+  city: Yakima
+  region: US_WA
+  country: US
+  postcode: 98901
+  email: organizer@example.com
+  phone: 509-555-4545
+  judge_number: A0001
+  judge_rank: national
+  organizer: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+apprentice_judge:
+  first_name: Apprentice
+  last_name: Judge
+  address1: 1309 Piper Way
+  city: Walla Walla
+  region: US_WA
+  country: US
+  postcode: 99361
+  email: apprentice@example.com
+  phone: 509-555-0864
+  judge_number: A0666
+  judge_rank: apprentice
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+recognized_judge:
+  first_name: Recognized
+  last_name: Judge
+  address1: 741 N Cypress Rd
+  city: Spokane
+  region: US_WA
+  country: US
+  postcode: 99202
+  email: recognized@example.com
+  judge_number: A0123
+  judge_rank: recognized
+  confirmed: true
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+certified_judge:
+  first_name: Certified
+  last_name: Judge
+  address1: 1401 Smedley Way NE
+  city: Seattle
+  region: US_WA
+  country: US
+  postcode: 98105
+  email: certified@example.com
+  judge_number: B0123
+  judge_rank: certified
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+national_judge:
+  first_name: National
+  last_name: Judge
+  address1: 79 Elk Rd
+  city: Fernie
+  region: CA_BC
+  country: CA
+  postcode: V0B 1M5
+  email: national@example.com
+  phone: 250-555-4321
+  judge_number: C0123
+  judge_rank: national
+  confirmed: true
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+master_judge:
+  first_name: Master
+  last_name: Judge
+  address1: 1208 Taylor St
+  city: Baker City
+  region: US_OR
+  country: US
+  postcode: 97815
+  email: master@example.com
+  judge_number: D0123
+  judge_rank: master
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+pro_brewer:
+  first_name: Pro
+  middle_name: Brewer
+  email: pro@example.com
+  last_name: Judge
+  judge_rank: pro_brewer
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+experienced_judge:
+  first_name: Experienced
+  middle_name: but not BJCP
+  last_name: Judge
+  email: experienced@example.com
+  judge_rank: experienced
+  confirmed: true
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+novice_judge:
+  first_name: Novice
+  middle_name: Newbie
+  last_name: Judge
+  email: novice@example.com
+  judge_rank: novice
+  confirmed: true
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+standby:
+  first_name: Waiting
+  middle_name: Inda
+  last_name: Wings
+  address1: 420 7th Ave
+  city: Hood River
+  region: US_OR
+  country: US
+  postcode: 97031
+  email: waiting@example.com
+  judge_number: G4999
+  judge_rank: certified
+  checked_in: true
+  user: admin
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+
+noshow:
+  first_name: Missing
+  middle_name: In
+  last_name: Action
+  address1: 888 E Table Rock
+  city: Boise
+  region: US_ID
+  country: US
+  postcode: 83701
+  email: mia@example.com
+  phone: 208-555-8888
+  judge_number: E9001
+  judge_rank: experienced
+  confirmed: true
+  user: j_random_user
+  access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
+

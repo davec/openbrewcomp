@@ -1,0 +1,44 @@
+/* Hacks for IE */
+
+/* Hide from IE/Mac (as if anyone is still using it) \*/
+html, body {
+  height: 100%;
+}
+
+* html p {
+  height: 1%;
+  margin-left: 0;
+}
+/* End hide from IE/Mac */
+
+body {
+  padding-bottom: 0;
+}
+
+div#bodyWrapper {
+  height: auto;
+  margin-bottom: -2.5ex;
+  min-height: 100%;
+}
+* html div#bodyWrapper {
+  height: 100%;
+}
+#clearfooter {
+  clear: both;
+  height: 3ex;
+}
+* html #footer {
+  height: 3ex;
+}
+#copyright {
+  padding-bottom: 0.5ex;
+}
+
+#ie-fubar-warning {
+  /*background-color: #700000;*/
+  border: 2px solid #f00000;
+  color: #f00000;
+  display: block;
+  font: bold 100% sans-serif;
+  padding: 0 1em;
+}

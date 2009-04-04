@@ -1,0 +1,19 @@
+<div id="flights-view">
+  <div id="<%= print_flight_sheets_div_id %>"<%=' style="visibility: hidden;"' unless (Round.has_flights?(1) && !Round.completed?(1)) %>>
+    <%= link_to_with_icon("Print all #{h(Round.first.name.downcase)} flight sheets",
+                          print_admin_flights_path(:round => 1),
+                          { :extname => '.pdf', :popup => true }) %>
+    <br />
+    Note: Flight sheets will only be generated for flights that have not yet been judged.
+  </div>
+  <ul class="uncompacted flights">
+    <%- @round_1_awards.each do |award|
+          dom_id = award_container_id(award) -%>
+      <li id="<%= dom_id %>-item">
+        <%= render(:partial => 'round_1_award',
+                   :locals => { :dom_id => dom_id },
+                   :object => award) -%>
+      </li>
+    <%- end -%>
+  </ul>
+</div>

@@ -1,0 +1,23 @@
+  <tr>
+    <th colspan="3">
+      <span class="catname">Club Point Totals</span>
+    </th>
+  </tr>
+  <tr class="header">
+    <td>Place</td>
+    <td>Club</td>
+    <td class="numeric">Points</td>
+  </tr>
+<% place = 1
+   last_points = 0
+   clubs.each_with_index do |club, index|
+     unless club.points == last_points
+       place = index + 1
+       last_points = club.points
+     end -%>
+  <tr>
+    <td><%= place %></td>
+    <td><%= h club.name %></td>
+    <td class="numeric"><%= club.points %></td>
+  </tr>
+<% end -%>

@@ -1,0 +1,12 @@
+still:
+  id: 1
+  description: Still
+  position: 1
+petillant:
+  id: 2
+  description: Petillant
+  position: 2
+sparkling:
+  id: 3
+  description: Sparkling
+  position: 3

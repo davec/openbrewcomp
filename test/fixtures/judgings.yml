@@ -1,0 +1,119 @@
+r1_f1_j1:
+  flight: light_lager_1
+  judge: master_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r1_f1_j2:
+  flight: light_lager_1
+  judge: apprentice_judge
+  role: <%= Judging::ROLE_JUDGE %>
+
+r1_f2_j1:
+  flight: light_lager_2
+  judge: certified_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r1_f2_j2:
+  flight: light_lager_2
+  judge: experienced_judge
+  role: <%= Judging::ROLE_JUDGE %>
+
+r1_f3_j1:
+  flight: dark_lager_1
+  judge: national_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r1_f3_j2:
+  flight: dark_lager_1
+  judge: novice_judge
+  role: <%= Judging::ROLE_JUDGE %>
+
+r1_f4_j1:
+  flight: dark_lager_2
+  judge: recognized_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r1_f4_j2:
+  flight: dark_lager_2
+  judge: pro_brewer
+  role: <%= Judging::ROLE_JUDGE %>
+
+r2_f1_j1:
+  flight: light_lager
+  judge: master_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f1_j2:
+  flight: light_lager
+  judge: certified_judge
+  role: <%= Judging::ROLE_JUDGE %>
+
+r2_f2_j1:
+  flight: pilsner
+  judge: recognized_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f2_j2:
+  flight: pilsner
+  judge: experienced_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f2_j3:
+  flight: dark_lager
+  judge: novice_judge
+  role: <%= Judging::ROLE_JUDGE %>
+
+r2_f3_j1:
+  flight: european_amber_lager
+  judge: national_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f3_j2:
+  flight: european_amber_lager
+  judge: pro_brewer
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f3_j3:
+  flight: european_amber_lager
+  judge: apprentice_judge
+  role: <%= Judging::ROLE_JUDGE %>
+
+r2_f4_j1:
+  flight: dark_lager
+  judge: national_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f4_j2:
+  flight: dark_lager
+  judge: pro_brewer
+  role: <%= Judging::ROLE_JUDGE %>
+
+r2_f5_j1:
+  flight: bock
+  judge: certified_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f5_j2:
+  flight: bock
+  judge: recognized_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f5_j3:
+  flight: bock
+  judge: apprentice_judge
+  role: <%= Judging::ROLE_JUDGE %>
+
+r2_f6_j1:
+  flight: smoked
+  judge: master_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r2_f6_j2:
+  flight: smoked
+  judge: experienced_judge
+  role: <%= Judging::ROLE_JUDGE %>
+
+r3_j1:
+  flight: bos
+  judge: master_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r3_j2:
+  flight: bos
+  judge: national_judge
+  role: <%= Judging::ROLE_JUDGE %>
+r3_j3:
+  flight: bos
+  judge: pro_brewer
+  role: <%= Judging::ROLE_JUDGE %>
+r3_s:
+  flight: bos
+  judge: apprentice_judge
+  role: <%= Judging::ROLE_STEWARD %>
+  

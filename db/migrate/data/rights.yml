@@ -1,0 +1,490 @@
+categories_create: 
+  id: 1
+  name: Create Categories
+  controller: categories
+  action: create
+categories_read: 
+  id: 2
+  name: Read Categories
+  controller: categories
+  action: read
+categories_update: 
+  id: 3
+  name: Update Categories
+  controller: categories
+  action: update
+categories_delete: 
+  id: 4
+  name: Delete Categories
+  controller: categories
+  action: delete
+awards_create: 
+  id: 5
+  name: Create Awards
+  controller: awards
+  action: create
+awards_read: 
+  id: 6
+  name: Read Awards
+  controller: awards
+  action: read
+awards_update: 
+  id: 7
+  name: Update Awards
+  controller: awards
+  action: update
+awards_delete: 
+  id: 8
+  name: Delete Awards
+  controller: awards
+  action: delete
+styles_create: 
+  id: 9
+  name: Create Styles
+  controller: styles
+  action: create
+styles_read: 
+  id: 10
+  name: Read Styles
+  controller: styles
+  action: read
+styles_update: 
+  id: 11
+  name: Update Styles
+  controller: styles
+  action: update
+styles_delete: 
+  id: 12
+  name: Delete Styles
+  controller: styles
+  action: delete
+countries_create: 
+  id: 13
+  name: Create Countries
+  controller: countries
+  action: create
+countries_read: 
+  id: 14
+  name: Read Countries
+  controller: countries
+  action: read
+countries_update: 
+  id: 15
+  name: Update Countries
+  controller: countries
+  action: update
+countries_delete: 
+  id: 16
+  name: Delete Countries
+  controller: countries
+  action: delete
+regions_create: 
+  id: 17
+  name: Create Regions
+  controller: regions
+  action: create
+regions_read: 
+  id: 18
+  name: Read Regions
+  controller: regions
+  action: read
+regions_update: 
+  id: 19
+  name: Update Regions
+  controller: regions
+  action: update
+regions_delete: 
+  id: 20
+  name: Delete Regions
+  controller: regions
+  action: delete
+carbonation_create: 
+  id: 21
+  name: Create Carbonation
+  controller: carbonation
+  action: create
+carbonation_read: 
+  id: 22
+  name: Read Carbonation
+  controller: carbonation
+  action: read
+carbonation_update: 
+  id: 23
+  name: Update Carbonation
+  controller: carbonation
+  action: update
+carbonation_delete: 
+  id: 24
+  name: Delete Carbonation
+  controller: carbonation
+  action: delete
+strength_create: 
+  id: 25
+  name: Create Strength
+  controller: strength
+  action: create
+strength_read: 
+  id: 26
+  name: Read Strength
+  controller: strength
+  action: read
+strength_update: 
+  id: 27
+  name: Update Strength
+  controller: strength
+  action: update
+strength_delete: 
+  id: 28
+  name: Delete Strength
+  controller: strength
+  action: delete
+sweetness_create: 
+  id: 29
+  name: Create Sweetness
+  controller: sweetness
+  action: create
+sweetness_read: 
+  id: 30
+  name: Read Sweetness
+  controller: sweetness
+  action: read
+sweetness_update: 
+  id: 31
+  name: Update Sweetness
+  controller: sweetness
+  action: update
+sweetness_delete: 
+  id: 32
+  name: Delete Sweetness
+  controller: sweetness
+  action: delete
+clubs_create: 
+  id: 33
+  name: Create Clubs
+  controller: clubs
+  action: create
+clubs_read: 
+  id: 34
+  name: Read Clubs
+  controller: clubs
+  action: read
+clubs_update: 
+  id: 35
+  name: Update Clubs
+  controller: clubs
+  action: update
+clubs_delete: 
+  id: 36
+  name: Delete Clubs
+  controller: clubs
+  action: delete
+users_create: 
+  id: 37
+  name: Create Users
+  controller: users
+  action: create
+users_read: 
+  id: 38
+  name: Read Users
+  controller: users
+  action: read
+users_update: 
+  id: 39
+  name: Update Users
+  controller: users
+  action: update
+users_delete: 
+  id: 40
+  name: Delete Users
+  controller: users
+  action: delete
+roles_create: 
+  id: 41
+  name: Create Roles
+  controller: roles
+  action: create
+roles_read: 
+  id: 42
+  name: Read Roles
+  controller: roles
+  action: read
+roles_update: 
+  id: 43
+  name: Update Roles
+  controller: roles
+  action: update
+roles_delete: 
+  id: 44
+  name: Delete Roles
+  controller: roles
+  action: delete
+rights_create: 
+  id: 45
+  name: Create Rights
+  controller: rights
+  action: create
+rights_read: 
+  id: 46
+  name: Read Rights
+  controller: rights
+  action: read
+rights_update: 
+  id: 47
+  name: Update Rights
+  controller: rights
+  action: update
+rights_delete: 
+  id: 48
+  name: Delete Rights
+  controller: rights
+  action: delete
+contacts_create: 
+  id: 49
+  name: Create Contacts
+  controller: contacts
+  action: create
+contacts_read: 
+  id: 50
+  name: Read Contacts
+  controller: contacts
+  action: read
+contacts_update: 
+  id: 51
+  name: Update Contacts
+  controller: contacts
+  action: update
+contacts_delete: 
+  id: 52
+  name: Delete Contacts
+  controller: contacts
+  action: delete
+newsitems_create: 
+  id: 53
+  name: Create News_items
+  controller: news_items
+  action: create
+newsitems_read: 
+  id: 54
+  name: Read News_items
+  controller: news_items
+  action: read
+newsitems_update: 
+  id: 55
+  name: Update News_items
+  controller: news_items
+  action: update
+newsitems_delete: 
+  id: 56
+  name: Delete News_items
+  controller: news_items
+  action: delete
+entrants_create: 
+  id: 57
+  name: Create Entrants
+  controller: entrants
+  action: create
+entrants_read: 
+  id: 58
+  name: Read Entrants
+  controller: entrants
+  action: read
+entrants_update: 
+  id: 59
+  name: Update Entrants
+  controller: entrants
+  action: update
+entrants_delete: 
+  id: 60
+  name: Delete Entrants
+  controller: entrants
+  action: delete
+entries_create: 
+  id: 61
+  name: Create Entries
+  controller: entries
+  action: create
+entries_read: 
+  id: 62
+  name: Read Entries
+  controller: entries
+  action: read
+entries_update: 
+  id: 63
+  name: Update Entries
+  controller: entries
+  action: update
+entries_delete: 
+  id: 64
+  name: Delete Entries
+  controller: entries
+  action: delete
+entries_with_styleinfo_read:
+  id: 65
+  name: Read Entries With Styleinfo
+  controller: entries_with_styleinfo
+  action: read
+entries_with_styleinfo_update:
+  id: 66
+  name: Update Entries With Styleinfo
+  controller: entries_with_styleinfo
+  action: read
+box_check:
+  id: 67
+  name: Run Box Check Report
+  controller: box_check
+  action: *
+reports:
+  id: 68
+  name: Run Reports
+  controller: reports
+  action: *
+judges_create: 
+  id: 69
+  name: Create Judges
+  controller: judges
+  action: create
+judges_read: 
+  id: 70
+  name: Read Judges
+  controller: judges
+  action: read
+judges_update: 
+  id: 71
+  name: Update Judges
+  controller: judges
+  action: update
+judges_delete: 
+  id: 72
+  name: Delete Judges
+  controller: judges
+  action: delete
+competition_data_read:
+  id: 73
+  name: Read Competition Data
+  controller: competition_data
+  action: read
+competition_data_update:
+  id: 74
+  name: Update Competition Data
+  controller: competition_data
+  action: update
+flights_create:
+  id: 75
+  name: Create Flights
+  controller: flights
+  action: create
+flights_read:
+  id: 76
+  name: Read Flights
+  controller: flights
+  action: read
+flights_update:
+  id: 77
+  name: Update Flights
+  controller: flights
+  action: update
+flights_delete:
+  id: 78
+  name: Delete Flights
+  controller: flights
+  action: destroy
+results:
+  id: 79
+  name: Generate Results
+  controller: results
+  action: *
+judging_sessions_create:
+  id: 80
+  name: Create Judging Sessions
+  controller: judging_sessions
+  action: create
+judging_sessions_read:
+  id: 81
+  name: Read Judging Sessions
+  controller: judging_sessions
+  action: read
+judging_sessions_update:
+  id: 82
+  name: Update Judging Sessions
+  controller: judging_sessions
+  action: update
+judging_sessions_delete:
+  id: 83
+  name: Delete Judging Sessions
+  controller: judging_sessions
+  action: destroy
+exports:
+  id: 84
+  name: Export Database
+  controller: exports
+  action: *
+imports:
+  id: 85
+  name: Import Database
+  controller: imports
+  action: *
+rounds_create:
+  id: 86
+  name: Create Rounds
+  controller: rounds
+  action: create
+rounds_read:
+  id: 87
+  name: Read Rounds
+  controller: rounds
+  action: read
+rounds_update:
+  id: 88
+  name: Update Rounds
+  controller: rounds
+  action: update
+rounds_delete:
+  id: 89
+  name: Delete Rounds
+  controller: rounds
+  action: destroy
+judge_ranks_create: 
+  id: 90
+  name: Create Judge Ranks
+  controller: judge_ranks
+  action: create
+judge_ranks_read: 
+  id: 91
+  name: Read Judge Ranks
+  controller: judge_ranks
+  action: read
+judge_ranks_update: 
+  id: 92
+  name: Update Judge Ranks
+  controller: judge_ranks
+  action: update
+judge_ranks_delete: 
+  id: 93
+  name: Delete Judge Ranks
+  controller: judge_ranks
+  action: delete
+point_allocations_create:
+  id: 94
+  name: Create Point Allocations
+  controller: point_allocations
+  action: create
+point_allocations_read:
+  id: 95
+  name: Read Point Allocations
+  controller: point_allocations
+  action: read
+point_allocations_update:
+  id: 96
+  name: Update Point Allocations
+  controller: point_allocations
+  action: update
+point_allocations_delete:
+  id: 97
+  name: Delete Point Allocations
+  controller: point_allocations
+  action: delete
+purge_old_data:
+  id: 98
+  name: Purge Old Data
+  controller: purge_old_data
+  action: *

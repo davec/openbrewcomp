@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+still:
+  description: Still
+  position: 1
+petillant:
+  description: Petillant
+  position: 2
+sparkling:
+  description: Sparkling
+  position: 3

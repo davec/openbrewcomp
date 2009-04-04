@@ -1,0 +1,16 @@
+<% round2_marker = '*'
+   award = award_scores.first.style.award
+   mini_bos = award.flights.select{|f| f.round == Round.first}.length > 1 %>
+<tr class="category-header">
+  <th colspan="5"><%= h award.name %></th>
+</tr>
+<% award_scores.each do |entry|
+     place = entry.place.to_i > 3 ? "HM" : entry.place %>
+  <tr>
+    <td width="1%"><%= round2_marker if mini_bos && entry.second_round %></td>
+    <td width="4%" class="numeric"><%= h entry.bottle_code %></td>
+    <td width="4%"><%= h place  %></td>
+    <td width="11%" class="numeric"><%= entry.score.nil? ? 'N/A' : h("%.1f" % entry.score) %></td>
+    <td width="80%"><%= h entry.category %></td>
+  </tr>
+<% end %>

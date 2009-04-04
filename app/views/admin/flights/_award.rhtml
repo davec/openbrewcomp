@@ -1,0 +1,45 @@
+<% dom_id ||= award_container_id(award)
+   loading_indicator = flight_processing_div_id(award)
+   flight_count = Flight.count(:joins => 'AS f INNER JOIN rounds AS r ON (r.id = f.round_id)',
+                               :conditions => [ 'f.award_id = ? AND r.position = 1', award.id ])
+%>
+
+<div class="step">
+  <span class="step-marker open" id="<%= dom_id %>-step-marker" onclick="toggleDiv('<%= dom_id %>', true)"></span>
+  <span class="step-text" id="<%= dom_id %>-open-text" onclick="toggleDiv('<%= dom_id %>', true)">
+    <%= award.name %>
+  </span>
+</div>
+<div class="openstep" id="<%= dom_id %>" style="width:<%= flight_container_width_in_ems * (flight_count + 1) %>em">
+  <div class="actions">
+    <span class="info" id="<%= dom_id %>-flight-info" onclick="toggleDiv('<%= dom_id %>-style_info')" title="Toggle supplemental style information display for <%= award.name -%> entries">
+      Style Info
+    </span>
+    <span class="new">
+      <%= link_to_remote('Add Flight',
+                         { :url => add_flight_admin_flight_url(award),
+                           :before => "$('#{loading_indicator}').style.visibility = 'visible'",
+                           :complete => "$('#{loading_indicator}').style.visibility = 'hidden'" },
+                           { :onfocus => 'if (this.blur()) this.blur();', #zap the active link borders
+                             :title => "Add a flight for #{award.name}",
+                             :class => 'action' }) -%>
+    </span>
+    <span class="delete">
+      <%= link_to_remote('Delete Flights',
+                         { :url => delete_flights_admin_flight_url(award),
+                           :method => :delete,
+                           :before => "$('#{loading_indicator}').style.visibility = 'visible'",
+                           :complete => "$('#{loading_indicator}').style.visibility = 'hidden'" },
+                           { :onfocus => 'if (this.blur()) this.blur();', #zap the active link borders
+                             :title => "Delete non-protected flights for #{award.name}",
+                             :class => 'action' }) -%>
+    </span>
+    <span class="loading-indicator" id="<%= flight_processing_div_id(award) %>" style="visibility:hidden">Updating ...</span>
+  </div>
+  <div class="assignments-for-award" id="<%= dom_id %>-assignments">
+    <%= render :partial => 'flights',
+               :locals => { :award => award,
+                            :dom_id => dom_id,
+                            :flights_action => :initialize } -%>
+  </div>
+</div>

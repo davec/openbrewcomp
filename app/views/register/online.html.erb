@@ -1,0 +1,149 @@
+<% @page_title = "#{competition_name} Online Registration" %>
+
+<% content_for :stylesheet do %>
+  <%= active_scaffold_includes :default, :cache => 'cache/active_scaffold_default' %>
+  <%= stylesheet_link_tag 'active_scaffold-overrides', :media => nil %>
+<% end %>
+
+<% if @is_registration_open %>
+  <% if ENV['RAILS_ENV'] == 'staging' %>
+    <div class="flash-error">
+      <strong>NOTE:</strong> All data entered is for testing purposes only and
+      will not appear in the production database.
+    </div>
+  <% end %>
+
+  <p>
+    Online registration for <%= competition_name %> is accomplished by following
+    these simple steps:
+  </p>
+
+  <ol id="online-registration">
+    <% if @is_entry_registration_open -%>
+      <li id="online-entries-item">
+        <div class="step" onclick="toggleDiv('online-entries', true)">
+          <span class="step-marker" id="online-entries-step-marker"></span>
+          <span class="step-text" id="online-entries-open-text">
+            Register your beers, meads, and ciders
+          </span>
+        </div>
+        <div class="openstep" id="online-entries" style="display: none">
+          <div>
+            <span class="close-button" title="close"
+                  onclick="toggleDiv('online-entries', true);">Close</span>
+            <div class="clearfloat"></div>
+            <%= render :active_scaffold => 'admin/entrants',
+                       :constraints => { :user_id => current_user.id } -%>
+          </div>
+        </div>
+      </li>
+
+      <li id="online-regform-item">
+        <div class="step" onclick="toggleDiv('online-regform', true);">
+          <span class="step-marker" id="online-regform-step-marker"></span>
+          <span class="step-text" id="online-regform-open">
+            Fill out a registration form
+          </span>
+        </div>
+        <div class="openstep" id="online-regform" style="display: none">
+          <div>
+            <span class="close-button" title="close"
+                  onclick="toggleDiv('online-regform', true);">Close</span>
+            <div class="clearfloat"></div>
+            <div class="step-instructions">
+              <p>
+                Print a <%= link_to_with_icon('registration form', doc_path('registration.pdf'), :popup => true) %>,
+                grab a pen, and fill it out.
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li id="online-send-item">
+        <div class="step" onclick="toggleDiv('online-send', true);">
+          <span class="step-marker" id="online-send-step-marker"></span>
+          <span class="step-text" id="online-send-open">
+            Send in your entries, registration form, and payment
+          </span>
+        </div>
+        <div class="openstep" id="online-send" style="display: none">
+          <div>
+            <span class="close-button" title="close"
+                  onclick="toggleDiv('online-send', true);">Close</span>
+            <div class="clearfloat"></div>
+            <div class="step-instructions">
+              <p>
+                Apply your <%= link_to_with_icon('bottle labels',
+                                                 bottle_labels_admin_entries_path,
+                                                 { :extname => '.pdf',
+                                                   :popup => true }) %>
+                to your entries and follow the <%= link_to('shipping instructions',
+                                                           shipping_path) %>
+                to send your entries, registration form, and payment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% else -%>
+      <div class="disabled-step">
+        <span class="step-marker"></span>
+        <span class="step-text">
+          Online entry registration <%= @entry_registration_status -%>
+        </span>
+      </div>
+    <% end -%>
+
+    <% if @is_judge_registration_open -%>
+      <li id="online-judges-item">
+        <div class="step" onclick="toggleDiv('online-judges', true)">
+          <span class="step-marker" id="online-judges-step-marker"></span>
+          <span class="step-text" id="online-judges-open-text">
+            Register to judge at the competition
+          </span>
+        </div>
+        <div class="openstep" id="online-judges" style="display: none">
+          <div>
+            <span class="close-button" title="close"
+                  onclick="toggleDiv('online-judges', true);">Close</span>
+            <div class="clearfloat"></div>
+            <%= render :active_scaffold => 'admin/judges',
+                       :constraints => { :user_id => current_user.id } -%>
+          </div>
+        </div>
+      </li>
+    <% else -%>
+      <div class="disabled-step">
+        <span class="step-marker"></span>
+        <span class="step-text">
+          Online judge registration <%= @judge_registration_status -%>
+        </span>
+      </div>
+    <% end -%>
+  </ol>
+
+  <% if @auto_open_judge -%>
+    <script type="text/javascript">
+      if ($('online-judges')) {
+        toggleDiv('online-judges', true);
+        <% if flash[:edit_selector]
+             edit_selector = flash[:edit_selector].sub('__ID__', @auto_edit_judge_id.to_s) -%>
+          <%= "$(#{edit_selector}).action_link.open();" %>
+        <% end -%>
+      }
+    </script>
+  <% end -%>
+
+<% else %>
+
+  <p>
+    Online registration for <%= competition_name -%> <%= @registration_status -%>.
+  </p>
+  <% unless @time_to_go.nil? -%>
+    <p id="registration-countdown">
+      Registration will open in <%= @time_to_go -%>.
+    </p>
+  <% end -%>
+
+<% end %>

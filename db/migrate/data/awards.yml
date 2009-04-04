@@ -1,0 +1,145 @@
+award1:
+  id: 1
+  name: Light Lager
+  category_id: 1
+  position: 1
+award2:
+  id: 2
+  name: Pilsner
+  category_id: 2
+  position: 1
+award3:
+  id: 3
+  name: European Amber Lager
+  category_id: 3
+  position: 1
+award4:
+  id: 4
+  name: Dark Lager
+  category_id: 4
+  position: 1
+award5:
+  id: 5
+  name: Bock
+  category_id: 5
+  position: 1
+award6:
+  id: 6
+  name: Light Hybrid Beer
+  category_id: 6
+  position: 1
+award7:
+  id: 7
+  name: Amber Hybrid Beer
+  category_id: 7
+  position: 1
+award8:
+  id: 8
+  name: English Pale Ale
+  category_id: 8
+  position: 1
+award9:
+  id: 9
+  name: Scottish and Irish Ale
+  category_id: 9
+  position: 1
+award10:
+  id: 10
+  name: American Ale
+  category_id: 10
+  position: 1
+award11:
+  id: 11
+  name: English Brown Ale
+  category_id: 11
+  position: 1
+award12:
+  id: 12
+  name: Porter
+  category_id: 12
+  position: 1
+award13:
+  id: 13
+  name: Stout
+  category_id: 13
+  position: 1
+award14:
+  id: 14
+  name: India Pale Ale (IPA)
+  category_id: 14
+  position: 1
+award15:
+  id: 15
+  name: German Wheat and Rye Beer
+  category_id: 15
+  position: 1
+award16:
+  id: 16
+  name: Belgian and French Ale
+  category_id: 16
+  position: 1
+award17:
+  id: 17
+  name: Sour Ale
+  category_id: 17
+  position: 1
+award18:
+  id: 18
+  name: Belgian Strong Ale
+  category_id: 18
+  position: 1
+award19:
+  id: 19
+  name: Strong Ale
+  category_id: 19
+  position: 1
+award20:
+  id: 20
+  name: Fruit Beer
+  category_id: 20
+  position: 1
+award21:
+  id: 21
+  name: Spice/Herb/Vegetable Beer
+  category_id: 21
+  position: 1
+award22:
+  id: 22
+  name: Smoke-Flavored and Wood-Aged Beer
+  category_id: 22
+  position: 1
+award23:
+  id: 23
+  name: Specialty Beer
+  category_id: 23
+  position: 1
+award24:
+  id: 24
+  name: Traditional Mead
+  category_id: 24
+  position: 1
+award25:
+  id: 25
+  name: Melomel (Fruit Mead)
+  category_id: 25
+  position: 1
+award26:
+  id: 26
+  name: Other Mead
+  category_id: 26
+  position: 1
+award27:
+  id: 27
+  name: Standard Cider and Perry
+  category_id: 27
+  position: 1
+award28:
+  id: 28
+  name: Specialty Cider and Perry
+  category_id: 28
+  position: 1
+bos:
+  id: 29
+  name: Best of Show
+  category_id: 29
+  position: 1

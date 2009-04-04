@@ -1,0 +1,35 @@
+<% @page_title = 'Competition Database Import' %>
+
+<p>
+  This page allows you to import a copy of the <%= competition_name %> database
+  contained in a ZIP archive of YAML files, as exported by the YAML export option
+  on <%= link_to('the export page', admin_export_path) %>.
+  The contents of the current database will be overwritten.  Only the current
+  <tt>admin</tt> account will be retained.
+</p>
+
+<p>
+  <strong>WARNING:</strong> Do not import a database if you do not want to
+  lose any data in the existing database. A database import is a non-reversible
+  action. You have been warned. Proceed at your own risk.
+</p>
+
+<div id="import-form">
+  <% form_for(:archive,
+              :url => { :action => 'import_db' },
+              :html => { :multipart => true }) do |form| %>
+    <p>
+      <label for="file">Archive</label>
+      <%= form.file_field :file_data,
+                          :class => 'text-input' %>
+    </p>
+
+    <% if flash[:import_error] -%>
+    <ul class="flash-error"><%= flash[:import_error].collect{|e| "<li>#{h e}</li>"} -%></ul>
+    <% end -%>
+
+    <div>
+      <%= submit_tag 'Import' %>
+    </div>
+  <% end %>
+</div>

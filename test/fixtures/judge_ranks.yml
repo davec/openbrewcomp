@@ -1,0 +1,53 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+apprentice:
+  description: Apprentice
+  bjcp: true
+  position: 1
+recognized:
+  description: Recognized
+  bjcp: true
+  position: 2
+certified:
+  description: Certified
+  bjcp: true
+  position: 3
+national:
+  description: National
+  bjcp: true
+  position: 4
+master:
+  description: Master
+  bjcp: true
+  position: 5
+grand_master_1:
+  description: Grand Master I
+  bjcp: true
+  position: 6
+grand_master_2:
+  description: Grand Master II
+  bjcp: true
+  position: 7
+honorary_master:
+  description: Honorary Master
+  bjcp: true
+  position: 11
+honorary_grand_master:
+  description: Honorary Grand Master
+  bjcp: true
+  position: 12
+pro_brewer:
+  description: Professional Brewer
+  bjcp: false
+  position: 13
+novice:
+  description: Novice (non-BJCP)
+  bjcp: false
+  position: 14
+experienced:
+  description: Experienced (but not in BJCP)
+  bjcp: false
+  position: 15
+na:
+  description: N/A
+  bjcp: true
+  position: 16

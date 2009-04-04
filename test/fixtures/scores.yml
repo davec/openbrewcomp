@@ -1,0 +1,449 @@
+i2_1A_r1_j1:
+  entry: i2_1A
+  score: 25
+  flight: light_lager_1
+  judge: master_judge
+i2_1A_r1_j2:
+  entry: i2_1A
+  score: 27
+  flight: light_lager_1
+  judge: apprentice_judge
+
+i2_1C_r1_j1:
+  entry: i2_1C
+  score: 36
+  flight: light_lager_1
+  judge: master_judge
+i2_1C_r1_j2:
+  entry: i2_1C
+  score: 32
+  flight: light_lager_1
+  judge: apprentice_judge
+
+t1_1A_r1_j1:
+  entry: t1_1A
+  score: 38
+  flight: light_lager_1
+  judge: master_judge
+t1_1A_r1_j2:
+  entry: t1_1A
+  score: 40
+  flight: light_lager_1
+  judge: apprentice_judge
+
+t1_1B_r1_j1:
+  entry: t1_1B
+  score: 30
+  flight: light_lager_1
+  judge: master_judge
+t1_1B_r1_j2:
+  entry: t1_1B
+  score: 28
+  flight: light_lager_1
+  judge: apprentice_judge
+
+t1_1C_r1_j1:
+  entry: t1_1C
+  score: 19
+  flight: light_lager_1
+  judge: master_judge
+t1_1C_r1_j2:
+  entry: t1_1C
+  score: 19
+  flight: light_lager_1
+  judge: apprentice_judge
+
+i1_1D_r1_j1:
+  entry: i1_1D
+  score: 41
+  flight: light_lager_2
+  judge: certified_judge
+i1_1D_r1_j2:
+  entry: i1_1D
+  score: 39
+  flight: light_lager_2
+  judge: experienced_judge
+
+i3_1E_r1_j1:
+  entry: i3_1E
+  score: 32
+  flight: light_lager_2
+  judge: certified_judge
+i3_1E_r1_j2:
+  entry: i3_1E
+  score: 30
+  flight: light_lager_2
+  judge: experienced_judge
+
+t1_1D_r1_j1:
+  entry: t1_1D
+  score: 26
+  flight: light_lager_2
+  judge: certified_judge
+t1_1D_r1_j2:
+  entry: t1_1D
+  score: 24
+  flight: light_lager_2
+  judge: experienced_judge
+
+t1_1E_r1_j1:
+  entry: t1_1E
+  score: 35
+  flight: light_lager_2
+  judge: certified_judge
+t1_1E_r1_j2:
+  entry: t1_1E
+  score: 35
+  flight: light_lager_2
+  judge: experienced_judge
+
+i2_4A_r1_j1:
+  entry: i2_4A
+  score: 34
+  flight: dark_lager_1
+  judge: national_judge
+i2_4A_r1_j2:
+  entry: i2_4A
+  score: 36
+  flight: dark_lager_1
+  judge: novice_judge
+
+i3_4B_r1_j1:
+  entry: i3_4B
+  score: 42
+  flight: dark_lager_1
+  judge: national_judge
+i3_4B_r1_j2:
+  entry: i3_4B
+  score: 38
+  flight: dark_lager_1
+  judge: novice_judge
+
+t1_4B_r1_j1:
+  entry: t1_4B
+  score: 30
+  flight: dark_lager_1
+  judge: national_judge
+t1_4B_r1_j2:
+  entry: t1_4B
+  score: 28
+  flight: dark_lager_1
+  judge: novice_judge
+
+t2_4B_r1_j1:
+  entry: t2_4B
+  score: 37
+  flight: dark_lager_1
+  judge: national_judge
+t2_4B_r1_j2:
+  entry: t2_4B
+  score: 33
+  flight: dark_lager_1
+  judge: novice_judge
+
+i1_4C_r1_j1:
+  entry: i1_4C
+  score: 41
+  flight: dark_lager_2
+  judge: recognized_judge
+i1_4C_r1_j2:
+  entry: i1_4C
+  score: 45
+  flight: dark_lager_2
+  judge: pro_brewer
+
+t1_4A_r1_j1:
+  entry: t1_4A
+  score: 25
+  flight: dark_lager_2
+  judge: recognized_judge
+t1_4A_r1_j2:
+  entry: t1_4A
+  score: 19
+  flight: dark_lager_2
+  judge: pro_brewer
+
+t1_4C_r1_j1:
+  entry: t1_4C
+  score: 28
+  flight: dark_lager_2
+  judge: recognized_judge
+t1_4C_r1_j2:
+  entry: t1_4C
+  score: 26
+  flight: dark_lager_2
+  judge: pro_brewer
+
+t2_4C_r1_j1:
+  entry: t2_4C
+  score: 40
+  flight: dark_lager_2
+  judge: recognized_judge
+t2_4C_r1_j2:
+  entry: t2_4C
+  score: 40
+  flight: dark_lager_2
+  judge: pro_brewer
+
+i1_2B_r2_j1:
+  entry: i1_2B
+  score: 37
+  flight: pilsner
+  judge: recognized_judge
+i1_2B_r2_j2:
+  entry: i1_2B
+  score: 36
+  flight: pilsner
+  judge: experienced_judge
+i1_2B_r2_j3:
+  entry: i1_2B
+  score: 33
+  flight: pilsner
+  judge: novice_judge
+
+t1_2A_r2_j1:
+  entry: t1_2A
+  score: 25
+  flight: pilsner
+  judge: recognized_judge
+t1_2A_r2_j2:
+  entry: t1_2A
+  score: 28
+  flight: pilsner
+  judge: experienced_judge
+t1_2A_r2_j3:
+  entry: t1_2A
+  score: 26
+  flight: pilsner
+  judge: novice_judge
+
+t1_2B_r2_j1:
+  entry: t1_2B
+  score: 41
+  flight: pilsner
+  judge: recognized_judge
+t1_2B_r2_j2:
+  entry: t1_2B
+  score: 42
+  flight: pilsner
+  judge: experienced_judge
+t1_2B_r2_j3:
+  entry: t1_2B
+  score: 38
+  flight: pilsner
+  judge: novice_judge
+
+t1_2C_r2_j1:
+  entry: t1_2C
+  score: 35
+  flight: pilsner
+  judge: recognized_judge
+t1_2C_r2_j2:
+  entry: t1_2C
+  score: 39
+  flight: pilsner
+  judge: experienced_judge
+t1_2C_r2_j3:
+  entry: t1_2C
+  score: 34
+  flight: pilsner
+  judge: novice_judge
+
+i1_3A_r2_j1:
+  entry: i1_3A
+  score: 31
+  flight: european_amber_lager
+  judge: national_judge
+i1_3A_r2_j2:
+  entry: i1_3A
+  score: 31
+  flight: european_amber_lager
+  judge: pro_brewer
+i1_3A_r2_j3:
+  entry: i1_3A
+  score: 28
+  flight: european_amber_lager
+  judge: apprentice_judge
+
+i3_3A_r2_j1:
+  entry: i3_3A
+  score: 34
+  flight: european_amber_lager
+  judge: national_judge
+i3_3A_r2_j2:
+  entry: i3_3A
+  score: 33
+  flight: european_amber_lager
+  judge: pro_brewer
+i3_3A_r2_j3:
+  entry: i3_3A
+  score: 31
+  flight: european_amber_lager
+  judge: apprentice_judge
+
+t1_3A_r2_j1:
+  entry: t1_3A
+  score: 23
+  flight: european_amber_lager
+  judge: national_judge
+t1_3A_r2_j2:
+  entry: t1_3A
+  score: 25
+  flight: european_amber_lager
+  judge: pro_brewer
+t1_3A_r2_j3:
+  entry: t1_3A
+  score: 22
+  flight: european_amber_lager
+  judge: apprentice_judge
+
+t1_3B_r2_j1:
+  entry: t1_3B
+  score: 30
+  flight: european_amber_lager
+  judge: national_judge
+t1_3B_r2_j2:
+  entry: t1_3B
+  score: 28
+  flight: european_amber_lager
+  judge: pro_brewer
+t1_3B_r2_j3:
+  entry: t1_3B
+  score: 31
+  flight: european_amber_lager
+  judge: apprentice_judge
+
+t2_3B_r2_j1:
+  entry: t2_3B
+  score: 36
+  flight: european_amber_lager
+  judge: national_judge
+t2_3B_r2_j2:
+  entry: t2_3B
+  score: 33
+  flight: european_amber_lager
+  judge: pro_brewer
+t2_3B_r2_j3:
+  entry: t2_3B
+  score: 35
+  flight: european_amber_lager
+  judge: apprentice_judge
+
+i1_5D_r2_j1:
+  entry: i1_5D
+  score: 41
+  flight: bock
+  judge: certified_judge
+i1_5D_r2_j2:
+  entry: i1_5D
+  score: 37
+  flight: bock
+  judge: recognized_judge
+i1_5D_r2_j3:
+  entry: i1_5D
+  score: 38
+  flight: bock
+  judge: apprentice_judge
+
+i3_5A_r2_j1:
+  entry: i3_5A
+  score: 33
+  flight: bock
+  judge: certified_judge
+i3_5A_r2_j2:
+  entry: i3_5A
+  score: 29
+  flight: bock
+  judge: recognized_judge
+i3_5A_r2_j3:
+  entry: i3_5A
+  score: 28
+  flight: bock
+  judge: apprentice_judge
+
+t1_5A_r2_j1:
+  entry: t1_5A
+  score: 28
+  flight: bock
+  judge: certified_judge
+t1_5A_r2_j2:
+  entry: t1_5A
+  score: 29
+  flight: bock
+  judge: recognized_judge
+t1_5A_r2_j3:
+  entry: t1_5A
+  score: 25
+  flight: bock
+  judge: apprentice_judge
+
+t1_5B_r2_j1:
+  entry: t1_5B
+  score: 19
+  flight: bock
+  judge: certified_judge
+t1_5B_r2_j2:
+  entry: t1_5B
+  score: 21
+  flight: bock
+  judge: recognized_judge
+t1_5B_r2_j3:
+  entry: t1_5B
+  score: 20
+  flight: bock
+  judge: apprentice_judge
+
+t1_5C_r2_j1:
+  entry: t1_5C
+  score: 39
+  flight: bock
+  judge: certified_judge
+t1_5C_r2_j2:
+  entry: t1_5C
+  score: 41
+  flight: bock
+  judge: recognized_judge
+t1_5C_r2_j3:
+  entry: t1_5C
+  score: 36
+  flight: bock
+  judge: apprentice_judge
+
+t1_5D_r2_j1:
+  entry: t1_5D
+  score: 34
+  flight: bock
+  judge: certified_judge
+t1_5D_r2_j2:
+  entry: t1_5D
+  score: 35
+  flight: bock
+  judge: recognized_judge
+t1_5D_r2_j3:
+  entry: t1_5D
+  score: 31
+  flight: bock
+  judge: apprentice_judge
+  
+i1_22B_r2_j1:
+  entry: i1_22B
+  score: 44
+  flight: smoked
+  judge: master_judge
+i1_22B_r2_j2:
+  entry: i1_22B
+  score: 41
+  flight: smoked
+  judge: experienced_judge
+
+t1_22A_r2_j1:
+  entry: t1_22A
+  score: 36
+  flight: smoked
+  judge: master_judge
+t1_22A_r2_j2:
+  entry: t1_22A
+  score: 39
+  flight: smoked
+  judge: experienced_judge
+  

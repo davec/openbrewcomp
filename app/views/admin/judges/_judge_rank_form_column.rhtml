@@ -1,0 +1,14 @@
+<% scope ||= nil
+   options = form_element_input_options(column, scope)
+   options[:name] += '[id]'
+   options[:onchange] = "showJudgeRankParams('#{params[:eid] || params[:id]}')"
+   judge_ranks = JudgeRank.find(:all,
+                                :order => 'position').collect {
+     |r| [r.description, judge_rank_option_value(r, true)]
+   }
+  -%>
+<label for="<%= options[:id] -%>"><%= column.label -%></label>
+<%= select 'record', 'judge_rank_id', judge_ranks,
+           { :prompt => '- Please select a rank -',
+             :selected => @record.judge_rank.nil? ? nil : judge_rank_option_value(@record.judge_rank, true) },
+           options %>

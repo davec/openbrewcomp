@@ -1,0 +1,29 @@
+<% @page_title = "#{competition_name} Contacts" %>
+
+<% cache do %>
+
+<p>
+  The individuals listed below are the primary contacts for specific areas
+  related to the competition.
+</p>
+
+<div class="contacts">
+  <dl>
+    <dt>
+      Competition Coordinator
+    </dt>
+    <dd>
+      For general questions about the competition, contact
+      <%= coordinator_name %> at <%= mail_to coordinator_email %>.
+    </dd>
+    <dt>
+      Webmaster
+    </dt>
+    <dd>
+      If you have any problems with the web site, including online registration,
+      please contact <%= webmaster_name %> at <%= mail_to webmaster_email %>.
+    </dd>
+  </dl>
+</div>
+
+<% end %>

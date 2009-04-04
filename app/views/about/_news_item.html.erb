@@ -1,0 +1,10 @@
+<dt>
+  <%= h news_item.title %>
+</dt>
+<dd>
+  <span class="news-item-info">
+    Posted by <%= h news_item.author.display_name %>
+    on <%= h news_item.updated_at.strftime("%e %b %Y at %H:%M %Z") %>
+  </span>
+  <%= news_item.description_encoded %>
+</dd>

@@ -1,0 +1,9 @@
+<% dom_id ||= award_container_id(round_1_award)
+   loading_indicator = flight_processing_div_id(round_1_award)
+%>
+<div class="flights-for-award" id="<%= dom_id %>-flights">
+  <%= render :active_scaffold => '/admin/flights',
+             :params => { :award => round_1_award.name },
+             :constraints => { :award => round_1_award,
+                               :round => Round.first } -%>
+</div>

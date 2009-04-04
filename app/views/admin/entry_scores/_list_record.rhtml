@@ -1,0 +1,15 @@
+<%
+record = list_record if list_record
+target_id = element_row_id(:action => :list, :id => record.id)
+-%>
+<%= render :super, :locals => local_assigns -%>
+<script type="text/javascript">
+  td = $$('#<%= target_id -%> td.scores-column');
+  if (td.length > 0) {
+    td.each(function(obj) {
+      a = obj.firstDescendant();
+      label = a.innerHTML;
+      a.replace('<span>' + label + '</span>');
+    });
+  }
+</script>

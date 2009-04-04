@@ -1,0 +1,38 @@
+RetardaseInhibitor
+==================
+
+It is difficult to generate URLs with ActionMailer. Although you can generate 
+absolute paths from your routes, you usually need to generate full URLs for 
+the links in the email to be useful to your recipients.
+
+This plugin sets the default_url_options for host, port and protocol by 
+providing an around_filter which will grab the values from the request object.
+In the cases when the request object is not available, for example, when 
+running tests, default values are set instead. 
+
+See the following blog post for more details:
+http://www.pivotalblabs.com/articles/2007/08/20/how-i-leaned-to-stop-hating-and-love-action-mailer
+
+Usage
+=====
+
+Add the around_filter to the ApplicationController to set the 
+default_url_options for every request.
+
+    class ApplicationController < ActionController::Base
+      around_filter :retardase_inhibitor
+    end
+
+I prefer to add it just around the actions when I know an Observer will kick 
+off an ActionMailer notifier. For example, I have an the filter kick off in 
+my SessionsController#create when I process a user signup.
+
+    class SessionsController < ActionController::Base
+      around_filter :retardase_inhibitor, :only => :create
+      def create
+        ...
+      end
+    end
+
+Copyright (c) 2007 Nick Kallen, released under the MIT license
+Pluginized by Kamal Fariz

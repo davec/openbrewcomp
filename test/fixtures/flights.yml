@@ -1,0 +1,144 @@
+### First round
+
+light_lager_1:
+  name: Light Lager 1
+  award: LL
+  round: first
+  assigned: false
+  completed: true
+  judging_session: first1
+  entries: i2_1A, i2_1C, t1_1A, t1_1B, t1_1C
+
+light_lager_2:
+  name: Light Lager 2
+  award: LL
+  round: first
+  assigned: false
+  completed: true
+  judging_session: first1
+  entries: i1_1D, i3_1E, t1_1D, t1_1E
+
+# Single flight, pushed to second round
+pilsner_1:
+  name: Pilsner 1
+  award: PILS
+  round: first
+  assigned: false
+  completed: true
+  judging_session: first1
+  entries: i1_2B, t1_2A, t1_2B, t1_2C
+
+# Single flight, pushed to second round
+european_amber_lager_1:
+  name: European Amber Lager 1
+  award: EAL
+  round: first
+  assigned: false
+  completed: true
+  judging_session: first1
+  entries: i1_3A, i3_3A, t1_3A, t1_3B, t2_3B
+
+dark_lager_1:
+  name: Dark Lager 1
+  award: DL
+  round: first
+  assigned: false
+  completed: true
+  judging_session: first1
+  entries: i2_4A, i3_4B, t1_4B, t2_4B
+
+dark_lager_2:
+  name: Dark Lager 2
+  award: DL
+  round: first
+  assigned: false
+  completed: true
+  judging_session: first1
+  entries: i1_4C, t1_4A, t1_4C, t2_4C
+
+# Single flight, pushed to second round
+bock_1:
+  name: Bock 1
+  award: BOCK
+  round: first
+  assigned: false
+  completed: true
+  judging_session: first1
+  entries: i1_5D, i3_5A, t1_5A, t1_5B, t1_5C, t1_5D
+
+# Single flight, pushed to second round
+smoked_1:
+  name: Smoked Beer 1
+  award: SWB
+  round: first
+  assigned: false
+  completed: true
+  judging_session: first1
+  entries: i1_22B, t1_22A
+
+### Second round
+
+light_lager:
+  name: Light Lager
+  award: LL
+  round: second
+  assigned: false
+  completed: true
+  judging_session: second
+  entries: i1_1D, i2_1C, t1_1A, t1_1E
+
+pilsner:
+  name: Pilsner
+  award: PILS
+  round: second
+  assigned: false
+  completed: true
+  judging_session: second
+  entries: i1_2B, t1_2A, t1_2B, t1_2C
+
+european_amber_lager:
+  name: European Amber Lager
+  award: EAL
+  round: second
+  assigned: false
+  completed: true
+  judging_session: second
+  entries: i1_3A, i3_3A, t1_3A, t1_3B, t2_3B
+
+dark_lager:
+  name: Dark Lager
+  award: DL
+  round: second
+  assigned: false
+  completed: true
+  judging_session: second
+  entries: i1_4C, i3_4B, t2_4B, t2_4C
+
+bock:
+  name: Bock
+  award: BOCK
+  round: second
+  assigned: false
+  completed: true
+  judging_session: second
+  entries: i1_5D, i3_5A, t1_5A, t1_5B, t1_5C, t1_5D
+
+smoked:
+  name: Smoked Beer
+  award: SWB
+  round: second
+  assigned: false
+  completed: true
+  judging_session: second
+  entries: i1_22B, t1_22A
+
+### Best of Show
+
+bos:
+  name: BOS
+  award: bos
+  round: bos
+  assigned: false
+  completed: true
+  judging_session: bos
+  entries: i1_1D, t1_2B, t2_3B, i1_4C, i1_5D, i1_22B

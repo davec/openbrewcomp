@@ -1,0 +1,16 @@
+first1:
+  description: First-round Judging Session
+  date: <%= 1.day.ago.to_date.to_s(:db) %>
+  position: 1
+no_flights:
+  description: Judging Session with no flights
+  date: <%= 1.day.ago.to_date.to_s(:db) %>
+  position: 2
+second:
+  description: Second-round Judging Session
+  date: <%= 1.day.from_now.to_date.to_s(:db) %>
+  position: 3
+bos:
+  description: BOS Judging Session
+  date: <%= 1.day.from_now.to_date.to_s(:db) %>
+  position: 4

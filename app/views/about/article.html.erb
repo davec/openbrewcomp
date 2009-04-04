@@ -1,0 +1,17 @@
+<% @page_title = "#{competition_name} News" %>
+
+<div id="feed-link">
+  <%= link_to(image_tag('feed.png', :title => 'RSS Feed', :alt => 'RSS Feed', :size => '16x16'), rss_feed_path) %>
+</div>
+<div class="clearfloat"></div>
+<div class="news">
+  <% if flash[:error].nil? -%>
+    <dl>
+      <%= render :partial => 'news_item', :object => @news_item %>
+    </dl>
+  <% else -%>
+    <p class="flash-error">
+      <%= flash[:error] %>
+    </p>
+  <% end -%>
+</div>

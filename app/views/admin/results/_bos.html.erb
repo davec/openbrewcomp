@@ -1,0 +1,73 @@
+<% bos_type ||= ''
+   base_title = 'Best of Show %s' % bos_type
+   count = bos.length
+   num_columns = 5
+   main_column_width_pct = 24
+   include_send_column ||= false
+   if include_send_column
+     num_columns += 1
+     main_column_width_pct -= 1
+   end
+   if separate_headers
+     num_columns -= 1
+     main_column_width_pct += 1
+   end
+   bos.each_with_index do |record, index|
+     place = record.place.to_i > 3 ? "HM" : record.place
+     title = if count == 2 && index == 1
+               "#{base_title} (Runner-up)"
+             elsif count > 2 && index > 0
+               "#{base_title} (#{(index).ordinalize} Runner-up)"
+             else
+               base_title
+             end
+-%>
+  <% if separate_headers || index == 0 -%>
+  <tr>
+    <th colspan="<%= num_columns %>">
+      <span class="catname"><%= title %></span>
+    </th>
+  </tr>
+  <tr class="header">
+    <% if include_send_column -%>
+      <td width="4%">Send?</td>
+    <% end -%>
+    <% unless separate_headers -%>
+      <td width="4%">Place</td>
+    <% end -%>
+    <td width="<%= main_column_width_pct %>%">Description</td>
+    <td width="<%= main_column_width_pct %>%">Entry Name</td>
+    <td width="<%= main_column_width_pct %>%">Brewer(s)</td>
+    <td width="<%= main_column_width_pct %>%">Club</td>
+  </tr>
+  <% end -%>
+  <tr>
+    <% if include_send_column
+         field_id = "record_entries_bos_#{record.entry_id}"
+         loading_indicator_id = "entry-award-update-indicator-bos-#{record.entry_id}"
+    -%>
+      <td>
+        <%= check_box_tag(field_id, 1, record.send_bos_award?,
+                          { :name => "record[entries][#{record.entry_id}][send_bos_award]",
+                            :onclick => remote_function(:url => { :action => 'send_bos_award',
+                                                                  :only_path => false,
+                                                                  :id => record.entry_id },
+                                                        :with => "'status=' + encodeURIComponent(checked)",
+                                                        :before => "$('#{loading_indicator_id}').style.visibility = 'visible'",
+                                                        :complete => "$('#{loading_indicator_id}').style.visibility = 'hidden'") }) %>
+        <span id="<%= loading_indicator_id %>" style="visibility:hidden;">
+          <%= image_tag("active_scaffold/default/indicator.gif",
+                        :class => "loading-indicator",
+                        :size => "16x16") %>
+        </span>
+      </td>
+    <% end -%>
+    <% unless separate_headers -%>
+      <td><%= h place %></td>
+    <% end -%>
+    <td><%= h record.style_name %></td>
+    <td><%= h record.entry_name %></td>
+    <td><%= h record.expanded_name %></td>
+    <td><%= h record.club.name %></td>
+  </tr>
+<% end -%>

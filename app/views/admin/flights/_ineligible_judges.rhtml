@@ -1,0 +1,14 @@
+<div class="ineligible-judges">
+  <% unless ineligible_judges.nil? -%>
+    <p>
+      The following entrants are ineligible to judge <em><%= h award_name %></em>:
+    </p>
+    <ul>
+      <% ineligible_judges.each do |entrant| -%>
+        <li><%= h entrant.expanded_name %></li>
+      <% end -%>
+    </ul>
+  <% else -%>
+    <p>No entrants could be found for <em><%= h award_name %></em></p>
+  <% end -%>
+</div>

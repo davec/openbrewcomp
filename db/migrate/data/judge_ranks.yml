@@ -1,0 +1,20 @@
+<% [ [ 'Apprentice', true ],
+     [ 'Recognized', true ],
+     [ 'Certified', true ],
+     [ 'National', true ],
+     [ 'Master', true ],
+     [ 'Grand Master I', true ],
+     [ 'Grand Master II', true ],
+     [ 'Honorary Master', true ],
+     [ 'Honorary Grand Master', true ],
+     [ 'Professional Brewer', false ],
+     [ 'Novice (non-BJCP)', false ],
+     [ 'Experienced (non-BJCP)', false ],
+     [ 'N/A', true ]].each_with_index do |rank, index| %>
+  <% i = index + 1 %>
+rank<%= i %>:
+  id: <%= i %>
+  description: <%= rank[0] %>
+  bjcp: <%= rank[1] %>
+  position: <%= i %>
+<% end %>

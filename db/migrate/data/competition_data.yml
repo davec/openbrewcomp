@@ -1,0 +1,4 @@
+event_data:
+  id: 1
+  name: <%= APP_CONFIG[:competition_name] %>
+  mcab: <%= SETUP_CONFIG[:mcab].to_s %>

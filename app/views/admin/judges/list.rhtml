@@ -1,0 +1,13 @@
+<%= render(:partial => 'competition_organizer', :locals => { :competition_organizer => @options[:competition_organizer] }) if @is_admin_view %>
+<%= render(:partial => 'unallocated_staff_points', :locals => { :unallocated_staff_points => @options[:unallocated_staff_points] }) if @is_admin_view %>
+<%= render :super %>
+<%- unless @is_admin_view -%>
+  <%- unless @records.length > 0 -%>
+    <script type="text/javascript">
+      <%- new_selector = "#{action_link_id(:new,nil)}".to_json -%>
+      <%= "$(#{new_selector}).action_link.open();" %>
+    </script>
+  <%- else -%>
+    <%- flash[:edit_selector] = action_link_id(:edit,'__ID__').to_json -%>
+  <%- end -%>
+<%- end -%>

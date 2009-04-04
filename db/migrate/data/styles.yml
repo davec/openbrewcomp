@@ -1,0 +1,853 @@
+style1A:
+  id: 1
+  name: Lite American Lager
+  bjcp_category: 1
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style01.php#1a"
+  award_id: 1
+  styleinfo: 'o'
+style1B:
+  id: 2
+  name: Standard American Lager
+  bjcp_category: 1
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style01.php#1b"
+  award_id: 1
+  styleinfo: 'o'
+style1C:
+  id: 3
+  name: Premium American Lager
+  bjcp_category: 1
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style01.php#1c"
+  award_id: 1
+  styleinfo: 'o'
+style1D:
+  id: 4
+  name: Munich Helles
+  bjcp_category: 1
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style01.php#1d"
+  award_id: 1
+  styleinfo: 'o'
+style1E:
+  id: 5
+  name: Dortmunder Export
+  bjcp_category: 1
+  bjcp_subcategory: 'E'
+  description_url: "http://www.bjcp.org/2008styles/style01.php#1e"
+  award_id: 1
+  styleinfo: 'o'
+style2A:
+  id: 6
+  name: German Pilsner
+  bjcp_category: 2
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style02.php#1a"
+  award_id: 2
+  styleinfo: 'o'
+style2B:
+  id: 7
+  name: Bohemian Pilsner
+  bjcp_category: 2
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style02.php#1b"
+  award_id: 2
+  styleinfo: 'o'
+style2C:
+  id: 8
+  name: Classic American Pilsner
+  bjcp_category: 2
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style02.php#1c"
+  award_id: 2
+  styleinfo: 'o'
+style3A:
+  id: 9
+  name: Vienna Lager
+  bjcp_category: 3
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style03.php#1a"
+  award_id: 3
+  styleinfo: 'o'
+style3B:
+  id: 10
+  name: Oktoberfest/Märzen
+  bjcp_category: 3
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style03.php#1b"
+  award_id: 3
+  styleinfo: 'o'
+style4A:
+  id: 11
+  name: Dark American Lager
+  bjcp_category: 4
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style04.php#1a"
+  award_id: 4
+  styleinfo: 'o'
+style4B:
+  id: 12
+  name: Munich Dunkel
+  bjcp_category: 4
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style04.php#1b"
+  award_id: 4
+  styleinfo: 'o'
+style4C:
+  id: 13
+  name: Schwarzbier (Black Beer)
+  bjcp_category: 4
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style04.php#1c"
+  award_id: 4
+  styleinfo: 'o'
+style5A:
+  id: 14
+  name: Maibock/Helles Bock
+  bjcp_category: 5
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style05.php#1a"
+  award_id: 5
+  styleinfo: 'o'
+style5B:
+  id: 15
+  name: Traditional Bock
+  bjcp_category: 5
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style05.php#1b"
+  award_id: 5
+  styleinfo: 'o'
+style5C:
+  id: 16
+  name: Doppelbock
+  bjcp_category: 5
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style05.php#1c"
+  award_id: 5
+  styleinfo: 'o'
+style5D:
+  id: 17
+  name: Eisbock
+  bjcp_category: 5
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style05.php#1d"
+  award_id: 5
+  styleinfo: 'o'
+style6A:
+  id: 18
+  name: Cream Ale
+  bjcp_category: 6
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style06.php#1a"
+  award_id: 6
+  styleinfo: 'o'
+style6B:
+  id: 19
+  name: Blonde Ale
+  bjcp_category: 6
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style06.php#1b"
+  award_id: 6
+  styleinfo: 'o'
+style6C:
+  id: 20
+  name: Kölsch
+  bjcp_category: 6
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style06.php#1c"
+  award_id: 6
+  styleinfo: 'o'
+style6D:
+  id: 21
+  name: American Wheat or Rye Beer
+  bjcp_category: 6
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style06.php#1d"
+  award_id: 6
+  styleinfo: 'o'
+style7A:
+  id: 22
+  name: Northern German Altbier
+  bjcp_category: 7
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style07.php#1a"
+  award_id: 7
+  styleinfo: 'o'
+style7B:
+  id: 23
+  name: California Common Beer
+  bjcp_category: 7
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style07.php#1b"
+  award_id: 7
+  styleinfo: 'o'
+style7C:
+  id: 24
+  name: Düsseldorf Altbier
+  bjcp_category: 7
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style07.php#1c"
+  award_id: 7
+  styleinfo: 'o'
+style8A:
+  id: 25
+  name: Standard/Ordinary Bitter
+  bjcp_category: 8
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style08.php#1a"
+  award_id: 8
+  styleinfo: 'o'
+style8B:
+  id: 26
+  name: Special/Best/Premium Bitter
+  bjcp_category: 8
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style08.php#1b"
+  award_id: 8
+  styleinfo: 'o'
+style8C:
+  id: 27
+  name: Extra Special/Strong Bitter (English Pale Ale)
+  bjcp_category: 8
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style08.php#1c"
+  award_id: 8
+  styleinfo: 'o'
+style9A:
+  id: 28
+  name: Scottish Light 60/-
+  bjcp_category: 9
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style09.php#1a"
+  award_id: 9
+  styleinfo: 'o'
+style9B:
+  id: 29
+  name: Scottish Heavy 70/-
+  bjcp_category: 9
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style09.php#1b"
+  award_id: 9
+  styleinfo: 'o'
+style9C:
+  id: 30
+  name: Scottish Export 80/-
+  bjcp_category: 9
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style09.php#1c"
+  award_id: 9
+  styleinfo: 'o'
+style9D:
+  id: 31
+  name: Irish Red Ale
+  bjcp_category: 9
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style09.php#1d"
+  award_id: 9
+  styleinfo: 'o'
+style9E:
+  id: 32
+  name: Strong Scotch Ale
+  bjcp_category: 9
+  bjcp_subcategory: 'E'
+  description_url: "http://www.bjcp.org/2008styles/style09.php#1e"
+  award_id: 9
+  styleinfo: 'o'
+style10A:
+  id: 33
+  name: American Pale Ale
+  bjcp_category: 10
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style10.php#1a"
+  award_id: 10
+  styleinfo: 'o'
+style10B:
+  id: 34
+  name: American Amber Ale
+  bjcp_category: 10
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style10.php#1b"
+  award_id: 10
+  styleinfo: 'o'
+style10C:
+  id: 35
+  name: American Brown Ale
+  bjcp_category: 10
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style10.php#1c"
+  award_id: 10
+  styleinfo: 'o'
+style11A:
+  id: 36
+  name: Mild
+  bjcp_category: 11
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style11.php#1a"
+  award_id: 11
+  styleinfo: 'o'
+style11B:
+  id: 37
+  name: Southern English Brown Ale
+  bjcp_category: 11
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style11.php#1b"
+  award_id: 11
+  styleinfo: 'o'
+style11C:
+  id: 38
+  name: Northern English Brown Ale
+  bjcp_category: 11
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style11.php#1c"
+  award_id: 11
+  styleinfo: 'o'
+style12A:
+  id: 39
+  name: Brown Porter
+  bjcp_category: 12
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style12.php#1a"
+  award_id: 12
+  styleinfo: 'o'
+style12B:
+  id: 40
+  name: Robust Porter
+  bjcp_category: 12
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style12.php#1b"
+  award_id: 12
+  styleinfo: 'o'
+style12C:
+  id: 41
+  name: Baltic Porter
+  bjcp_category: 12
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style12.php#1c"
+  award_id: 12
+  styleinfo: 'o'
+style13A:
+  id: 42
+  name: Dry Stout
+  bjcp_category: 13
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style13.php#1a"
+  award_id: 13
+  styleinfo: 'o'
+style13B:
+  id: 43
+  name: Sweet Stout
+  bjcp_category: 13
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style13.php#1b"
+  award_id: 13
+  styleinfo: 'o'
+style13C:
+  id: 44
+  name: Oatmeal Stout
+  bjcp_category: 13
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style13.php#1c"
+  award_id: 13
+  styleinfo: 'o'
+style13D:
+  id: 45
+  name: Foreign Extra Stout
+  bjcp_category: 13
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style13.php#1d"
+  award_id: 13
+  styleinfo: 'o'
+style13E:
+  id: 46
+  name: American Stout
+  bjcp_category: 13
+  bjcp_subcategory: 'E'
+  description_url: "http://www.bjcp.org/2008styles/style13.php#1e"
+  award_id: 13
+  styleinfo: 'o'
+style13F:
+  id: 47
+  name: Russian Imperial Stout
+  bjcp_category: 13
+  bjcp_subcategory: 'F'
+  description_url: "http://www.bjcp.org/2008styles/style13.php#1f"
+  award_id: 13
+  styleinfo: 'o'
+style14A:
+  id: 48
+  name: English IPA
+  bjcp_category: 14
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style14.php#1a"
+  award_id: 14
+  styleinfo: 'o'
+style14B:
+  id: 49
+  name: American IPA
+  bjcp_category: 14
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style14.php#1b"
+  award_id: 14
+  styleinfo: 'o'
+style14C:
+  id: 50
+  name: Imperial IPA
+  bjcp_category: 14
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style14.php#1c"
+  award_id: 14
+  styleinfo: 'o'
+style15A:
+  id: 51
+  name: Weizen/Weissbier
+  bjcp_category: 15
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style15.php#1a"
+  award_id: 15
+  styleinfo: 'o'
+style15B:
+  id: 52
+  name: Dunkelweizen
+  bjcp_category: 15
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style15.php#1b"
+  award_id: 15
+  styleinfo: 'o'
+style15C:
+  id: 53
+  name: Weizenbock
+  bjcp_category: 15
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style15.php#1c"
+  award_id: 15
+  styleinfo: 'o'
+style15D:
+  id: 54
+  name: Roggenbier (German Rye Beer)
+  bjcp_category: 15
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style15.php#1d"
+  award_id: 15
+  styleinfo: 'o'
+style16A:
+  id: 55
+  name: Witbier
+  bjcp_category: 16
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style16.php#1a"
+  award_id: 16
+  styleinfo: 'o'
+style16B:
+  id: 56
+  name: Belgian Pale Ale
+  bjcp_category: 16
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style16.php#1b"
+  award_id: 16
+  styleinfo: 'o'
+style16C:
+  id: 57
+  name: Saison
+  bjcp_category: 16
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style16.php#1c"
+  award_id: 16
+  styleinfo: 'o'
+style16D:
+  id: 58
+  name: Bière de Garde
+  bjcp_category: 16
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style16.php#1d"
+  award_id: 16
+  styleinfo: 'o'
+style16E:
+  id: 59
+  name: Belgian Specialty Ale
+  bjcp_category: 16
+  bjcp_subcategory: 'E'
+  description_url: "http://www.bjcp.org/2008styles/style16.php#1e"
+  award_id: 16
+  styleinfo: 'r'
+style17A:
+  id: 60
+  name: Berliner Weisse
+  bjcp_category: 17
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style17.php#1a"
+  award_id: 17
+  styleinfo: 'o'
+style17B:
+  id: 61
+  name: Flanders Red Ale
+  bjcp_category: 17
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style17.php#1b"
+  award_id: 17
+  styleinfo: 'o'
+style17C:
+  id: 62
+  name: Flanders Brown Ale/Oud Bruin
+  bjcp_category: 17
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style17.php#1c"
+  award_id: 17
+  styleinfo: 'o'
+style17D:
+  id: 63
+  name: Straight (Unblended) Lambic
+  bjcp_category: 17
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style17.php#1d"
+  award_id: 17
+  styleinfo: 'o'
+style17E:
+  id: 64
+  name: Gueuze
+  bjcp_category: 17
+  bjcp_subcategory: 'E'
+  description_url: "http://www.bjcp.org/2008styles/style17.php#1e"
+  award_id: 17
+  styleinfo: 'o'
+style17F:
+  id: 65
+  name: Fruit Lambic
+  bjcp_category: 17
+  bjcp_subcategory: 'F'
+  description_url: "http://www.bjcp.org/2008styles/style17.php#1f"
+  award_id: 17
+  styleinfo: 'r'
+style18A:
+  id: 66
+  name: Belgian Blond Ale
+  bjcp_category: 18
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style18.php#1a"
+  award_id: 18
+  styleinfo: 'o'
+style18B:
+  id: 67
+  name: Belgian Dubbel
+  bjcp_category: 18
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style18.php#1b"
+  award_id: 18
+  styleinfo: 'o'
+style18C:
+  id: 68
+  name: Belgian Tripel
+  bjcp_category: 18
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style18.php#1c"
+  award_id: 18
+  styleinfo: 'o'
+style18D:
+  id: 69
+  name: Belgian Golden Strong Ale
+  bjcp_category: 18
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style18.php#1d"
+  award_id: 18
+  styleinfo: 'o'
+style18E:
+  id: 70
+  name: Belgian Dark Strong Ale
+  bjcp_category: 18
+  bjcp_subcategory: 'E'
+  description_url: "http://www.bjcp.org/2008styles/style18.php#1e"
+  award_id: 18
+  styleinfo: 'o'
+style19A:
+  id: 71
+  name: Old Ale
+  bjcp_category: 19
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style19.php#1a"
+  award_id: 19
+  styleinfo: 'o'
+style19B:
+  id: 72
+  name: English Barleywine
+  bjcp_category: 19
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style19.php#1b"
+  award_id: 19
+  styleinfo: 'o'
+style19C:
+  id: 73
+  name: American Barleywine
+  bjcp_category: 19
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style19.php#1c"
+  award_id: 19
+  styleinfo: 'o'
+style20:
+  id: 74
+  name: Fruit Beer
+  bjcp_category: 20
+  description_url: "http://www.bjcp.org/2008styles/style20.php#1a"
+  award_id: 20
+  mcab_style: false
+  styleinfo: 'r'
+  optional_classic_style: true
+style21A:
+  id: 75
+  name: Spice, Herb, or Vegetable Beer
+  bjcp_category: 21
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style21.php#1a"
+  award_id: 21
+  mcab_style: false
+  styleinfo: 'r'
+  optional_classic_style: true
+style21B:
+  id: 76
+  name: Christmas/Winter Specialty Spiced Beer
+  bjcp_category: 21
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style21.php#1b"
+  award_id: 21
+  mcab_style: false
+  styleinfo: 'o'
+  optional_classic_style: true
+style22A:
+  id: 77
+  name: Classic Rauchbier
+  bjcp_category: 22
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style22.php#1a"
+  award_id: 22
+  styleinfo: 'o'
+style22B:
+  id: 78
+  name: Other Smoked Beer
+  bjcp_category: 22
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style22.php#1b"
+  award_id: 22
+  styleinfo: 'o'
+  optional_classic_style: true
+style22C:
+  id: 79
+  name: Wood-Aged Beer
+  bjcp_category: 22
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style22.php#1c"
+  award_id: 22
+  styleinfo: 'o'
+  optional_classic_style: true
+style23:
+  id: 80
+  name: Specialty Beer
+  bjcp_category: 23
+  description_url: "http://www.bjcp.org/2008styles/style23.php"
+  award_id: 23
+  mcab_style: false
+  styleinfo: 'r'
+  optional_classic_style: true
+style24A:
+  id: 81
+  name: Dry Mead
+  bjcp_category: 24
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style24.php#1a"
+  award_id: 24
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  styleinfo: 'o'
+style24B:
+  id: 82
+  name: Semi-sweet Mead
+  bjcp_category: 24
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style24.php#1b"
+  award_id: 24
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  styleinfo: 'o'
+style24C:
+  id: 83
+  name: Sweet Mead
+  bjcp_category: 24
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style24.php#1c"
+  award_id: 24
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  styleinfo: 'o'
+style25A:
+  id: 84
+  name: Cyser (Apple Melomel)
+  bjcp_category: 25
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style25.php#1a"
+  award_id: 25
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  styleinfo: 'o'
+style25B:
+  id: 85
+  name: Pyment (Grape Melomel)
+  bjcp_category: 25
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style25.php#1b"
+  award_id: 25
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  styleinfo: 'o'
+style25C:
+  id: 86
+  name: Other Fruit Melomel
+  bjcp_category: 25
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style25.php#1c"
+  award_id: 25
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  styleinfo: 'r'
+style26A:
+  id: 87
+  name: Metheglin
+  bjcp_category: 26
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style26.php#1a"
+  award_id: 26
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  styleinfo: 'r'
+style26B:
+  id: 88
+  name: Braggot
+  bjcp_category: 26
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style26.php#1b"
+  award_id: 26
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  styleinfo: 'o'
+  optional_classic_style: true
+style26C:
+  id: 89
+  name: Open Category Mead
+  bjcp_category: 26
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style26.php#1c"
+  award_id: 26
+  mcab_style: false
+  require_carbonation: true
+  require_strength: true
+  require_sweetness: true
+  styleinfo: 'r'
+style27A:
+  id: 90
+  name: Common Cider
+  bjcp_category: 27
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style27.php#1a"
+  award_id: 27
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'o'
+style27B:
+  id: 91
+  name: English Cider
+  bjcp_category: 27
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style27.php#1b"
+  award_id: 27
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'o'
+style27C:
+  id: 92
+  name: French Cider
+  bjcp_category: 27
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style27.php#1c"
+  award_id: 27
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'o'
+style27D:
+  id: 93
+  name: Common Perry
+  bjcp_category: 27
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style27.php#1d"
+  award_id: 27
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'o'
+style27E:
+  id: 94
+  name: Traditional Perry
+  bjcp_category: 27
+  bjcp_subcategory: 'E'
+  description_url: "http://www.bjcp.org/2008styles/style27.php#1e"
+  award_id: 27
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'o'
+style28A:
+  id: 95
+  name: New England Cider
+  bjcp_category: 28
+  bjcp_subcategory: 'A'
+  description_url: "http://www.bjcp.org/2008styles/style28.php#1a"
+  award_id: 28
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'r'
+style28B:
+  id: 96
+  name: Fruit Cider
+  bjcp_category: 28
+  bjcp_subcategory: 'B'
+  description_url: "http://www.bjcp.org/2008styles/style28.php#1b"
+  award_id: 28
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'r'
+style28C:
+  id: 97
+  name: Applewine
+  bjcp_category: 28
+  bjcp_subcategory: 'C'
+  description_url: "http://www.bjcp.org/2008styles/style28.php#1c"
+  award_id: 28
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'o'
+style28D:
+  id: 98
+  name: Other Specialty Cider/Perry
+  bjcp_category: 28
+  bjcp_subcategory: 'D'
+  description_url: "http://www.bjcp.org/2008styles/style28.php#1d"
+  award_id: 28
+  mcab_style: false
+  require_carbonation: true
+  require_sweetness: true
+  styleinfo: 'r'

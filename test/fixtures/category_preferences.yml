@@ -1,0 +1,8 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  judge: apprentice_judge
+  category: light_lager
+two:
+  judge: apprentice_judge
+  category: veggie

@@ -1,0 +1,3 @@
+RegistrationMailer#judge_invite
+
+Find me in app/views/registration_mailer/judge_invite.html.erb

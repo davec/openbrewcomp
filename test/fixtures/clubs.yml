@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+other:
+  id: <%= Club.other.id %>
+  name: <%= Club.other.name %>
+independent:
+  name: Independent
+rangers:
+  name: Foam Rangers
+kgb:
+  name: Kuykendahl Gran Brewers (KGB)
+mashtronauts:
+  name: Bay Area Mashtronauts
+cch:
+  name: Crescent City Homebrewers
+ehc:
+  name: Edmonton Homebrewers Guild
+

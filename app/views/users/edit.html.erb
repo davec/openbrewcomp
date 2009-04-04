@@ -1,0 +1,29 @@
+<% @page_title = "Edit Profile for #{@user.login}" %>
+
+<div id="user-form">
+  <% form_for @user do |f| %>
+    <fieldset class="userpass">
+      <legend>Your Details</legend>
+      <ol>
+        <li>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+          <%= f.error_message_on :name, :preprend_text => 'Name ' %>
+        </li>
+        <li>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+          <%= f.error_message_on :email, :preprend_text => 'Email ' %>
+        </li>
+      </ol>
+      <div class="flash-error"><%= h flash[:profile_error] %></div>
+    </fieldset>
+    <div class="form-buttons">
+      <%= submit_tag 'Save' %>
+      <%= submit_tag 'Cancel', { :name => 'cancel' } %>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+  Form.focusFirstElement('edit_user_<%= @user.id %>');
+</script>

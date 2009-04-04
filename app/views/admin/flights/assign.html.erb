@@ -1,0 +1,108 @@
+<% @page_title = "#{competition_name} Flight Assignments"
+   button_label = 'Generate Flights' -%>
+
+ <div id="ie-fubar-warning">
+   <p>
+     This page does not function well &mdash; sometimes not at all &mdash; in
+     Internet Explorer. You need to use Firefox, Safari, Opera, or just about
+     any other browser that is not Internet Explorer.
+   </p>
+   <p>
+     This restriction may not be permanent, but the caretaker is not yet
+     sufficiently motivated to spend any more time trying to resolve the
+     problems.
+   </p>
+ </div>
+
+<p>
+  For each award category, create the necessary flights and drag the entries
+  from the unassigned column to the flights in which you want to place them.
+  To delete a flight, click the <span class="delete-button">x</span> in the
+  upper right corner of the flight box.  (If the <span class="delete-button">x</span>
+  is not displayed, and the background of the flight box is greyed out, the
+  flight cannot be deleted, probably because it is being judged or has already
+  been judged.)
+</p>
+
+<div id="auto-assign-flights" <%= 'style="display:none"' unless @can_auto_assign_flights %>>
+  <p>
+    To ease the flight assignment process, you can have flights automatically
+    created and entries pre-assigned to them. Simply specify the number of
+    entries desired in each flight and press the <em><%= button_label %> </em>
+    button. Once the entries are allocated, you can fine-tune the assignments
+    by dragging the entries between the flights, create additional flights,
+    and remove unnecessary flights.
+  </p>
+  <p>
+    The automatic flight assignment process will attempt to keep all entries
+    in the same BJCP sub-category together.  This is clearly not possible if
+    there are more entries in a sub-category than the specified maximum flight
+    size.  In this case, a sufficient number of flights will be created to hold
+    up to the specified maximum flight size.
+  </p>
+  <p>
+    If, however, there are fewer entries in a BJCP sub-category than the
+    specified minimum flight size, the entries may be grouped, where
+    possible, with entries in other small sub-categories.
+  </p>
+  <p>
+    The automatic flight assignments are only a starting point, and you should
+    consider the entries in each flight, especially flights with special
+    ingredients such as Fruit Beers, Specialty Beers, Meads, etc., when
+    making the final flight assignments.
+  </p>
+  <div id="auto-assign-form">
+    <% form_for :flight, :html => { :id => 'auto-assign' } do |form|
+         min_value = params[:flight][:min] rescue Flight::DEFAULT_MIN_ENTRIES
+         max_value = params[:flight][:max] rescue Flight::DEFAULT_MAX_ENTRIES -%>
+      <fieldset>
+        <legend>Entries per Flight</legend>
+        <p>
+          <label for="flight_min_count">Minimum</label>
+          <%= form.text_field :min,
+                              :class => 'text-input',
+                              :size => 2,
+                              :maxlength => 2,
+                              :value => min_value %>
+        </p>
+        <p>
+          <label for="flight_min_count">Maximum</label>
+          <%= form.text_field :max,
+                              :class => 'text-input',
+                              :size => 2,
+                              :maxlength => 2,
+                              :value => max_value %>
+        </p>
+      </fieldset>
+      <div class="form-buttons">
+        <%= submit_tag button_label %>
+      </div>
+    <% end -%>
+  </div>
+  <% if flash[:errors] -%>
+    <% if flash[:errors].is_a?(String) -%>
+      <p class="flash-error">
+        <%= flash[:errors] %>
+      </p>
+    <% else -%>
+      <ul class="flash-error uncompacted">
+        <% flash[:errors].each do |error| -%>
+          <li><%= h error %></li>
+        <% end -%>
+      </ul>
+    <% end -%>
+  <% end -%>
+</div>
+
+<div id="flight-assignments-view">
+  <ol class="flight-assignments">
+    <% @awards.each do |award|
+         dom_id = award_container_id(award) -%>
+      <li id="<%= dom_id %>-item">
+        <%= render(:partial => 'award',
+                   :locals => { :dom_id => dom_id },
+                   :object => award) -%>
+      </li>
+    <% end -%>
+  </ol>
+</div>

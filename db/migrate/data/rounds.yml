@@ -1,0 +1,12 @@
+first:
+  id: 1
+  name: First Round
+  position: 1
+second:
+  id: 2
+  name: Medal Round
+  position: 2
+bos:
+  id: 3
+  name: Best-of-Show
+  position: 3

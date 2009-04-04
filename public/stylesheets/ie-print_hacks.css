@@ -1,0 +1,9 @@
+/* Hacks for IE, print styles */
+
+/* IE 6 and earlier does not recognize adajacent selectors, e.g., p+p */
+p {
+  text-indent: 1.4em;
+}
+p.p1 {
+  text-indent: 0;
+}

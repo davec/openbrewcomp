@@ -1,0 +1,33 @@
+<table class="reporttable">
+  <thead>
+    <tr class="table-header">
+      <th>Name</th>
+      <th>Rank</th>
+      <th>Available Times</th>
+      <th>Category Preferences</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr class="table-footer">
+      <th colspan="5">&nbsp;</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% if judges.length > 0 -%>
+      <% judges.each do |judge| -%>
+        <tr class="<%= cycle('even-record', 'odd-record') %>">
+          <td><%= h(judge.name) %></td>
+          <td><%= h(judge.judge_rank.description) %></td>
+          <td><%= judge.time_availabilities.collect{|c| h c.label}.join('<br />') %></td>
+          <td><%= judge.category_preferences.collect{|c| h c.label}.join('<br />') %></td>
+          <td><%= h(judge.comments) %></td>
+        </tr>
+      <% end -%>
+    <% else -%>
+      <tr>
+        <td colspan="5" align="center"><em>No confirmed judges could be found</em></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

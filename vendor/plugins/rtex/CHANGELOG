@@ -1,0 +1,48 @@
+v2.1.0
+
+  Merge in rails-2.2.2 branch, modify to make sure Prawn isn't trampled and
+  2.3.0 is supported.
+  Simplify tagging of templates for later processing (+ ensure it works
+  with compiled templates).
+  Update README_RAILS 
+
+v2.0.5
+
+  Fix issue with Echoe being ultra-sensitive on RubyGems versions (v2.0.4
+  was RubyGems 1.2 only, and 1.3 just came out)
+  
+v2.0.4
+
+  Support for TeX escaping (via l()) calling to_s on the argument.
+  This should handle nils.
+
+v2.0.3
+
+  Rails 2.0 compat:
+  Fix issue with init.rb not requiring rails/init.rb
+
+v1.99.0 2008-04-20
+
+  Released RTeX v1.99.0 as a Rubygem, with a standalone executable for PDF generation
+  and support for plugin installation from the executable.
+
+  This release requires Rails >= 2.0.1
+
+  Thanks to:
+  * Jonas Bähr for a patch with additional LaTeX escaping
+  * Fouad Mardini for a TemplateHandler patch
+
+v1.0.0+
+
+  Added quite a few *long* overdue fixes & enhancements sent in by various people.
+
+  * Added latex escaping 'l' method (Thanks, Benjamin Quorning)
+  * Added support for @options_for_rtex hash for configuration:
+    * Added :tempdir option, and changed default temporary directory
+      (Thanks, Francesco Levorato)
+    * Added :preprocess option to support running through latex before pdflatex
+      (Thanks Charles Lesburg, Benjamin Quorning)
+    * Moved old @filename setting to :filename option in this hash
+
+  If you're using the same settings for @options_for_rtex often, you might want to 
+  put your assignment in a before_filter (perhaps overriding :filename, etc in your actions).

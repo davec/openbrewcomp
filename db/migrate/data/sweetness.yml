@@ -1,0 +1,12 @@
+dry:
+  id: 1
+  description: Dry
+  position: 1
+medium:
+  id: 2
+  description: Semi-sweet/Medium
+  position: 2
+sweet:
+  id: 3
+  description: Sweet
+  position: 3

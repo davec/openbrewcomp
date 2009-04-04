@@ -1,0 +1,33 @@
+  <tr>
+    <th colspan="<%= points ? 4 : 2 %>">
+      <span class="catname">Individual Point Totals</span>
+    </th>
+  </tr>
+  <tr class="header">
+    <% if points -%>
+    <td>Place</td>
+    <% end -%>
+    <td>Brewer</td>
+    <td>Club</td>
+    <% if points -%>
+    <td class="numeric">Points</td>
+    <% end -%>
+  </tr>
+<% place = 1
+   last_points = 0
+   individuals.each_with_index do |record, index|
+     unless record.points == last_points
+       place = index + 1
+       last_points = record.points
+     end -%>
+  <tr>
+    <% if points -%>
+    <td><%= place %></td>
+    <% end -%>
+    <td><%= record.expanded_name %></td>
+    <td><%= record.club.name %></td>
+    <% if points -%>
+    <td class="numeric"><%= record.points %></td>
+    <% end -%>
+  </tr>
+<% end -%>

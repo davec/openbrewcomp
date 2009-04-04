@@ -1,0 +1,69 @@
+<% @page_title = "#{competition_name} BJCP Competition Report"
+   ok_to_submit = flash[:error].nil? #|| ENV['RAILS_ENV'] == 'development'
+   button_label = 'Export' %>
+
+<div id="bjcp-report">
+  <p>
+    The following is a summary of the BJCP competition report for
+    <%= @competition_data[:name] -%>.
+  </p>
+  <p>
+    Please update the comments section with your BJCP judge ID, correct any
+    errors, and add any additional comments relevant to the competition that
+    should be included in the report.
+  </p>
+  <p>
+    Once you are satisified that the report properly reflects the results of
+    <%= @competition_data[:name] -%>, press the
+    <span class="button_label"><%= button_label %></span> button to download
+    the report which you should then send to the BJCP Program Administrator
+    at <%= mail_to 'program_admin@bjcp.org', nil,
+                   :subject => "Competition report for #{@competition_data[:name]} (#{@competition_data[:id]})",
+                   :cc => current_user.email -%>.
+  </p>
+
+  <div id="competition-data">
+    <% form_for :report,
+                :url => { :format => 'xml' } do |form| %>
+      <p>
+        <span class="label">Name</span>
+        <span class="value"><%= @competition_data[:name] -%></span>
+      </p>
+      <p>
+        <span class="label">ID</span>
+        <span class="value"><%= @competition_data[:id] -%></span>
+      </p>
+      <p>
+        <span class="label">Date</span>
+        <span class="value"><%= @competition_data[:date] -%></span>
+      </p>
+      <p>
+        <span class="label">Organizer</span>
+        <span class="value"><%= @competition_data[:organizer] -%></span>
+      </p>
+      <p>
+        <span class="label">Entries</span>
+        <span class="value"><%= @competition_data[:entries] -%></span>
+      </p>
+      <p>
+        <span class="label">Days</span>
+        <span class="value"><%= @competition_data[:days] -%></span>
+      </p>
+      <p>
+        <span class="label">Sessions</span>
+        <span class="value"><%= @competition_data[:sessions] -%></span>
+      </p>
+      <p>
+        <span class="label">Flights</span>
+        <span class="value"><%= @competition_data[:flights] -%></span>
+      </p>
+      <p>
+        <label for="report_comments">Comments</label>
+        <%= form.text_area :comments, :cols => 80, :rows => 6, :value => @comments %>
+      </p>
+      <div class="form-buttons">
+        <%= submit_tag button_label, :disabled => !ok_to_submit %>
+      </div>
+    <% end -%>
+  </div>
+</div>

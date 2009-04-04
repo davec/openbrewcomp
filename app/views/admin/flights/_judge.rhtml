@@ -1,0 +1,31 @@
+<% role_type = role == Judging::ROLE_JUDGE ? "Judge" : "Steward"
+   label = role == Judging::ROLE_JUDGE ? "Judge #{index}" : "Steward"
+   flight_id = @record.id
+   change_action = "setJudgePanelRole('#{flight_id}','#{index}','#{role}');"
+   change_action << "setScoreColumns($('#{element_form_id(:action => :update)}'),'#{flight_id}','#{index}');" if role == Judging::ROLE_JUDGE
+%>
+<dl>
+  <dt>
+    <label for="record_<%= flight_id -%>_judgings_<%= index -%>_judge_id"><%= label -%></label>
+  </dt>
+  <dd>
+    <div id="record_<%= flight_id -%>_judgings_<%= index -%>_new-form" class="new-judge" style="display:none"></div>
+    <div id="record_<%= flight_id -%>_judgings_<%= index -%>_judge-data">
+      <%= select("record_#{flight_id}_judgings_#{index}_judge", "id", [[ "- Select a #{role_type} -", '' ]] + judges,
+                 { :selected => selected_id },
+                 { :name => "record[judgings][#{index}][judge][id]",
+                   :onchange => change_action }) %>
+    <%= #link_to_remote "Add New #{role_type}",
+        #               { :update => "record_#{flight_id}_judgings_#{index}_new-form",
+        #                 :url => { :controller => 'judges',
+        #                           :action => 'new',
+        #                           :source => :flights },
+        #                           :complete => "$('record_#{flight_id}_judgings_#{index}_new-form').show(); $('record_#{flight_id}_judgings_#{index}_judge-data').hide();"},
+        #               { :class => 'new action' }
+     %>
+    <%= hidden_field("record_#{flight_id}_judgings_#{index}", "role",
+                     { :value => role,
+                       :name => "record[judgings][#{index}][role]" }) %>
+    </div>
+  </dd>
+</dl>

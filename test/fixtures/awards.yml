@@ -1,0 +1,155 @@
+LL: 
+  name: Light Lager
+  category: light_lager
+  point_qualifier: true
+  position: 1
+PILS: 
+  name: Pilsner
+  category: pilsner
+  point_qualifier: true
+  position: 1
+EAL: 
+  name: European Amber Lager
+  category: amber_lager
+  point_qualifier: true
+  position: 1
+DL: 
+  name: Dark Lager
+  category: dark_lager
+  point_qualifier: true
+  position: 1
+BOCK: 
+  name: Bock
+  category: bock
+  point_qualifier: true
+  position: 1
+LH: 
+  name: Light Hybrid Beer
+  category: light_hybrid
+  point_qualifier: true
+  position: 1
+AH: 
+  name: Amber Hybrid Beer
+  category: amber_hybrid
+  point_qualifier: true
+  position: 1
+EPA: 
+  name: English Pale Ale
+  category: english_ale
+  point_qualifier: true
+  position: 1
+SI: 
+  name: Scottish & Irish Ale
+  category: scottish_irish
+  point_qualifier: true
+  position: 1
+AA: 
+  name: American Ale
+  category: american_ale
+  point_qualifier: true
+  position: 1
+EBA: 
+  name: English Brown Ale
+  category: brown_ale
+  point_qualifier: true
+  position: 1
+PORTER: 
+  name: Porter
+  category: porter
+  point_qualifier: true
+  position: 1
+STOUT: 
+  name: Stout
+  category: stout
+  point_qualifier: true
+  position: 1
+IPA: 
+  name: India Pale Ale (IPA)
+  category: ipa
+  point_qualifier: true
+  position: 1
+GWR: 
+  name: German Wheat and Rye Beers
+  category: german_wheat
+  point_qualifier: true
+  position: 1
+BFA: 
+  name: Belgian and French Ale
+  category: belgian_french
+  point_qualifier: true
+  position: 1
+SOUR: 
+  name: Sour Ale
+  category: sour
+  point_qualifier: true
+  position: 1
+BSA: 
+  name: Belgian Strong Ale
+  category: belgian_strong
+  point_qualifier: true
+  position: 1
+SA: 
+  name: Strong Ale
+  category: strong_ale
+  point_qualifier: true
+  position: 1
+FRUIT: 
+  name: Fruit Beer
+  category: fruit
+  point_qualifier: true
+  position: 1
+SHV: 
+  name: Spice/Herb/Vegetable Beer
+  category: veggie
+  point_qualifier: true
+  position: 1
+SWB: 
+  name: Smoked Beer
+  category: smoke
+  point_qualifier: true
+  position: 1
+SPC: 
+  name: Specialty Beer
+  category: specialty
+  point_qualifier: true
+  position: 1
+MTRD: 
+  name: Traditional Mead
+  category: trad_mead
+  point_qualifier: true
+  position: 1
+MFRT: 
+  name: Fruit Mead
+  category: fruit_mead
+  point_qualifier: true
+  position: 1
+MOTH: 
+  name: Other Mead
+  category: other_mead
+  point_qualifier: true
+  position: 1
+STCP: 
+  name: Standard Cider and Perry
+  category: standard_cider
+  point_qualifier: true
+  position: 1
+SPCP: 
+  name: Specialty Cider and Perry
+  category: specialty_cider
+  point_qualifier: true
+  position: 1
+special:
+  name: Competition Special
+  category: special
+  point_qualifier: false
+  position: 1
+first_time:
+  name: First-Time Entrant
+  category: first_time
+  point_qualifier: false
+  position: 1
+bos:
+  name: Best of Show
+  category: bos
+  point_qualifier: false
+  position: 1

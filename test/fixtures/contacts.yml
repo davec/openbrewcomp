@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+webmaster:
+  role: webmaster
+  name: The Webmaster
+  email: webmaster@example.com
+coordinator:
+  role: coordinator
+  name: The Coordinator
+  email: coordinator@example.com

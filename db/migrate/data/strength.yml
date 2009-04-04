@@ -1,0 +1,12 @@
+light:
+  id: 1
+  description: Hydromel/Light
+  position: 1
+standard:
+  id: 2
+  description: Standard
+  position: 2
+strong:
+  id: 3
+  description: Sack/Strong
+  position: 3

@@ -1,0 +1,9 @@
+<p>
+  <span class="category"><%= mcab.qualifying_style %> &ndash; <%= mcab.qualifying_style_name %></span><br />
+  <span class="qualifier">
+    <%= h(mcab.postal_address).gsub("\n", '<br />') %><br />
+    <%= h(mcab.phone) %><br />
+    <%= h(mcab.email) %><br />
+    <%= h(mcab.club.name) %>
+  </span>
+</p>

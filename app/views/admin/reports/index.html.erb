@@ -1,0 +1,92 @@
+<% @page_title = "#{competition_name} Reports"
+   registered = 'registered'
+   processed = 'processed'
+   default_view = @has_processed_entries ? processed : registered %>
+
+<div id="reports-menu">
+  <% if @has_processed_entries -%>
+    <div id="type-selector">
+      <span>Entries to report:</span><br />
+      <div title="All registered entries">
+        <%= radio_button_tag 'report', registered, default_view == registered,
+                             { :onclick => "setReportType('#{registered}');" } %>
+        <span class="radioLabel">Registered</span>
+      </div>
+      <div title="All entries that have been assigned a bottle code">
+        <%= radio_button_tag 'report', processed, default_view == processed,
+                             { :onclick => "setReportType('#{processed}');" } %>
+        <span class="radioLabel">Processed</span>
+      </div>
+    </div>
+  <% end -%>
+  <ul id="menu-items">
+    <% @controller.methods.find_all{|m| m.match(/^report_/)}.sort.each do |method| -%>
+      <li class="menu-item">
+        <%= image_tag("active_scaffold/default/indicator.gif",
+                      :id => "#{method}-spinner",
+                      :class => "loading-indicator",
+                      :style => "visibility:hidden;",
+                      :size => "16x16") %>
+        <div class="action-link off" id="<%= method %>">
+          <%= link_to_remote(method.sub(/^report_/,'').titleize,
+                             { :update => 'reports-view',
+                               :method => 'get',
+                               :url => { :action => method,
+                                         :type => default_view },
+                               :before => "$('#{method}-spinner').style.visibility = 'visible'",
+                               :complete => "$('#{method}-spinner').style.visibility = 'hidden';hiliteMenuItem('#{method}')" },
+                             { :onfocus => 'if (this.blur()) this.blur();', # zap the active link borders
+                               :id => "#{method}-action_link",
+                               :href => url_for(:action => method, :type => default_view) }) -%>
+        </div>
+      </li>
+    <% end -%>
+  </ul>
+</div>
+
+<div id="reports-view"></div>
+
+<div class="clearfloat"></div>
+
+<script type="text/javascript">
+  var current_type;
+  function setReportType(type) {
+    if (type != current_type) {
+      current_type = type;
+      $('menu-items').descendants().each(function(e) {
+        if (e.tagName == 'A') {
+          if (e.outerHTML) {
+            e.outerHTML = e.outerHTML.gsub(/\?type=\w+/, '?type='+type);
+          } else {
+            e.href = e.href.sub(/\?type=\w+/, '?type='+type);
+            e.attributes['onclick'].value = e.attributes['onclick'].value.sub(/\?type=\w+/, '?type='+type)
+          }
+        }
+      });
+      updateReport();
+    }
+  }
+  function _swapClassNames(e, oldname, newname) {
+    e.removeClassName(oldname);
+    e.addClassName(newname);
+  }
+  function hiliteMenuItem(mi) {
+    $A($('menu-items').getElementsByClassName('on')).each(function(e) {
+      _swapClassNames(e, 'on', 'off');
+    });
+    _swapClassNames($(mi), 'off', 'on');
+  }
+  function updateReport() {
+    current_report = $A($('reports-menu').getElementsByClassName('on'));
+    if (current_report.size() == 1) {  // Either 0 or 1; cannot be > 1
+      action = current_report[0].id;
+      e = $(action + '-action_link');
+      eval(e.readAttribute('onclick').sub(/return[^;]*;/,''));
+    }
+  }
+  initializeMenus = function() {
+    if ($('report_<%= registered -%>')) $('report_<%= registered -%>').checked = <%= default_view == registered ? 'true' : 'false' -%>;
+    if ($('report_<%= processed -%>')) $('report_<%= processed -%>').checked = <%= default_view == processed ? 'true' : 'false' -%>;
+  }
+  Event.observe(window, 'load', initializeMenus);
+</script>

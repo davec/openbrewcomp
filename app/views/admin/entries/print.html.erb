@@ -1,0 +1,49 @@
+<% @page_title = "#{@competition_name} Bottle Labels" %>
+
+<div class="botLabInst">
+  <p>
+    Please print this page from your browser, cut out the bottle labels, and
+    attach one label to each bottle with a rubber band &mdash; <strong>no tape
+    or glue</strong>.
+  </p>
+</div>
+
+<div class="bottle-labels">
+  <hr />
+  <% @num_labels_to_print.times do %>
+    <table class="bottlelabel">
+      <tr>
+        <th colspan="2"><%= @competition_name -%></th>
+      </tr>
+      <tr>
+        <td class="label">Name and<br />Address</td>
+        <td><%= h(@entry.entrant.postal_address).gsub("\n","<br />") -%></td>
+      </tr>
+      <tr>
+        <td class="label">Phone</td>
+        <td><%= h @entry.entrant.phone -%></td>
+      </tr>
+      <tr>
+        <td class="label">Email</td>
+        <td><%= h @entry.entrant.email -%></td>
+      </tr>
+      <tr>
+        <td class="label">Club</td>
+        <td><%= h @entry.entrant.club.name -%></td>
+      </tr>
+      <tr>
+        <td class="label">Entry Name</td>
+        <td><%= h(truncate(@entry.name, :length => 40)) -%></td>
+      </tr>
+      <tr>
+        <td class="label">Style</td>
+        <td><%= "#{@entry.style.category} &ndash; #{@entry.style.name}" -%></td>
+      </tr>
+      <tr>
+        <td class="reglabel">Registration<br />Code</td>
+        <td class="regcode"><%= @entry.registration_code -%></td>
+      </tr>
+    </table>
+    <hr />
+  <% end %>
+</div>

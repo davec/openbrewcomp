@@ -1,0 +1,8 @@
+<% @page_title = "#{competition_name} Flights" %>
+
+<ul id="flight-menu" class="uncompacted">
+  <li><%= link_to('Flight Assignment', assign_admin_flights_path) %></li>
+  <li><%= link_to('Flight Management', manage_admin_flights_path) %></li>
+  <li><%= link_to('Flight Tracking', track_admin_flights_path) %></li>
+  <li><%= link_to('Ineligible Judges', list_ineligible_judges_admin_flights_path) %></li>
+</ul>

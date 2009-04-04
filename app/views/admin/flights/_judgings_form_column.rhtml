@@ -1,0 +1,24 @@
+<%
+  judges = Judge.find_all_available.collect {|j| [j.dictionary_name_with_rank, j.id]}
+  temp_id = generate_temporary_id.to_i
+
+  1.upto(@record.max_judges) do |i|
+    judge_id = @record.judging_judges[i-1].judge_id rescue temp_id+i
+    selected_id = @record.judging_judges[i-1].judge_id rescue '' -%><%=
+    render(:partial => "judge",
+           :object => @record.judging_judges[i-1],
+           :locals => { :index => i,
+                        :selected_id => selected_id,
+                        :judges => judges,
+                        :role => Judging::ROLE_JUDGE }) -%><%
+  end 
+
+  judge_id = @record.judging_steward.judge_id rescue temp_id
+  selected_id = @record.judging_steward.judge_id rescue '' -%><%=
+  render(:partial => "judge",
+         :object => @record.judging_steward,
+         :locals => { :index => 0,
+                      :selected_id => selected_id,
+                      :judges => judges,
+                      :role => Judging::ROLE_STEWARD })
+%>

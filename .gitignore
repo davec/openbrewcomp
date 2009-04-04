@@ -1,0 +1,13 @@
+.DS_Store
+TAGS
+db/development_structure.sql
+config/database.yml
+config/db_init.yml
+coverage
+db/development_structure.sql
+log/*.log
+tmp/**/*
+public/blank.html
+public/blank_iframe.html
+public/**/active_scaffold
+public/**/calendar_date_select

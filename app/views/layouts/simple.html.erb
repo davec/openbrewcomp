@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <%= page_title_tag %>
+  <%= yield :stylesheet %>
+  <%= stylesheet_link_tag 'application', :media => nil %>
+  <%= stylesheet_link_tag 'screen', :media => "screen" %>
+  <%= stylesheet_link_tag 'print', :media => "print" %>
+  <!--[if IE]>
+    <%= stylesheet_link_tag 'ie_hacks', :media => "screen" %>
+    <![if lt IE 7]>
+      <%= stylesheet_link_tag 'ie-print_hacks', :media => "print" %>
+    <![endif]>
+  <![endif]-->
+</head>
+<body>
+  <div id="content">
+    <%= page_header_tag %>
+    <% if flash[:warning] -%>
+      <div class="flash-warning">
+        <p><%= flash[:warning] %></p>
+      </div>
+    <% elsif flash[:message] -%>
+      <div class="flash-message">
+        <p><%= flash[:message] %></p>
+      </div>
+    <% elsif flash[:notice] -%>
+      <div class="flash-notice">
+        <p><%= flash[:notice] %></p>
+      </div>
+    <% end -%>
+    <%= yield %>
+  </div>
+
+</body>
+</html>

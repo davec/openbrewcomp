@@ -1,0 +1,2336 @@
+AU_ACT: 
+  name: Australian Capital Territory
+  region_code: ACT
+  country: AU
+AU_NSW: 
+  name: New South Wales
+  region_code: NSW
+  country: AU
+AU_NT: 
+  name: Northern Territory
+  region_code: NT
+  country: AU
+AU_QLD: 
+  name: Queensland
+  region_code: QLD
+  country: AU
+AU_SA: 
+  name: South Australia
+  region_code: SA
+  country: AU
+AU_TAS: 
+  name: Tasmania
+  region_code: TAS
+  country: AU
+AU_VIC: 
+  name: Victoria
+  region_code: VIC
+  country: AU
+AU_WA: 
+  name: Western Australia
+  region_code: WA
+  country: AU
+BR_AC: 
+  name: Acre
+  region_code: AC
+  country: BR
+BR_AL: 
+  name: Alogoas
+  region_code: AL
+  country: BR
+BR_AM: 
+  name: Amazonas
+  region_code: AM
+  country: BR
+BR_AP: 
+  name: "Amap\xC3\xA1"
+  region_code: AP
+  country: BR
+BR_BA: 
+  name: "Bah\xC3\xADa"
+  region_code: BA
+  country: BR
+BR_CE: 
+  name: "Cear\xC3\xA1"
+  region_code: CE
+  country: BR
+BR_DF: 
+  name: Distrito Federal
+  region_code: DF
+  country: BR
+BR_ES: 
+  name: Espirito Santo
+  region_code: ES
+  country: BR
+BR_GO: 
+  name: "Goi\xC3\xA1s"
+  region_code: GO
+  country: BR
+BR_MA: 
+  name: "Maranh\xC3\xA3o"
+  region_code: MA
+  country: BR
+BR_MG: 
+  name: "Minas Gera\xC3\xADs"
+  region_code: MG
+  country: BR
+BR_MS: 
+  name: Mato Grosso do Sul
+  region_code: MS
+  country: BR
+BR_MT: 
+  name: Mato Grosso
+  region_code: MT
+  country: BR
+BR_PA: 
+  name: "Par\xC3\xA1"
+  region_code: PA
+  country: BR
+BR_PB: 
+  name: "Para\xC3\xADba"
+  region_code: PB
+  country: BR
+BR_PE: 
+  name: Pernambuco
+  region_code: PE
+  country: BR
+BR_PI: 
+  name: "Piau\xC3\xAD"
+  region_code: PI
+  country: BR
+BR_PR: 
+  name: "Paran\xC3\xA1"
+  region_code: PR
+  country: BR
+BR_RJ: 
+  name: Rio de Janeiro
+  region_code: RJ
+  country: BR
+BR_RN: 
+  name: Rio Grande do Norte
+  region_code: RN
+  country: BR
+BR_RO: 
+  name: "Rond\xC3\xB4nia"
+  region_code: RO
+  country: BR
+BR_RR: 
+  name: Roraima
+  region_code: RR
+  country: BR
+BR_RS: 
+  name: Rio Grande do Sul
+  region_code: RS
+  country: BR
+BR_SC: 
+  name: Santa Catarina
+  region_code: SC
+  country: BR
+BR_SE: 
+  name: Sergipe
+  region_code: SE
+  country: BR
+BR_SP: 
+  name: "S\xC3\xA3o Paulo"
+  region_code: SP
+  country: BR
+BR_TO: 
+  name: Tocantins
+  region_code: TO
+  country: BR
+CA_AB: 
+  name: Alberta
+  region_code: AB
+  country: CA
+CA_BC: 
+  name: British Columbia
+  region_code: BC
+  country: CA
+CA_MB: 
+  name: Manitoba
+  region_code: MB
+  country: CA
+CA_NB: 
+  name: New Brunswick
+  region_code: NB
+  country: CA
+CA_NL: 
+  name: Newfoundland and Labrador
+  region_code: NL
+  country: CA
+CA_NS: 
+  name: Nova Scotia
+  region_code: NS
+  country: CA
+CA_NT: 
+  name: Northwest Territories
+  region_code: NT
+  country: CA
+CA_NU: 
+  name: Nunavut
+  region_code: NU
+  country: CA
+CA_ON: 
+  name: Ontario
+  region_code: "ON"
+  country: CA
+CA_PE: 
+  name: Prince Edward Island
+  region_code: PE
+  country: CA
+CA_QC: 
+  name: Quebec
+  region_code: QC
+  country: CA
+CA_SK: 
+  name: Saskatchewan
+  region_code: SK
+  country: CA
+CA_YT: 
+  name: Yukon
+  region_code: YT
+  country: CA
+CU_CA: 
+  name: "Ciego de \xC3\x81vila"
+  region_code: CA
+  country: CU
+CU_CF: 
+  name: Cienfuegos
+  region_code: CF
+  country: CU
+CU_CG: 
+  name: "Camag\xC3\xBCey"
+  region_code: CG
+  country: CU
+CU_CH: 
+  name: Ciudad de La Habana
+  region_code: CH
+  country: CU
+CU_GR: 
+  name: Granma
+  region_code: GR
+  country: CU
+CU_GT: 
+  name: "Guant\xC3\xA1namo"
+  region_code: GT
+  country: CU
+CU_HO: 
+  name: "Holgu\xC3\xADn"
+  region_code: HO
+  country: CU
+CU_HA: 
+  name: La Habana
+  region_code: HA
+  country: CU
+CU_IJ: 
+  name: Municipio Especial Isla de la Juventud
+  region_code: IJ
+  country: CU
+CU_LT: 
+  name: Las Tunas
+  region_code: LT
+  country: CU
+CU_MT: 
+  name: Matanzas
+  region_code: MT
+  country: CU
+CU_PR: 
+  name: "Pinar del R\xC3\xADo"
+  region_code: PR
+  country: CU
+CU_SC: 
+  name: Santiago de Cuba
+  region_code: SC
+  country: CU
+CU_SS: 
+  name: "Sancti Sp\xC3\xADritus"
+  region_code: SS
+  country: CU
+CU_VC: 
+  name: Villa Clara
+  region_code: VC
+  country: CU
+CV_BR: 
+  name: Brava
+  region_code: BR
+  country: CV
+CV_BV: 
+  name: Boa Vista
+  region_code: BV
+  country: CV
+CV_F: 
+  name: Fogo
+  region_code: F
+  country: CV
+CV_M: 
+  name: Maio
+  region_code: M
+  country: CV
+CV_SL: 
+  name: Sal
+  region_code: SL
+  country: CV
+CV_ST: 
+  name: Santiago
+  region_code: ST
+  country: CV
+CV_SA: 
+  name: "S\xC3\xA3o Antaos"
+  region_code: SA
+  country: CV
+CV_SN: 
+  name: "S\xC3\xA3o Nicolau"
+  region_code: SN
+  country: CV
+CV_SV: 
+  name: "S\xC3\xA3o Vicente"
+  region_code: SV
+  country: CV
+ES_AA: 
+  name: Alava
+  region_code: AA
+  country: ES
+ES_AB: 
+  name: Albacete
+  region_code: AB
+  country: ES
+ES_AI: 
+  name: Alicante
+  region_code: AI
+  country: ES
+ES_AM: 
+  name: "Almer\xC3\xADa"
+  region_code: AM
+  country: ES
+ES_AS: 
+  name: Asturias
+  region_code: AS
+  country: ES
+ES_AV: 
+  name: Avila
+  region_code: AV
+  country: ES
+ES_BD: 
+  name: Badajoz
+  region_code: BD
+  country: ES
+ES_BL: 
+  name: Baleares
+  region_code: BL
+  country: ES
+ES_BR: 
+  name: Barcelona
+  region_code: BR
+  country: ES
+ES_BU: 
+  name: Burgos
+  region_code: BU
+  country: ES
+ES_CC: 
+  name: "C\xC3\xA1ceres"
+  region_code: CC
+  country: ES
+ES_CD: 
+  name: "C\xC3\xA1diz"
+  region_code: CD
+  country: ES
+ES_CN: 
+  name: Cantabria
+  region_code: CN
+  country: ES
+ES_CS: 
+  name: "Castell\xC3\xB3n"
+  region_code: CS
+  country: ES
+ES_CE: 
+  name: Ceuta
+  region_code: CE
+  country: ES
+ES_CR: 
+  name: Ciudad Real
+  region_code: CR
+  country: ES
+ES_CO: 
+  name: "C\xC3\xB3rdoba"
+  region_code: CO
+  country: ES
+ES_LC: 
+  name: "La Coru\xC3\xB1a"
+  region_code: LC
+  country: ES
+ES_CU: 
+  name: Cuenca
+  region_code: CU
+  country: ES
+ES_GI: 
+  name: Girona
+  region_code: GI
+  country: ES
+ES_GR: 
+  name: Granada
+  region_code: GR
+  country: ES
+ES_GP: 
+  name: "Guip\xC3\xBAzcoa"
+  region_code: GP
+  country: ES
+ES_HL: 
+  name: Huelva
+  region_code: HL
+  country: ES
+ES_HS: 
+  name: Huesca
+  region_code: HS
+  country: ES
+ES_JA: 
+  name: "Ja\xC3\xA9n"
+  region_code: JA
+  country: ES
+ES_LE: 
+  name: "Le\xC3\xB3n"
+  region_code: LE
+  country: ES
+ES_LL: 
+  name: Lleida
+  region_code: LL
+  country: ES
+ES_LU: 
+  name: Lugo
+  region_code: LU
+  country: ES
+ES_MA: 
+  name: Madrid
+  region_code: MA
+  country: ES
+ES_ML: 
+  name: "M\xC3\xA1laga"
+  region_code: ML
+  country: ES
+ES_ME: 
+  name: Melilla
+  region_code: ME
+  country: ES
+ES_MU: 
+  name: Murcia
+  region_code: MU
+  country: ES
+ES_NA: 
+  name: Navarra
+  region_code: NA
+  country: ES
+ES_OR: 
+  name: Orense
+  region_code: OR
+  country: ES
+ES_PA: 
+  name: Palencia
+  region_code: PA
+  country: ES
+ES_LP: 
+  name: Las Palmas
+  region_code: LP
+  country: ES
+ES_PO: 
+  name: Pontevedra
+  region_code: PO
+  country: ES
+ES_LR: 
+  name: La Rioja
+  region_code: LR
+  country: ES
+ES_SA: 
+  name: Salamanca
+  region_code: SA
+  country: ES
+ES_SC: 
+  name: Santa Cruz
+  region_code: SC
+  country: ES
+ES_TE: 
+  name: Tenerife
+  region_code: TE
+  country: ES
+ES_SG: 
+  name: Segovia
+  region_code: SG
+  country: ES
+ES_SV: 
+  name: Sevilla
+  region_code: SV
+  country: ES
+ES_SO: 
+  name: Soria
+  region_code: SO
+  country: ES
+ES_TA: 
+  name: Tarragona
+  region_code: TA
+  country: ES
+ES_TO: 
+  name: Toledo
+  region_code: TO
+  country: ES
+ES_VE: 
+  name: Valencia
+  region_code: VE
+  country: ES
+ES_VA: 
+  name: Valladolid
+  region_code: VA
+  country: ES
+ES_VI: 
+  name: Vizcaya
+  region_code: VI
+  country: ES
+ES_ZM: 
+  name: Zamora
+  region_code: ZM
+  country: ES
+ES_ZR: 
+  name: Zaragoza
+  region_code: ZR
+  country: ES
+GT_AV: 
+  name: Alta Verapaz
+  region_code: AV
+  country: GT
+GT_BV: 
+  name: Baja Verapaz
+  region_code: BV
+  country: GT
+GT_CM: 
+  name: Chimaltenango
+  region_code: CM
+  country: GT
+GT_CQ: 
+  name: Chiquimula
+  region_code: CQ
+  country: GT
+GT_PE: 
+  name: El Peten
+  region_code: PE
+  country: GT
+GT_PR: 
+  name: El Progreso
+  region_code: PR
+  country: GT
+GT_ES: 
+  name: Escuintla
+  region_code: ES
+  country: GT
+GT_GU: 
+  name: Guatemala
+  region_code: GU
+  country: GT
+GT_HU: 
+  name: Huehuetenango
+  region_code: HU
+  country: GT
+GT_IZ: 
+  name: Izabal
+  region_code: IZ
+  country: GT
+GT_JA: 
+  name: Jalapa
+  region_code: JA
+  country: GT
+GT_JU: 
+  name: Jutiapa
+  region_code: JU
+  country: GT
+GT_QE: 
+  name: Quetzaltenango
+  region_code: QE
+  country: GT
+GT_QI: 
+  name: Quiche
+  region_code: QI
+  country: GT
+GT_RE: 
+  name: Retalhuleu
+  region_code: RE
+  country: GT
+GT_SA: 
+  name: Sacatepequez
+  region_code: SA
+  country: GT
+GT_SM: 
+  name: San Marcos
+  region_code: SM
+  country: GT
+GT_SR: 
+  name: Santa Rosa
+  region_code: SR
+  country: GT
+GT_SO: 
+  name: Solola
+  region_code: SO
+  country: GT
+GT_SU: 
+  name: Suchitepequez
+  region_code: SU
+  country: GT
+GT_TO: 
+  name: Totonicapan
+  region_code: TO
+  country: GT
+GT_ZA: 
+  name: Zacapa
+  region_code: ZA
+  country: GT
+HN_AT: 
+  name: "Atl\xC3\xA1ntida"
+  region_code: AT
+  country: HN
+HN_CH: 
+  name: Choluteca
+  region_code: CH
+  country: HN
+HN_CL: 
+  name: "Col\xC3\xB3n"
+  region_code: CL
+  country: HN
+HN_CM: 
+  name: Comayagua
+  region_code: CM
+  country: HN
+HN_CP: 
+  name: "Cop\xC3\xA1n"
+  region_code: CP
+  country: HN
+HN_CR: 
+  name: "Cort\xC3\xA9s"
+  region_code: CR
+  country: HN
+HN_EP: 
+  name: "El Para\xC3\xADso"
+  region_code: EP
+  country: HN
+HN_FM: 
+  name: "Francisco Moraz\xC3\xA1n"
+  region_code: FM
+  country: HN
+HN_GD: 
+  name: Gracias a Dios
+  region_code: GD
+  country: HN
+HN_IN: 
+  name: "Intibuc\xC3\xA1"
+  region_code: IN
+  country: HN
+HN_IB: 
+  name: Islas de la Bahia
+  region_code: IB
+  country: HN
+HN_LP: 
+  name: La Paz
+  region_code: LP
+  country: HN
+HN_LE: 
+  name: Lempira
+  region_code: LE
+  country: HN
+HN_OC: 
+  name: Ocotepeque
+  region_code: OC
+  country: HN
+HN_OL: 
+  name: Olancho
+  region_code: OL
+  country: HN
+HN_SB: 
+  name: Santa Barbara
+  region_code: SB
+  country: HN
+HN_VA: 
+  name: Valle
+  region_code: VA
+  country: HN
+HN_YO: 
+  name: Yoro
+  region_code: YO
+  country: HN
+IE_CR: 
+  name: Carlow
+  region_code: CR
+  country: IE
+IE_CV: 
+  name: Cavan
+  region_code: CV
+  country: IE
+IE_CL: 
+  name: Clare
+  region_code: CL
+  country: IE
+IE_CO: 
+  name: Cork
+  region_code: CO
+  country: IE
+IE_DO: 
+  name: Donegal
+  region_code: DO
+  country: IE
+IE_DU: 
+  name: Dublin
+  region_code: DU
+  country: IE
+IE_G: 
+  name: Galway
+  region_code: G
+  country: IE
+IE_KE: 
+  name: Kerry
+  region_code: KE
+  country: IE
+IE_KD: 
+  name: Kildare
+  region_code: KD
+  country: IE
+IE_KK: 
+  name: Kilkenny
+  region_code: KK
+  country: IE
+IE_LA: 
+  name: Laois
+  region_code: LA
+  country: IE
+IE_LE: 
+  name: Leitrim
+  region_code: LE
+  country: IE
+IE_LI: 
+  name: Limerick
+  region_code: LI
+  country: IE
+IE_LO: 
+  name: Longford
+  region_code: LO
+  country: IE
+IE_LU: 
+  name: Louth
+  region_code: LU
+  country: IE
+IE_MA: 
+  name: Mayo
+  region_code: MA
+  country: IE
+IE_ME: 
+  name: Meath
+  region_code: ME
+  country: IE
+IE_MO: 
+  name: Monaghan
+  region_code: MO
+  country: IE
+IE_O: 
+  name: Offaly
+  region_code: O
+  country: IE
+IE_R: 
+  name: Roscommon
+  region_code: R
+  country: IE
+IE_S: 
+  name: Sligo
+  region_code: S
+  country: IE
+IE_T: 
+  name: Tipperary
+  region_code: T
+  country: IE
+IE_WF: 
+  name: Waterford
+  region_code: WF
+  country: IE
+IE_WM: 
+  name: Westmeath
+  region_code: WM
+  country: IE
+IE_WE: 
+  name: Wexford
+  region_code: WE
+  country: IE
+IE_WI: 
+  name: Wicklow
+  region_code: WI
+  country: IE
+IT_AG: 
+  name: Agrigento
+  region_code: AG
+  country: IT
+IT_AL: 
+  name: Alessandria
+  region_code: AL
+  country: IT
+IT_AN: 
+  name: Ancona
+  region_code: AN
+  country: IT
+IT_AO: 
+  name: Aosta
+  region_code: AO
+  country: IT
+IT_AP: 
+  name: Ascoli Piceno
+  region_code: AP
+  country: IT
+IT_AQ: 
+  name: L'Aquila
+  region_code: AQ
+  country: IT
+IT_AR: 
+  name: Arezzo
+  region_code: AR
+  country: IT
+IT_AT: 
+  name: Asti
+  region_code: AT
+  country: IT
+IT_AV: 
+  name: Avellino
+  region_code: AV
+  country: IT
+IT_BA: 
+  name: Bari
+  region_code: BA
+  country: IT
+IT_BG: 
+  name: Bergamo
+  region_code: BG
+  country: IT
+IT_BI: 
+  name: Biella
+  region_code: BI
+  country: IT
+IT_BL: 
+  name: Belluno
+  region_code: BL
+  country: IT
+IT_BN: 
+  name: Benevento
+  region_code: BN
+  country: IT
+IT_BO: 
+  name: Bologna
+  region_code: BO
+  country: IT
+IT_BR: 
+  name: Brindisi
+  region_code: BR
+  country: IT
+IT_BS: 
+  name: Brescia
+  region_code: BS
+  country: IT
+IT_BZ: 
+  name: Bolzano
+  region_code: BZ
+  country: IT
+IT_CA: 
+  name: Cagliari
+  region_code: CA
+  country: IT
+IT_CB: 
+  name: Campobasso
+  region_code: CB
+  country: IT
+IT_CE: 
+  name: Caserta
+  region_code: CE
+  country: IT
+IT_CH: 
+  name: Chienti
+  region_code: CH
+  country: IT
+IT_CL: 
+  name: Caltanisseta
+  region_code: CL
+  country: IT
+IT_CN: 
+  name: Cuneo
+  region_code: CN
+  country: IT
+IT_CO: 
+  name: Como
+  region_code: CO
+  country: IT
+IT_CR: 
+  name: Cremona
+  region_code: CR
+  country: IT
+IT_CS: 
+  name: Cosenza
+  region_code: CS
+  country: IT
+IT_CT: 
+  name: Catania
+  region_code: CT
+  country: IT
+IT_CZ: 
+  name: Catanzaro
+  region_code: CZ
+  country: IT
+IT_EN: 
+  name: Enna
+  region_code: EN
+  country: IT
+IT_FE: 
+  name: Ferrara
+  region_code: FE
+  country: IT
+IT_FG: 
+  name: Foggia
+  region_code: FG
+  country: IT
+IT_FI: 
+  name: Firenze
+  region_code: FI
+  country: IT
+IT_FO: 
+  name: Forli
+  region_code: FO
+  country: IT
+IT_FR: 
+  name: Frosinone
+  region_code: FR
+  country: IT
+IT_GE: 
+  name: Genova
+  region_code: GE
+  country: IT
+IT_GO: 
+  name: Gorizia
+  region_code: GO
+  country: IT
+IT_GR: 
+  name: Grosseto
+  region_code: GR
+  country: IT
+IT_IM: 
+  name: Imperia
+  region_code: IM
+  country: IT
+IT_IS: 
+  name: Isernia
+  region_code: IS
+  country: IT
+IT_KR: 
+  name: Crotone
+  region_code: KR
+  country: IT
+IT_LC: 
+  name: Lecco
+  region_code: LC
+  country: IT
+IT_LE: 
+  name: Lecce
+  region_code: LE
+  country: IT
+IT_LI: 
+  name: Livorno
+  region_code: LI
+  country: IT
+IT_LO: 
+  name: Lodi
+  region_code: LO
+  country: IT
+IT_LT: 
+  name: Latina
+  region_code: LT
+  country: IT
+IT_LU: 
+  name: Lucca
+  region_code: LU
+  country: IT
+IT_MC: 
+  name: Macerata
+  region_code: MC
+  country: IT
+IT_ME: 
+  name: Messina
+  region_code: ME
+  country: IT
+IT_MI: 
+  name: Milano
+  region_code: MI
+  country: IT
+IT_MN: 
+  name: Mantova
+  region_code: MN
+  country: IT
+IT_MO: 
+  name: Modena
+  region_code: MO
+  country: IT
+IT_MS: 
+  name: Massa Carrara
+  region_code: MS
+  country: IT
+IT_MT: 
+  name: Matera
+  region_code: MT
+  country: IT
+IT_NA: 
+  name: Napoli
+  region_code: NA
+  country: IT
+IT_NO: 
+  name: Novara
+  region_code: "NO"
+  country: IT
+IT_NU: 
+  name: Nuoro
+  region_code: NU
+  country: IT
+IT_OR: 
+  name: Oristano
+  region_code: OR
+  country: IT
+IT_PA: 
+  name: Palermo
+  region_code: PA
+  country: IT
+IT_PC: 
+  name: Piacenza
+  region_code: PC
+  country: IT
+IT_PD: 
+  name: Padova
+  region_code: PD
+  country: IT
+IT_PE: 
+  name: Pescara
+  region_code: PE
+  country: IT
+IT_PG: 
+  name: Perugia
+  region_code: PG
+  country: IT
+IT_PI: 
+  name: Pisa
+  region_code: PI
+  country: IT
+IT_PN: 
+  name: Pordenone
+  region_code: PN
+  country: IT
+IT_PO: 
+  name: Prato
+  region_code: PO
+  country: IT
+IT_PR: 
+  name: Parma
+  region_code: PR
+  country: IT
+IT_PS: 
+  name: Pesaro
+  region_code: PS
+  country: IT
+IT_PT: 
+  name: Pistoia
+  region_code: PT
+  country: IT
+IT_PV: 
+  name: Pavia
+  region_code: PV
+  country: IT
+IT_PZ: 
+  name: Potenza
+  region_code: PZ
+  country: IT
+IT_RA: 
+  name: Ravenna
+  region_code: RA
+  country: IT
+IT_RC: 
+  name: Reggio Calabria
+  region_code: RC
+  country: IT
+IT_RE: 
+  name: Reggio Emilia
+  region_code: RE
+  country: IT
+IT_RG: 
+  name: Ragusa
+  region_code: RG
+  country: IT
+IT_RI: 
+  name: Rieti
+  region_code: RI
+  country: IT
+IT_RM: 
+  name: Roma
+  region_code: RM
+  country: IT
+IT_RN: 
+  name: Remini
+  region_code: RN
+  country: IT
+IT_RO: 
+  name: Rovigo
+  region_code: RO
+  country: IT
+IT_SA: 
+  name: Salerno
+  region_code: SA
+  country: IT
+IT_SI: 
+  name: Siena
+  region_code: SI
+  country: IT
+IT_SO: 
+  name: Sondrio
+  region_code: SO
+  country: IT
+IT_SP: 
+  name: La Spezia
+  region_code: SP
+  country: IT
+IT_SR: 
+  name: Siracusa
+  region_code: SR
+  country: IT
+IT_SS: 
+  name: Sassari
+  region_code: SS
+  country: IT
+IT_SV: 
+  name: Savona
+  region_code: SV
+  country: IT
+IT_TA: 
+  name: Taranto
+  region_code: TA
+  country: IT
+IT_TE: 
+  name: Teramo
+  region_code: TE
+  country: IT
+IT_TN: 
+  name: Trento
+  region_code: TN
+  country: IT
+IT_TO: 
+  name: Torino
+  region_code: TO
+  country: IT
+IT_TP: 
+  name: Trapani
+  region_code: TP
+  country: IT
+IT_TR: 
+  name: Terni
+  region_code: TR
+  country: IT
+IT_TS: 
+  name: Trieste
+  region_code: TS
+  country: IT
+IT_TV: 
+  name: Treviso
+  region_code: TV
+  country: IT
+IT_UD: 
+  name: Udine
+  region_code: UD
+  country: IT
+IT_VA: 
+  name: Varese
+  region_code: VA
+  country: IT
+IT_VB: 
+  name: Verbania
+  region_code: VB
+  country: IT
+IT_VC: 
+  name: Vercelli
+  region_code: VC
+  country: IT
+IT_VE: 
+  name: Venezia
+  region_code: VE
+  country: IT
+IT_VI: 
+  name: Vicenza
+  region_code: VI
+  country: IT
+IT_VR: 
+  name: Verona
+  region_code: VR
+  country: IT
+IT_VT: 
+  name: Viterbo
+  region_code: VT
+  country: IT
+IT_VV: 
+  name: Vibo Valentia
+  region_code: VV
+  country: IT
+IQ_AA: 
+  name: Al Anbar
+  region_code: AA
+  country: IQ
+IQ_AB: 
+  name: Al Basrah
+  region_code: AB
+  country: IQ
+IQ_AM: 
+  name: Al Munthana
+  region_code: AM
+  country: IQ
+IQ_AN: 
+  name: Al Najaf
+  region_code: AN
+  country: IQ
+IQ_AQ: 
+  name: Al Quadisiya
+  region_code: AQ
+  country: IQ
+IQ_AS: 
+  name: Al Sulaymaniah
+  region_code: AS
+  country: IQ
+IQ_AT: 
+  name: Al Ta'amim
+  region_code: AT
+  country: IQ
+IQ_AR: 
+  name: Arbil
+  region_code: AR
+  country: IQ
+IQ_BA: 
+  name: Babil
+  region_code: BA
+  country: IQ
+IQ_BG: 
+  name: Baghdad
+  region_code: BG
+  country: IQ
+IQ_DA: 
+  name: Dahouk
+  region_code: DA
+  country: IQ
+IQ_DE: 
+  name: Deyala
+  region_code: DE
+  country: IQ
+IQ_KA: 
+  name: Karbala
+  region_code: KA
+  country: IQ
+IQ_MA: 
+  name: Maysan
+  region_code: MA
+  country: IQ
+IQ_MO: 
+  name: Mousl (Nainawa)
+  region_code: MO
+  country: IQ
+IQ_SA: 
+  name: Salah Al Deen
+  region_code: SA
+  country: IQ
+IQ_TQ: 
+  name: Thi Qar
+  region_code: TQ
+  country: IQ
+IQ_WA: 
+  name: Wasit
+  region_code: WA
+  country: IQ
+MX_AGS: 
+  name: Aguascalientes
+  region_code: AGS
+  country: MX
+MX_BCN: 
+  name: Baja California Norte
+  region_code: BCN
+  country: MX
+MX_BCS: 
+  name: Baja California Sur
+  region_code: BCS
+  country: MX
+MX_CAM: 
+  name: Campeche
+  region_code: CAM
+  country: MX
+MX_CHIS: 
+  name: Chiapas
+  region_code: CHIS
+  country: MX
+MX_CHIH: 
+  name: Chihuahua
+  region_code: CHIH
+  country: MX
+MX_COAH: 
+  name: Coahuila
+  region_code: COAH
+  country: MX
+MX_COL: 
+  name: Colima
+  region_code: COL
+  country: MX
+MX_DF: 
+  name: Distrito Federal
+  region_code: DF
+  country: MX
+MX_DGO: 
+  name: Durango
+  region_code: DGO
+  country: MX
+MX_GTO: 
+  name: Guanajuato
+  region_code: GTO
+  country: MX
+MX_GRO: 
+  name: Guerrero
+  region_code: GRO
+  country: MX
+MX_HGO: 
+  name: Hidalgo
+  region_code: HGO
+  country: MX
+MX_JAL: 
+  name: Jalisco
+  region_code: JAL
+  country: MX
+MX_MEX: 
+  name: "M\xC3\xA9xico (Estado de)"
+  region_code: MEX
+  country: MX
+MX_MICH: 
+  name: "Michoac\xC3\xA1n"
+  region_code: MICH
+  country: MX
+MX_MOR: 
+  name: Morelos
+  region_code: MOR
+  country: MX
+MX_NAY: 
+  name: Nayarit
+  region_code: NAY
+  country: MX
+MX_NL: 
+  name: "Nuevo Le\xC3\xB3n"
+  region_code: NL
+  country: MX
+MX_OAX: 
+  name: Oaxaca
+  region_code: OAX
+  country: MX
+MX_PUE: 
+  name: Puebla
+  region_code: PUE
+  country: MX
+MX_QRO: 
+  name: "Quer\xC3\xA9taro"
+  region_code: QRO
+  country: MX
+MX_QROO: 
+  name: Quintana Roo
+  region_code: QROO
+  country: MX
+MX_SLP: 
+  name: "San Luis Potos\xC3\xAD"
+  region_code: SLP
+  country: MX
+MX_SIN: 
+  name: Sinaloa
+  region_code: SIN
+  country: MX
+MX_SON: 
+  name: Sonora
+  region_code: SON
+  country: MX
+MX_TAB: 
+  name: Tabasco
+  region_code: TAB
+  country: MX
+MX_TLAX: 
+  name: Tlaxcala
+  region_code: TLAX
+  country: MX
+MX_VER: 
+  name: Veracruz
+  region_code: VER
+  country: MX
+MX_YUC: 
+  name: "Yucat\xC3\xA1n"
+  region_code: YUC
+  country: MX
+MX_ZAC: 
+  name: Zacatecas
+  region_code: ZAC
+  country: MX
+MY_J: 
+  name: Johor
+  region_code: J
+  country: MY
+MY_KH: 
+  name: Kedah
+  region_code: KH
+  country: MY
+MY_KN: 
+  name: Kelantan
+  region_code: KN
+  country: MY
+MY_M: 
+  name: Melaka
+  region_code: M
+  country: MY
+MY_NS: 
+  name: Negeri Sembilan
+  region_code: NS
+  country: MY
+MY_PA: 
+  name: Pahang
+  region_code: PA
+  country: MY
+MY_PK: 
+  name: Perak
+  region_code: PK
+  country: MY
+MY_PS: 
+  name: Perlis
+  region_code: PS
+  country: MY
+MY_PP: 
+  name: Pulau Pinang
+  region_code: PP
+  country: MY
+MY_SB: 
+  name: Sabah
+  region_code: SB
+  country: MY
+MY_SR: 
+  name: Sarawak
+  region_code: SR
+  country: MY
+MY_SE: 
+  name: Selangor
+  region_code: SE
+  country: MY
+MY_T: 
+  name: Terengganu
+  region_code: T
+  country: MY
+MZ_CD: 
+  name: Cabo Delgado
+  region_code: CD
+  country: MZ
+MZ_G: 
+  name: Gaza
+  region_code: G
+  country: MZ
+MZ_I: 
+  name: Inhambane
+  region_code: I
+  country: MZ
+MZ_MN: 
+  name: Manica
+  region_code: MN
+  country: MZ
+MZ_MP: 
+  name: Maputo
+  region_code: MP
+  country: MZ
+MZ_NA: 
+  name: Nampula
+  region_code: NA
+  country: MZ
+MZ_NI: 
+  name: Niassa
+  region_code: NI
+  country: MZ
+MZ_S: 
+  name: Sofala
+  region_code: S
+  country: MZ
+MZ_T: 
+  name: Tete
+  region_code: T
+  country: MZ
+MZ_Z: 
+  name: Zambezia
+  region_code: Z
+  country: MZ
+NG_AB: 
+  name: Abia
+  region_code: AB
+  country: NG
+NG_AD: 
+  name: Adamawa
+  region_code: AD
+  country: NG
+NG_AK: 
+  name: Akwa
+  region_code: AK
+  country: NG
+NG_AN: 
+  name: Anambra
+  region_code: AN
+  country: NG
+NG_BA: 
+  name: Bauchi
+  region_code: BA
+  country: NG
+NG_BY: 
+  name: Bayelsa
+  region_code: BY
+  country: NG
+NG_BE: 
+  name: Benue
+  region_code: BE
+  country: NG
+NG_BO: 
+  name: Borno
+  region_code: BO
+  country: NG
+NG_CR: 
+  name: Cross River
+  region_code: CR
+  country: NG
+NG_D: 
+  name: Delta
+  region_code: D
+  country: NG
+NG_EB: 
+  name: Ebonyi
+  region_code: EB
+  country: NG
+NG_ED: 
+  name: Edo
+  region_code: ED
+  country: NG
+NG_EK: 
+  name: Ekiti
+  region_code: EK
+  country: NG
+NG_EN: 
+  name: Enugu
+  region_code: EN
+  country: NG
+NG_FCT: 
+  name: Federal Capital Territory
+  region_code: FCT
+  country: NG
+NG_G: 
+  name: Gombe
+  region_code: G
+  country: NG
+NG_I: 
+  name: Imo
+  region_code: I
+  country: NG
+NG_J: 
+  name: Jigawa
+  region_code: J
+  country: NG
+NG_KA: 
+  name: Kaduna
+  region_code: KA
+  country: NG
+NG_KN: 
+  name: Kano
+  region_code: KN
+  country: NG
+NG_KT: 
+  name: Katsina
+  region_code: KT
+  country: NG
+NG_KE: 
+  name: Kebbi
+  region_code: KE
+  country: NG
+NG_KO: 
+  name: Kogi
+  region_code: KO
+  country: NG
+NG_KW: 
+  name: Kwara
+  region_code: KW
+  country: NG
+NG_L: 
+  name: Lagos
+  region_code: L
+  country: NG
+NG_NA: 
+  name: Nassarawa
+  region_code: NA
+  country: NG
+NG_NI: 
+  name: Niger
+  region_code: NI
+  country: NG
+NG_OG: 
+  name: Ogun
+  region_code: OG
+  country: NG
+NG_ON: 
+  name: Ondo
+  region_code: "ON"
+  country: NG
+NG_OS: 
+  name: Osun
+  region_code: OS
+  country: NG
+NG_OY: 
+  name: Oyo
+  region_code: OY
+  country: NG
+NG_P: 
+  name: Plateau
+  region_code: P
+  country: NG
+NG_R: 
+  name: Rivers
+  region_code: R
+  country: NG
+NG_S: 
+  name: Sokoto
+  region_code: S
+  country: NG
+NG_T: 
+  name: Taraba
+  region_code: T
+  country: NG
+NG_Y: 
+  name: Yobe
+  region_code: Y
+  country: NG
+NG_Z: 
+  name: Zamfara
+  region_code: Z
+  country: NG
+NI_B: 
+  name: Boaco
+  region_code: B
+  country: NI
+NI_CA: 
+  name: Carazo
+  region_code: CA
+  country: NI
+NI_CI: 
+  name: Chinandega
+  region_code: CI
+  country: NI
+NI_CO: 
+  name: Chontales
+  region_code: CO
+  country: NI
+NI_E: 
+  name: Esteli
+  region_code: E
+  country: NI
+NI_G: 
+  name: Granada
+  region_code: G
+  country: NI
+NI_J: 
+  name: Jinotega
+  region_code: J
+  country: NI
+NI_L: 
+  name: Leon
+  region_code: L
+  country: NI
+NI_MD: 
+  name: Madriz
+  region_code: MD
+  country: NI
+NI_MN: 
+  name: Managua
+  region_code: MN
+  country: NI
+NI_MS: 
+  name: Masaya
+  region_code: MS
+  country: NI
+NI_MT: 
+  name: Matagalpa
+  region_code: MT
+  country: NI
+NI_NS: 
+  name: Nueva Segovia
+  region_code: NS
+  country: NI
+NI_RSJ: 
+  name: Rio San Juan
+  region_code: RSJ
+  country: NI
+NI_RI: 
+  name: Rivas
+  region_code: RI
+  country: NI
+NR_AI: 
+  name: Aiwo District
+  region_code: AI
+  country: NR
+NR_AB: 
+  name: Anabar District
+  region_code: AB
+  country: NR
+NR_AE: 
+  name: Anabare District
+  region_code: AE
+  country: NR
+NR_AN: 
+  name: Anetan District
+  region_code: AN
+  country: NR
+NR_BA: 
+  name: Baitsi District
+  region_code: BA
+  country: NR
+NR_BO: 
+  name: Boa District
+  region_code: BO
+  country: NR
+NR_BU: 
+  name: Buada District
+  region_code: BU
+  country: NR
+NR_D: 
+  name: Denig District
+  region_code: D
+  country: NR
+NR_E: 
+  name: Ewa District
+  region_code: E
+  country: NR
+NR_IB: 
+  name: Ibok District
+  region_code: IB
+  country: NR
+NR_IJ: 
+  name: Ijuw District
+  region_code: IJ
+  country: NR
+NR_M: 
+  name: Meneng District
+  region_code: M
+  country: NR
+NR_N: 
+  name: Nuaboe District
+  region_code: N
+  country: NR
+NR_Y: 
+  name: Yaren District
+  region_code: Y
+  country: NR
+PG_CPM: 
+  name: Central
+  region_code: CPM
+  country: PG
+PG_CPK: 
+  name: Chimbu
+  region_code: CPK
+  country: PG
+PG_EHG: 
+  name: Eastern Highlands
+  region_code: EHG
+  country: PG
+PG_EBR: 
+  name: East New Britain
+  region_code: EBR
+  country: PG
+PG_ESW: 
+  name: East Sepik
+  region_code: ESW
+  country: PG
+PG_EPW: 
+  name: Enga
+  region_code: EPW
+  country: PG
+PG_GPK: 
+  name: Gulf
+  region_code: GPK
+  country: PG
+PG_MPM: 
+  name: Madang
+  region_code: MPM
+  country: PG
+PG_MRL: 
+  name: Manus
+  region_code: MRL
+  country: PG
+PG_MBA: 
+  name: Milne Bay
+  region_code: MBA
+  country: PG
+PG_MPL: 
+  name: Morobe
+  region_code: MPL
+  country: PG
+PG_NCD: 
+  name: National Capital District
+  region_code: NCD
+  country: PG
+PG_NIK: 
+  name: New Ireland
+  region_code: NIK
+  country: PG
+PG_NPP: 
+  name: Northern
+  region_code: NPP
+  country: PG
+PG_NSA: 
+  name: North Solomons
+  region_code: NSA
+  country: PG
+PG_SAN: 
+  name: Sandaun
+  region_code: SAN
+  country: PG
+PG_SHM: 
+  name: Southern Highlands
+  region_code: SHM
+  country: PG
+PG_WPD: 
+  name: Western
+  region_code: WPD
+  country: PG
+PG_WHM: 
+  name: Western Highlands
+  region_code: WHM
+  country: PG
+PG_WBK: 
+  name: West New Britain
+  region_code: WBK
+  country: PG
+SO_AD: 
+  name: Awdal
+  region_code: AD
+  country: SO
+SO_BK: 
+  name: Bakool
+  region_code: BK
+  country: SO
+SO_BN: 
+  name: Banaadir
+  region_code: BN
+  country: SO
+SO_BR: 
+  name: Bari
+  region_code: BR
+  country: SO
+SO_BY: 
+  name: Bay
+  region_code: BY
+  country: SO
+SO_GG: 
+  name: Galgaduud
+  region_code: GG
+  country: SO
+SO_GD: 
+  name: Gedo
+  region_code: GD
+  country: SO
+SO_HR: 
+  name: Hiiraan
+  region_code: HR
+  country: SO
+SO_JD: 
+  name: Jubbada Dhexe
+  region_code: JD
+  country: SO
+SO_JH: 
+  name: Jubbada Hoose
+  region_code: JH
+  country: SO
+SO_MD: 
+  name: Mudug
+  region_code: MD
+  country: SO
+SO_NG: 
+  name: Nugaal
+  region_code: NG
+  country: SO
+SO_SG: 
+  name: Sanaag
+  region_code: SG
+  country: SO
+SO_SD: 
+  name: Shabeellada Dhexe
+  region_code: SD
+  country: SO
+SO_SH: 
+  name: Shabeellada Hoose
+  region_code: SH
+  country: SO
+SO_SL: 
+  name: Sool
+  region_code: SL
+  country: SO
+SO_TG: 
+  name: Togdheer
+  region_code: TG
+  country: SO
+SO_WG: 
+  name: Waqooyi Galbeed
+  region_code: WG
+  country: SO
+SV_AH: 
+  name: Ahuachapan
+  region_code: AH
+  country: SV
+SV_CA: 
+  name: Cabanas
+  region_code: CA
+  country: SV
+SV_CH: 
+  name: Chalatenango
+  region_code: CH
+  country: SV
+SV_CU: 
+  name: Cuscatlan
+  region_code: CU
+  country: SV
+SV_LL: 
+  name: La Libertad
+  region_code: LL
+  country: SV
+SV_LP: 
+  name: La Paz
+  region_code: LP
+  country: SV
+SV_LU: 
+  name: La Union
+  region_code: LU
+  country: SV
+SV_MO: 
+  name: Morazan
+  region_code: MO
+  country: SV
+SV_SM: 
+  name: San Miguel
+  region_code: SM
+  country: SV
+SV_SS:
+  name: San Salvador
+  region_code: SS
+  country: SV
+SV_SV: 
+  name: San Vicente
+  region_code: SV
+  country: SV
+SV_SA: 
+  name: Santa Ana
+  region_code: SA
+  country: SV
+SV_SO: 
+  name: Sonsonate
+  region_code: SO
+  country: SV
+SV_US: 
+  name: Usulutan
+  region_code: US
+  country: SV
+TV_F: 
+  name: Funafuti
+  region_code: F
+  country: TV
+TV_FC: 
+  name: Funafuti Centre
+  region_code: FC
+  country: TV
+TV_NE: 
+  name: Nanumaga
+  region_code: NE
+  country: TV
+TV_NG: 
+  name: Nanumea
+  region_code: NG
+  country: TV
+TV_NL: 
+  name: Niulakita
+  region_code: NL
+  country: TV
+TV_NT: 
+  name: Niutao
+  region_code: NT
+  country: TV
+TV_NU: 
+  name: Nui
+  region_code: NU
+  country: TV
+TV_NK: 
+  name: Nukulaelae
+  region_code: NK
+  country: TV
+TV_V: 
+  name: Vaitupu
+  region_code: V
+  country: TV
+US_AK: 
+  name: Alaska
+  region_code: AK
+  country: US
+US_AL: 
+  name: Alabama
+  region_code: AL
+  country: US
+US_AR: 
+  name: Arkansas
+  region_code: AR
+  country: US
+US_AZ: 
+  name: Arizona
+  region_code: AZ
+  country: US
+US_CA: 
+  name: California
+  region_code: CA
+  country: US
+US_CO: 
+  name: Colorado
+  region_code: CO
+  country: US
+US_CT: 
+  name: Connecticut
+  region_code: CT
+  country: US
+US_DC: 
+  name: District of Columbia
+  region_code: DC
+  country: US
+US_DE: 
+  name: Delaware
+  region_code: DE
+  country: US
+US_FL: 
+  name: Florida
+  region_code: FL
+  country: US
+US_GA: 
+  name: Georgia
+  region_code: GA
+  country: US
+US_HI: 
+  name: Hawaii
+  region_code: HI
+  country: US
+US_IA: 
+  name: Iowa
+  region_code: IA
+  country: US
+US_ID: 
+  name: Idaho
+  region_code: ID
+  country: US
+US_IL: 
+  name: Illinois
+  region_code: IL
+  country: US
+US_IN: 
+  name: Indiana
+  region_code: IN
+  country: US
+US_KS: 
+  name: Kansas
+  region_code: KS
+  country: US
+US_KY: 
+  name: Kentucky
+  region_code: KY
+  country: US
+US_LA: 
+  name: Louisiana
+  region_code: LA
+  country: US
+US_MA: 
+  name: Massachusetts
+  region_code: MA
+  country: US
+US_MD: 
+  name: Maryland
+  region_code: MD
+  country: US
+US_ME: 
+  name: Maine
+  region_code: ME
+  country: US
+US_MI: 
+  name: Michigan
+  region_code: MI
+  country: US
+US_MN: 
+  name: Minnesota
+  region_code: MN
+  country: US
+US_MO: 
+  name: Missouri
+  region_code: MO
+  country: US
+US_MS: 
+  name: Mississippi
+  region_code: MS
+  country: US
+US_MT: 
+  name: Montana
+  region_code: MT
+  country: US
+US_NC: 
+  name: North Carolina
+  region_code: NC
+  country: US
+US_ND: 
+  name: North Dakota
+  region_code: ND
+  country: US
+US_NE: 
+  name: Nebraska
+  region_code: NE
+  country: US
+US_NH: 
+  name: New Hampshire
+  region_code: NH
+  country: US
+US_NJ: 
+  name: New Jersey
+  region_code: NJ
+  country: US
+US_NM: 
+  name: New Mexico
+  region_code: NM
+  country: US
+US_NV: 
+  name: Nevada
+  region_code: NV
+  country: US
+US_NY: 
+  name: New York
+  region_code: NY
+  country: US
+US_OH: 
+  name: Ohio
+  region_code: OH
+  country: US
+US_OK: 
+  name: Oklahoma
+  region_code: OK
+  country: US
+US_OR: 
+  name: Oregon
+  region_code: OR
+  country: US
+US_PA: 
+  name: Pennsylvania
+  region_code: PA
+  country: US
+US_RI: 
+  name: Rhode Island
+  region_code: RI
+  country: US
+US_SC: 
+  name: South Carolina
+  region_code: SC
+  country: US
+US_SD: 
+  name: South Dakota
+  region_code: SD
+  country: US
+US_TN: 
+  name: Tennessee
+  region_code: TN
+  country: US
+US_TX: 
+  name: Texas
+  region_code: TX
+  country: US
+US_UT: 
+  name: Utah
+  region_code: UT
+  country: US
+US_VA: 
+  name: Virginia
+  region_code: VA
+  country: US
+US_VT: 
+  name: Vermont
+  region_code: VT
+  country: US
+US_WA: 
+  name: Washington
+  region_code: WA
+  country: US
+US_WI: 
+  name: Wisconsin
+  region_code: WI
+  country: US
+US_WV: 
+  name: West Virginia
+  region_code: WV
+  country: US
+US_WY: 
+  name: Wyoming
+  region_code: WY
+  country: US
+UY_AR: 
+  name: Artigas
+  region_code: AR
+  country: UY
+UY_CL: 
+  name: Cerro Largo
+  region_code: CL
+  country: UY
+UY_CO: 
+  name: Colonia
+  region_code: CO
+  country: UY
+UY_DU: 
+  name: Durazno
+  region_code: DU
+  country: UY
+UY_CA: 
+  name: Canelones
+  region_code: CA
+  country: UY
+UY_FL: 
+  name: Flores
+  region_code: FL
+  country: UY
+UY_LA: 
+  name: Lavalleja
+  region_code: LA
+  country: UY
+UY_MA: 
+  name: Maldonado
+  region_code: MA
+  country: UY
+UY_PA: 
+  name: "Paysand\xC3\xBA"
+  region_code: PA
+  country: UY
+UY_RN: 
+  name: Rio Negro
+  region_code: RN
+  country: UY
+UY_RI: 
+  name: Rivera
+  region_code: RI
+  country: UY
+UY_RO: 
+  name: Rocha
+  region_code: RO
+  country: UY
+UY_SA: 
+  name: Salto
+  region_code: SA
+  country: UY
+UY_SJ: 
+  name: "San Jos\xC3\xA9"
+  region_code: SJ
+  country: UY
+UY_SO: 
+  name: Soriano
+  region_code: SO
+  country: UY
+UY_TA: 
+  name: "Tacuaremb\xC3\xB3"
+  region_code: TA
+  country: UY
+UY_TT: 
+  name: Treinta y tres
+  region_code: TT
+  country: UY
+VE_AM: 
+  name: Amazonas
+  region_code: AM
+  country: VE
+VE_AN: 
+  name: "Anzo\xC3\xA1tegui"
+  region_code: AN
+  country: VE
+VE_AP: 
+  name: Apure
+  region_code: AP
+  country: VE
+VE_AR: 
+  name: Aragua
+  region_code: AR
+  country: VE
+VE_BA: 
+  name: Barinas
+  region_code: BA
+  country: VE
+VE_BO: 
+  name: "Bol\xC3\xADvar"
+  region_code: BO
+  country: VE
+VE_CA: 
+  name: Carabobo
+  region_code: CA
+  country: VE
+VE_CO: 
+  name: Cojedes
+  region_code: CO
+  country: VE
+VE_DA: 
+  name: Delta Amacuro
+  region_code: DA
+  country: VE
+VE_DP: 
+  name: Dependencias Federales
+  region_code: DP
+  country: VE
+VE_DF: 
+  name: Distrito Capital
+  region_code: DF
+  country: VE
+VE_FA: 
+  name: "Falc\xC3\xB3n"
+  region_code: FA
+  country: VE
+VE_GU: 
+  name: "Gu\xC3\xA1rico"
+  region_code: GU
+  country: VE
+VE_LA: 
+  name: Lara
+  region_code: LA
+  country: VE
+VE_ME: 
+  name: "M\xC3\xA9rida"
+  region_code: ME
+  country: VE
+VE_MI: 
+  name: Miranda
+  region_code: MI
+  country: VE
+VE_MO: 
+  name: Monagas
+  region_code: MO
+  country: VE
+VE_NE: 
+  name: Nueva Esparta
+  region_code: NE
+  country: VE
+VE_PO: 
+  name: Portuguesa
+  region_code: PO
+  country: VE
+VE_SU: 
+  name: Sucre
+  region_code: SU
+  country: VE
+VE_TA: 
+  name: "T\xC3\xA1chira"
+  region_code: TA
+  country: VE
+VE_TR: 
+  name: Trujillo
+  region_code: TR
+  country: VE
+VE_VA: 
+  name: Vargas
+  region_code: VA
+  country: VE
+VE_YA: 
+  name: Yaracuy
+  region_code: YA
+  country: VE
+VE_ZU: 
+  name: Zulia
+  region_code: ZU
+  country: VE

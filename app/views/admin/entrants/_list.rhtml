@@ -1,0 +1,11 @@
+<%= render :super %>
+<% unless @is_admin_view -%>
+<div id="print-all-bottle-labels"<%= ' style="display: none"' if @records.collect{|r| r.entries.length}.delete_if{|i| i == 0}.empty? -%>>
+  <%= link_to_with_icon('Download all bottle labels',
+                        bottle_labels_admin_entries_path,
+                        { :extname => '.pdf', :popup => true }) %>
+  <br />
+  Note: Printed bottle labels will not include entries that have already been
+  checked in.
+</div>
+<% end -%>

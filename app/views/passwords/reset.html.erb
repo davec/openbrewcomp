@@ -1,0 +1,29 @@
+<% @page_title = 'Reset Your Password' %>
+
+<div id="password-reset-form">
+  <% form_for :user, :url => { :action => 'update_after_forgetting' }, :html => { :id => 'new_password' } do |f| %>
+    <fieldset>
+      <legend>Update Password</legend>
+      <ol>
+        <li>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+          <%= f.error_message_on :password, :preprend_text => 'Password ' %>
+        </li>
+        <li>
+          <%= f.label :password_confirmation, 'Confirm Password' %>
+          <%= f.password_field :password_confirmation %>
+          <%= f.error_message_on :password_confirmation, :preprend_text => 'Password ' %>
+        </li>
+      </ol>
+      <div class="flash-error"><%= h flash[:password_error] %></div>
+    </fieldset>
+    <%= hidden_field_tag :reset_code, params[:reset_code] %>
+    <div class="form-buttons">
+      <%= f.submit "Submit" %>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+  Form.focusFirstElement('new_password');
+</script>

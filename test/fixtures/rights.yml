@@ -1,0 +1,516 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+categories_create: 
+  name: Create Categories
+  controller: categories
+  action: create
+  roles: dba, style
+categories_read: 
+  name: Read Categories
+  controller: categories
+  action: read
+  roles: dba, style
+categories_update: 
+  name: Update Categories
+  controller: categories
+  action: update
+  roles: dba, style
+categories_delete: 
+  name: Delete Categories
+  controller: categories
+  action: delete
+  roles: dba, style
+awards_create: 
+  name: Create Awards
+  controller: awards
+  action: create
+  roles: dba, style
+awards_read: 
+  name: Read Awards
+  controller: awards
+  action: read
+  roles: dba, style
+awards_update: 
+  name: Update Awards
+  controller: awards
+  action: update
+  roles: dba, style
+awards_delete: 
+  name: Delete Awards
+  controller: awards
+  action: delete
+  roles: dba, style
+styles_create: 
+  name: Create Styles
+  controller: styles
+  action: create
+  roles: dba, style
+styles_read: 
+  name: Read Styles
+  controller: styles
+  action: read
+  roles: dba, style
+styles_update: 
+  name: Update Styles
+  controller: styles
+  action: update
+  roles: dba, style
+styles_delete: 
+  name: Delete Styles
+  controller: styles
+  action: delete
+  roles: dba, style
+countries_create: 
+  name: Create Countries
+  controller: countries
+  action: create
+  roles: dba
+countries_read: 
+  name: Read Countries
+  controller: countries
+  action: read
+  roles: dba
+countries_update: 
+  name: Update Countries
+  controller: countries
+  action: update
+  roles: dba
+countries_delete: 
+  name: Delete Countries
+  controller: countries
+  action: delete
+  roles: dba
+regions_create: 
+  name: Create Regions
+  controller: regions
+  action: create
+  roles: dba
+regions_read: 
+  name: Read Regions
+  controller: regions
+  action: read
+  roles: dba
+regions_update: 
+  name: Update Regions
+  controller: regions
+  action: update
+  roles: dba
+regions_delete: 
+  name: Delete Regions
+  controller: regions
+  action: delete
+  roles: dba
+carbonation_create: 
+  name: Create Carbonation
+  controller: carbonation
+  action: create
+  roles: dba
+carbonation_read: 
+  name: Read Carbonation
+  controller: carbonation
+  action: read
+  roles: dba
+carbonation_update: 
+  name: Update Carbonation
+  controller: carbonation
+  action: update
+  roles: dba
+carbonation_delete: 
+  name: Delete Carbonation
+  controller: carbonation
+  action: delete
+  roles: dba
+strength_create: 
+  name: Create Strength
+  controller: strength
+  action: create
+  roles: dba
+strength_read: 
+  name: Read Strength
+  controller: strength
+  action: read
+  roles: dba
+strength_update: 
+  name: Update Strength
+  controller: strength
+  action: update
+  roles: dba
+strength_delete: 
+  name: Delete Strength
+  controller: strength
+  action: delete
+  roles: dba
+sweetness_create: 
+  name: Create Sweetness
+  controller: sweetness
+  action: create
+  roles: dba
+sweetness_read: 
+  name: Read Sweetness
+  controller: sweetness
+  action: read
+  roles: dba
+sweetness_update: 
+  name: Update Sweetness
+  controller: sweetness
+  action: update
+  roles: dba
+sweetness_delete: 
+  name: Delete Sweetness
+  controller: sweetness
+  action: delete
+  roles: dba
+clubs_create: 
+  name: Create Clubs
+  controller: clubs
+  action: create
+  roles: dba
+clubs_read: 
+  name: Read Clubs
+  controller: clubs
+  action: read
+  roles: dba
+clubs_update: 
+  name: Update Clubs
+  controller: clubs
+  action: update
+  roles: dba
+clubs_delete: 
+  name: Delete Clubs
+  controller: clubs
+  action: delete
+  roles: dba
+users_create: 
+  name: Create Users
+  controller: users
+  action: create
+  roles: dba, user
+users_read: 
+  name: Read Users
+  controller: users
+  action: read
+  roles: dba, user
+users_update: 
+  name: Update Users
+  controller: users
+  action: update
+  roles: dba, user
+users_delete: 
+  name: Delete Users
+  controller: users
+  action: delete
+  roles: dba, user
+roles_create: 
+  name: Create Roles
+  controller: roles
+  action: create
+  roles: dba
+roles_read: 
+  name: Read Roles
+  controller: roles
+  action: read
+  roles: dba
+roles_update: 
+  name: Update Roles
+  controller: roles
+  action: update
+  roles: dba
+roles_delete: 
+  name: Delete Roles
+  controller: roles
+  action: delete
+  roles: dba
+rights_create: 
+  name: Create Rights
+  controller: rights
+  action: create
+  roles: dba
+rights_read: 
+  name: Read Rights
+  controller: rights
+  action: read
+  roles: dba
+rights_update: 
+  name: Update Rights
+  controller: rights
+  action: update
+  roles: dba
+rights_delete: 
+  name: Delete Rights
+  controller: rights
+  action: delete
+  roles: dba
+contacts_create: 
+  name: Create Contacts
+  controller: contacts
+  action: create
+  roles: dba, contact
+contacts_read: 
+  name: Read Contacts
+  controller: contacts
+  action: read
+  roles: dba, contact
+contacts_update: 
+  name: Update Contacts
+  controller: contacts
+  action: update
+  roles: dba, contact
+contacts_delete: 
+  name: Delete Contacts
+  controller: contacts
+  action: delete
+  roles: dba, contact
+newsitems_create: 
+  name: Create News_items
+  controller: news_items
+  action: create
+  roles: dba, news
+newsitems_read: 
+  name: Read News_items
+  controller: news_items
+  action: read
+  roles: dba, news
+newsitems_update: 
+  name: Update News_items
+  controller: news_items
+  action: update
+  roles: dba, news
+newsitems_delete: 
+  name: Delete News_items
+  controller: news_items
+  action: delete
+  roles: dba, news
+entrants_create: 
+  name: Create Entrants
+  controller: entrants
+  action: create
+  roles: dba, registration
+entrants_read: 
+  name: Read Entrants
+  controller: entrants
+  action: read
+  roles: dba, registration
+entrants_update: 
+  name: Update Entrants
+  controller: entrants
+  action: update
+  roles: dba, registration
+entrants_delete: 
+  name: Delete Entrants
+  controller: entrants
+  action: delete
+  roles: dba, registration
+entries_create: 
+  name: Create Entries
+  controller: entries
+  action: create
+  roles: dba, registration
+entries_read: 
+  name: Read Entries
+  controller: entries
+  action: read
+  roles: dba, registration
+entries_update: 
+  name: Update Entries
+  controller: entries
+  action: update
+  roles: dba, registration
+entries_delete: 
+  name: Delete Entries
+  controller: entries
+  action: delete
+  roles: dba, registration
+testright:
+  name: Test Right
+  controller: test
+  action: *
+  roles: dba
+competition_data_read:
+  name: Read Competition Data
+  controller: competition_data
+  action: read
+  roles: dba, competition
+competition_data_update:
+  name: Update Competition Data
+  controller: competition_data
+  action: update
+  roles: dba, competition
+reports:
+  name: Run Reports
+  controller: reports
+  action: *
+  roles: dba, registration, competition
+entries_with_styleinfo_read:
+  name: Read Entries With Styleinfo
+  controller: entries_with_styleinfo
+  action: read
+  roles: dba, registration
+entries_with_styleinfo_update:
+  name: Update Entries With Styleinfo
+  controller: entries_with_styleinfo
+  action: read
+  roles: dba, registration
+entries_with_styleinfo_delete:
+  name: Delete Entries With Styleinfo
+  controller: entries_with_styleinfo
+  action: read
+  roles: dba, registration
+exports:
+  name: Export Database
+  controller: exports
+  action: *
+  roles: dba
+imports:
+  name: Import Database
+  controller: imports
+  action: *
+  roles: dba
+rounds_create:
+  name: Create Rounds
+  controller: rounds
+  action: create
+  roles: dba
+rounds_read:
+  name: Read Rounds
+  controller: rounds
+  action: read
+  roles: dba
+rounds_update:
+  name: Update Rounds
+  controller: rounds
+  action: update
+  roles: dba
+rounds_delete:
+  name: Delete Rounds
+  controller: rounds
+  action: destroy
+  roles: dba
+flights_create:
+  name: Create Flights
+  controller: flights
+  action: create
+  roles: dba, competition
+flights_read:
+  name: Read Flights
+  controller: flights
+  action: read
+  roles: dba, competition
+flights_update:
+  name: Update Flights
+  controller: flights
+  action: update
+  roles: dba, competition
+flights_delete:
+  name: Delete Flights
+  controller: flights
+  action: destroy
+  roles: dba, competition
+results:
+  name: Generate Results
+  controller: results
+  action: *
+  roles: dba, competition
+judging_sessions_create:
+  name: Create Judging Sessions
+  controller: judging_sessions
+  action: create
+  roles: dba, competition
+judging_sessions_read:
+  name: Read Judging Sessions
+  controller: judging_sessions
+  action: read
+  roles: dba, competition
+judging_sessions_update:
+  name: Update Judging Sessions
+  controller: judging_sessions
+  action: update
+  roles: dba, competition
+judging_sessions_delete:
+  name: Delete Judging Sessions
+  controller: judging_sessions
+  action: destroy
+  roles: dba, competition
+box_check:
+  name: Run Box Check Report
+  controller: box_check
+  action: *
+  roles: dba, registration
+judge_ranks_create: 
+  name: Create Judge Ranks
+  controller: judge_ranks
+  action: create
+  roles: dba
+judge_ranks_read: 
+  name: Read Judge Ranks
+  controller: judge_ranks
+  action: read
+  roles: dba
+judge_ranks_update: 
+  name: Update Judge Ranks
+  controller: judge_ranks
+  action: update
+  roles: dba
+judge_ranks_delete: 
+  name: Delete Judge Ranks
+  controller: judge_ranks
+  action: delete
+  roles: dba
+judges_create: 
+  name: Create Judges
+  controller: judges
+  action: create
+  roles: dba, registration, competition
+judges_read: 
+  name: Read Judges
+  controller: judges
+  action: read
+  roles: dba, registration, competition
+judges_update: 
+  name: Update Judges
+  controller: judges
+  action: update
+  roles: dba, registration, competition
+judges_delete: 
+  name: Delete Judges
+  controller: judges
+  action: delete
+  roles: dba, registration, competition
+point_allocations_create:
+  name: Create Point Allocations
+  controller: point_allocations
+  action: create
+  roles: dba
+point_allocations_read:
+  name: Read Point Allocations
+  controller: point_allocations
+  action: read
+  roles: dba
+point_allocations_update:
+  name: Update Point Allocations
+  controller: point_allocations
+  action: update
+  roles: dba
+point_allocations_delete:
+  name: Delete Point Allocations
+  controller: point_allocations
+  action: delete
+  roles: dba
+purge_old_data:
+  name: Purge Old Data
+  controller: purge_old_data
+  action: *
+  roles: dba
+send_judge_invites:
+  name: Send Judge Invites
+  controller: judge_invites
+  action: *
+  roles: dba, registration
+entry_scores_read:
+  name: Read Entry Scores
+  controller: entry_scores
+  action: read
+  roles: dba, competition
+entry_scores_update:
+  name: Update Entry Scores
+  controller: entry_scores
+  action: update
+  roles: dba, competition

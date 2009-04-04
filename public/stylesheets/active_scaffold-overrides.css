@@ -1,0 +1,198 @@
+/*
+ * Override/supplement some of the ActiveScaffold settings
+ */
+
+.active-scaffold-header h2 {
+  font-size: 120%;
+}
+.active-scaffold .active-scaffold .active-scaffold-header h2 {
+  font-size: 100%;
+}
+.active-scaffold-header div.actions a.help {
+  background-image: url(../images/help.png);
+  background-position: 1px 50%;
+  background-repeat: no-repeat;
+  padding-left: 19px;
+}
+.active-scaffold td.numeric {
+  text-align: left;
+}
+.active-scaffold td.price-column {
+  text-align: right;
+}
+.active-scaffold ol.form {
+  margin: 0 0.5em;
+  padding: 2px;
+}
+.active-scaffold ol.form li {
+  margin: 0;
+}
+.active-scaffold p.form-footer {
+  margin: 0 0.5em;
+  padding: 1ex 0;
+}
+.active-scaffold .submit {
+  margin-right: 0.5em;
+}
+.active-scaffold li.form-element dt {
+  margin: 0;
+  padding: 0 0 6px 0;
+}
+.active-scaffold li.form-element dd {
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 0;
+}
+.active-scaffold span.text-input {
+  font-weight: bold;
+}
+.active-scaffold input.text-input, .active-scaffold select,
+.active-scaffold .sub-form input.text-input, .active-scaffold .sub-form select {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0;
+}
+.active-scaffold input.code-input {
+  font-family: "Andale Mono", "Courier New", Courier, monospace;
+  /*font-weight: normal;*/
+}
+.active-scaffold select optgroup {
+  padding-left: 0.5ex;
+}
+.active-scaffold select optgroup option {
+  padding-left: 1em;
+}
+.active-scaffold label {
+  font-size: 12px;
+}
+.active-scaffold tr.record td.actions table td {
+  padding: 2px;
+}
+.active-scaffold .float-style-form li.form-element {
+  clear: none;
+  float: left;
+  margin: 0 1em 2px 0;
+}
+.active-scaffold .float-style-form label {
+  display: block;
+  float: none;
+  padding: 0 0 1px 0;
+  width: auto;
+}
+.active-scaffold .float-style-form label.hide {
+  display: none;
+}
+.active-scaffold .form-element span.readonly {
+  color: #555;
+  font-family: verdana, sans-serif;  /* same as label */
+  font-weight: bold;
+}
+.active-scaffold .form-element span.radioLabel,
+.active-scaffold .form-element span.checkLabel,
+.active-scaffold .form-element span.selectLabel {
+  color: #555;
+  font-family: verdana, sans-serif;  /* same as label */
+  font-size: 12px;
+  margin-left: 0.1em;
+  margin-right: 1em;
+}
+.active-scaffold .form-element span.selectLabel {
+  margin-right: 0.1em;
+}
+.active-scaffold .form-instructions,
+.active-scaffold .help-view {
+  font-family: verdana, sans-serif;  /* same as h4 */
+  font-size: 12px;
+}
+.active-scaffold .help-view {
+  background-color: #fffacd;
+  border-left: 2px solid #fae2bb;
+  border-right: 2px solid #fae2bb;
+  border-top: 2px solid #fae2bb;
+}
+.active-scaffold tbody.records td.inline-adapter-cell .help-view {
+  border-left: 1px solid #fae2bb;
+  border-right: 1px solid #fae2bb;
+  border-top: 2px solid #fae2bb;
+}
+.active-scaffold .help-view a.inline-adapter-close {
+  margin-bottom: 1ex;
+  margin-left: 1em;
+}
+.active-scaffold .help-view p {
+  margin: 1ex 1em;
+}
+.active-scaffold .help-view p em {
+  color: #06c;
+  font-style: normal;
+  font-weight: bold;
+}
+.active-scaffold .form-instructions p {
+  margin: 1ex 0.5em;
+}
+.active-scaffold #entries-form-data {
+  width: 40em;
+}
+.active-scaffold #style-info-note {
+  color: #666;
+  margin: 0 0 1ex 0;
+}
+.active-scaffold #record_style_info {
+  width: 33em;
+}
+.active-scaffold textarea {
+  height: auto;
+}
+.active-scaffold textarea.text-input:focus {
+  background-color: #ffc;
+}
+.active-scaffold .active-scaffold td.inline-adapter-cell {
+  background-color: #faf0e0;  /* same as body */
+}
+.active-scaffold tbody.before-header td.inline-adapter-cell,
+.active-scaffold tbody.records td.inline-adapter-cell {
+  padding: 0;
+}
+.active-scaffold .show-view table {
+  border-collapse: collapse;
+  color: #555;
+  font: normal 11px verdana, sans-serif;
+}
+.active-scaffold .show-view td.column-name {
+  font-weight: bold;
+  width: 12em;
+}
+.active-scaffold .show-view td {
+  border-left: none;
+  margin: 0;
+  padding: 4px;
+}
+.active-scaffold .show-view tr.even-record td {
+  background-color: #f4fff0;
+  border-bottom: 1px solid #aff7a8;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #aff7a8;
+}
+.active-scaffold .show-view tr.odd-record {
+  /*background-color: #ebffdb;*/
+}
+.active-scaffold div.mover img {
+  margin-left: 4px;
+}
+.active-scaffold div.mover img:hover {
+  background-color: #ff8;
+}
+.blue-theme .nested-view .active-scaffold-footer a {
+  color: #06c;
+  font-size: 11px;
+}
+.blue-theme .nested-view tbody.before-header td.inline-adapter-cell {
+  border: 1px solid #dddf37;
+}
+.blue-theme .nested-view tbody.before-header td.inline-adapter-cell .view {
+  border: 1px solid #7fcf00;
+}
+.nested-view .active-scaffold-header div.actions a {
+  float: right;
+}

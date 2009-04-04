@@ -1,0 +1,10 @@
+<% 1.upto(10) do |n| %>
+  <% description_raw = "Contents of item #{n}" %>
+post<%= n %>:
+  title: News Item <%= n %>
+  description_raw: <%= description_raw %>
+  description_encoded: <%= NewsItem.encode(description_raw) %>
+  author: admin
+  created_at: <%= n.hours.since(Time.now.yesterday).to_s(:db) %>
+  updated_at: <%= n.hours.since(Time.now.yesterday).to_s(:db) %>
+<% end %>

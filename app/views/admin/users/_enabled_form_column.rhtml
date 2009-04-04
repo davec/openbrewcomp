@@ -1,0 +1,12 @@
+<% if params[:action] == 'edit' && @record.login != protected_username
+     scope ||= nil
+     options = form_element_input_options(column, scope) -%>
+  <dl>
+    <dt>
+      <label for="<%= options[:id] %>">Enable User Account</label>
+    </dt>
+    <dd>
+      <%= check_box 'record', column.name, options %>
+    </dd>
+  </dl>
+<% end -%>

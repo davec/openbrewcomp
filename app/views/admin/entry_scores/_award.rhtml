@@ -1,0 +1,8 @@
+<% dom_id ||= award_container_id(award) %>
+<li id="<%= dom_id %>-item">
+  <div class="entries-for-award" id="<%= dom_id %>-entries">
+    <%= render :active_scaffold => '/admin/entry_scores',
+               :params => { :award => award.name },
+               :conditions => [ 'entries.id IN (?)', award.styles.collect{|s| s.entries.collect(&:id)}.flatten ] %>
+  </div>
+</li>

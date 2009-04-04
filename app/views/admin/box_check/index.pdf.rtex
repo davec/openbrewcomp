@@ -1,0 +1,77 @@
+% box_check/print.rtex
+
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[noheadfoot, letterpaper, scale=1.0,
+            body={7.5in,10.0in}, hmargin=0.5in, vmargin=0.5in]{geometry}
+
+\pagestyle{plain}
+
+\parindent 0pt
+
+% Allow \raggedright in columns of array/tabular specifiers
+\newcommand\PBS[1]{\let\temp\\#1\let\\\temp}
+
+\makeatletter
+\newcommand{\LTtoprule}{\cmidrule[\heavyrulewidth]{1-\LT@cols}}
+\newcommand{\LTmidrule}{\cmidrule[\lightrulewidth]{1-\LT@cols}}
+\newcommand{\LTbottomrule}{\cmidrule[\heavyrulewidth]{1-\LT@cols}}
+\makeatother
+
+\newcommand{\checkbox}{\raisebox{0.66ex}{\ \fbox{\rule{0}{0.66ex}\footnotesize\hspace{0.66ex}}}}
+
+\newcommand\Section[1]{
+  \clearpage
+  \pagenumbering{arabic}
+  % The section title is now in the table header
+  %\textbf{\LARGE Box Check \hfill \Large Category #1}
+  %\vspace*{12pt}
+}
+
+\begin{document}
+
+<% ncols = 3
+   @categories.each do |category| -%>
+
+  \Section{<%= category.position %>}
+
+  \renewcommand{\arraystretch}{1.7}
+    \begin{longtable}{<%= Array.new(ncols, '>{\\large}r>{\\large}lp{0.25in}p{0.25in}p{0.25in}').join %>}
+      <%= Array.new(ncols){|i| "\\textbf{\\large #{i == 0 ? 'Entry' : 'ENTRY'}} & \\textbf{\\large 99A} & \\textbf{\\large 1} & \\textbf{\\large 2} & \\textbf{\\large 3}"}.join('&') -%> \kill
+      \multicolumn{<%= 5 * (ncols-1) -%>}{l}{\textbf{\LARGE Box Check}} & \multicolumn{5}{r}{\textbf{\Large Category <%= category.position %>}} \\ [-1.0ex]
+      <%= Array.new(ncols, ' & & & & ').join('&') -%> \\ [1.0ex]
+      <%= Array.new(ncols, ' & & \\multicolumn{3}{c}{\\textbf{\\large Round}}').join('&') -%> \\ [-1ex]
+      <%= Array.new(ncols, '\\multicolumn{1}{r}{\\raisebox{1.8ex}[0][0]{\\textbf{\\large Entry}}} & & \\multicolumn{1}{c}{\\textbf{\\large 1}} & \\multicolumn{1}{c}{\\textbf{\\large 2}} & \\multicolumn{1}{c}{\\textbf{\\large 3}}').join('&') -%> \\
+      \LTmidrule
+      \endfirsthead
+      \multicolumn{<%= 5 * (ncols-1) -%>}{l}{\textbf{\LARGE Box Check}} & \multicolumn{5}{r}{\textbf{\Large Category <%= category.position %>}} \\ [-1.0ex]
+      \multicolumn{<%= 5 * ncols -%>}{l}{\emph{Continued from previous page}} \\ [1.0ex]
+      <%= Array.new(ncols, ' & & \\multicolumn{3}{c}{\\textbf{\\large Round}}').join('&') -%> \\ [-1ex]
+      <%= Array.new(ncols, '\\multicolumn{1}{r}{\\raisebox{1.8ex}[0][0]{\\textbf{\\large Entry}}} & & \\multicolumn{1}{c}{\\textbf{\\large 1}} & \\multicolumn{1}{c}{\\textbf{\\large 2}} & \\multicolumn{1}{c}{\\textbf{\\large 3}}').join('&') -%> \\
+      \LTmidrule
+      \endhead
+      \multicolumn{<%= 5 * ncols -%>}{r}{\emph{Continued on next page}} \\
+      \endfoot
+      \endlastfoot
+      <% entries = Entry.find(:all,
+                              :conditions => [ 'bottle_code is not null and style_id in (?)', category.awards.collect{|award| award.styles.map(&:id)}.flatten ],
+                              :order => 'bottle_code ASC') -%>
+      <% unless entries.length == 0 -%>
+        <% entries.in_groups_of((entries.length/ncols.to_f).ceil).transpose.each do |slice| -%>
+          <% reset_cycle -%>
+          <% slice.compact.each do |entry| -%>
+            <%= cycle('','&','&') -%> \textbf{<%= entry.bottle_code -%>} & {<%= entry.style.category -%>} & \checkbox & \checkbox & \checkbox
+          <% end -%> \\
+        <% end -%> \\
+      <% end -%>
+    \end{longtable}
+  \renewcommand{\arraystretch}{1.0}
+
+<% end -%>
+
+\end{document}

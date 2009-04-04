@@ -1,0 +1,45 @@
+/*
+ * Override/supplement some of the CalendarDateSelect settings
+ */
+
+.calendar_date_select {
+  font-family: verdana, sans-serif;  /* same as label */
+}
+.calendar_date_select select:focus {
+  background-color: #ffc;
+}
+.calendar_date_select .cds_header a,
+.calendar_date_select .cds_header a:visited {
+  color: #06c !important;
+}
+.calendar_date_select .cds_header a:hover {
+  background-color: #ff8;
+}
+.calendar_date_select .cds_body th {
+  background-color: #c5dbf7;
+  font-size: 14px;
+}
+.calendar_date_select .cds_footer {
+  background-color: #005cb8;
+  color: white;
+  font-weight: bold;
+}
+.calendar_date_select td:hover {
+  background-color: #e6f2ff;
+}
+.calendar_date_select td.selected {
+  background-color: #378cdf;
+}
+
+input.date-input, input.datetime-input {
+  border: 1px solid #444;
+  font: bold 11px arial, sans-serif;
+  margin: 0px 4px 4px 0px;
+  padding: 2px;
+}
+input.date-input {
+  width: 10em;
+}
+input.datetime-input {
+  width: 15em;
+}

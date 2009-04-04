@@ -1,0 +1,54 @@
+<% flights_action ||= :default
+   dom_id ||= award_container_id(award)
+   loading_indicator = flight_processing_div_id(award)
+   class_selector = "#{dom_id}-entry"
+   container_id = flight.nil? ? "#{dom_id}-unassigned" : "flight_#{flight.id}"
+   title ||= flight.nil? ? 'Unassigned' : flight.name.truncate(8)
+   ro_tag = (!flight.nil? && flight.protected?) ? 'readonly' : ''
+   pick_status = (!flight.nil? && flight.protected?) ? 'inactive' : 'active'
+   first_time_id = Style.first_time[:id]
+   is_first_time_category = award.style_ids.length == 1 && award.style_ids[0] == first_time_id
+   sort_keys = is_first_time_category \
+     ? lambda{|e| [e.base_style.bjcp_category,e.base_style.bjcp_subcategory,e.bottle_code]} \
+     : lambda{|e| [e.style.bjcp_category,e.style.bjcp_subcategory,e.bottle_code]}
+%>
+<li class="container <%= ro_tag%>" id="<%= container_id %>">
+  <div class="title">
+    <% unless flight.nil? || flight.protected? -%>
+      <%= link_to_remote('X', { :url => delete_flight_admin_flight_url(flight),
+                                :method => :delete,
+                                :before => "$('#{loading_indicator}').style.visibility = 'visible'",
+                                :complete => "$('#{loading_indicator}').style.visibility = 'hidden'" },
+                              { :class => 'delete-button',
+                                :onfocus => 'if (this.blur()) this.blur();', # zap the active link borders
+                                :title => 'Delete Flight' }) %>
+    <% end -%>
+    <%= title %> (<%= entries.length %>)
+  </div>
+  <ul class="contents">
+    <% entries.sort_by{|e| sort_keys.call(e)}.each do |entry|
+         unless is_first_time_category
+           style_name = entry.style.name
+           style_category = entry.style.category
+         else
+           style_name = entry.base_style.name
+           style_category = entry.base_style.category
+         end
+         element_id = element_handle_id(entry) -%>
+      <li class="<%= class_selector %>" id="<%= element_id %>">
+        <span class="handle <%= pick_status %>"><%= entry.bottle_code %></span>
+        <span class="info" title="<%= style_name %>">(<%= style_category %>)</span>
+      </li>
+      <%= draggable_element(element_id, :ghosting => true) %>
+    <% end -%>
+  </ul>
+</li>
+<%= drop_receiving_element(container_id,
+                           :accept => class_selector,
+                           :hoverclass => 'hover',
+                           #:with => "'entry=' + encodeURIComponent(element.id.split('_').last()) + '&flight=#{flight.nil? ? 0 : flight.id}'",
+                           :with => "'entry=' + encodeURIComponent(element.id.split('_').last())",
+                           :loading => "$('#{loading_indicator}').style.visibility = 'visible'",
+                           :complete => "$('#{loading_indicator}').style.visibility = 'hidden'",
+                           :url => assign_entry_admin_flight_url(flight || 0),
+                           :method => :put) -%>

@@ -1,0 +1,41 @@
+<% @page_title = "#{competition_name} Awards" %>
+
+<% if competition_data.mcab? -%>
+  <p>
+    A <%= mcab_qe %> denotes the MCAB qualifying entry.
+  </p>
+<% end -%>
+
+<% form_tag('javascript:void(0)') do %>
+
+<table class="resultstable" summary="This table lists the <%= competition_name %> winners by award category">
+  <%= render(:partial => 'medals', :collection => @medals, :locals => { :include_send_column => true }) %>
+</table>
+<br />
+<table class="resultstable" summary="This table lists the Best-of-Show winners">
+  <% if Award.bos_awards.length == 1 -%>
+    <%= render(:partial => 'bos', :object => @bos,
+                                  :locals => { :separate_headers => false,
+                                               :include_send_column => true }) %>
+  <% else -%>
+    <%= render(:partial => 'bos', :object => @beer_bos,
+                                  :locals => { :bos_type => 'Beer',
+                                               :separate_headers => false,
+                                               :include_send_column => true }) %>
+    <%= render(:partial => 'bos', :object => @mead_bos,
+                                  :locals => { :bos_type => 'Mead/Cider',
+                                               :separate_headers => false,
+                                               :include_send_column => true }) %>
+  <% end -%>
+</table>
+<br />
+<table class="resultstable" summary="This table lists the individual rankings">
+  <%= render(:partial => 'individuals', :locals => { :individuals => @individuals,
+                                                     :points => true }) %>
+</table>
+<br />
+<table class="resultstable" summary="This table lists the club rankings">
+  <%= render(:partial => 'clubs', :locals => { :clubs => @clubs }) %>
+</table>
+
+<% end %>

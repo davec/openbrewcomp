@@ -1,0 +1,5 @@
+if controller.send :successful?
+  page.replace element_row_id(:action => :list), :partial => 'list_record', :locals => { :record => @flight }
+else
+  page << "ActiveScaffold.report_500_response('#{active_scaffold_id}');"
+end

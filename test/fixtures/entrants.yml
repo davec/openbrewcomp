@@ -1,0 +1,88 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+Individual_US:
+  first_name: Brewer
+  last_name: One
+  address1: 123 Main St.
+  address2: Apt. 42B
+  city: Houston
+  region: US_TX
+  country: US
+  postcode: 77007
+  email: one@example.com
+  phone: 713-555-1212
+  club: rangers
+  user: testuser1
+Individual_CA:
+  first_name: Brewer
+  last_name: Two
+  address1: 12345 197th Ave NE
+  city: Edmonton
+  region: CA_AB
+  country: CA
+  postcode: Y2K 7E7
+  email: two@example.org
+  club: ehc
+  user: admin
+Individual2_US:
+  first_name: Brewery
+  last_name: Three
+  address1: 321 Any St.
+  city: New Orleans
+  region: US_LA
+  country: US
+  postcode: 70104
+  email: boudreaux@example.net
+  phone: 504-555-2468
+  club: cch
+  user: admin
+Team1:
+  is_team: true
+  team_name: Brew Team
+  team_members: Brewer1, Brewer2, Brewer3
+  address1: 12121 Red Neck Dr.
+  city: Houston
+  region: US_TX
+  country: US
+  postcode: 77077
+  phone: 281-555-5555
+  club: independent
+  user: testuser2
+# Different team, but same team name
+Team2:
+  is_team: true
+  team_name: Brew Team
+  team_members: Brewer4, Brewer5, Brewer6
+  address1: "666 Devil's Backbone Dr."
+  city: Los Angeles
+  region: US_CA
+  country: US
+  postcode: 90123
+  phone: 213-555-1212
+  club: independent
+  user: testuser3
+# Completely different team
+Team3:
+  is_team: true
+  team_name: The Muppeteers
+  team_members: Bert and Ernie
+  address1: 6969 W. Ash Ave.
+  city: Houston
+  region: US_TX
+  country: US
+  postcode: 77013
+  phone: 713-555-5555
+  club: independent
+  user: j_random_user
+# A team with no entries
+GhostTeam:
+  is_team: true
+  team_name: Ghost Team
+  team_members: ""
+  address1: 0 Hidden Way
+  city: Houston
+  region: US_TX
+  country: US
+  postcode: 77000
+  phone: 713-555-0000
+  club: independent
+  user: testuser9

@@ -1,0 +1,2 @@
+page.call('stop_polling')
+page << "window.location = '#{registration_forms_url}';"

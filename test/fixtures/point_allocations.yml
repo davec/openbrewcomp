@@ -1,0 +1,72 @@
+e1:
+  min_entries:  1
+  max_entries: 49
+  organizer: 2.0
+  staff:     1.0
+  judge:     1.5
+e50:
+  min_entries: 50
+  max_entries: 99
+  organizer: 2.5
+  staff:     2.0
+  judge:     2.0
+e100:
+  min_entries: 100
+  max_entries: 149
+  organizer: 3.0
+  staff:     3.0
+  judge:     2.5
+e150:
+  min_entries: 150
+  max_entries: 199
+  organizer: 3.5
+  staff:     4.0
+  judge:     3.0
+e200:
+  min_entries: 200
+  max_entries: 299
+  organizer: 4.0
+  staff:     5.0
+  judge:     3.5
+e300:
+  min_entries: 300
+  max_entries: 399
+  organizer: 4.5
+  staff:     6.0
+  judge:     4.0
+e400:
+  min_entries: 400
+  max_entries: 499
+  organizer: 5.0
+  staff:     7.0
+  judge:     4.5
+e500:
+  min_entries: 500
+  max_entries: 599
+  organizer: 6.0
+  staff:     8.0
+  judge:     5.5
+e600:
+  min_entries: 600
+  max_entries: 699
+  organizer: 6.0
+  staff:     9.0
+  judge:     5.5
+e700:
+  min_entries: 700
+  max_entries: 799
+  organizer: 6.0
+  staff:    10.0
+  judge:     5.5
+e800:
+  min_entries: 800
+  max_entries: 899
+  organizer: 6.0
+  staff:    11.0
+  judge:     5.5
+e900:
+  min_entries: 900
+  max_entries: 999
+  organizer: 6.0
+  staff:    12.0
+  judge:     5.5

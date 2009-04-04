@@ -1,0 +1,114 @@
+<% SALT = Digest::SHA1.hexdigest('NaCl') unless defined?(SALT) %>
+
+admin:
+  login: admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+dba:
+  login: db_admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret_dba', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+contact_admin:
+  login: contact_admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret_contact', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+news_admin:
+  login: news_admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret_news', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+user_admin:
+  login: user_admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret_user', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+style_admin:
+  login: style_admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret_style', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+registration_admin:
+  login: registration_admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret_registration', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+user_registration_admin:
+  login: user_reg_admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret_user_reg', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+competition_admin:
+  login: competition_admin
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('secret_competition', SALT) %>
+  enabled: true
+  is_admin: true
+  created_at: <%= 1.week.ago.to_s(:db) %>
+
+j_random_user:
+  login: j_random
+  name: J. Random User
+  email: j_random@example.com
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest('random_secret', SALT) %>
+  enabled: true
+  created_at: <%= 4.days.ago.to_s(:db) %>
+
+<% 1.upto(10) do |n| %>
+testuser<%= n %>:
+  login: testuser<%= n %>
+  name: <%= "Test User #{n}" %>
+  email: <%= "user#{n}@example.com" %>
+  salt: <%= SALT %>
+  crypted_password: <%= User.password_digest("secret_#{n}", SALT) %>
+  enabled: true
+  created_at: <%= 4.days.ago.to_s(:db) %>
+<% end %>
+
+# Users for Restful Authentication Tests
+
+quentin:
+  login:                     quentin
+  email:                     quentin@example.com
+  salt:                      <%= Digest::SHA1.hexdigest('1') %>
+  crypted_password:          <%= User.password_digest('monkey', Digest::SHA1.hexdigest('1')) %>
+  created_at:                <%= 5.days.ago.to_s(:db) %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s(:db) %>
+  remember_token:            '77de68daecd823babbb58edb1c8e14d7106e83bb'
+  enabled:                   true
+
+aaron:
+  login:                     aaron
+  email:                     aaron@example.com
+  salt:                      <%= Digest::SHA1.hexdigest('2') %>
+  crypted_password:          <%= User.password_digest('monkey', Digest::SHA1.hexdigest('2')) %>
+  created_at:                <%= 1.day.ago.to_s(:db) %>
+  enabled:                   true
+

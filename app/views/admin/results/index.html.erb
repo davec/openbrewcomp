@@ -1,0 +1,19 @@
+<% @page_title = "#{competition_name} Results" %>
+
+<% unless Round.completed?(Round.bos.position) -%>
+  <p>
+    Results cannot be generated until judging is complete.
+  </p>
+<% else -%>
+  <ul>
+    <li><%= link_to('Score Summary', admin_score_summary_path) %></li>
+    <li><%= link_to('Awards Ceremony Results', admin_live_results_path) %></li>
+    <li><%= link_to('Web Page Results', admin_web_results_path) %> (<%= link_to('download', admin_web_results_path(:mode => 'download'), :popup => true) %>)</li>
+    <li><%= link_to_with_icon('Print Brewer&rsquo;s Cover Sheets', admin_entrant_covers_path, { :extname => '.pdf', :popup => true }) %></li>
+    <li><%= link_to_with_icon('Print Entry Cover Sheets', admin_entry_covers_path, { :extname => '.pdf', :popup => true }) %></li>
+    <% if CompetitionData.instance.mcab? -%>
+      <li><%= link_to('MCAB Report', admin_mcab_report_path) %></li>
+    <% end -%>
+    <li><%= link_to('BJCP Competition Report', admin_bjcp_report_path) %></li>
+  </ul>
+<% end -%>

@@ -1,0 +1,117 @@
+category1:
+  id: 1
+  name: Light Lager
+  position: 1
+category2:
+  id: 2
+  name: Pilsner
+  position: 2
+category3:
+  id: 3
+  name: European Amber Lager
+  position: 3
+category4:
+  id: 4
+  name: Dark Lager
+  position: 4
+category5:
+  id: 5
+  name: Bock
+  position: 5
+category6:
+  id: 6
+  name: Light Hybrid Beer
+  position: 6
+category7:
+  id: 7
+  name: Amber Hybrid Beer
+  position: 7
+category8:
+  id: 8
+  name: English Pale Ale
+  position: 8
+category9:
+  id: 9
+  name: Scottish and Irish Ale
+  position: 9
+category10:
+  id: 10
+  name: American Ale
+  position: 10
+category11:
+  id: 11
+  name: English Brown Ale
+  position: 11
+category12:
+  id: 12
+  name: Porter
+  position: 12
+category13:
+  id: 13
+  name: Stout
+  position: 13
+category14:
+  id: 14
+  name: India Pale Ale (IPA)
+  position: 14
+category15:
+  id: 15
+  name: German Wheat and Rye Beer
+  position: 15
+category16:
+  id: 16
+  name: Belgian and French Ale
+  position: 16
+category17:
+  id: 17
+  name: Sour Ale
+  position: 17
+category18:
+  id: 18
+  name: Belgian Strong Ale
+  position: 18
+category19:
+  id: 19
+  name: Strong Ale
+  position: 19
+category20:
+  id: 20
+  name: Fruit Beer
+  position: 20
+category21:
+  id: 21
+  name: Spice/Herb/Vegetable Beer
+  position: 21
+category22:
+  id: 22
+  name: Smoke-Flavored and Wood-Aged Beer
+  position: 22
+category23:
+  id: 23
+  name: Specialty Beer
+  position: 23
+category24:
+  id: 24
+  name: Traditional Mead
+  position: 24
+category25:
+  id: 25
+  name: Melomel (Fruit Mead)
+  position: 25
+category26:
+  id: 26
+  name: Other Mead
+  position: 26
+category27:
+  id: 27
+  name: Standard Cider and Perry
+  position: 27
+category28:
+  id: 28
+  name: Specialty Cider and Perry
+  position: 28
+bos:
+  id: 29
+  name: Best of Show
+  position: 0
+  is_public: false

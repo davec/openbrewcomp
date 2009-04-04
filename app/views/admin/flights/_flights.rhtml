@@ -1,0 +1,37 @@
+<% dom_id ||= award_container_id(award)
+   entries = Entry.find(:all,
+                        :select => 'e.*',
+                        :joins => 'AS e INNER JOIN styles AS s ON (s.id = e.style_id)',
+                        :conditions => [ 'e.style_id IN (?) AND e.bottle_code IS NOT NULL', award.styles.collect(&:id) ],
+                        :order => 's.bjcp_category, s.bjcp_subcategory, e.bottle_code')
+   flights = Flight.find(:all,
+                         :select => 'f.*',
+                         :joins => 'AS f INNER JOIN rounds AS r ON (r.id = f.round_id)',
+                         :conditions => [ 'f.award_id = ? AND r.position = 1', award.id ],
+                         :order => 'name')
+   unassigned_entries = entries - flights.collect(&:entries).flatten
+%>
+<div class="style_info-for-flights" id="<%= dom_id %>-style_info" style="display: none">
+  <% entries_with_styleinfo = entries.delete_if{|e| e.style_info.blank?}
+     unless entries_with_styleinfo.empty? -%>
+    <dl>
+      <% entries_with_styleinfo.sort_by(&:bottle_code).each do |entry| -%>
+        <dd><%= entry.bottle_code %></dd>
+        <dt><%= h(truncate(entry.style_info, :length => 60)) %></dt>
+      <% end -%>
+    </dl>
+  <% else -%>
+    No entries in this award category have supplemental style information.
+  <% end -%>
+</div>
+<ol>
+  <%= render :partial => 'flight', :locals => { :award => award,
+                                                :entries => unassigned_entries } %>
+  <% flights.each_with_index do |flight, index| -%>
+    <%= render :partial => 'flight', :object => flight,
+                                     :locals => { :award => award,
+                                                  :entries => flight.entries,
+                                                  :title => "Flight #{index+1}/#{flights.length}" } %>
+  <% end -%>
+  <div class="clearfloat"></div>
+</ol>

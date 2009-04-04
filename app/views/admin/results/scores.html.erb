@@ -1,0 +1,28 @@
+<% @page_title = "#{competition_name} Entry Scores by Award Category" %>
+
+<p>
+  Entries marked with an asterisk (<strong>*</strong>) advanced to a second
+  round of judging (aka, a mini-BOS round) and as such some winning entries
+  received lower assigned scores than entries that did not place.  Winning
+  entries were determined by the second round judge panel and not on scores
+  alone.
+</p>
+
+<table class="reporttable" summary="This table lists the assigned score for each entry by category">
+  <thead>
+    <tr class="table-header">
+      <th colspan="2">Entry</th>
+      <th>Place</th>
+      <th>Score</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr class="table-footer">
+      <th colspan="5" />
+    </tr>
+  </tfoot>
+  <tbody>
+    <%= render :partial => 'award_scores', :collection => @scores %>
+  </tbody>
+</table>

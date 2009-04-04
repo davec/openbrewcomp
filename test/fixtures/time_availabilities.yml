@@ -1,0 +1,4 @@
+one:
+  start_time: <%= (1.week.from_now.to_date + 9.hours).to_s(:db) %>
+  end_time: <%= (1.week.from_now.to_date + 17.hours).to_s(:db) %>
+  judge: apprentice_judge

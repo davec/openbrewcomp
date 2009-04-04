@@ -1,0 +1,18 @@
+<%= render :super %>
+<script type="text/javascript">
+  if ($('flights-view')) {
+    $A($('flights-view').getElementsByClassName('push')).invoke('setAttribute', 'title',
+                                                                'Push to <%= Round.second.name.downcase -%>');
+    $A($('flights-view').getElementsByClassName('print')).invoke('setAttribute', 'title',
+                                                                 'Print flight sheets');
+
+    if ($$('#flights-view ul.flights').length > 0) {
+      $$('#flights-view ul.flights li th.sorted').each(function(obj) {
+        obj.writeAttribute('class','');
+        a = obj.firstDescendant();
+        label = a.innerHTML;
+        a.replace('<p>' + label + '</p>');
+      });
+    }
+  }
+</script>

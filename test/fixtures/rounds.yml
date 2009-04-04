@@ -1,0 +1,9 @@
+first:
+  name: First Round
+  position: 1
+second:
+  name: Second Round
+  position: 2
+bos:
+  name: Best-of-Show
+  position: 3

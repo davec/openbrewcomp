@@ -1,0 +1,14 @@
+<% @page_title = "#{competition_name} Registration" %>
+
+<p>
+  <%= competition_name %> offers both <%= link_to('online', online_registration_path) %>
+  and old-fashioned <%= link_to('paper', registration_forms_path) %> registration.
+</p>
+
+<p>
+  Please note, however, that even with online registration, you can&rsquo;t
+  completely avoid using some paper, namely the
+  <%= link_to_with_icon('registration form', doc_path('registration.pdf'), :popup => true) %>,
+  <%= link_to_with_icon('bottle labels', doc_path('bottle_labels.pdf'), :popup => true) %>,
+  and your check or money order.
+</p>

@@ -1,0 +1,53 @@
+<% @page_title = 'Send Judge Invites' %>
+
+<% if @allowed -%>
+  <% tokens = JudgeInvite.tokens.collect{|k,v| "#{v.first} for #{v.last}"}.to_sentence -%>
+  <p>
+    Modify the email subject and message contents that will be sent to all
+    <%= link_to('judges', admin_judges_path) %> currently registered in the
+    database.
+  </p>
+  <p>
+    For the message text, token substitution will be performed on <%= tokens %>.
+    Messages will be sent in plain text, so please avoid the use of HTML markup.
+  </p>
+
+  <div id="email-form">
+    <% form_for(:invite, :url => { :action => 'send_email' }) do |form| -%>
+      <p>
+        <label for="invite_subject">Subject</label>
+        <%= form.text_field :subject, :class => 'text-input',
+                                      :size => 80,
+                                      :maxlength => 80,
+                                      :value => @default_subject %>
+      </p>
+      <p>
+        <label for="invite_message">Message</label>
+        <%= form.text_area :message, :class => 'text-input',
+                                     :rows => 20, :cols => 80,
+                                     :value => @message_template %>
+      </p>
+      <p>
+        <label for="type">Send to</label>
+        <%= form.radio_button :target, 'all', :checked => true %><span class="radioLabel">All Judges</span>
+        <%= form.radio_button :target, 'confirmed', :checked => false %><span class="radioLabel">Attending Judges</span>
+        <%= form.radio_button :target, 'unconfirmed', :checked => false %><span class="radioLabel">Unconfirmed Judges</span>
+      </p>
+
+      <% if flash[:judge_invite_error] -%>
+        <p class="flash-error"><%= flash[:judge_invite_error] %></p>
+      <% end -%>
+
+      <div class="form-buttons">
+        <%= submit_tag 'Send', :disable_with => 'Sending...' %>
+        <%= submit_tag 'Reset', :type => 'reset' %>
+      </div>
+    <% end -%>
+  </div>
+  <div id="email-preview"></div>
+<% else -%>
+  <p>
+    <%= @status %>
+  </p>
+<% end -%>
+

@@ -1,0 +1,1002 @@
+th {
+  text-align: center;
+}
+
+#clearheader {
+  clear: both;
+  height: 2ex;
+}
+
+.no-data {
+  color: #c00000;
+  font-size: 120%;
+  font-weight: bold;
+  margin: 1ex 1em;
+  text-align: center;
+}
+
+.boolcol {
+  text-align: center;
+}
+
+.catcol {
+  text-align: center;
+}
+
+.active-scaffold .checkbox-list {
+  max-height: 30ex;
+  overflow: auto;
+  padding: 0;
+}
+
+.active-scaffold .checkbox-list li {
+  display: block;
+}
+
+/*------------------------------
+ Reorder image
+ ------------------------------*/
+
+.active-scaffold div.mover img {
+  margin-left: 4px;
+}
+.active-scaffold div.mover img:hover {
+  background-color: #ff8;
+}
+
+/*------------------------------
+ Admin Menus
+ ------------------------------*/
+
+#admin-menu {}
+
+#admin-menu ul {
+  list-style: none;
+  margin: 0;
+}
+
+#admin-menu ul li {
+  float: left;
+  font-size: 120%;
+  font-weight: bold;
+  margin: 0;
+  text-align: left;
+  width: 16%;
+}
+
+#admin-menu ul li ul, ul#flight-menu, ul#import-menu {
+  list-style: none;
+  margin-left: 0.5em;
+}
+
+#admin-menu ul li ul li {
+  float: none;
+  font-size: 90%;
+  font-weight: normal;
+  margin: 0;
+}
+
+#admin-menu a, #flight-menu a, #import-menu a {
+  color: #0080a4;
+  display: block;
+  padding: 4px;
+  *padding: 2px;  /* adjust for IE */
+  text-decoration: none;
+  width: 6em;
+}
+
+#admin-menu span.access-denied {
+  color: #666;
+  display: block;
+  padding: 4px;
+  *padding: 2px;  /* adjust for IE */
+  width: 6em;
+}
+
+#flight-menu a {
+  font-size: 110%;
+  width: 10em;
+}
+#import-menu a {
+  font-size: 110%;
+  width: 14em;
+}
+#admin-menu a:hover, #flight-menu a:hover, #import-menu a:hover {
+  background-color: #0080a4;
+  /*color: #0000f0;*/
+  color: #ffba80;
+}
+
+/*------------------------------
+ Flights
+ ------------------------------*/
+
+#flights-view li.sub-form {
+  clear: both;
+  margin: 0;
+  padding: 2px 0 0 0;
+}
+#flights-view li.sub-form dl {
+  clear: both;
+}
+#flights-view li.sub-form dt {
+  float: left;
+  margin: 4px 0;
+  padding: 0 0 6px 0;
+  width: 12em;
+}
+#flights-view li.sub-form dd {
+  float: left;
+  margin-left: 0;
+}
+#flights-view li.sub-form dd div.new-judge {
+  border: 1px solid #7fcf00;
+  margin-bottom: 1ex;
+  padding: 1ex;
+}
+#flights-view li.sub-form dd a.new {
+  background-image: url(../images/active_scaffold/default/add.gif);
+  background-position: 1px 50%;
+  background-repeat: no-repeat;
+  font: bold 12px sans-serif;
+  height: 16px;
+  padding: 4px 4px 0px 20px;
+}
+#flights-view li.sub-form label {
+  display: block;
+  font-weight: bold;
+}
+
+#flights-view div.blue-theme div.active-scaffold-header {
+  margin-top: 6ex;
+}
+
+.active-scaffold .show-view table.flight-entries,
+.active-scaffold .show-view table.session-flights {
+  border-bottom: 1px solid #aff7a8;
+  border-collapse: collapse;
+  font: bold 14px arial, sans-serif;
+}
+.active-scaffold .show-view table.flight-entries th,
+.active-scaffold .show-view table.session-flights th {
+  background-color: #555;
+  color: #f0f0f0;
+  text-align: center;
+}
+
+/*------------------------------
+ Reports
+ ------------------------------*/
+
+#reports-menu {
+  float: left;
+  text-align: left;
+  width: 9em;
+}
+
+#reports-menu a {
+  text-decoration: none;
+}
+#reports-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#reports-menu .menu-item {
+  clear: both;
+  display: block;
+  margin: 0;
+  padding-top: 1ex;
+  *padding-top: 0.5ex;
+}
+#reports-menu .menu-item .loading-indicator {
+  float: left;
+  margin-right: 6px;
+}
+#reports-menu .menu-item .action-link {
+  float: left;
+  width: 6em;
+}
+#reports-menu .menu-item .action-link a {
+  color: #0080a4;
+  display: block;
+  font: bold 12px sans-serif;
+  padding: 4px 0.5em;
+  *padding: 2px 0.5em;  /* adjust for IE */
+  /* use rounded borders where possible */
+  -moz-border-radius-bottomright: 1em;
+  -moz-border-radius-topright: 1em;
+  -webkit-border-bottom-right-radius: 1em;
+  -webkit-border-top-right-radius: 1em;
+}
+#reports-menu .menu-item .on a {
+  background-color: #ffba80;
+}
+#reports-menu .menu-item .on a:hover,
+#reports-menu .menu-item .off a:hover {
+  background-color: #0080a4;
+  color: #ffba80;
+}
+
+#reports-menu #type-selector {
+  color: #0080a4;
+  font: bold 12px sans-serif;
+  margin-bottom: 2ex;
+}
+#reports-menu #type-selector .radioLabel {
+  margin-left: 0.1em;
+}
+
+#reports-view {
+  margin-left: 11em;
+  margin-right: 1em;
+}
+#reports-view .reporttable {
+  margin: 0;
+  width: 100%;
+  *width: 95%;  /* adjust for IE */
+}
+
+.reporttable {
+  font-family: verdana, sans-serif;
+  font-size: 90%;
+  margin: 0 1em;
+  width: 90%;
+}
+.reporttable tr.category-header th {
+  background-color: #bbb;
+  text-align: left;
+}
+.reporttable tr.award-header th {
+  background-color: #ddd;
+  text-align: left;
+}
+.reporttable tr.table-header th {
+  background-color: #999;
+  vertical-align: middle;
+}
+.reporttable tr.table-header th.left {
+  text-align: left;
+}
+.reporttable tr.table-footer th {
+  background-color: #999;
+}
+.reporttable tr.total th {
+  background-color: #bbb;
+  /*font-style: italic;*/
+  text-align: left;
+}
+.reporttable tr.table-header th:first-child {
+  /* use rounded borders where possible */
+  -moz-border-radius-topleft: 1em;
+  -webkit-border-top-left-radius: 1em;
+}
+.reporttable tr.table-header th:last-child {
+  /* use rounded borders where possible */
+  -moz-border-radius-topright: 1em;
+  -webkit-border-top-right-radius: 1em;
+}
+.reporttable tr.table-footer th:first-child {
+  /* use rounded borders where possible */
+  -moz-border-radius-bottomleft: 1em;
+  -webkit-border-bottom-left-radius: 1em;
+}
+.reporttable tr.table-footer th:last-child {
+  /* use rounded borders where possible */
+  -moz-border-radius-bottomright: 1em;
+  -webkit-border-bottom-right-radius: 1em;
+}
+/*.reporttable tr.odd-record {
+  border-bottom: solid 1px #999;
+}
+.reporttable tr.even-record {
+  border-bottom: solid 1px #999;
+}*/
+.reporttable th,
+.reporttable td {
+  padding: 0.5ex 1em;
+}
+.reporttable tr th.numeric,
+.reporttable tr td.numeric {
+  text-align: right;
+}
+.reporttable td {
+  border-bottom: thin solid #ddd;
+}
+
+/*------------------------------
+ Flight Assignments
+ ------------------------------*/
+
+#flight-assignments-view {
+  position: relative;
+  top: 0;
+}
+#flight-assignments-view ol {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+#flight-assignments-view ol li {
+  margin: 1ex 0;
+}
+#flight-assignments-view .step-marker {
+  background: url(../images/orangerarr.gif) 0 0 no-repeat;
+  float: left;
+  height: 16px;
+  margin-right: 6px;
+  width: 16px;
+}
+#flight-assignments-view .step-marker.open {
+  background: url(../images/orangedarr.gif) 0 0 no-repeat;
+}
+#flight-assignments-view .step span {
+  color: #06c;
+  cursor: pointer;
+  font-weight: bold;
+}
+#flight-assignments-view .openstep {
+  background-color: #ffffbb;
+  border: 2px solid #fae2bb;
+  margin-left: 22px;
+  margin-right: 1em;
+  min-width: 96%;
+  padding: 4px;
+}
+#flight-assignments-view div.actions {
+  margin-bottom: 4px;
+}
+#flight-assignments-view div.actions .info {
+  background: url(../images/information.png) 0 0 no-repeat;
+  color: #0080a4;
+  cursor: pointer;
+  font: bold 12px sans-serif;
+  height: 16px;
+  margin-left: 0.5em;
+  padding: 3px 4px 5px 20px;
+  text-decoration: none;
+}
+#flight-assignments-view div.actions .new {
+  margin-left: 0.5em;
+}
+#flight-assignments-view div.actions .new a {
+  background: url(../images/active_scaffold/default/add.gif) 0 0 no-repeat;
+  color: #0080a4;
+  font: bold 12px sans-serif;
+  height: 16px;
+  padding: 3px 4px 5px 20px;
+  text-decoration: none;
+}
+#flight-assignments-view div.actions .delete {
+  margin-left: 0.5em;
+}
+#flight-assignments-view div.actions .delete a {
+  background: url(../images/delete.png) 0 0 no-repeat;
+  color: #0080a4;
+  cursor: pointer;
+  font: bold 12px sans-serif;
+  height: 16px;
+  margin-left: 0.5em;
+  padding: 3px 4px 5px 20px;
+  text-decoration: none;
+}
+#flight-assignments-view div.actions .loading-indicator {
+  background: url(../images/active_scaffold/default/indicator.gif) 0 0 no-repeat;
+  color: #0080a4;
+  font: bold 12px sans-serif;
+  margin-left: 2em;
+  padding: 3px 4px 5px 20px;
+  height: 16px;
+}
+#flight-assignments-view .assignments-for-award .style_info-for-flights {
+  background-color: #f0f0f0;
+  border: 2px solid #ffba80;
+  font: normal 11px sans-serif;
+  margin: 1ex 1em;
+  max-height: 10ex;
+  overflow: auto;
+  padding: 1ex;
+}
+#flight-assignments-view .assignments-for-award .style_info-for-flights dl {
+  column-count: 2;
+  column-gap: 1em;
+  -moz-column-count: 2;
+  -moz-column-gap: 1em;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 1em;
+}
+#flight-assignments-view .assignments-for-award .style_info-for-flights dd {
+  clear: left;
+  float: left;
+  font-weight: bold;
+  margin: 0 1em 0 0;
+  padding-bottom: 0.5ex;
+  text-align: right;
+  width: 3em;
+}
+#flight-assignments-view .assignments-for-award .style_info-for-flights dt {
+  overflow: hidden;
+  padding-bottom: 0.5ex;
+  text-align: left;
+}
+#flight-assignments-view .assignments-for-award .container {
+  border: 1px solid #faeacf;
+  display: block;
+  float: left;
+  margin: 0 0.5em;
+  width: 8.5em;
+}
+#flight-assignments-view .assignments-for-award .container.hover {
+  border: 1px solid #ffba80;
+}
+#flight-assignments-view .assignments-for-award .container.hover .contents {
+  background-color: #fff4d8;
+}
+#flight-assignments-view .assignments-for-award .container.readonly .contents {
+  background-color: #ccc;
+}
+#flight-assignments-view .assignments-for-award .container .title {
+  background-color: #ffba80;
+  color: #0080a4;
+  font: bold 12px sans-serif;
+  padding: 2px 4px;
+  text-align: left;
+}
+#flight-assignments-view .assignments-for-award .container .title a.delete-button {
+  color: #f00000;
+  float: right;
+  font: bold 10px sans-serif;
+  margin: -2px -2px 0 0;
+  text-decoration: none;
+}
+span.delete-button {
+  color: #f00000;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+#flight-assignments-view .assignments-for-award .container .contents {
+  background-color: #f0f0f0;
+  height: 21ex;
+  overflow: auto;
+  overflow-y: auto;    /* For browsers that support it, only perform */
+  overflow-x: hidden;  /* autoscrolling in the vertical direction.   */
+  text-align: left;
+}
+#flight-assignments-view .assignments-for-award ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 1ex;
+}
+#flight-assignments-view .contents li {
+  margin: 1ex 0;
+}
+#flight-assignments-view .contents .handle {
+  background-color: #30a0d0;
+  clear: left;
+  color: #f0f0f0;
+  float: left;
+  font-size: 90%;
+  font-weight: bold;
+  margin-right: 4px;
+  padding: 2px 4px;
+  text-align: center;
+  width: 2.5em;  /* Enough space for '1999' */
+  /* use rounded borders where possible */
+  -moz-border-radius-bottomleft: 0.5em;
+  -moz-border-radius-bottomright: 0.5em;
+  -moz-border-radius-topleft: 0.5em;
+  -moz-border-radius-topright: 0.5em;
+  -webkit-border-bottom-left-radius: 0.5em;
+  -webkit-border-bottom-right-radius: 0.5em;
+  -webkit-border-top-left-radius: 0.5em;
+  -webkit-border-top-right-radius: 0.5em;
+}
+#flight-assignments-view .contents .handle.active {
+  cursor: move;
+}
+#flight-assignments-view .contents .info {
+  font-size: 80%;
+}
+
+#auto-assign-flights .flash-error {
+  margin-top: 0;
+  padding-left: 1.5em;
+}
+#auto-assign-form {
+  margin: 0 0 2ex;
+  width: 15em;
+}
+#auto-assign-form form {
+  font-family: sans-serif;
+  padding: 1ex;
+}
+#auto-assign-form fieldset {
+  margin: 0;
+  padding: 0 1em 1ex;
+}
+#auto-assign-form legend {
+  font-size: 90%;
+}
+#auto-assign-form p {
+  clear: left;
+  margin: 0 0.5em;
+  padding: 0;
+  padding-top: 1ex;
+  text-align: left;
+}
+#auto-assign-form label {
+  float: left;
+  padding: 0.25ex 1em 0 0;
+  text-align: right;
+  width: 6.5em;
+}
+#auto-assign-form input.text-input {
+  border: 1px solid #444;
+  padding: 1px 2px;
+  text-align: right;
+  width: 1.5em;
+}
+#auto-assign-form .form-buttons {
+  margin: 1ex 0.5em 0;
+}
+#auto-assign-form .form-buttons input {
+  margin: 0 0.5em;
+}
+
+/*------------------------------
+ Flight Management
+ ------------------------------*/
+
+#flight-management-menu {
+  border-bottom: 2px solid #ffba80;
+  text-align: center;
+}
+#flight-management-menu a {
+  text-decoration: none;
+}
+#flight-management-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#flight-management-menu .menu-item {
+  float: left;
+  margin: 0;
+  padding: 0 1em;
+}
+#flight-management-menu .menu-item .action-link a {
+  background-color: #f0f0f0;
+  color: #0080a4;
+  display: block;
+  font: bold 14px sans-serif;
+  padding: 5px 1em;
+  /* use rounded borders where possible */
+  -moz-border-radius-topleft: 1em;
+  -moz-border-radius-topright: 1em;
+  -webkit-border-top-left-radius: 1em;
+  -webkit-border-top-right-radius: 1em;
+}
+#flight-management-menu .menu-item .on a {
+  background-color: #ffba80;
+}
+#flight-management-menu .menu-item .on a:hover,
+#flight-management-menu .menu-item .off a:hover {
+  background-color: #0080a4;
+  color: #ffba80;
+}
+#flight-management-loading-indicator {
+  clear: both;
+  color: #0080a4;
+  font: bold 16px sans-serif;
+  left: 20px;
+  position: relative;
+  text-align: left;
+  top: 0.5em;
+  width: 8em;
+}
+
+#flight-management-view ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#flight-management-view .active-scaffold-footer {
+  display: none;
+}
+#flight-management-view td.assigned-column,
+#flight-management-view td.completed-column {
+  width: 5em;
+}
+#flight-management-view td.assigned_time-column {
+  width: 18em;
+}
+#admin__rounds-content div.nested-view td.assigned_time-column,
+#admin__rounds-content div.nested-view td.completed_time-column {
+  width: 12em;
+}
+#flight-management-view td.entry_count-column,
+#admin__rounds-content div.nested-view td.entry_count-column {
+  width: 5em;
+}
+#flight-management-view td.status-column,
+#admin__rounds-content div.nested-view td.status-column {
+  width: 10em;
+}
+#flight-management-view table.flight-entries,
+#scores-view table.entry-scores {
+  font: bold 14px arial, sans-serif;
+  border-bottom: 1px solid #aff7a8;
+  border-collapse: collapse;
+}
+#scores-view table.entry-scores {
+  margin-bottom: 1ex;
+}
+#scores-view div.scores-table-title {
+  font: bold 12px arial, sans-serif;
+}
+.active-scaffold table.flight-entries th,
+.active-scaffold table.entry-scores th {
+  background-color: #555;
+  color: #f0f0f0;
+  text-align: center;
+}
+.active-scaffold table.flight-entries tr,
+.active-scaffold table.session-flights tr,
+.active-scaffold table.entry-scores tr {
+  border-left: 1px solid #aff7a8;
+  border-right: 1px solid #aff7a8;
+}
+#flight-management-view .active-scaffold .edit-view tr.even-record td {
+  border-bottom: 1px solid #aff7a8;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #aff7a8;
+}
+.active-scaffold table.flight-entries td,
+.active-scaffold table.session-flights td,
+.active-scaffold table.entry-scores td {
+  text-align: center;
+}
+.active-scaffold table.flight-entries td.entry {
+  text-align: right;
+}
+.active-scaffold table.flight-entries td.category,
+.active-scaffold table.session-flights td.flight,
+.active-scaffold table.entry-scores td.judge {
+  text-align: left;
+}
+.active-scaffold table.entry-scores {
+  width: 20em;
+}
+.active-scaffold table.entry-scores tr td {
+  border-bottom: 1px solid #aff7a8;
+}
+.active-scaffold table.entry-scores td.score {
+  width: 3em;
+}
+
+/*------------------------------
+ Flight Tracker
+ ------------------------------*/
+
+table#flight-tracker td span.unassigned,
+.active-scaffold td.status-column span.unassigned {
+  color: #f00000;
+  font-weight: bold;
+}
+table#flight-tracker td span.assigned,
+.active-scaffold td.status-column span.assigned {
+  color: #f0d000;
+  font-weight: bold;
+}
+table#flight-tracker td span.completed,
+.active-scaffold td.status-column span.pushed,
+.active-scaffold td.status-column span.completed {
+  color: #00f000;
+  font-weight: bold;
+}
+table#flight-tracker {
+  border: 2px solid #c0c0c0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4ex;
+  text-align: center;
+}
+table#flight-tracker th {
+  /*font-family: verdana, sans-serif;*/
+  font-size: 240%;
+  font-weight: bold;
+}
+table#flight-tracker td {
+  background-color: #f0f0f0;
+  border: 2px solid #c0c0c0;
+  font-family: verdana, sans-serif;
+  font-size: 600%;
+  font-weight: bold;
+  width: 25%;
+}
+table#flight-tracker caption {
+  caption-side: bottom;
+  font-size: 120%;
+  padding-top: 1ex;
+}
+
+/*------------------------------
+ Scores
+ ------------------------------*/
+
+#scores-view ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#scores-view .active-scaffold-footer {
+  display: none;
+}
+#scores-view td.bottle_code-column,
+#scores-view td.place-column,
+#scores-view td.avg_score-column {
+  width: 8em;
+}
+#scores-view td.scores-column {
+  width: 15em;
+}
+
+/*------------------------------
+ Flight Sheets and Box Check
+ ------------------------------*/
+
+#print-all-flight-sheets,
+#print-box-check-report {
+  font-family: verdana, sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0 2px;
+  padding: 2px;
+  text-align: right;
+  white-space: nowrap;
+}
+#print-box-check-report {
+  margin-bottom: 1ex;
+  margin-right: 1em;
+}
+#print-all-flight-sheets a,
+#print-box-check-report a {
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+#print-all-flight-sheets .icon,
+#print-box-check-report .icon {
+  margin-left: 0.5em;
+}
+
+#box-check-table {
+  float: right;
+}
+#box-check-table th {
+  text-align: left;
+}
+
+/*------------------------------
+ Ineligible Judges
+ ------------------------------*/
+
+#flight-management-view .ineligible-judges {
+  font: normal 12px sans-serif;
+  padding: 1ex 1ex 0;
+}
+#flight-management-view .ineligible-judges ul {
+  list-style: disc;
+  margin: 1ex 0 0;
+  column-count: 4;
+  column-gap: 1em;
+  -moz-column-count: 4;
+  -moz-column-gap: 1em;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 1em;
+}
+#flight-management-view.scrollable .ineligible-judges ul {
+  background-color: #f0f0f0;
+  border: 2px solid #ffba80;
+  max-height: 10ex;
+  overflow: auto;
+  padding: 1ex;
+}
+#flight-management-view .ineligible-judges ul li {
+  margin: 1ex 1em;
+  text-align: left;
+}
+
+.ineligible-judges dt {
+  margin: 1em 2em 0.5em;
+  font-weight: bold;
+}
+.ineligible-judges dd {
+  margin: 0 2em;
+}
+
+#ineligible-judge-list .ineligible-judges ul {
+  column-count: 4;
+  column-gap: 1em;
+  -moz-column-count: 4;
+  -moz-column-gap: 1em;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 1em;
+}
+#ineligible-judge-list .ineligible-judges ul li {
+  text-align: left;
+}
+
+/*------------------------------
+ BJCP Report
+ ------------------------------*/
+
+#bjcp-report #competition-data form {
+  margin: 0 1em;
+}
+#bjcp-report #competition-data form p {
+  clear: left;
+  font-size: 110%;
+  padding-bottom: 1ex;
+}
+#bjcp-report #competition-data form label,
+#bjcp-report #competition-data form span.label {
+  float: left;
+  font-weight: bold;
+  width: 7em;
+}
+#bjcp-report #competition-data form textarea,
+#bjcp-report #competition-data form span.value {
+  float: left;
+}
+#bjcp-report #competition-data form .form-buttons {
+  clear: both;
+  padding: 1em 7em;
+  text-align: left;
+}
+
+#email-form {
+  float: left;
+}
+#email-form input.text-input,
+#email-form textarea.text-input {
+  border: 1px solid #444;
+  font-family: "Andale Mono", "Courier New", Courier, monospace;
+  padding: 1px 2px;
+}
+#email-form input.text-input:focus,
+#email-form textarea.text-input:focus {
+  background-color: #f5f5f5;
+}
+#email-form p {
+  clear: left;
+  margin: 0 0.5em;
+  padding: 1ex 0 0 0;
+  text-align: left;
+}
+#email-form label {
+  float: left;
+  padding: 0.25ex 0.5em 0 0;
+  text-align: right;
+  width: 6em;
+}
+#email-form form .form-buttons {
+  clear: both;
+  margin: 1em 6em;
+  text-align: left;
+}
+#email-form form .form-buttons input {
+  margin: 0 1em;
+  width: 6em;
+}
+
+/*------------------------------
+ MCAB Report
+ ------------------------------*/
+
+#mcab-report #qualifiers {
+  background-color: #f0f0f0;
+  border: 2px solid #ffba80;
+  height: 15em;
+  overflow: auto;
+}
+#mcab-report #qualifiers ol {
+  list-style: none;
+  column-count: 2;
+  column-gap: 1em;
+  -moz-column-count: 2;
+  -moz-column-gap: 1em;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 1em;
+}
+#mcab-report .category {
+  font-weight: bold;
+}
+#mcab-report .form-buttons {
+  margin: 2ex 0;
+  text-align: left;
+}
+#mcab-report .form-buttons input {
+  margin: 0 1em;
+  padding: 2px 6px;
+}
+
+/*------------------------------
+ Imports
+ ------------------------------*/
+
+#import-form form .form-buttons {
+  text-align: left;
+}
+#import-form form .form-buttons input {
+  width: 8em;
+}
+#import-form div.large-flash {
+  border: 1px solid #999;
+  margin-bottom: 1.5ex;
+  max-height: 20ex;
+  overflow: auto;
+  padding: 4px;
+  white-space: nowrap;
+}
+#import-form div.large-flash ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*------------------------------
+ Judges
+ ------------------------------*/
+
+#competition-organizer,
+#unallocated-staff-points {
+  color: #333;
+  font: bold 100% sans-serif;
+  margin-bottom: 1ex;
+}
+
+.active-scaffold #admin__judges-tbody span.description {
+  color: #666;
+  font: normal 11px verdana, sans-serif;
+  margin-left: 1em;
+}
+.active-scaffold #admin__judges-tbody td.confirmed-column,
+.active-scaffold #admin__judges-tbody td.checked_in-column,
+.active-scaffold #admin__judges-tbody td.organizer-column,
+.active-scaffold #admin__judges-tbody td.is_bos_judge-column,
+.active-scaffold #admin__judges-tbody td.judge_points-column,
+.active-scaffold #admin__judges-tbody td.steward_points-column,
+.active-scaffold #admin__judges-tbody td.staff_points-column {
+  text-align: center;
+  width: 6em;
+}
+.active-scaffold #admin__judges-tbody td.judge_number-column {
+  text-align: left;
+  width: 6em;
+}
+.active-scaffold #admin__judges-tbody td.updated_at-column {
+  text-align: left;
+  width: 8em;
+}
+
+/*------------------------------
+ Competition Data
+ ------------------------------*/
+
+.active-scaffold #admin__competition_data-tbody li.form-element dt {
+  padding-bottom: 2ex;
+  /*width: 10em;*/
+}
+.active-scaffold #admin__competition_data-tbody input.text-input,
+.active-scaffold #admin__competition_data-tbody select {
+  margin-bottom: 4px;
+}
+.active-scaffold #admin__competition_data-tbody span.description {
+  clear: both;
+  color: #333;
+  float: left;
+  font-size: 12px;
+  margin: 0 0 1ex 0;
+  /*width: 26em;*/
+}

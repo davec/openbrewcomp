@@ -1,0 +1,19 @@
+<% @page_title = "#{competition_name} Administration" -%>
+
+<!-- FIXME: This page is a place holder -->
+
+<div id="admin-menu">
+  <ul class="multicol">
+    <% @toc.each do |chapter| -%>
+      <li><%= chapter.name.titleize %>
+        <ul>
+          <% chapter.contents.each do |controller| -%>
+            <li><%= @allowed_controllers.index(controller) ? link_to(controller.titleize, { :controller => "admin/#{controller}" }) : %Q{<span class="access-denied">#{controller.titleize}</span>} %></li>
+          <% end -%>
+        </ul>
+      </li>
+    <% end -%>
+  </ul>
+</div>
+
+<div class="clearfloat"></div>

@@ -1,0 +1,309 @@
+/**
+ * Basic color settings (adjust to suit)
+ */
+
+body {
+  background-color: #faf0e6;  /* linen */
+}
+#user-info {
+  color: #b22222;  /* firebrick */
+}
+#footer {
+  background-color: #4d86d1;  /* medium blue */
+  color: #ffffff;
+}
+#footlinks a {
+  color: #fffff;
+}
+/* These are the color mappings for the navigation menu.
+ *
+ * #ffaf54 = orange
+ * #191970 = midnight blue
+ * #f0f0f0 = not quite white
+ * #ffffff = white
+ */
+#navigation li.off ul, #navigation li.on ul {
+  background-color: #191970;
+}
+#navigation li.on ul {
+  background-color: #ffaf54;
+}
+#navigation li.on:hover ul, #navigation li.over ul {
+  background-color: #191970;
+}
+#navigation li a {
+  background-color: #f0f0f0;
+  color: #191970;
+}
+#navigation li.on a {
+  color: #ffffff;
+  background-color: #ffaf54;
+}
+#navigation li.on ul a, #navigation li.off ul a {
+  color: #ffffff;
+}
+#navigation li.on:hover ul a, #navigation li.over ul li a {
+  background-color: #191970;
+}
+#navigation li.off a:hover, #navigation li.on a:hover {
+  background-color: #191970;
+  color: #ffffff;
+}
+#navigation li.off ul a, #navigation li.on ul a { /* sub-navigation formatting */
+  background-color: #191970;
+  color: #ffaf54;
+}
+#navigation li.off ul li a:hover, #navigation li.on ul li a:hover {
+  background-color: #191970;
+  color: #ffffff;
+}
+#navigation li.on ul a {
+  background-color: #ffaf54;
+}
+
+/**
+ * Layout settings
+ */
+
+body {
+  /*background-color: #ffc;*/
+  padding-bottom: 3ex;  /* must match the footer height below */
+}
+
+#header {
+  height: 120px;
+  min-width: 50em;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+#footer {
+  bottom: 0;
+  left: 0;
+  height: 3ex;
+  position: relative;
+  width: 100%;
+  z-index: 100;
+}
+html > body #footer {
+  position: fixed;
+}
+
+/*------------------------------
+ Header
+ ------------------------------*/
+
+#header {
+  background: #c1cdcd url(../images/header.png) no-repeat scroll 0 0;
+  font-size: 12px;
+}
+
+#header #title {
+  color: #373;
+  float: left;
+  font: bold 36px "Zapf Chancery", "Apple Chancery", "Brush Script MT", Georgia, "Times New Roman", Times, sans-serif;
+  left: 150px;
+  letter-spacing: 0.1ex;
+  position: absolute;
+  top: 8px;
+}
+
+/*------------------------------
+ Navigation
+ ------------------------------*/
+
+#navigation {
+  height: 60px;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  position: relative;
+  top: 70px;
+  width: 100%;
+}
+#navigation a {
+  text-decoration: none;
+}
+#navigation li { /* float the main list items */
+  float: left;
+  margin: 0;
+  padding-left: 12px;
+}
+#navigation li ul {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#navigation li.off ul, #navigation li.on ul { /* place the sub-navigation below */
+  height: 25px;
+  left: 0;
+  padding-top: 5px;
+  position: absolute;
+  top: 20px;
+  width: 100%;  /* IE doesn't handle this width correctly, fix via JS */
+}
+#navigation li a {
+  display: block;
+  font: bold 12px sans-serif;
+  padding: 4px 6px;
+  *padding: 2px 6px 6px;  /* adjust for IE */
+  width: auto;
+  /* use rounded borders where possible */
+  -moz-border-radius-topright: 0.5em;
+  -moz-border-radius-topleft:  0.5em;
+  -webkit-border-top-right-radius: 0.5em;
+  -webkit-border-top-left-radius:  0.5em;
+}
+#navigation li.on ul a, #navigation li.off ul a {
+  border: 0;
+  float: left; /* IE doesn't inherit the float */
+  width: auto;
+}
+#navigation li.on ul {
+  display: block;
+}
+#navigation li.off:hover ul, #navigation li.over ul {
+  display: block;
+  z-index: 10;
+}
+#navigation li.off ul a, #navigation li.on ul a { /* sub-navigation formatting */
+  display: block;
+  font: bold 12px sans-serif;
+}
+
+/*------------------------------
+ Footer
+ ------------------------------*/
+
+#footer {
+  font: normal 12px sans-serif;
+}
+
+#copyright {
+  float: left;
+  margin: 0.5ex 1em;
+  text-align: left;
+}
+
+#footlinks {
+  float: right;
+  list-style: none;
+  margin: 0.5ex 0.5em;
+}
+#footlinks li {
+  display: inline;
+  margin: 0;
+  padding: 0 0.5em;
+}
+#footlinks li.firstlink {
+  border-left: none;
+}
+#footlinks li.lastlink {
+  border-right: none;
+}
+
+/*------------------------------
+ Content
+ ------------------------------*/
+
+.reporttable tr.table-header th,
+.reporttable tr.table-footer th {
+  background-color: #005cb8;
+  color: #ffffff;
+}
+.reporttable tr.category-header th {
+  background-color: #b9dcff;
+}
+.reporttable tr.award-header th {
+  background-color: #e6f2ff;
+}
+.reporttable tr.total th {
+  background-color: #b9dcff;
+}
+.reporttable tr.odd-record td {
+  background-color: #e6f2ff;
+}
+.reporttable td {
+  background-color: #ffffff;
+  border-bottom: thin solid #e6f2ff;
+}
+
+.hide {
+  display: none;
+}
+
+#content {
+  padding: 0 1em 2ex 1em;
+}
+
+#user-info {
+  float: right;
+  font-size: 80%;
+  font-weight: bold;
+  position: absolute;
+  right: 4px;
+  top: 124px;
+}
+
+h1 a.title-link {
+  font-size: 80%;
+  text-decoration: none;
+}
+
+/*------------------------------
+ Online registration
+ ------------------------------*/
+
+#online-registration {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+#online-registration .step-marker {
+  background: url(../images/orangerarr.gif) 0 0 no-repeat;
+  float: left;
+  height: 16px;
+  margin-right: 6px;
+  width: 16px;
+}
+#online-registration .step-marker.open {
+  background: url(../images/orangedarr.gif) 0 0 no-repeat;
+}
+#online-registration .step span {
+  color: #06c;
+  cursor: pointer;
+  font-weight: bold;
+}
+#online-registration .disabled-step span {
+  font-style: italic;
+  font-weight: bold;
+}
+#online-registration .openstep {
+  background-color: #ffffbb;
+  border: 2px solid #fae2bb;
+  margin-left: 22px;
+  padding: 4px;
+}
+#online-registration .close-button {
+  background: url(../images/orangeclose.gif) 0 0 no-repeat;
+  color: #06c;
+  cursor: pointer;
+  font-weight: bold;
+  float: right;
+  height: 16px;
+  margin-bottom: 1ex;
+  margin-left: 2em;
+  text-decoration: none;
+  text-indent: -4000px;
+  width: 16px;
+}
+#online-registration .update-brewer-info-note {
+  color: #c02;
+  font-weight: bold;
+  margin: 0 2em 2ex 2em;
+}
+#online-registration .step-instructions {
+  margin: 0 0.5em;
+}

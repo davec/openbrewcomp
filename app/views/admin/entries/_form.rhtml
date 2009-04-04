@@ -1,0 +1,89 @@
+<% # Convert the ActiveColumns object to a hash, based on the column name
+   colhash = Hash.new
+   columns.each {|column| colhash[column.name] = column}
+   id = params[:eid] || params[:id]
+%>
+<div class="form-instructions">
+  <p>
+    Required fields are denoted by a <b>bold</b> label.
+  </p>
+</div>
+<div id="entries-form-data">
+  <% if !@record.new_record? -%>
+    <ol class="form">
+      <li class="form-element required">
+        <%= render :partial => form_partial_for_column(colhash[:registration_code]), :locals => { :column => colhash[:registration_code] } -%>
+      </li>
+    </ol>
+  <% end -%>
+  <% if @is_admin_view -%>
+    <ol class="form">
+      <li class="form-element required">
+        <%= render :partial => form_partial_for_column(colhash[:bottle_code]), :locals => { :column => colhash[:bottle_code] } -%>
+      </li>
+      <li class="form-element">
+        <%= render :partial => form_partial_for_column(colhash[:odd_bottle]), :locals => { :column => colhash[:odd_bottle] } -%>
+      </li>
+    </ol>
+  <% end -%>
+  <ol class="form">
+    <li class="form-element">
+      <%= render :partial => form_partial_for_column(colhash[:name]), :locals => { :column => colhash[:name] } -%>
+    </li>
+  </ol>
+  <ol class="form">
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:style]), :locals => { :column => colhash[:style] } -%>
+    </li>
+  </ol>
+  <ol class="form" id="classic-style-data_<%= id %>"<%= ' style="display:none"' if @record.base_style_id.nil? || @record.base_style_id == Style.first_time[:id] -%>>
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:classic_style_id]), :locals => { :column => colhash[:classic_style_id] } -%>
+    </li>
+  </ol>
+  <ol class="form" id="base-style-data_<%= id %>"<%= ' style="display:none"' if @record.base_style_id.nil? || @record.base_style_id != Style.first_time[:id] -%>>
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:base_style_id]), :locals => { :column => colhash[:base_style_id] } -%>
+    </li>
+  </ol>
+  <ol class="form" id="sweetness-data_<%= id %>"<%= ' style="display:none"' if @record.sweetness_id.nil? -%>>
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:sweetness]), :locals => { :column => colhash[:sweetness] } -%>
+    </li>
+  </ol>
+  <ol class="form" id="carbonation-data_<%= id %>"<%= ' style="display:none"' if @record.carbonation_id.nil? -%>>
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:carbonation]), :locals => { :column => colhash[:carbonation] } -%>
+    </li>
+  </ol>
+  <ol class="form" id="strength-data_<%= id %>"<%= ' style="display:none"' if @record.strength_id.nil? -%>>
+    <li class="form-element required">
+      <%= render :partial => form_partial_for_column(colhash[:strength]), :locals => { :column => colhash[:strength] } -%>
+    </li>
+  </ol>
+  <ol class="form">
+    <li class="form-element" id="style-info-data_<%= id %>">
+      <%= render :partial => form_partial_for_column(colhash[:style_info]), :locals => { :column => colhash[:style_info] } -%>
+      <% unless @is_admin_view -%>
+        <p id="style-info-note_<%= id %>" class="form-instructions">
+          <b>Note:</b> The competition organizer reserves the right to remove
+          any personally identifiable or inappropriate data from the supplied
+          style information. Please only enter style information that is
+          necessary to properly judge your entry. Be as complete as possible,
+          but don&rsquo;t write a dissertation and don&rsquo;t include your
+          recipe.
+        </p>
+      <% end -%>
+    </li>
+  </ol>
+  <% if @is_admin_view -%>
+    <ol class="form">
+      <li class="form-element">
+        <%= render :partial => form_partial_for_column(colhash[:competition_notes]), :locals => { :column => colhash[:competition_notes] } -%>
+      </li>
+    </ol>
+  <% end -%>
+</div>
+<script type="text/javascript">
+showStyleParams('<%= params[:eid] || params[:id] %>');
+</script>

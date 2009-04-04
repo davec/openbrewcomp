@@ -1,0 +1,33 @@
+<% @page_title = "#{competition_name} Styles" %>
+
+<% cache do %>
+
+<p>
+  All BJCP beer, mead, and cider styles will be judged using the 2008 BJCP style guidelines.
+</p>
+
+<p>
+  Please refer to the BJCP style guidelines from the BJCP web site
+  <span class="noprint">in <%= link_to('PDF format', 'http://www.bjcp.org/docs/2008_Guidelines.pdf') %>
+  or <%= link_to('HTML format', 'http://www.bjcp.org/2008styles/catdex.php') %></span> for
+  complete style descriptions.
+</p>
+
+<% @categories.sort{|x,y| x.position <=> y.position}.each do |category| -%>
+  <h2><%= h category.name %></h2>
+  <div class="stylecategory">
+    <% category.awards.sort{|x,y| x.position <=> y.position}.each do |award| -%>
+      <h3><%= h award.name %></h3>
+      <% if award.styles.count > 1 -%>
+        <p>One set of ribbons will be awarded for the <%= award.styles.count %> sub-categories below.</p>
+      <% end -%>
+      <dl>
+        <% award.styles.sort{|x,y| "#{x.bjcp_category}#{x.bjcp_subcategory}" <=> "#{y.bjcp_category}#{y.bjcp_subcategory}"}.each do |style| -%>
+          <dd><strong><%= "#{style.bjcp_category}#{style.bjcp_subcategory}" %></strong> <%= create_description_link(style.name, style.description_url) %></dd>
+        <% end -%>
+      </dl>
+    <% end -%>
+  </div>
+<% end -%>
+
+<% end %>

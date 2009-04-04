@@ -1,0 +1,3 @@
+assignment_id = flights_container_id(@award)
+page.replace_html assignment_id, :partial => 'flights',
+                                 :locals => { :award => @award }

@@ -1,0 +1,22 @@
+<% @page_title = 'Forgot Your Password?' %>
+
+<div id="forgotten-form">
+  <% form_for @password do |f| %>
+    <fieldset>
+      <legend>Enter Your Email Address</legend>
+      <ol>
+        <li>      
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+          <%= f.error_message_on :email, :preprend_text => 'Email ' %>
+        </li>
+      </ol>
+    </fieldset>
+    <div class="form-buttons">
+      <%= f.submit "Submit" %>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+  Form.focusFirstElement('new_password');
+</script>

@@ -1,0 +1,29 @@
+mysql: &mysql
+  adapter:  mysql
+  encoding: utf8
+  host:     localhost
+  username: root
+  password: secret
+
+postgresql: &postgresql
+  adapter:  postgresql
+  encoding: unicode
+  host:     localhost
+  username: pguser
+  password: secret
+
+development:
+  database: openbrewcomp_development
+  <<: *postgresql
+
+test:
+  database: openbrewcomp_test
+  <<: *postgresql
+
+production:
+  database: openbrewcomp_production
+  <<: *postgresql
+
+staging:
+  database: openbrewcomp_staging
+  <<: *postgresql

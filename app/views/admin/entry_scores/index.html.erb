@@ -1,0 +1,7 @@
+<% @page_title = "#{competition_name} Scores by Award Category" %>
+
+<div id="scores-view">
+  <ul class="uncompacted awards">
+    <%= render(:partial => 'award', :collection => @awards) -%>
+  </ul>
+</div>

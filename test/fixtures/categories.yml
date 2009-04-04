@@ -1,0 +1,94 @@
+light_lager: 
+  name: Light Lager
+  position: 1
+pilsner: 
+  name: Pilsner
+  position: 2
+amber_lager: 
+  name: European Amber Lager
+  position: 3
+dark_lager: 
+  name: Dark Lager
+  position: 4
+bock: 
+  name: Bock
+  position: 5
+light_hybrid: 
+  name: Light Hybrid Beer
+  position: 6
+amber_hybrid: 
+  name: Amber Hybrid Beer
+  position: 7
+english_ale: 
+  name: English Pale Ale
+  position: 8
+scottish_irish: 
+  name: Scottish and Irish Ale
+  position: 9
+american_ale: 
+  name: American Ale
+  position: 10
+brown_ale: 
+  name: English Brown Ale
+  position: 11
+porter: 
+  name: Porter
+  position: 12
+stout: 
+  name: Stout
+  position: 13
+ipa: 
+  name: India Pale Ale (IPA)
+  position: 14
+german_wheat: 
+  name: German Wheat and Rye Beer
+  position: 15
+belgian_french: 
+  name: Belgian and French Ale
+  position: 16
+sour: 
+  name: Sour Ale
+  position: 17
+belgian_strong: 
+  name: Belgian Strong Ale
+  position: 18
+strong_ale: 
+  name: Strong Ale
+  position: 19
+fruit: 
+  name: Fruit Beer
+  position: 20
+veggie: 
+  name: Spice/Herb/Vegetable Beer
+  position: 21
+smoke: 
+  name: Smoke-Flavored and Wood-Aged Beer
+  position: 22
+specialty: 
+  name: Specialty Beer
+  position: 23
+trad_mead: 
+  name: Traditional Mead
+  position: 24
+fruit_mead: 
+  name: Melomel (Fruit Mead)
+  position: 25
+other_mead: 
+  name: Other Mead
+  position: 26
+standard_cider: 
+  name: Standard Cider and Perry
+  position: 27
+specialty_cider: 
+  name: Specialty Cider and Perry
+  position: 28
+special:
+  name: Special Competition Style
+  position: 29
+first_time:
+  name: First-Time Entrant
+  position: 30
+bos:
+  name: Best of Show
+  position: 0
+  is_public: false
