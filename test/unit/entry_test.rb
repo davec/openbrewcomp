@@ -122,6 +122,16 @@ class EntryTest < Test::Unit::TestCase
     end
   end
 
+  def test_should_create_entry_with_no_first_time_style_defined
+    Style.destroy(@first_time_id)
+    assert_difference 'Entry.count' do
+      entry = Entry.new(:style_id => styles(:style_7A).id,
+                        :entrant_id => @good_entrant_id,
+                        :user_id => @good_user_id)
+      assert entry.save
+    end
+  end
+
   def test_should_create_first_time_entry_with_base_style
     assert_difference 'Entry.count' do
       entry = Entry.new(:style_id => @first_time_id,

@@ -49,10 +49,12 @@ class Style < ActiveRecord::Base
     "#{category} - #{name}"
   end
 
-  @@first_time = nil
+  # Get the "first time" style. This assumes that the style name matches the
+  # regex /^first.time/i (or in SQL terms, 'first_time%'). If no such style is
+  # found, a dummy record is returned (which avoids littering the code with
+  # checks for a nil return from this method).
   def self.first_time
-    @@first_time ||= Style.find(:first, :conditions => "LOWER(name) LIKE 'first_time%'")
-    @@first_time
+    Rails.cache.fetch(:first_time_style) { Style.find(:first, :conditions => "LOWER(name) LIKE 'first_time%'") || Struct.new(:id, :name).new(-1, 'Dummy') }
   end
 
   # Export the table
