@@ -31,4 +31,10 @@ class Admin::ClubsController < AdministrationController
     config.columns[:name].options = { :size => 60, :maxlength => 60 }
   end
 
+  protected
+
+  def conditions_for_collection
+    [ 'id <> ?', Club.other.id ]
+  end
+
 end

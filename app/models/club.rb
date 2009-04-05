@@ -11,18 +11,12 @@ class Club < ActiveRecord::Base
                           :message => 'already exists'
   validates_length_of :name, :maximum => 60, :allow_blank => true
 
-  ClubStruct = Struct.new(:id, :name)
-
-  @@other = nil
-  def self.other
-    @@other = ClubStruct.new(-1, 'Other (please specify)') unless @@other
-    @@other
-  end
+  @@other = Struct.new(:id, :name).new(-1, 'Other (please specify)')
+  cattr_reader :other
 
   @@independent = nil
   def self.independent
-    @@independent = Club.find_by_name('Independent') unless @@independent
-    @@independent
+    @@independent ||= Club.find_by_name('Independent')
   end
 
   # Export the table

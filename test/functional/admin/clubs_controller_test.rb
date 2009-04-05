@@ -21,7 +21,7 @@ class Admin::ClubsControllerTest < Test::Unit::TestCase
     assert_template 'list'
 
     assert_select 'div#content' do
-      assert_select_active_scaffold_index_table Club.count
+      assert_select_active_scaffold_index_table Club.count - 1  # The "other club" is excluded from the view
     end
   end
 
