@@ -1,6 +1,6 @@
 <% @page_title = "#{competition_name} News" %>
 
-<% cache do %>
+<% cache(:about_news) do %>
 
 <div id="feed-link">
 <%= link_to(image_tag('feed.png', :title => 'RSS Feed', :alt => 'RSS Feed', :size => '16x16'), rss_feed_path) %>

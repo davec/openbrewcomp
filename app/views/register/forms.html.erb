@@ -1,6 +1,5 @@
 <% @page_title = "#{competition_name} Entry Forms"
-   show_xpdf_link = /Windows/.match(request.env['HTTP_USER_AGENT']).nil?
-   cat6d = Style.find_by_bjcp_category_and_bjcp_subcategory('6','D') %>
+   show_xpdf_link = /Windows/.match(request.env['HTTP_USER_AGENT']).nil? %>
 
 <p>
   All the forms you need to enter <%= competition_name %> can be found on this page.
@@ -46,17 +45,18 @@
   have the necessary information to accurately judge your entry.
 </p>
 
-<p>
-  You must fill in the <em>Pertinent Style Information</em> section for the
-  following styles:
-  <% cache(:section => 'reqinfo') do -%>
+<% cache(:register_forms_required_info) do
+     cat6d = Style.find_by_bjcp_category_and_bjcp_subcategory('6','D') %>
+  <p>
+    You must fill in the <em>Pertinent Style Information</em> section for the
+    following styles:
     <% styles_with_required_styleinfo.each do |s| -%>
       <%= link_to("#{s.name} (#{s.category})", s.description_url) %>,
     <% end -%>
-  <% end -%>
-  and rye beers entered in <%= link_to("#{cat6d.name} (#{cat6d.category})", cat6d.description_url) %>.
-  This section is optional for all other categories.
-</p>
+    and rye beers entered in <%= link_to("#{cat6d.name} (#{cat6d.category})", cat6d.description_url) %>.
+    This section is optional for all other categories.
+  </p>
+<% end -%>
 
 <p>
   Use of the &ldquo;official&rdquo; recipe form is preferred, but not required.

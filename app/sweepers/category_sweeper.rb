@@ -4,17 +4,9 @@ class CategorySweeper < ActionController::Caching::Sweeper
   observe Category
 
   def after_save(record)
-    expire_fragments
+    expire_fragment(:styles_index)
   end
 
-  def after_destroy(record)
-    expire_fragments
-  end
-
-  private
-
-    def expire_fragments
-      expire_fragment(:controller => '/styles', :action => 'index')
-    end
+  alias after_destroy after_save
 
 end

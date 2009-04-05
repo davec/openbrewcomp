@@ -27,16 +27,15 @@
       </ul>
     </li>
     <li class="<%= controller.controller_path == 'styles' ? 'on' : 'off' %>">
-      <%= link_to('Styles', styles_path) %>
-      <ul>
-        <%- cache(:controller => 'navbar', :action => 'styles') do -%>
+      <%- cache(:navigation_styles) do -%>
+        <%= link_to('Styles', styles_path) %>
+        <ul>
           <li><%= link_to('All Styles', all_styles_path) %></li>
           <%- special_styles.each do |style| -%>
-            <li><%= create_description_link(style.name,
-                                            style.description_url) %></li>
+            <li><%= create_description_link(style.name, style.description_url) %></li>
           <%- end -%>
-        <%- end -%>
-      </ul>
+        </ul>
+      <%- end -%>
     </li>
     <li class="<%= controller.controller_path == 'register' ? 'on' : 'off' %>">
       <%= link_to('Register', registration_path) %>

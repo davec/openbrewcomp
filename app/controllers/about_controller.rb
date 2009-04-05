@@ -6,25 +6,18 @@ class AboutController < ApplicationController
   helper :contacts
 
   def contacts
-    unless read_fragment({})
+    unless fragment_exist?(:about_contacts)
       @contacts = Contact.to_hash
     end
   end
 
-  def faq
-    unless read_fragment({})
-      contacts
-    end
-  end
-
   def news
-    unless read_fragment({})
+    unless fragment_exist?(:about_news)
       @news_items = NewsItem.find(:all, :order => 'coalesce(updated_at, created_at) desc')
     end
   end
 
   def article
-    # We can't cache individual articles
     unless params[:id].nil?
       begin
         @news_item = NewsItem.find(params[:id])

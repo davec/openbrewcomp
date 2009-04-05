@@ -39,9 +39,7 @@ class RegisterController < ApplicationController
   end
 
   def forms
-    unless read_fragment(:section => 'compname')
-      @competition_name = CompetitionData.instance.name
-    end
+    @competition_name = CompetitionData.instance.name
   end
 
   protected

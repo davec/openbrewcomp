@@ -4,19 +4,10 @@ class NewsItemSweeper < ActionController::Caching::Sweeper
   observe NewsItem
 
   def after_save(record)
-    expire_fragments
+    expire_fragment(:about_news)
+    expire_action(:controller => '/feed', :action => 'news')
   end
 
-  def after_destroy(record)
-    expire_fragments
-  end
-
-  private
-
-    def expire_fragments
-      expire_fragment(:controller => '/about', :action => 'news')
-
-      expire_action(:controller => '/feed', :action => 'news')
-    end
+  alias after_destroy after_save
 
 end

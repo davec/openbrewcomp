@@ -2,8 +2,6 @@
 
 class Admin::CompetitionDataController < AdministrationController
 
-  cache_sweeper :competition_data_sweeper, :only => [ :update ]
-
   active_scaffold :competition_data do |config|
     config.actions = [ :list, :update, :show ]
     config.label = 'Competition Data'

@@ -4,20 +4,11 @@ class StyleSweeper < ActionController::Caching::Sweeper
   observe Style
 
   def after_save(record)
-    expire_fragments
+    expire_fragment(:styles_index)
+    expire_fragment(:register_forms_required_info)
+    expire_fragment(:navigation_styles)
   end
 
-  def after_destroy(record)
-    expire_fragments
-  end
-
-  private
-
-    def expire_fragments
-      expire_fragment(:controller => '/styles', :action => 'index')
-      expire_fragment(:controller => '/navbar', :action => 'styles')
-      expire_fragment(:controller => '/entries', :action => 'awards')
-      expire_fragment(:controller => '/register', :action => 'forms', :section => 'reqinfo')
-    end
+  alias after_destroy after_save
 
 end
