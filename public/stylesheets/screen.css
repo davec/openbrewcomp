@@ -10,10 +10,13 @@ body {
 }
 #footer {
   background-color: #4d86d1;  /* medium blue */
-  color: #ffffff;
+  color: white;
 }
-#footlinks a {
-  color: #fffff;
+#footlinks a:link, #footlinks a:visited {
+  color: white;
+}
+#footlinks a:hover, #footlinks a:active {
+  color: black;
 }
 /* These are the color mappings for the navigation menu.
  *
