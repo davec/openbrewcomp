@@ -28,7 +28,7 @@ For the brewer entering a competition, the OpenBrewComp system offers
   another set of entries as part of a team can create separate entrant records
   and register the corresponding entries under the appropriate entrant record.
 + Automatically generated bottle labels, either individually or combined into
-  a single PDF file, that includes the brewer’s information and the assigned
+  a single PDF file, that includes the brewer&rsquo;s information and the assigned
   registration code for each entry.
 
 For the competition organizer, the OpenBrewComp system offers
@@ -47,8 +47,8 @@ For the competition organizer, the OpenBrewComp system offers
   provided. If any of the information is inappropriate, the organizer can edit
   it as necessary. This information is printed on the flight sheets for the
   judges, so no personally identifiable information should be included.
-+ Generation of a “box check report” that allows you to verify that all
-  registered entries are accounted for and placed in the appropriate boxes.
++ Generation of a &ldquo;box check report&rdquo; that allows you to verify that
+  all registered entries are accounted for and placed in the appropriate boxes.
 + The ability to import the BJCP judge list provided in your competition
   registration packet as well as the ability to send email invites to those
   judges.
@@ -74,12 +74,12 @@ For the competition organizer, the OpenBrewComp system offers
   and state/province.
 + Customization of the entire system since you have the source code. If there
   are any elements that are not necessary for your competition, for example you
-  don’t bother with having judges pre-register, those elements can be easily
-  removed.
+  don&rsquo;t bother with having judges pre-register, those elements can be
+  easily removed.
 
 OpenBrewComp does not currently have the ability for users to pay their entry fees
 online via PayPal or another credit card processor. Such functionality was not
-a requirement of the original competitions, but there are known no technical reasons
+a requirement of the original competitions, but there are no known technical reasons
 it could not be added. If you add such capability, please consider contributing
 your changes back for the benefit of other clubs.
 
@@ -119,7 +119,7 @@ of Ruby on Rails,
 
 1. Download the source, either `git clone git://github.com/davec/openbrewcomp`
    or download a zip or tar archive by clicking the _download_ button at the
-   top of the project’s github page and unzip/untar it to a local directory.
+   top of the project&rsquo;s github page and unzip/untar it to a local directory.
 2. Copy `config/database.yml.example` to `config/database.yml` and edit it for
    your environment.
 3. Run `rake setup` to generate the required configuration files.
@@ -128,9 +128,9 @@ of Ruby on Rails,
    competition coordinator and webmaster.
 6. (optional) Edit `db/migrate/data/clubs.yml` to set an initial list of clubs
    that will be shown in a selection box for an entrant. This is not strictly
-   necessary since entrants will be able to add their club’s name to the list
-   if it does not already exist in the database but an initially empty list of
-   clubs doesn’t look so good.
+   necessary since entrants will be able to add their club&rsquo;s name to the
+   list if it does not already exist in the database but an initial list of clubs
+   that only has your own club name doesn&rsquo;t look so good.
 7. Create your development database: `rake db:create`
 8. Initialize your development database: `rake db:migrate`
 
@@ -157,9 +157,9 @@ the world.
   <dd>
     <p>
       Modify the <code>number_of_bottles_required</code> method as appropriate
-      for your competition. The default is 3 bottles for “point qualifying”
-      styles, i.e., those that are judged in a BOS flight, and 2 bottles for
-      all other styles.
+      for your competition. The default is 3 bottles for &ldquo;point
+      qualifying&rdquo; styles, i.e., those that are judged in a best-of-show
+      flight, and 2 bottles for all other styles.
     </p>
   </dd>
 
@@ -167,15 +167,15 @@ the world.
   <dd>
     <p>
       The <code>MAX_ENTRIES</code> variable defines the maximum number of
-      entries __per award category__, and defaults to 2. Set this value as
+      entries <b>per award category</b>, and defaults to 2. Set this value as
       appropriate for your competition. If you do not impose a limit, set it
       to <code>nil</code>.
     </p>
     <p>
       Note, however, that this is not a hard limit and does not prevent someone
-      from actually entering more than the allowed number of entries — an
+      from actually entering more than the allowed number of entries &mdash; an
       annoying warning message will be displayed with each entry that is
-      registered in excess of the maximum value — but it is the responsibility
+      registered in excess of the maximum value &mdash; but it is the responsibility
       of the competition organizer to enforce the limit, and an administrative
       report is available to identify such entries.
     </p>
@@ -265,9 +265,9 @@ The layouts for reporting the results of the competition are located in the
 
 The cover sheets for returned score sheets are specified in `entrant_covers.rtex`
 which needs to be edited to specify the proper return address for your
-compeition. Search for `ReturnAddr` and make the appropriate modifications to
+competition. Search for `ReturnAddr` and make the appropriate modifications to
 the address elements. You are, of course, free to modify the return address
-section in any way you want, as long as it’s valid LaTeX code.
+section in any way you want, as long as it is valid LaTeX code.
 
 ## Running the Application
 
@@ -275,7 +275,7 @@ Initial testing should be performed in a development/test environment on your
 local system. A development environment is typically started by running
 `script/server`, but if you have another development environment set up, e.g.,
 you are using Phusion Passenger for your development work, then use whatever
-you’re accustomed to using for developing a Rails application.
+you are accustomed to using for developing a Rails application.
 
 ## Deployment
 
