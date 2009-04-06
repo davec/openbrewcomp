@@ -9,7 +9,10 @@ module StylesHelper
       parts = description_url.split('/')
       # If the URL is terminated by a / no action should be specified
       action = parts.pop unless description_url[-1,1] == '/'
-      options = { :controller => "/#{parts.join('/')}" }
+      # NOTE: In the test environment, a leading / is required on the
+      # controller name for the admin tests to pass, but including a
+      # leading / in any other environment causes a routing error.
+      options = { :controller => "#{ENV['RAILS_ENV'] == 'test' ? '/' : ''}#{parts.join('/')}" }
       options[:action] = action unless action.nil?
     end
     link_to h(link), external_link.nil? ? options : external_link
