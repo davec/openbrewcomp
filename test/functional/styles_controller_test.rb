@@ -21,8 +21,17 @@ class StylesControllerTest < Test::Unit::TestCase
 
     # Verify the page contents
     assert_select 'html > head > title', "#{@competition_name} Styles"
+    assert_select 'div#content > h1', "#{@competition_name} Styles"
+  end
+
+  def test_all
+    get :all
+    assert_response :success
+
+    # Verify the page contents
+    assert_select 'html > head > title', 'Complete List of Styles'
     assert_select 'div#content' do
-      assert_select 'h1', "#{@competition_name} Styles"
+      assert_select 'h1', 'Complete List of Styles'
 
       categories = Category.find(:all, :conditions => [ 'is_public = ?', true ])
       awards = Award.find_public_awards

@@ -1,0 +1,22 @@
+<% @page_title = "Complete List of Styles" %>
+
+<% cache(:styles_complete) do %>
+
+<% @categories.sort{|x,y| x.position <=> y.position}.each do |category| -%>
+  <h2><%= h category.name %></h2>
+  <div class="stylecategory">
+    <% category.awards.sort{|x,y| x.position <=> y.position}.each do |award| -%>
+      <h3><%= h award.name %></h3>
+      <% if award.styles.count > 1 -%>
+        <p>One set of ribbons will be awarded for the <%= award.styles.count %> sub-categories below.</p>
+      <% end -%>
+      <dl>
+        <% award.styles.sort{|x,y| "#{x.bjcp_category}#{x.bjcp_subcategory}" <=> "#{y.bjcp_category}#{y.bjcp_subcategory}"}.each do |style| -%>
+          <dd><strong><%= "#{style.bjcp_category}#{style.bjcp_subcategory}" %></strong> <%= create_description_link(style.name, style.description_url) %></dd>
+        <% end -%>
+      </dl>
+    <% end -%>
+  </div>
+<% end -%>
+
+<% end %>

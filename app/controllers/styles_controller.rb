@@ -2,11 +2,10 @@
 
 class StylesController < ApplicationController
 
-  def index
-    unless fragment_exist?(:styles_index)
-      @categories = Category.find(:all,
-                                  :conditions => [ 'is_public = ?', true ],
-                                  :include => [ :awards, :styles ])
+  def all
+    unless fragment_exist?(:styles_all)
+      @categories = Category.all(:conditions => [ 'is_public = ?', true ],
+                                 :include => [ :awards, :styles ])
     end
   end
 

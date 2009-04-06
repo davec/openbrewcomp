@@ -5,6 +5,7 @@ class StyleSweeper < ActionController::Caching::Sweeper
 
   def after_save(record)
     expire_fragment(:styles_index)
+    expire_fragment(:styles_all)
     expire_fragment(:register_forms_required_info)
     expire_fragment(:navigation_styles)
     Rails.cache.delete(:first_time_style)
