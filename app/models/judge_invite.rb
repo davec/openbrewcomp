@@ -25,6 +25,12 @@ Please go to #{@@tokens[:url].first} to register.
 
 If you have any questions, please contact the #{competition_name} organizer,
 #{coordinator_name}, at #{coordinator_email} for assistance.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You have received this message because your email address is registered
+with the BJCP and your contact information was provided in the list of
+judges provided to us by the BJCP, or you have previously judged at our
+competition.
 EOF
     template
   end

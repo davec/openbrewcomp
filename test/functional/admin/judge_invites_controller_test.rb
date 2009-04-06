@@ -27,7 +27,7 @@ class Admin::JudgeInvitesControllerTest < Test::Unit::TestCase
     @emails.clear
   end
 
-  def test_index
+  def test_should_show_index
     get :index
     assert_response :success
 
@@ -39,15 +39,12 @@ class Admin::JudgeInvitesControllerTest < Test::Unit::TestCase
     end
   end
 
-  def test_default_send
+  def test_should_send_with_defaults
     email_count = Judge.email_count
     message = 'This is a test'
 
-    get :index
-    assert_response :success
     post :send_email, :invite => { :message => message }
     assert_redirected_to :action => 'index'
-    #assert_equal "#{email_count} emails were sent", flash[:notice]
     assert_equal "Spawned process to send email to #{email_count} judges.", flash[:notice]
     assert_equal email_count, @emails.size
     email1 = @emails.first
@@ -55,16 +52,13 @@ class Admin::JudgeInvitesControllerTest < Test::Unit::TestCase
     assert_equal message, email1.body.strip
   end
 
-  def test_send_with_subject
+  def test_should_send_with_subject
     email_count = Judge.email_count
     subject = 'Change the subject'
     message = 'This is a test'
 
-    get :index
-    assert_response :success
     post :send_email, :invite => { :subject => subject, :message => message }
     assert_redirected_to :action => 'index'
-    #assert_equal "#{email_count} emails were sent", flash[:notice]
     assert_equal "Spawned process to send email to #{email_count} judges.", flash[:notice]
     assert_equal email_count, @emails.size
     email1 = @emails.first
@@ -72,16 +66,20 @@ class Admin::JudgeInvitesControllerTest < Test::Unit::TestCase
     assert_equal message, email1.body.strip
   end
 
-  def test_send_to_confirmed
+  def test_should_not_send_with_empty_message
+    post :send_email, :invite => { :message => '' }
+    assert_redirected_to :action => 'index'
+    assert_equal 'You must provide a message', flash[:judge_invite_error]
+    assert_equal 0, @emails.size
+  end
+
+  def test_should_send_to_confirmed
     target = 'confirmed'
     email_count = Judge.email_count(:target => target)
     message = 'This is a test'
 
-    get :index
-    assert_response :success
     post :send_email, :invite => { :target => target, :message => message }
     assert_redirected_to :action => 'index'
-    #assert_equal "#{email_count} emails were sent", flash[:notice]
     assert_equal "Spawned process to send email to #{email_count} judges.", flash[:notice]
     assert_equal email_count, @emails.size
     email1 = @emails.first
@@ -89,16 +87,13 @@ class Admin::JudgeInvitesControllerTest < Test::Unit::TestCase
     assert_equal message, email1.body.strip
   end
 
-  def test_send_to_unconfirmed
+  def test_should_send_to_unconfirmed
     target = 'unconfirmed'
     email_count = Judge.email_count(:target => target)
     message = 'This is a test'
 
-    get :index
-    assert_response :success
     post :send_email, :invite => { :target => target, :message => message }
     assert_redirected_to :action => 'index'
-    #assert_equal "#{email_count} emails were sent", flash[:notice]
     assert_equal "Spawned process to send email to #{email_count} judges.", flash[:notice]
     assert_equal email_count, @emails.size
     email1 = @emails.first

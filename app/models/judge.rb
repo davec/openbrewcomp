@@ -189,15 +189,14 @@ class Judge < ActiveRecord::Base
 
   def self.email_invites(options = {})
     sent = failed = 0
-    deliver = options.delete(:deliver) || true
     message = options.delete(:message)
     target  = options.delete(:target)
     conditions = get_conditions_for_target(target)
     Judge.paginated_each(:per_page => 100, :conditions => conditions) do |judge|
       begin
-        RegistrationMailer.send("#{deliver ? 'deliver' : 'create'}_judge_invite",
-                                %Q{"#{judge.first_name} #{judge.last_name}" <#{judge.email}>},
-                                format_message(message, judge), judge.access_key, options)
+        JudgeMailer.deliver_judge_invite(judge,
+                                         format_message(message, judge),
+                                         options)
         sent += 1
       rescue Exception => e
         failed += 1

@@ -26,33 +26,21 @@ class Admin::JudgeInvitesController < AdministrationController
   end
 
   def send_email
-    if request.post?
-      unless params[:invite][:message].blank?
-        begin
-          # Sending email takes too long for more than a trivial number of
-          # judges, so we use the spawn plugin to fork off the processing.
-          # However, this means that we have no way to report the sending
-          # status.
-          #counts = Judge.email_invites(:deliver => true,
-          #                             :competition_name => competition_name,
-          #                             :message => params[:invite][:message])
-          #sent_messages, failed_messages = counts
-          #flash[:notice] = sent_messages == 1 ? "1 email was sent" : "#{sent_messages} emails were sent" if sent_messages > 0
-          #flash[:warning] = failed_messages == 1 ? "1 email was not sent" : "#{failed_messages} emails were not sent" if failed_messages > 0
-          spawn do
-            Judge.email_invites(:deliver => true,
-                                :competition_name => competition_name,
-                                :subject => params[:invite][:subject],
-                                :message => params[:invite][:message],
-                                :target  => params[:invite][:target])
-          end
-          flash[:notice] = "Spawned process to send email to #{Judge.email_count(:target => params[:invite][:target])} judges."
-        rescue Exception => e
-          flash[:judge_invite_error] = e.to_s
+    unless params[:invite][:message].blank?
+      begin
+        # Sending email takes too long for more than a trivial number of
+        # judges, so we use the spawn plugin to fork off the processing.
+        spawn do
+          Judge.email_invites(:subject => params[:invite][:subject],
+                              :message => params[:invite][:message],
+                              :target  => params[:invite][:target])
         end
-      else
-        flash[:judge_invite_error] = 'You must provide a message'
+        flash[:notice] = "Spawned process to send email to #{Judge.email_count(:target => params[:invite][:target])} judges."
+      rescue Exception => e
+        flash[:judge_invite_error] = e.to_s
       end
+    else
+      flash[:judge_invite_error] = 'You must provide a message'
     end
     redirect_to admin_judge_invitations_path
   end

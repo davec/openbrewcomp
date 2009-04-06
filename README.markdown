@@ -226,6 +226,17 @@ fi</pre>
       <code>config.action_controller.session_store</code>.
     </p>
   </dd>
+
+  <dt><code>app/models/judge_invite.rb</code></dt>
+  <dd>
+    <p>
+      The judge invite template can be modified to suit your taste. This is
+      the message template that is shown on the Judge Invites page, and
+      unless you want to permanently change the default message, you do not
+      need to make any changes here and can make one-time modifications when
+      you send the invites.
+    </p>
+  </dd>
 </dl>
 
 ### International Issues
