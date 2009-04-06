@@ -12,7 +12,7 @@ class Import
 
   def initialize(archive)
     @errors = Array.new
-    @schema_info_table_name = ActiveRecord::Migrator.schema_info_table_name
+    @schema_migrations_table_name = ActiveRecord::Migrator.schema_migrations_table_name
     self.file_data = archive['file_data']
   end
 
@@ -120,13 +120,12 @@ class Import
     # Additional tests may be made in subsequent actions.
     def validate_archive_contents
       begin
-        # Check for schema_info.yml
-        schema_info_file = File.join(@zipdir, @schema_info_table_name + @extname)
-        raise ValidationError, "The imported data is missing the #{@schema_info_table_name} table" unless File.exist?(schema_info_file)
+        # Check for schema_migrations.yml
+        schema_migrations_file = File.join(@zipdir, @schema_migrations_table_name + @extname)
+        raise ValidationError, "The imported data is missing the #{@schema_migrations_table_name} table" unless File.exist?(schema_migrations_file)
 
-        # Verify that schema_info can be loaded
-        schema_info = YAML.load_file(schema_info_file)
-        raise ValidationError, "Invalid schema info data" unless schema_info.size == 1
+        # Verify that schema_migrations can be loaded
+        schema_migrations = YAML.load_file(schema_migrations_file).sort_by{|k,v| v['version'].to_i}
 
         # Verify that the imported table names are the same as the exportable table names
         current_tables = Export.all_tables.sort
@@ -135,13 +134,13 @@ class Import
 
         # Verify that the imported schema version matches the current schema version
         current_schema_version = ActiveRecord::Migrator.current_version
-        imported_schema_version = schema_info.values[0]['version'].to_i
+        imported_schema_version = schema_migrations.last.last['version'].to_i
         raise ValidationError, "The schema version of the imported data (#{imported_schema_version}) does not match the current schema version (#{current_schema_version})." unless imported_schema_version == current_schema_version
       rescue ValidationError => e
         raise e.to_s
       rescue Exception => e
         # Some other error
-        raise "The imported data contains an invalid #{@schema_info_table_name} table: #{e.to_s}"
+        raise "The imported data contains an invalid #{@schema_migrations_table_name} table: #{e.to_s}"
       end
     end
 
@@ -164,9 +163,11 @@ class Import
           }
         rescue NameError => e
           # table_name does not map to an existing model. This should only happen
-          # with schema_info and join tables.
+          # with schema_migrations and join tables (and OpenID tables).
           case table_name
-          when @schema_info_table_name
+          when @schema_migrations_table_name
+            requires = []
+          when /^open_id_authentication_/  # HACK: Need a general solution
             requires = []
           else
             # The "class" is most likely a join table, which is dependent on

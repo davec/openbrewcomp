@@ -4,7 +4,7 @@ th {
 
 #clearheader {
   clear: both;
-  height: 2ex;
+  height: 4ex;
 }
 
 .no-data {
@@ -64,7 +64,7 @@ th {
   width: 16%;
 }
 
-#admin-menu ul li ul, ul#flight-menu, ul#import-menu {
+#admin-menu ul li ul, ul#flight-menu, ul#import-menu, ul#export-menu {
   list-style: none;
   margin-left: 0.5em;
 }
@@ -76,7 +76,7 @@ th {
   margin: 0;
 }
 
-#admin-menu a, #flight-menu a, #import-menu a {
+#admin-menu a, #flight-menu a, #import-menu a, #export-menu a {
   color: #0080a4;
   display: block;
   padding: 4px;
@@ -93,7 +93,7 @@ th {
   width: 6em;
 }
 
-#flight-menu a {
+#flight-menu a, #export-menu a {
   font-size: 110%;
   width: 10em;
 }
@@ -101,7 +101,8 @@ th {
   font-size: 110%;
   width: 14em;
 }
-#admin-menu a:hover, #flight-menu a:hover, #import-menu a:hover {
+#admin-menu a:hover, #flight-menu a:hover,
+#import-menu a:hover, #export-menu a:hover {
   background-color: #0080a4;
   /*color: #0000f0;*/
   color: #ffba80;

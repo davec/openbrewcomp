@@ -16,7 +16,7 @@
 
 <div id="import-form">
   <% form_for(:archive,
-              :url => { :action => 'import_db' },
+              :url => admin_db_import_path,
               :html => { :multipart => true }) do |form| %>
     <p>
       <label for="file">Archive</label>
@@ -28,8 +28,8 @@
     <ul class="flash-error"><%= flash[:import_error].collect{|e| "<li>#{h e}</li>"} -%></ul>
     <% end -%>
 
-    <div>
-      <%= submit_tag 'Import' %>
+    <div class="form-buttons">
+      <%= submit_tag 'Import', :disable_with => 'Importing...' %>
     </div>
   <% end %>
 </div>

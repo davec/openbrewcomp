@@ -1,6 +1,6 @@
 <% @page_title = "#{competition_name} Exports" %>
 
-<ul class="uncompacted">
-  <li><%= link_to('Partial export to CSV', admin_export_path(:format => :csv)) %></li>
-  <li><%= link_to('Full export to YAML', admin_export_path(:format => :yml)) %></li>
+<ul id="export-menu">
+  <li><%= link_to('Partial export to CSV', admin_export_path(:format => 'csv')) %></li>
+  <li><%= link_to('Full export to YAML', admin_export_path(:format => 'yaml')) %></li>
 </ul>

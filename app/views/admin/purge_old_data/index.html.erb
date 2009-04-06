@@ -17,7 +17,7 @@
   </p>
 
   <div id="purge-form">
-    <% form_for(:tables, :url => { :action => 'purge' }) do |form| -%>
+    <% form_for(:tables, :url => admin_purge_data_path) do |form| -%>
       <div>
         <%= submit_tag 'Zap &rsquo;em!' %>
       </div>

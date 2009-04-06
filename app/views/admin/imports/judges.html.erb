@@ -19,7 +19,7 @@
 
 <div id="import-form">
   <% form_for(:file,
-              :url => { :action => 'import_judges' },
+              :url => admin_judges_import_path,
               :html => { :multipart => true }) do |form| %>
     <p>
       <label for="file">Judges File</label>

@@ -150,8 +150,8 @@ ActionController::Routing::Routes.draw do |map|
 
     # Imports
     admin.import        '/import',        :controller => 'imports'
-    admin.import_db     '/import_db',     :controller => 'imports', :action => 'db'
-    admin.import_judges '/import_judges', :controller => 'imports', :action => 'judges'
+    admin.import_db     '/import_db',     :controller => 'imports', :action => 'db',            :conditions => { :method => :get }
+    admin.import_judges '/import_judges', :controller => 'imports', :action => 'judges',        :conditions => { :method => :get }
     admin.db_import     '/import_db',     :controller => 'imports', :action => 'import_db',     :conditions => { :method => :post }
     admin.judges_import '/import_judges', :controller => 'imports', :action => 'import_judges', :conditions => { :method => :post }
 

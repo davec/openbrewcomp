@@ -13,6 +13,9 @@ class Admin::ImportsControllerTest < Test::Unit::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     login_as(:admin)
+
+    @competition_name = CompetitionData.instance.name
+
     # In non-admin mode, additional validity checks on the Judge model are
     # applied that are bypassed in admin mode.
     Controller.admin_view = true
@@ -23,8 +26,8 @@ class Admin::ImportsControllerTest < Test::Unit::TestCase
     assert_response :success
 
     # Verify the page title
-    assert_select 'html > head > title', 'Database Imports'
-    assert_select 'div#content > h1', 'Database Imports'
+    assert_select 'html > head > title', "#{@competition_name} Imports"
+    assert_select 'div#content > h1', "#{@competition_name} Imports"
   end
 
   def test_db
