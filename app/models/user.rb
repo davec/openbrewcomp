@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   has_many :news_items, :foreign_key => 'author_id'
   has_many :entrants
   has_many :entries, :through => :entrants
+  has_many :judges
+  has_many :passwords, :dependent => :destroy
   has_and_belongs_to_many :roles
+
+  named_scope :admins, :conditions => { :is_admin => true }
 
   validates_presence_of   :login, :if => :not_using_openid?
   validates_length_of     :login, :if => :not_using_openid?,
@@ -140,7 +144,7 @@ class User < ActiveRecord::Base
   end
 
   def authorized_for_destroy?
-    self.login!= APP_CONFIG[:admin_name]
+    self.login != APP_CONFIG[:admin_name]
   end
 
   protected

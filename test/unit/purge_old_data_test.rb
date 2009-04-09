@@ -31,7 +31,8 @@ class PurgeOldDataTest < ActiveSupport::TestCase
   end
 
   def test_zap
-    cleared_tables = [ 'entries', 'flights', 'judging_sessions', 'judgings', 'entries_flights', 'scores', 'category_preferences', 'time_availabilities' ]
+    cleared_tables = %w(entries flights entries_flights scores judgings judging_sessions
+                        category_preferences time_availabilities)
     starting_table_sizes = fixture_table_names.inject({}){ |hash,name|
       hash[name] = name.classify.constantize.count
       hash
@@ -71,6 +72,100 @@ class PurgeOldDataTest < ActiveSupport::TestCase
     # Verify that no organizer is specified and no staff_points are allocated
     assert_nil Judge.organizer
     assert 0, (Judge.sum(:staff_points) || 0)
+  end
+
+  def test_zap_with_additional_tables
+    cleared_tables = %w(entries flights entries_flights scores judgings judging_sessions
+                        category_preferences time_availabilities entrants judges)
+    starting_table_sizes = fixture_table_names.inject({}){ |hash,name|
+      hash[name] = name.classify.constantize.count
+      hash
+    }
+    ending_table_sizes = starting_table_sizes.merge(cleared_tables.inject({}){ |hash,name|
+      hash[name] = 0
+      hash
+    })
+
+    # Verify the starting table sizes
+    starting_table_sizes.each do |name,size|
+      assert size > 0, name
+    end
+
+    tables_to_purge = PurgeOldData.new(%w(entrants judges))
+    tables_to_purge.zap
+
+    # Verify the ending table sizes
+    ending_table_sizes.each do |name,size|
+      assert_equal size, name.classify.constantize.count, "Table #{name}"
+    end
+  end
+
+  def test_zap_should_not_delete_admin_users
+    cleared_tables = %w(entries flights entries_flights scores judgings judging_sessions
+                        category_preferences time_availabilities entrants judges users
+                        roles_users passwords)
+    starting_table_sizes = fixture_table_names.inject({}){ |hash,name|
+      hash[name] = name.classify.constantize.count
+      hash
+    }
+    ending_table_sizes = starting_table_sizes.merge(cleared_tables.inject({}){ |hash,name|
+      hash[name] = case name
+                   when 'users'
+                     User.admins.count
+                   when 'roles_users'
+                     RolesUser.all.select{|r| User.admins.collect(&:id).include?(r.user_id)}.length
+                   else
+                     0
+                   end
+      hash
+    })
+
+    # Verify the starting table sizes
+    starting_table_sizes.each do |name,size|
+      assert size > 0, name
+    end
+
+    tables_to_purge = PurgeOldData.new(%w(entrants judges users))
+    tables_to_purge.zap
+
+    # Verify the ending table sizes
+    ending_table_sizes.each do |name,size|
+      assert_equal size, name.classify.constantize.count, "Table #{name}"
+    end
+  end
+
+  def test_zap_should_not_delete_judges_if_not_included_in_list_of_tables
+    cleared_tables = %w(entries flights entries_flights scores judgings judging_sessions
+                        category_preferences time_availabilities entrants users
+                        roles_users passwords)
+    starting_table_sizes = fixture_table_names.inject({}){ |hash,name|
+      hash[name] = name.classify.constantize.count
+      hash
+    }
+    ending_table_sizes = starting_table_sizes.merge(cleared_tables.inject({}){ |hash,name|
+      hash[name] = case name
+                   when 'users'
+                     User.admins.count
+                   when 'roles_users'
+                     RolesUser.all.select{|r| User.admins.collect(&:id).include?(r.user_id)}.length
+                   else
+                     0
+                   end
+      hash
+    })
+
+    # Verify the starting table sizes
+    starting_table_sizes.each do |name,size|
+      assert size > 0, name
+    end
+
+    tables_to_purge = PurgeOldData.new(%w(entrants users))
+    tables_to_purge.zap
+
+    # Verify the ending table sizes
+    ending_table_sizes.each do |name,size|
+      assert_equal size, name.classify.constantize.count, "Table #{name}"
+    end
   end
 
 end

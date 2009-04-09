@@ -17,8 +17,20 @@
   </p>
 
   <div id="purge-form">
+    <p>
+      The following tables will be cleared:
+      <%= PurgeOldData.tables_to_clear.collect{|table_name| h(table_name.humanize)}.sort.to_sentence %>.
+    </p>
+    <p>
+      Select any additional tables to clear from the following list:
+    </p>
     <% form_for(:tables, :url => admin_purge_data_path) do |form| -%>
-      <div>
+      <ul>
+        <% PurgeOldData.optional_tables_to_clear.sort.each do |table_name| %>
+          <li><%= check_box_tag "table[#{table_name}]", '1', false %><span><%= h table_name.humanize %></span></li>
+        <% end %>
+      </ul>
+      <div class="form-buttons">
         <%= submit_tag 'Zap &rsquo;em!' %>
       </div>
     <% end -%>

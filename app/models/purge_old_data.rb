@@ -9,11 +9,13 @@ class PurgeOldData < ActiveRecord::Base
 
   @@tables_to_clear = [ 'flights', 'judging_sessions', 'entries', 'scores',
                         'category_preferences', 'time_availabilities' ].freeze
-  cattr_reader :tables_to_clear
+  @@optional_tables_to_clear = [ 'users', 'entrants', 'judges' ].freeze
+  cattr_reader :tables_to_clear, :optional_tables_to_clear
 
-  def initialize(tables = @@tables_to_clear)
+  def initialize(additional_tables = nil)
+    tables = (@@tables_to_clear + [ additional_tables ]).flatten.compact
     @errors = Array.new
-    @tables = tables.is_a?(Array) ? tables.collect(&:to_s) : [ tables.to_s ]
+    @tables = tables.collect(&:to_s)
   end
 
   # Validate the specified tables
@@ -36,7 +38,26 @@ class PurgeOldData < ActiveRecord::Base
 
     connection = ActiveRecord::Base.connection
     connection.transaction do
-      all_tables.each{|table_name| table_name.classify.constantize.delete_all}
+      if all_tables.include?('users')
+        # To avoid foreign key constraint errors if any of these tables are
+        # not included in the purge.
+        Judge.update_all("user_id = #{User.admin_id}")
+        Entry.update_all("user_id = #{User.admin_id}")
+        Entrant.update_all("user_id = #{User.admin_id}")
+      end
+
+      all_tables.each do |table_name|
+        case table_name
+        when 'users'
+          # Only delete non-admin users
+          table_name.classify.constantize.delete_all(['id NOT IN (?)', User.admins.collect(&:id)])
+        when 'roles_users'
+          # Do not delete roles belonging to admin users
+          table_name.classify.constantize.delete_all(['user_id NOT IN (?)', User.admins.collect(&:id)])
+        else
+          table_name.classify.constantize.delete_all
+        end
+      end
       if connection.respond_to?(:reset_pk_sequence!)
         @tables.each{|table_name| connection.reset_pk_sequence!(table_name)}
       end
@@ -60,15 +81,10 @@ class PurgeOldData < ActiveRecord::Base
       tables.each do |table_name|
         begin
           requires = table_name.classify.constantize.reflections.select{|key,value|
-            (value.macro == :has_many &&
-             value.options[:dependent] == :destroy) ||
-            (value.macro == :has_and_belongs_to_many)
+            (value.macro == :has_many && value.options[:dependent] == :destroy) ||
+            value.macro == :has_and_belongs_to_many
           }.inject([]){|arr,(key,value)|
-            if value.options.include?(:join_table)
-              arr << value.options[:join_table].tableize
-            else
-              arr << (value.options[:class_name].tableize rescue value.name.to_s.tableize)
-            end
+            arr << (value.options[:join_table] || value.options[:class_name] || value.name).to_s.tableize
           }
         rescue
           raise ArgumentError, "Model for table #{table_name} does not exist"

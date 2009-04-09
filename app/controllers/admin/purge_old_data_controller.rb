@@ -8,33 +8,30 @@ class Admin::PurgeOldDataController < AdministrationController
   end
 
   def purge
-    if request.post?
-      # TODO: Get the tables from the posted params.
-      # For now, use the hard-coded list in the model.
-      victims = PurgeOldData.new
-      if victims.valid?
-        begin
-          victims.zap
-          flash[:notice] = 'Successfully purged old data'
-          redirect_to admin_path and return
-        rescue Exception => e
-          errors = e.to_s
-        end
-      else
-        error_prefix = 'Unable to purge old data'
-        errors = if victims.errors.blank?
-                   error_prefix
-                 elsif victims.errors.length == 1
-                   "#{error_prefix}: #{victims.errors[0]}"
-                 else
-                   # There shouldn't be more than one error, but just in case ...
-                   bullet = "\xe2\x80\xa2"
-                   [ "#{error_prefix}:" ] + victims.errors.collect{|e| "#{bullet} #{e}"}
-                 end
+    additional_tables_to_purge = params[:table].select{|k,v| v.to_i == 1}.collect{|a| a.first} if params[:table]
+    victims = PurgeOldData.new(additional_tables_to_purge)
+    if victims.valid?
+      begin
+        victims.zap
+        flash[:notice] = 'Successfully purged old data'
+        redirect_to admin_path and return
+      rescue Exception => e
+        errors = e.to_s
       end
-      flash[:error] = errors
-      redirect_to purge_path
+    else
+      error_prefix = 'Unable to purge old data'
+      errors = if victims.errors.blank?
+                 error_prefix
+               elsif victims.errors.length == 1
+                 "#{error_prefix}: #{victims.errors[0]}"
+               else
+                 # There shouldn't be more than one error, but just in case ...
+                 bullet = '•' #"\xe2\x80\xa2"
+                 [ "#{error_prefix}:" ] + victims.errors.collect{|e| "#{bullet} #{e}"}
+               end
     end
+    flash[:error] = errors
+    redirect_to admin_purge_path
   end
 
 end

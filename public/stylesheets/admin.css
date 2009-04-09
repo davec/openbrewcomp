@@ -1001,3 +1001,23 @@ table#flight-tracker caption {
   margin: 0 0 1ex 0;
   /*width: 26em;*/
 }
+
+/*------------------------------
+ Data Purge
+ ------------------------------*/
+
+#purge-form form ul {
+  list-style: none;
+  margin: 0;
+}
+#purge-form form ul li {
+  float: left;
+}
+#purge-form form input[type=checkbox] {
+  margin: 0 1ex;
+}
+#purge-form form .form-buttons {
+  clear: both;
+  padding-top: 1ex;
+  text-align: left;
+}
