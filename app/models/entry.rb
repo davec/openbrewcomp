@@ -188,7 +188,7 @@ class Entry < ActiveRecord::Base
       carbonation = nil unless style.require_carbonation
       strength = nil unless style.require_strength
       sweetness = nil unless style.require_sweetness
-      if style[:id] != Style.first_time.id && style.optional_classic_style?
+      if !style.first_time? && style.optional_classic_style?
         unless classic_style.nil? || base_style == classic_style
           # HACK: classic_style, as used for official BJCP categories, must be
           # translated into base_style.  Only the First-Time Entrant category
@@ -233,7 +233,7 @@ class Entry < ActiveRecord::Base
         # all styles in BJCP categories 1 - 28) while all other categories that
         # specify a base style reference classic_style (which only includes the
         # "classic" styles in BJCP categories 1 - 19).
-        if style_id == Style.first_time.id
+        if style.first_time?
           self.base_style = Style.find(base_style_id)
         else
           self.classic_style = Style.find(base_style_id)
@@ -243,7 +243,7 @@ class Entry < ActiveRecord::Base
 
     def validate
       if style
-        if style[:id] == Style.first_time.id
+        if style.first_time?
           # First-time entrant requires a base style to be specified
           if base_style && base_style.bjcp_category <= 28
             validate_style(Style.find(base_style_id))

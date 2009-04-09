@@ -8,6 +8,10 @@ class Style < ActiveRecord::Base
   belongs_to :award
   has_many :entries, :dependent => :destroy
 
+  named_scope :classic_styles, :conditions => 'bjcp_category < 20'
+  named_scope :base_styles, :conditions => 'bjcp_category < 29'
+  named_scope :special_styles, :conditions => 'bjcp_category > 28'
+
   validates_associated :award
   validates_presence_of :name, :bjcp_category, :description_url
   validates_uniqueness_of :name, :case_sensitive => false,
@@ -55,6 +59,10 @@ class Style < ActiveRecord::Base
   # checks for a nil return from this method).
   def self.first_time
     Rails.cache.fetch(:first_time_style) { Style.find(:first, :conditions => "LOWER(name) LIKE 'first_time%'") || Struct.new(:id, :name).new(-1, 'Dummy') }
+  end
+
+  def first_time?
+    Style.first_time && Style.first_time[:id] == id
   end
 
   # Export the table
