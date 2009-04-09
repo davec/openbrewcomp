@@ -9,7 +9,9 @@ class Admin::CarbonationController < AdministrationController
     config.create.label = 'Create Carbonation'
     config.create.link.label = 'New Carbonation'
 
-    config.show.label = 'Show Carbonation'
+    # Rather pointless to include the show action since
+    # all the data is available in the list view anyway.
+    config.actions.exclude :show
 
     config.columns = [ :description ]
 

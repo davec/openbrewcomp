@@ -9,7 +9,9 @@ class Admin::RoundsController < AdministrationController
     config.create.label = 'Create Round'
     config.create.link.label = 'New Round'
 
-    config.show.label = 'Show Round'
+    # Rather pointless to include the show action since
+    # all the data is available in the list view anyway.
+    config.actions.exclude :show
 
     # Exclusions
     config.create.columns.exclude [ :flights ]

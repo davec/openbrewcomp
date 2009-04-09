@@ -53,9 +53,9 @@ class Admin::JudgeRanksControllerTest < Test::Unit::TestCase
   end
 
   def test_show
-    get :show, :id => judge_ranks(:novice).id
-    assert_response :success
-    assert_template 'show'
+    assert_raise(ActionController::UnknownAction) do
+      get :show, :id => judge_ranks(:novice).id
+    end
   end
 
   def test_edit

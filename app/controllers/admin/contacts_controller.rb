@@ -15,8 +15,9 @@ class Admin::ContactsController < AdministrationController
 
     config.update.columns = [ :role, :name, :email ]
 
-    config.show.label = 'Show Contact'
-    config.show.columns = [ :role, :name, :email, :updated_at ]
+    # Rather pointless to include the show action since
+    # all the data is available in the list view anyway.
+    config.actions.exclude :show
 
     # Label overrides
     config.columns[:created_at].label = 'Creation Time'

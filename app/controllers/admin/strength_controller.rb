@@ -9,7 +9,9 @@ class Admin::StrengthController < AdministrationController
     config.create.label = 'Create Strength'
     config.create.link.label = 'New Strength'
 
-    config.show.label = 'Show Strength'
+    # Rather pointless to include the show action since
+    # all the data is available in the list view anyway.
+    config.actions.exclude :show
 
     config.columns = [ :description ]
 

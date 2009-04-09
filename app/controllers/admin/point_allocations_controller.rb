@@ -9,7 +9,9 @@ class Admin::PointAllocationsController < AdministrationController
     config.create.label = 'Create Point Allocation'
     config.create.link.label = 'New Point Allocation'
 
-    config.show.label = 'Show Point Allocation'
+    # Rather pointless to include the show action since
+    # all the data is available in the list view anyway.
+    config.actions.exclude :show
 
     # Label overrides
     config.columns[:min_entries].label = 'Minimum Entries'

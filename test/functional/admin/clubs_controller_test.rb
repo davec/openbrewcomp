@@ -46,9 +46,9 @@ class Admin::ClubsControllerTest < Test::Unit::TestCase
   end
 
   def test_show
-    get :show, :id => clubs(:rangers).id
-    assert_response :success
-    assert_template 'show'
+    assert_raise(ActionController::UnknownAction) do
+      get :show, :id => clubs(:rangers).id
+    end
   end
 
   def test_edit

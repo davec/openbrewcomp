@@ -53,9 +53,9 @@ class Admin::StrengthControllerTest < Test::Unit::TestCase
   end
 
   def test_show
-    get :show, :id => strength(:strong).id
-    assert_response :success
-    assert_template 'show'
+    assert_raise(ActionController::UnknownAction) do
+      get :show, :id => strength(:strong).id
+    end
   end
 
   def test_edit

@@ -48,9 +48,9 @@ class Admin::ContactsControllerTest < Test::Unit::TestCase
   end
 
   def test_show
-    get :show, :id => contacts(:coordinator).id
-    assert_response :success
-    assert_template 'show'
+    assert_raise(ActionController::UnknownAction) do
+      get :show, :id => contacts(:coordinator).id
+    end
   end
 
   def test_edit

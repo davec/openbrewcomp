@@ -10,8 +10,9 @@ class Admin::ClubsController < AdministrationController
     config.create.label = 'Create Club'
     config.create.link.label = 'New Club'
 
-    config.show.label = 'Show Club'
-    config.show.columns = [ :name ]
+    # Rather pointless to include the show action since
+    # all the data is available in the list view anyway.
+    config.actions.exclude :show
 
     # Exclusions
     config.create.columns.exclude [ :entrants, :entries ]

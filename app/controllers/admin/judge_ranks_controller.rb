@@ -10,7 +10,9 @@ class Admin::JudgeRanksController < AdministrationController
     config.create.label = 'Create Judge Rank'
     config.create.link.label = 'New Judge Rank'
 
-    config.show.label = 'Show Judge Rank'
+    # Rather pointless to include the show action since
+    # all the data is available in the list view anyway.
+    config.actions.exclude :show
 
     # Required fields
     config.columns[:description].required = true
