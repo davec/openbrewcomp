@@ -75,6 +75,18 @@ class Admin::PurgeOldDataControllerTest < Test::Unit::TestCase
     end
   end
 
+  def test_index_with_no_competition_dates_set
+    cd = CompetitionData.instance
+    cd.entry_registration_start_time_utc =
+      cd.entry_registration_end_time_utc =
+      cd.judge_registration_start_time_utc =
+      cd.judge_registration_end_time_utc =
+      cd.competition_date = nil
+
+    get :index
+    assert_response :success
+  end
+
   def test_purge
     post :purge
     assert_redirected_to admin_path

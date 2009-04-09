@@ -4,7 +4,7 @@ class Admin::PurgeOldDataController < AdministrationController
 
   def index
     @allowed = competition_data.is_data_purge_allowed?
-    @competition_date = competition_data.competition_date.to_s(:long)
+    @competition_date = competition_data.competition_date.to_s(:long) rescue nil
   end
 
   def purge
