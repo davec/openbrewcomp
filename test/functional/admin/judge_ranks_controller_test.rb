@@ -74,7 +74,7 @@ class Admin::JudgeRanksControllerTest < Test::Unit::TestCase
   end
 
   def test_destroy
-    record = judge_ranks(:novice)
+    record = judge_ranks(:na)
     assert_difference('JudgeRank.count', -1) do
       delete :destroy, :id => record.id
     end

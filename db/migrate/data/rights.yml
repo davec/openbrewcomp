@@ -358,133 +358,148 @@ judges_delete:
   name: Delete Judges
   controller: judges
   action: delete
-competition_data_read:
+send_judge_invites:
   id: 73
+  name: Send Judge Invites
+  controller: judge_invites
+  action: *
+competition_data_read:
+  id: 74
   name: Read Competition Data
   controller: competition_data
   action: read
 competition_data_update:
-  id: 74
+  id: 75
   name: Update Competition Data
   controller: competition_data
   action: update
 flights_create:
-  id: 75
+  id: 76
   name: Create Flights
   controller: flights
   action: create
 flights_read:
-  id: 76
+  id: 77
   name: Read Flights
   controller: flights
   action: read
 flights_update:
-  id: 77
+  id: 78
   name: Update Flights
   controller: flights
   action: update
 flights_delete:
-  id: 78
+  id: 79
   name: Delete Flights
   controller: flights
   action: destroy
 results:
-  id: 79
+  id: 80
   name: Generate Results
   controller: results
   action: *
 judging_sessions_create:
-  id: 80
+  id: 81
   name: Create Judging Sessions
   controller: judging_sessions
   action: create
 judging_sessions_read:
-  id: 81
+  id: 82
   name: Read Judging Sessions
   controller: judging_sessions
   action: read
 judging_sessions_update:
-  id: 82
+  id: 83
   name: Update Judging Sessions
   controller: judging_sessions
   action: update
 judging_sessions_delete:
-  id: 83
+  id: 84
   name: Delete Judging Sessions
   controller: judging_sessions
   action: destroy
 exports:
-  id: 84
+  id: 85
   name: Export Database
   controller: exports
   action: *
 imports:
-  id: 85
+  id: 86
   name: Import Database
   controller: imports
   action: *
+read_entry_scores:
+  id: 87
+  name: Read Entry Scores
+  controller: entry_scores
+  action: read
+update_entry_scores:
+  id: 88
+  name: Update Entry Scores
+  controller: entry_scores
+  action: update
 rounds_create:
-  id: 86
+  id: 89
   name: Create Rounds
   controller: rounds
   action: create
 rounds_read:
-  id: 87
+  id: 90
   name: Read Rounds
   controller: rounds
   action: read
 rounds_update:
-  id: 88
+  id: 91
   name: Update Rounds
   controller: rounds
   action: update
 rounds_delete:
-  id: 89
+  id: 92
   name: Delete Rounds
   controller: rounds
   action: destroy
 judge_ranks_create: 
-  id: 90
+  id: 93
   name: Create Judge Ranks
   controller: judge_ranks
   action: create
 judge_ranks_read: 
-  id: 91
+  id: 94
   name: Read Judge Ranks
   controller: judge_ranks
   action: read
 judge_ranks_update: 
-  id: 92
+  id: 95
   name: Update Judge Ranks
   controller: judge_ranks
   action: update
 judge_ranks_delete: 
-  id: 93
+  id: 96
   name: Delete Judge Ranks
   controller: judge_ranks
   action: delete
 point_allocations_create:
-  id: 94
+  id: 97
   name: Create Point Allocations
   controller: point_allocations
   action: create
 point_allocations_read:
-  id: 95
+  id: 98
   name: Read Point Allocations
   controller: point_allocations
   action: read
 point_allocations_update:
-  id: 96
+  id: 99
   name: Update Point Allocations
   controller: point_allocations
   action: update
 point_allocations_delete:
-  id: 97
+  id: 100
   name: Delete Point Allocations
   controller: point_allocations
   action: delete
 purge_old_data:
-  id: 98
+  id: 101
   name: Purge Old Data
   controller: purge_old_data
   action: *

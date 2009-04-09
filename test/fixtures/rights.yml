@@ -503,7 +503,7 @@ send_judge_invites:
   name: Send Judge Invites
   controller: judge_invites
   action: *
-  roles: dba, registration
+  roles: dba, competition
 entry_scores_read:
   name: Read Entry Scores
   controller: entry_scores

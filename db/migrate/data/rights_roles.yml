@@ -1,36 +1,36 @@
 # HACK: This is too much black magic
 
-<% 1.upto(98) do |i| %>
+<% (1..101).each do |i| %>
 dba_<%= i %>:
   right_id: <%= i %>
   role_id: 1
 <% end %>
-<% 49.upto(52) do |i| %>
+<% (49..52).each do |i| %>
 contacts_<%= i %>:
   right_id: <%= i %>
   role_id: 2
 <% end %>
-<% 53.upto(56) do |i| %>
+<% (53..56).each do |i| %>
 news_<%= i %>:
   right_id: <%= i %>
   role_id: 3
 <% end %>
-<% 37.upto(40) do |i| %>
+<% (37..40).each do |i| %>
 users_<%= i %>:
   right_id: <%= i %>
   role_id: 4
 <% end %>
-<% 1.upto(12) do |i| %>
+<% (1..12).each do |i| %>
 styles_<%= i %>:
   right_id: <%= i %>
   role_id: 5
 <% end %>
-<% 57.upto(72) do |i| %>
+<% (57..72).each do |i| %>
 registration_<%= i %>:
   right_id: <%= i %>
   role_id: 6
 <% end %>
-<% 68.upto(83) do |i| %>
+<% (68..88).each do |i| %>
 competitition_<%= i %>:
   right_id: <%= i %>
   role_id: 7
