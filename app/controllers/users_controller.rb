@@ -38,21 +38,24 @@ class UsersController < ApplicationController
   end
   
   def show
+    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
     @user = current_user
   end
 
   def edit
+    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
     @user = current_user
   end
 
   def update
     if request.put?
-      redirect_to user_path and return if params[:cancel]
+      redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
       @user = current_user
+      redirect_to user_path(@user) and return if params[:cancel]
       if @user.update_attributes(:name => params[:user][:name],
                                  :email => params[:user][:email])
         flash[:notice] = 'Profile updated'
-        redirect_to user_path
+        redirect_to user_path(@user)
       else
         flash[:profile_error] = 'There was a problem updating your profile.'
         render :action => 'edit'
@@ -61,19 +64,21 @@ class UsersController < ApplicationController
   end
 
   def change_password
+    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
     @user = current_user
   end
 
   def update_password
     if request.put?
-      redirect_to user_path and return if params[:cancel]
+      redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
       @user = current_user
+      redirect_to user_path(@user) and return if params[:cancel]
       if User.authenticate(@user.login, params[:user][:current_password])
         if @user.update_attributes(:current_password => params[:user][:current_password],
                                    :password => params[:user][:password],
                                    :password_confirmation => params[:user][:password_confirmation])
           flash[:notice] = 'Password updated'
-          redirect_to user_path
+          redirect_to user_path(@user)
         else
           flash[:password_error] = if @user.errors.on(:password_confirmation)
                                      "Password confirmation #{[@user.errors.on(:password_confirmation)].flatten.first}"

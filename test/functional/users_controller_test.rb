@@ -35,6 +35,14 @@ class UsersControllerTest < ActionController::TestCase
     assert_select 'html > head > title', "Profile for #{user.login}"
   end
 
+  def test_should_deny_access_to_show_a_different_user_profile
+    user = users(:quentin)
+    login_as user
+
+    get :show, :id => users(:aaron).id
+    assert_redirected_to authorization_error_path
+  end
+
   def test_should_show_account_edit_form
     user = users(:quentin)
     login_as user
@@ -49,6 +57,14 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
+  def test_should_deny_access_to_edit_a_different_user_profile
+    user = users(:quentin)
+    login_as user
+
+    get :edit, :id => users(:aaron).id
+    assert_redirected_to authorization_error_path
+  end
+
   def test_should_update_account_info
     user = users(:quentin)
     login_as user
@@ -57,6 +73,15 @@ class UsersControllerTest < ActionController::TestCase
                  :user => { :name => 'Number 6', :email => 'no6@mystery.gov' }
     assert_equal 'Profile updated', flash[:notice]
     assert_redirected_to user_path(user)
+  end
+
+  def test_should_deny_access_to_update_a_different_user_profile
+    user = users(:quentin)
+    login_as user
+
+    put :update, :id => users(:aaron).id,
+                 :user => { :name => 'Number 6', :email => 'no6@mystery.gov' }
+    assert_redirected_to authorization_error_path
   end
 
   def test_shoud_not_update_account_with_bad_data
@@ -82,7 +107,15 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
-  def test_shoud_update_password
+  def test_should_deny_access_to_change_another_users_password
+    user = users(:quentin)
+    login_as user
+
+    get :change_password, :id => users(:aaron).id
+    assert_redirected_to authorization_error_path
+  end
+
+  def test_should_update_password
     user = users(:quentin)
     login_as user
 
@@ -92,6 +125,17 @@ class UsersControllerTest < ActionController::TestCase
                                      :password_confirmation => 'super-secret' }
     assert_equal 'Password updated', flash[:notice]
     assert_redirected_to user_path(user)
+  end
+
+  def test_should_deny_access_to_update_another_users_password
+    user = users(:quentin)
+    login_as user
+
+    put :update_password, :id => users(:aaron).id,
+                          :user => { :current_password => 'monkey',
+                                     :password => 'super-secret',
+                                     :password_confirmation => 'super-secret' }
+    assert_redirected_to authorization_error_path
   end
 
   def test_should_not_update_with_wrong_current_password
