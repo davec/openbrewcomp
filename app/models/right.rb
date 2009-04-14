@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 class Right < ActiveRecord::Base
-  include ExportHelper
 
   has_and_belongs_to_many :roles
 
@@ -17,18 +16,6 @@ class Right < ActiveRecord::Base
 
   validates_presence_of :action
   validates_length_of :action, :maximum => 40, :allow_blank => true
-
-  # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'name', 'description', 'controller', 'action' ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
-  end
 
   protected
 

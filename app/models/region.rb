@@ -22,19 +22,15 @@ class Region < ActiveRecord::Base
 
   validates_presence_of :country_id
 
+  # Export settings
+  self.csv_columns = [ 'id', 'region_code', 'name', 'country_id' ]
+
   # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'region_code', 'name', 'country_id' ],
-             :select => 'r.id, r.region_code, r.name, r.country_id',
-             :joins => 'as r inner join countries as c on (c.id = r.country_id)',
-             :conditions => [ 'c.is_selectable = ?', true ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
+  def self.export(format, options = {})
+    options = options.merge(:select => 'r.id, r.region_code, r.name, r.country_id',
+                            :joins => 'as r inner join countries as c on (c.id = r.country_id)',
+                            :conditions => [ 'c.is_selectable = ?', true ]) if format == 'csv'
+    super(format, options)
   end
 
   def authorized_for_destroy?

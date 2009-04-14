@@ -19,17 +19,13 @@ class Club < ActiveRecord::Base
     @@independent ||= Club.find_by_name('Independent')
   end
 
+  # Export settings
+  self.csv_columns = [ 'id', 'name' ]
+
   # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'name' ],
-             :conditions => [ 'id <> ?', other.id ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
+  def self.export(format, options = {})
+    options = options.merge(:conditions => [ 'id <> ?', other.id ]) if format == 'csv'
+    super(format, options)
   end
 
   def authorized_for_destroy?

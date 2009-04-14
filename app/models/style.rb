@@ -65,17 +65,8 @@ class Style < ActiveRecord::Base
     Style.first_time && Style.first_time[:id] == id
   end
 
-  # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'bjcp_category', 'bjcp_subcategory', 'name', 'award_id' ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
-  end
+  # Export settings
+  self.csv_columns = [ 'id', 'bjcp_category', 'bjcp_subcategory', 'name', 'award_id' ]
 
   def authorized_for_destroy?
     # Can only destroy if there are no entries registered in this style

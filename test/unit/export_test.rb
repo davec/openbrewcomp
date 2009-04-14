@@ -9,7 +9,7 @@ class ExportTest < Test::Unit::TestCase
     @bad_format = 'no_such_format'
   end
 
-  tables = [ :award, :carbonation, :category, :club, :country, :entrant, :entry, :region, :right, :role, :strength, :style, :sweetness, :user ]
+  tables = [ :award, :carbonation, :category, :club, :country, :entrant, :entry, :region, :strength, :style, :sweetness ]
 
   [ :symbol, :string, :class ].each do |type|
     tables.each do |table|
@@ -21,7 +21,7 @@ class ExportTest < Test::Unit::TestCase
       table_name = model.to_s.classify.constantize.table_name
 
       [ :csv, :yml ].each do |format|
-        define_method "test_export_#{format}_for_#{table_name}_with_#{type.to_s.pluralize}" do
+        define_method "test_should_export_to_#{format}_for_#{table_name}_with_#{type.to_s.pluralize}" do
           export = Export.new([model], :format => format)
           assert_not_nil export
 
@@ -39,7 +39,7 @@ class ExportTest < Test::Unit::TestCase
         end
       end
 
-      define_method "test_invalid_export_format_for_#{table_name}_with_#{type.to_s.pluralize}" do
+      define_method "test_should_not_export_to_unknown_format_for_#{table_name}_with_#{type.to_s.pluralize}" do
         assert_raise(ArgumentError, "Invalid format: #{@bad_format}") {
           export = Export.new([model], :format => @bad_format)
         }
@@ -53,7 +53,7 @@ class ExportTest < Test::Unit::TestCase
              end
 
     [ :csv, :yml ].each do |format|
-      define_method "test_export_#{format}_for_models_with_#{type.to_s.pluralize}" do
+      define_method "test_should_export_to_#{format}_for_models_with_#{type.to_s.pluralize}" do
         export = Export.new(models, :format => format)
         assert_not_nil export
         assert_equal 'exported_data.zip', export.name
@@ -71,20 +71,20 @@ class ExportTest < Test::Unit::TestCase
       end
     end
 
-    define_method "test_invalid_export_format_for_models_with_#{type.to_s.pluralize}" do
+    define_method "test_should_not_export_to_unknown_format_for_models_with_#{type.to_s.pluralize}" do
       assert_raise(ArgumentError, "Invalid format: #{@bad_format}") {
         export = Export.new(models, :format => @bad_format)
       }
     end
   end
 
-  def test_export_star_for_csv
-    assert_raise(ArgumentError, "tables = * is invvalid for CSV exports") {
+  def test_should_not_export_all_tables_for_csv
+    assert_raise(ArgumentError, "tables = * is invalid for CSV exports") {
       export = Export.new('*', :format => :csv)
     }
   end
 
-  def test_export_star_for_yaml
+  def test_should_export_all_tables_for_yml
     format = 'yml'
     export = Export.new('*', :format => format)
     assert_not_nil export

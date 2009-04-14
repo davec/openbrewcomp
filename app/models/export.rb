@@ -47,17 +47,15 @@ class Export
         ObjectSpace.define_finalizer(self, self._delete(@zipfile))
 
         if @tables.to_s == '*'
-          sql = 'SELECT * FROM %s'
+          sql = 'SELECT * FROM %s'.freeze
           Export.all_tables.each do |table|
             i = '0'
             zipfile.get_output_stream("#{table}.#{format}") { |f|
               begin
-                data = table.classify.constantize.find(:all).inject({}) { |hash, record|
-                  hash["#{table}_#{i.succ!}"] = record.attributes
-                  hash
-                }
+                data = table.classify.constantize.send(:export, 'raw')
               rescue NameError
-                # The table does not map to a model so use raw SQL to get the data
+                # Either the table does not map to a model or the class does not
+                # respond to export, so use raw SQL to get the data
                 data = ActiveRecord::Base.connection.select_all(sql % table).inject({}) { |hash, record|
                   hash["#{table}_#{i.succ!}"] = record
                   hash

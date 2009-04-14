@@ -36,17 +36,8 @@ class Category < ActiveRecord::Base
     "#{position} – #{name}"
   end
 
-  # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'name' ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
-  end
+  # Export settings
+  self.csv_columns = [ 'id', 'name' ]
 
   def authorized_for_destroy?
     # Can only destroy if there are no entries registered in this category

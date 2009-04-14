@@ -101,17 +101,8 @@ class Entry < ActiveRecord::Base
     avg_score.to_s
   end
 
-  # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'bottle_code', 'registration_code', 'entrant_id', 'name', 'style_id', 'base_style_id', 'carbonation_id', 'strength_id', 'sweetness_id', 'odd_bottle', 'style_info', 'competition_notes' ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
-  end
+  # Export settings
+  self.csv_columns = [ 'bottle_code', 'registration_code', 'entrant_id', 'name', 'style_id', 'base_style_id', 'carbonation_id', 'strength_id', 'sweetness_id', 'odd_bottle', 'style_info', 'competition_notes' ]
 
   def authorized_for?(action)
     # NOTE: action[:action] is really the link's crud_type

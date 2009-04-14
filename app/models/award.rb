@@ -22,17 +22,8 @@ class Award < ActiveRecord::Base
                           :message => 'already exists'
   validates_numericality_of :position, :only_integer => true, :allow_blank => true
 
-  # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'name', 'category_id' ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
-  end
+  # Export settings
+  self.csv_columns = [ 'id', 'name', 'category_id' ]
 
   # Allocate flights and assign entries to them.
   # No action is taken if any flights already exist.

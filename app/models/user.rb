@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-  include ExportHelper
 
   has_many :news_items, :foreign_key => 'author_id'
   has_many :entrants
@@ -129,18 +128,6 @@ class User < ActiveRecord::Base
       end
     end
     user
-  end
-
-  # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'login', 'name' ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
   end
 
   def authorized_for_destroy?

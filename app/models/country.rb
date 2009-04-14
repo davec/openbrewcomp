@@ -82,17 +82,13 @@ class Country < ActiveRecord::Base
     #country_code != 'CA'
   end
 
+  # Export settings
+  self.csv_columns = [ 'id', 'country_code', 'name' ]
+
   # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'country_code', 'name' ],
-             :conditions => [ 'is_selectable = ?', true ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
+  def self.export(format, options = {})
+    options = options.merge(:conditions => [ 'is_selectable = ?', true ]) if format == 'csv'
+    super(format, options)
   end
 
   def authorized_for_destroy?

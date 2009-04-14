@@ -72,17 +72,8 @@ class Entrant < ActiveRecord::Base
     addr
   end
 
-  # Export the table
-  def self.export(format)
-    case format
-    when 'csv'
-      to_csv(:columns => [ 'id', 'name', 'is_team', 'team_members', 'address1', 'address2', 'city', 'region_id', 'country_id', 'postcode', 'email', 'phone', 'club_id' ])
-    when 'yml', 'yaml'
-      to_yaml
-    else
-      raise ArgumentError, "Invalid format: #{format}"
-    end
-  end
+  # Export settings
+  self.csv_columns = [ 'id', 'name', 'is_team', 'team_members', 'address1', 'address2', 'city', 'region_id', 'country_id', 'postcode', 'email', 'phone', 'club_id' ]
 
   def authorized_for_destroy?
     # Users must be logged in to delete entrants
