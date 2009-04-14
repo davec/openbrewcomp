@@ -22,7 +22,7 @@
       <%= PurgeOldData.tables_to_clear.collect{|table_name| h(table_name.humanize)}.sort.to_sentence %>.
     </p>
     <p>
-      Select any additional tables to clear from the following list:
+      Select additional tables to clear from the following list:
     </p>
     <% form_for(:tables, :url => admin_purge_data_path) do |form| -%>
       <ul>
@@ -30,6 +30,10 @@
           <li><%= check_box_tag "table[#{table_name}]", '1', false %><span><%= h table_name.humanize %></span></li>
         <% end %>
       </ul>
+      <p class="clearfloat">
+        Users with admin rights will not be deleted from the users table.
+        You must delete such users manually.
+      </p>
       <div class="form-buttons">
         <%= submit_tag 'Zap &rsquo;em!' %>
       </div>

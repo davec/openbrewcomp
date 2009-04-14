@@ -9,7 +9,7 @@ class PurgeOldData < ActiveRecord::Base
 
   @@tables_to_clear = [ 'flights', 'judging_sessions', 'entries', 'scores',
                         'category_preferences', 'time_availabilities' ].freeze
-  @@optional_tables_to_clear = [ 'users', 'entrants', 'judges' ].freeze
+  @@optional_tables_to_clear = [ 'users', 'entrants', 'judges', 'clubs' ].freeze
   cattr_reader :tables_to_clear, :optional_tables_to_clear
 
   def initialize(additional_tables = nil)
@@ -45,6 +45,12 @@ class PurgeOldData < ActiveRecord::Base
         Entry.update_all("user_id = #{User.admin_id}")
         Entrant.update_all("user_id = #{User.admin_id}")
       end
+      if all_tables.include?('clubs')
+        # To avoid foreign key constraint errors if any of these tables are
+        # not included in the purge.
+        Judge.update_all("club_id = #{Club.independent.id}")
+        Entrant.update_all("club_id = #{Club.independent.id}")
+      end
 
       all_tables.each do |table_name|
         case table_name
@@ -54,6 +60,9 @@ class PurgeOldData < ActiveRecord::Base
         when 'roles_users'
           # Do not delete roles belonging to admin users
           table_name.classify.constantize.delete_all(['user_id NOT IN (?)', User.admins.collect(&:id)])
+        when 'clubs'
+          # Do not delete Independent and Other
+          table_name.classify.constantize.delete_all(['id NOT IN (?)', [ Club.other.id, Club.independent.id ] ])
         else
           table_name.classify.constantize.delete_all
         end
