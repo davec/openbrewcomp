@@ -8,12 +8,12 @@
         <li>
           <%= f.label :name %>
           <%= f.text_field :name %>
-          <%= f.error_message_on :name, :preprend_text => 'Name ' %>
+          <%= f.error_message_on :name, :prepend_text => 'Name ' %>
         </li>
         <li>
           <%= f.label :email %>
           <%= f.text_field :email %>
-          <%= f.error_message_on :email, :preprend_text => 'Email ' %>
+          <%= f.error_message_on :email, :prepend_text => 'Email ' %>
         </li>
       </ol>
       <div class="flash-error"><%= h flash[:profile_error] %></div>

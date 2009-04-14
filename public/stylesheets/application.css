@@ -425,6 +425,7 @@ input[type="submit"] {
 #admin-login-form ol,
 #login-form ol,
 #account-form ol,
+#user-form ol,
 #forgotten-form ol,
 #password-form ol,
 #password-reset-form ol {
@@ -435,6 +436,7 @@ input[type="submit"] {
 #admin-login-form li,
 #login-form li,
 #account-form li,
+#user-form li,
 #forgotten-form li,
 #password-form li,
 #password-reset-form li {
