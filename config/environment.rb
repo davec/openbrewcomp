@@ -29,9 +29,12 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'BlueCloth', :version => '>=1.0.0', :lib => 'bluecloth'
   config.gem 'fastercsv', :version => '>=1.4.0'
-  config.gem 'andre-geokit', :version => '>=1.2.5', :lib => 'geokit'
-  config.gem 'hpricot', :version => '>=0.6'
-  #config.gem 'rtex', :version => '>=2.1.1'
+  config.gem 'andre-geokit', :version => '>=1.2.5', :lib => 'geokit',
+               :source => 'http://gems.github.com'
+  config.gem 'hpricot', :version => '>=0.7',
+               :source => 'http://gems.github.com'
+  #config.gem 'rtex', :version => '>=2.1.1',
+  #             :source => 'http://gems.github.com'
   config.gem 'ruby-openid', :lib => 'openid', :version => '>2.1'
   config.gem 'rubyzip', :version => '>=0.9.1', :lib => 'zip/zip'
   config.gem 'tzinfo', :version => '>=0.3.12'
