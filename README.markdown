@@ -147,6 +147,9 @@ Then run the tests:
 This will run some basic functionality checks. If anything fails, you need to
 investigate the failure before proceeding.
 
+Note that the functional tests generate a lot of deprecation warnings. These
+warnings are expected and are not a problem.
+
 ## Customizing
 
 Several files need to be customized for your site before turning it loose on
