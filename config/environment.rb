@@ -63,7 +63,7 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 
   # Verify that the session_store config file exists
-  unless File.exists?(File.join(File.dirname(__FILE__), 'initializers', 'session_store.rb'))
+  unless File.exists?(File.join(File.dirname(__FILE__), 'initializers', 'session_store.rb')) || File.basename($0) == 'rake'
     raise <<-EOD
 The session store config file file is missing.
 Run 'rake setup:session_store' to create it.

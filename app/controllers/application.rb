@@ -26,9 +26,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # See ActionController::RequestForgeryProtection for details
-  # Comment the :secret if you're using the cookie session store
-  protect_from_forgery :secret => APP_CONFIG[:forgery_protect_key]
+  begin
+    # See ActionController::RequestForgeryProtection for details
+    # Comment the :secret if you're using the cookie session store
+    protect_from_forgery :secret => APP_CONFIG[:forgery_protect_key]
+  rescue Exception => e
+    # The only valid scenario that allows us to get here is when running rake.
+    raise e unless File.basename($0) == 'rake'
+  end
 
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters

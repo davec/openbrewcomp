@@ -24,6 +24,6 @@ production:
   database: openbrewcomp_production
   <<: *postgresql
 
-staging:
-  database: openbrewcomp_staging
-  <<: *postgresql
+#staging:
+#  database: openbrewcomp_staging
+#  <<: *postgresql

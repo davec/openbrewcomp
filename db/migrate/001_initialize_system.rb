@@ -1,4 +1,3 @@
-require 'active_record/fixtures'
 require 'migration_helper'
 
 class InitializeSystem < ActiveRecord::Migration
@@ -31,7 +30,7 @@ class InitializeSystem < ActiveRecord::Migration
       t.references :award, :null => false
     end
     add_foreign_key :styles, :award_id, :awards
-    add_index :styles, [ :bjcp_category, :bjcp_subcategory ]
+    add_index :styles, [ :bjcp_category, :bjcp_subcategory ], :unique => true
 
     create_table :carbonation, :force => true do |t|
       t.string  :description, :null => false, :limit => 40
@@ -88,7 +87,7 @@ class InitializeSystem < ActiveRecord::Migration
       # few countries, not the entire world).
       t.boolean :is_selectable, :null => false, :default => false
     end
-    add_index :countries, :country_code
+    add_index :countries, :country_code, :unique => true
     add_index :countries, :is_selectable
 
     create_table :regions, :force => true do |t|
@@ -97,7 +96,7 @@ class InitializeSystem < ActiveRecord::Migration
       t.references :country, :null => false
     end
     add_foreign_key :regions, :country_id, :countries
-    add_index :regions, :region_code
+    add_index :regions, [ :country_id, :region_code ], :unique => true
 
     # Create OpenID Tables
     create_table :open_id_authentication_associations, :force => true do |t|
@@ -322,64 +321,17 @@ class InitializeSystem < ActiveRecord::Migration
     end
     add_index :sessions, :session_id
     add_index :sessions, :updated_at
-
-    directory = File.join(File.dirname(__FILE__), 'data')
-    Fixtures.create_fixtures(directory, 'categories')
-    Fixtures.create_fixtures(directory, 'awards')
-    Fixtures.create_fixtures(directory, 'styles')
-    Fixtures.create_fixtures(directory, 'carbonation')
-    Fixtures.create_fixtures(directory, 'strength')
-    Fixtures.create_fixtures(directory, 'sweetness')
-    Fixtures.create_fixtures(directory, 'judge_ranks')
-    Fixtures.create_fixtures(directory, 'point_allocations')
-    Fixtures.create_fixtures(directory, 'countries')
-    Fixtures.create_fixtures(directory, 'regions')
-    Fixtures.create_fixtures(directory, 'users')
-    Fixtures.create_fixtures(directory, 'roles')
-    Fixtures.create_fixtures(directory, 'rights')
-    Fixtures.create_fixtures(directory, 'rights_roles')
-    Fixtures.create_fixtures(directory, 'roles_users')
-    Fixtures.create_fixtures(directory, 'competition_data')
-    Fixtures.create_fixtures(directory, 'contacts')
-    Fixtures.create_fixtures(directory, 'clubs')
-    Fixtures.create_fixtures(directory, 'rounds')
   end
 
   def self.down
-    drop_table :sessions
-    drop_table :news_items
-    drop_table :scores
-    drop_table :judgings
-    drop_table :time_availabilities
-    drop_table :category_preferences
-    drop_table :judges
-    drop_table :entries_flights
-    drop_table :flights
-    drop_table :entries
-    drop_table :entrants
-    drop_table :judging_sessions
-    drop_table :rounds
-    drop_table :clubs
-    drop_table :contacts
-    drop_table :competition_data
-    drop_table :roles_users
-    drop_table :rights_roles
-    drop_table :rights
-    drop_table :roles
-    drop_table :passwords
-    drop_table :users
-    drop_table :regions
-    drop_table :countries
-    drop_table :point_allocations
-    drop_table :judge_ranks
-    drop_table :sweetness
-    drop_table :strength
-    drop_table :carbonation
-    drop_table :styles
-    drop_table :awards
-    drop_table :categories
-    drop_table :open_id_authentication_nonces
-    drop_table :open_id_authentication_associations
+    %w( sessions news_items scores judgings time_availabilities category_preferences
+        judges entries_flights flights entries entrants judging_sessions rounds clubs
+        contacts competition_data roles_users rights_roles rights roles passwords
+        users regions countries point_allocations judge_ranks sweetness strength
+        carbonation styles awards categories open_id_authentication_nonces
+        open_id_authentication_associations ).each do |table_name|
+      drop_table table_name
+    end
   end
 
 end
