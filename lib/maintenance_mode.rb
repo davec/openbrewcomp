@@ -2,13 +2,13 @@
 
 # Original code found at http://www.scottmoe.info/2008/10/12/cap-deploy-web-disable-and-phusion-passenger
 
-require 'hpricot'
-
 module MaintenanceMode
 
   protected
 
     def disabled?
+      require 'hpricot'
+
       maintfile = "#{RAILS_ROOT}/public/system/maintenance.html"
       if FileTest::exist?(maintfile)
         respond_to do |format|

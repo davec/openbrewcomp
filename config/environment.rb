@@ -31,9 +31,13 @@ Rails::Initializer.run do |config|
   config.gem 'fastercsv', :version => '>=1.4.0'
   config.gem 'andre-geokit', :version => '>=1.2.5', :lib => 'geokit',
                :source => 'http://gems.github.com'
-  config.gem 'hpricot', :version => '>=0.7',
-               :source => 'http://gems.github.com'
-  #config.gem 'rtex', :version => '>=2.1.1',
+  # The hpricot gem is now available from rubyforge and github, but the version
+  # on github is, as of 2009-04-15, an older version than the one on rubyforge.
+  config.gem 'hpricot', :version => '>=0.7'
+  #config.gem 'why-hpricot', :version => '>=0.7',
+  #             :source => 'http://gems.github.com'
+  # Using rtex as a plugin instead until bugs are fixed, presumably in 2.1.2
+  #config.gem 'rtex', :version => '>=2.1.2',
   #             :source => 'http://gems.github.com'
   config.gem 'ruby-openid', :lib => 'openid', :version => '>2.1'
   config.gem 'rubyzip', :version => '>=0.9.1', :lib => 'zip/zip'
