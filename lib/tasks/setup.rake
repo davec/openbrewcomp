@@ -165,7 +165,7 @@ admin:
   email: #{$config[:admin_email]}
   enabled: true
   is_admin: true
-  created_at: #{Time.now.utc.to_s(:db)}
+  created_at: <%= Time.now.utc.to_s(:db) %>
       EOD
     end
 
