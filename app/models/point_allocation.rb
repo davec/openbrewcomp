@@ -62,9 +62,8 @@ class PointAllocation < ActiveRecord::Base
 
   private
 
-    @@empty_points_data = PointAllocation.new(:min_entries => 0, :max_entries => 0, :organizer => 0.0, :staff => 0.0, :judge => 0.0)
     def self.competition_points
-      PointAllocation.find(:first, :conditions => [ '? BETWEEN min_entries AND max_entries', Entry.checked_in.count ]) || @@empty_points_data
+      PointAllocation.find(:first, :conditions => [ '? BETWEEN min_entries AND max_entries', Entry.checked_in.count ]) || PointAllocation.new(:min_entries => 0, :max_entries => 0, :organizer => 0.0, :staff => 0.0, :judge => 0.0)
     end
 
 end
