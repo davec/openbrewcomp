@@ -413,7 +413,7 @@ input[type="submit"] {
 
 #login-form {
   float: left;
-  font-size: 80%;
+  font-size: 12px;
   position: relative;
   width: 21em;
 }

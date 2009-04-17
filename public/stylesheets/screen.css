@@ -238,12 +238,13 @@ html > body #footer {
 }
 
 #content {
+  font-size: 16px;
   padding: 0 1em 2ex 1em;
 }
 
 #user-info {
   float: right;
-  font-size: 80%;
+  font-size: 12px;
   font-weight: bold;
   position: absolute;
   right: 4px;
