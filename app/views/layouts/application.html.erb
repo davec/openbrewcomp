@@ -18,8 +18,7 @@
     <![endif]>
     <%= javascript_include_tag 'ie_hacks' %>
   <![endif]-->
-  <%= auto_discovery_link_tag :rss, { :controller => "feed",
-                                      :action => "news" } %>
+  <%= auto_discovery_link_tag :rss, rss_feed_url %>
 </head>
 <body <%= @body_attributes || '' -%>>
   <div id="bodyWrapper">
