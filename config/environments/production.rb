@@ -2,7 +2,9 @@
 
 # The production environment is meant for finished, "live" apps.
 # Code is not reloaded between requests
-config.cache_classes = true
+# HACK: Avoid eager loading of application classes during migrations.
+# TODO: Remove this hack for Rails 2.3 (where it is no longer needed)
+config.cache_classes = !(File.basename($0) == "rake" && !ARGV.grep(/db:/).empty?)
 
 # Enable threaded mode
 # config.threadsafe!
