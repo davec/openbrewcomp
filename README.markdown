@@ -131,24 +131,16 @@ of Ruby on Rails,
    necessary since entrants will be able to add their club&rsquo;s name to the
    list if it does not already exist in the database but an initial list of clubs
    that only has your own club name doesn&rsquo;t look so good.
-7. Create your development database: `rake db:create`
+7. Create your development, test, and production databases: `rake db:create`
 8. Initialize your development database: `rake db:bootstrap`
 
 ## Testing
 
-Create your test database:
+Run the tests with `rake test` which will perform some basic functionality tests.
+If anything fails, you need to investigate the failure(s) before proceeding.
 
-    rake db:create RAILS_ENV=test
-
-Then run the tests:
-
-    rake test
-
-This will run some basic functionality checks. If anything fails, you need to
-investigate the failure before proceeding.
-
-Note that the functional tests generate a lot of deprecation warnings. These
-warnings are expected and are not a problem.
+Note that the functional tests generate a large number of deprecation warnings.
+These warnings are expected and are not a problem.
 
 ## Customizing
 
@@ -295,7 +287,12 @@ you are accustomed to using for developing a Rails application.
 
 A sample `config/deploy.rb` file for use with [Capistrano](http://www.capify.org/)
 is provided. Read the comments in the file and make the appropriate changes as
-required for __your__ environment before attempting a deployment.
+required for __your__ environment before attempting a deployment. After making
+the appropriate changes to `deploy.rb` and creating the production database,
+the initial deployment can be performed with the following steps:
+
+    cap deploy:setup
+    cap deploy:bootstrap
 
 Past versions of the software have been deployed to groups of
 [mongrel](http://mongrel.rubyforge.org/) servers, but more recently

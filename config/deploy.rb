@@ -75,6 +75,24 @@ EOF
     run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
   end
 
+  # For initial load
+
+  desc "Bootstrap the application. This should only be run on initial deployment."
+  task :bootstrap do
+    update
+    migrate
+    populate
+    start
+  end
+
+  desc "Populate the database with the initial set of data"
+  task :populate, :roles => :db, :only => { :primary => true } do
+    rake = fetch(:rake, "rake")
+    rails_env = fetch(:rails_env, "production")
+
+    run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} db:bootstrap"
+  end
+
   # For passenger deployment
 
   desc "Not used with passenger"
