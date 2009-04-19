@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require 'bluecloth'
+require 'rdiscount'
 
 class NewsItem < ActiveRecord::Base
 
@@ -30,7 +30,7 @@ class NewsItem < ActiveRecord::Base
   private
 
     def self.encode(text)
-      BlueCloth.new(text).to_html
+      RDiscount.new(text).to_html
     end
 
 end
