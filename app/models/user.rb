@@ -130,8 +130,22 @@ class User < ActiveRecord::Base
     user
   end
 
+  def authorized_for_update?
+    # The admin user can update all accounts
+    return true if current_user.id == User.admin_id
+    # No other users can update the admin account
+    return false if APP_CONFIG[:admin_name] == login
+    # Other admins can update accounts if they have privs to do so
+    current_user.roles.detect{|role|
+      role.rights.detect{|right|
+        right.controller == 'users' && right.action == 'update'
+      }
+    }
+  end
+
   def authorized_for_destroy?
-    self.login != APP_CONFIG[:admin_name]
+    # Neither the admin account nor the current user account can be destroyed
+    self.login != APP_CONFIG[:admin_name] && self.id != current_user.id
   end
 
   protected
@@ -190,7 +204,7 @@ class User < ActiveRecord::Base
       unless $?.success?
         name = Time.now.to_i.to_s(16) + rand(0x7fffffff).to_s(16)
       end
-      '__anon__' + name.downcase
+      "__anon__#{name.downcase}"
     end
 
 end

@@ -4,6 +4,8 @@ class Admin::UsersController < AdministrationController
 
   filter_parameter_logging :password
 
+  before_filter :update_config
+
   active_scaffold :user do |config|
     config.label = 'Users'
 
@@ -18,6 +20,9 @@ class Admin::UsersController < AdministrationController
     config.show.label = 'Show User'
     config.show.columns = [ :login, :enabled, :is_admin, :name, :email, :created_at, :updated_at, :last_logon_at, :roles ]
 
+    config.columns << :password
+    config.columns << :password_confirmation
+
     # Label overrides
     config.columns[:created_at].label = 'Creation Time'
     config.columns[:updated_at].label = 'Last Update Time'
@@ -28,6 +33,10 @@ class Admin::UsersController < AdministrationController
     config.list.per_page = 100
 
     # UI overrides
+    config.columns[:password].form_ui = :password
+    config.columns[:password_confirmation].form_ui = :password
+    config.columns[:enabled].form_ui = :checkbox
+    config.columns[:is_admin].form_ui = :checkbox
     config.columns[:roles].form_ui = :select
   end
 
@@ -57,6 +66,8 @@ class Admin::UsersController < AdministrationController
   def update
     begin
       super
+    rescue ActiveScaffold::RecordNotAllowed => e
+      raise e
     rescue Exception => e
       send_flash(e.message)
     end
@@ -67,6 +78,16 @@ class Admin::UsersController < AdministrationController
     def conditions_for_collection
       # Disregard anonymous accounts
       [ 'is_anonymous = ?', false ]
+    end
+
+    def update_config
+      if params[:action] == 'edit'
+        active_scaffold_config.columns[:is_admin].label = 'Grant Admin Privs'
+        active_scaffold_config.columns[:enabled].label = 'Enable User Account'
+      else
+        active_scaffold_config.columns[:is_admin].label = 'Admin'
+        active_scaffold_config.columns[:enabled].label = 'Enabled'
+      end
     end
 
   private

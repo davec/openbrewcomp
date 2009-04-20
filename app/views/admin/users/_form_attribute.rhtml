@@ -1,0 +1,16 @@
+<% scope ||= nil %>
+<dl>
+  <dt>
+    <label for="<%= "record_#{column.name}" %>"><%= column.label %></label>
+  </dt>
+  <dd>
+    <%- if column.name == :login && @record.login == APP_CONFIG[:admin_name] -%>
+      <span class="readonly"><%= @record.login %></span>
+    <%- else -%>
+      <%= active_scaffold_input_for column, scope %>
+    <%- end -%>
+    <% if column.description -%>
+      <span class="description"><%= column.description %></span>
+    <% end -%>
+  </dd>
+</dl>

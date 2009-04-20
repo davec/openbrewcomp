@@ -76,6 +76,13 @@ class Admin::UsersControllerTest < Test::Unit::TestCase
     assert_template 'update'
   end
 
+  def test_cannot_edit_admin_if_not_admin
+    login_as(:user_admin)
+    assert_raise(ActiveScaffold::RecordNotAllowed) do
+      get :edit, :id => users(:admin).id
+    end
+  end
+
   def test_update
     record = users(:testuser7)
     assert_no_difference 'User.count' do
@@ -90,6 +97,15 @@ class Admin::UsersControllerTest < Test::Unit::TestCase
     post :update, :id => record.id,
                   :record => { :email => 'foo@example.com' }
     assert_redirected_to :action => 'index', :id => record.id
+  end
+
+  def test_cannot_update_admin_if_not_admin
+    login_as(:user_admin)
+    assert_raise(ActiveScaffold::RecordNotAllowed) do
+      record = users(:admin)
+      post :update, :id => record.id,
+                    :record => { :email => 'foo@example.com' }
+    end
   end
 
   def test_cannot_rename_admin
@@ -109,9 +125,22 @@ class Admin::UsersControllerTest < Test::Unit::TestCase
     assert_redirected_to :action => 'index', :id => record.id
   end
 
-  def test_cannot_destroy_admin
+  def test_cannot_destroy_admin_as_admin
     assert_raise(ActiveScaffold::RecordNotAllowed) do
       delete :destroy, :id => users(:admin).id
+    end
+  end
+
+  def test_cannot_destroy_admin_as_user_admin
+    assert_raise(ActiveScaffold::RecordNotAllowed) do
+      delete :destroy, :id => users(:admin).id
+    end
+  end
+
+  def test_cannot_destroy_self
+    login_as(:user_admin)
+    assert_raise(ActiveScaffold::RecordNotAllowed) do
+      delete :destroy, :id => users(:user_admin).id
     end
   end
 
