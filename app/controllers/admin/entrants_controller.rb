@@ -18,29 +18,18 @@ class Admin::EntrantsController < AdministrationController
     config.create.link.label = 'Add A Brewer'
     config.create.columns = [ :is_team, :team_name, :team_members,
                               :first_name, :middle_name, :last_name,
-                              :address1,
-                              :address2,
-                              :address3,
-                              :address4,
+                              :address1, :address2, :address3, :address4,
                               :city, :region, :postcode,
-                              :email, :phone,
-                              :club, :club_name,
-                              :entries ]
+                              :email, :phone, :club, :club_name, :entries ]
 
     config.update.columns = [ :is_team, :team_name, :team_members,
                               :first_name, :middle_name, :last_name,
-                              :address1,
-                              :address2,
-                              :address3,
-                              :address4,
+                              :address1, :address2, :address3, :address4,
                               :city, :region, :postcode,
-                              :email, :phone,
-                              :club, :club_name,
-                              :entries ]
+                              :email, :phone, :club, :club_name, :entries ]
 
     config.show.label = 'Show Brewer'
-    config.show.columns = [ :postal_address,
-                            :is_team, :team_members,
+    config.show.columns = [ :postal_address, :is_team, :team_members,
                             :email, :phone, :club ]
 
     # TODO: The following does not work, so we use a more generic message instead.
@@ -66,10 +55,10 @@ class Admin::EntrantsController < AdministrationController
     config.columns[:last_name].label = 'Last Name'
     config.columns[:team_name].label = 'Team Name'
     config.columns[:team_members].label = 'Team Members'
-    config.columns[:address1].label = 'Address (line 1)'
-    config.columns[:address2].label = 'Address (line 2)'
-    config.columns[:address3].label = 'Address (line 3)'
-    config.columns[:address4].label = 'Address (line 4)'
+    config.columns[:address1].label = 'Address'
+    config.columns[:address2].label = ''
+    config.columns[:address3].label = ''
+    config.columns[:address4].label = ''
     config.columns[:region].label = 'State/Province'
     config.columns[:postcode].label = 'Zip/Postal Code'
     config.columns[:email].label = 'Email *'
@@ -84,17 +73,33 @@ class Admin::EntrantsController < AdministrationController
     config.columns << :dictionary_name
     config.columns[:dictionary_name].label = 'Name'
     config.columns[:dictionary_name].sort = true
-    config.columns[:dictionary_name].sort_by :sql => 'lower(last_name||first_name||middle_name||team_name)'
-    config.columns[:dictionary_name].search_sql = "(first_name||' '||middle_name||' '||last_name||' '||team_name)"
+    config.columns[:dictionary_name].sort_by :sql => "LOWER(last_name||first_name||middle_name||team_name)"
+    config.columns[:dictionary_name].search_sql = "(first_name||middle_name||last_name||team_name)"
 
     config.columns[:club].includes = [ :club ]
-    config.columns[:club].sort_by :sql => 'lower(clubs.name)'
+    config.columns[:club].sort_by :sql => 'LOWER(clubs.name)'
     config.columns[:club].search_sql = 'clubs.name'
 
     config.columns << :postal_address
     config.columns[:postal_address].label = 'Name and Address'
 
     config.list.sorting = { :dictionary_name => :asc }
+
+    # UI overrides
+    config.columns[:address1].options = { :size => 76, :maxlength => 80 }
+    config.columns[:address2].options = { :size => 76, :maxlength => 80 }
+    config.columns[:address3].options = { :size => 76, :maxlength => 80 }
+    config.columns[:address4].options = { :size => 76, :maxlength => 80 }
+    config.columns[:city].options = { :size => 25, :maxlength => 80 }
+    config.columns[:club_name].options = { :size => 30, :maxlength => 60 }
+    config.columns[:email].options = { :size => 40, :maxlength => 100 }
+    config.columns[:first_name].options = { :size => 25, :maxlength => 80 }
+    config.columns[:last_name].options = { :size => 25, :maxlength => 80 }
+    config.columns[:middle_name].options = { :size => 15, :maxlength => 80 }
+    config.columns[:phone].options = { :size => 20, :maxlength => 40 }
+    config.columns[:postcode].options = { :size => 10, :maxlength => 20 }
+    config.columns[:team_members].options = { :size => 76, :maxlength => 255 }
+    config.columns[:team_name].options = { :size => 76, :maxlength => 80 }
   end
 
   def help

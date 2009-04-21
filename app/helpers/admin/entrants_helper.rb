@@ -26,4 +26,52 @@ module Admin::EntrantsHelper
     end
   end
 
+  def club_form_column(record, input_name)
+    options = form_element_input_options(input_name, Entrant)
+    options[:name] += '[id]'
+    options[:onchange] = %Q{toggleOtherClubData('#{params[:eid] || params[:id]}',#{Club.other.id})}
+    clubs = Club.all(:conditions => [ 'id <> ?', Club.other.id ],
+                     :order => 'LOWER(name)').collect{|c| [c.name, c.id]}
+    clubs << [ Club.other.name, Club.other.id ]
+
+    select(:record, :club_id, clubs,
+           { :prompt => '- Please select a club -' },
+           options)
+  end
+
+  def is_team_form_column(record, input_name)
+    individual_value = false
+    team_value = true
+    team_options = form_element_input_options(input_name, Entrant)
+    individual_options = team_options.dup
+    individual_options[:id] += "_#{pretty_tag_value(individual_value)}"
+    individual_options[:onclick] = %Q{showIndividualData('#{params[:eid] || params[:id]}')}
+    team_options[:id] += "_#{pretty_tag_value(team_value)}"
+    team_options[:onclick] = %Q{showTeamData('#{params[:eid] || params[:id]}')}
+
+    returning String.new do |str|
+      str << radio_button(:record, :is_team, individual_value, individual_options)
+      str << %Q{<span class="radioLabel">Individual</span>}
+      str << radio_button(:record, :is_team, team_value, team_options)
+      str << %Q{<span class="radioLabel">Team</span>}
+    end
+  end
+
+  def region_form_column(record, input_name)
+    options = form_element_input_options(input_name, Entrant)
+    options[:name] += '[id]'
+    countries = Country.all(:conditions => [ 'is_selectable = ?', true ],
+                            :order => 'name')
+
+    returning String.new do |str|
+      str << %Q{<select id="#{options[:id]}" name="#{options[:name]}">}
+      str << %Q{<option value="">Please select</option>}  if record.region_id.nil?
+      str << option_groups_from_collection_for_select(countries,
+                                                      'regions_by_name', 'name',
+                                                      'id', 'name',
+                                                      record.region_id)
+      str << '</select>'
+    end
+  end
+
 end
