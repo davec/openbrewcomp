@@ -1,5 +1,0 @@
-<% scope ||= nil
-   options = form_element_input_options(column, scope)
-   options[:onclick] = "toggleStaffPoints('#{params[:eid] || params[:id]}')" if @is_admin_view %>
-<label for="<%= options[:id] -%>"><%= column.label -%></label>
-<%= check_box 'record', column.name, options %>

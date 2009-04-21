@@ -1,7 +1,0 @@
-<% scope ||= nil
-   options = form_element_input_options(column, scope,
-                                        { :class => "text-input",
-                                          :size => 10,
-                                          :maxlength => 20 }) %>
-<label for="<%= options[:id] -%>"><%= column.label -%></label>
-<%= text_field 'record', column.name, options %>

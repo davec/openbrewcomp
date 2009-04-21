@@ -1,4 +1,0 @@
-<% scope ||= nil
-   options = form_element_input_options(column, scope) %>
-<label for="<%= options[:id] -%>"><%= column.label -%></label>
-<%= check_box 'record', column.name, options %>

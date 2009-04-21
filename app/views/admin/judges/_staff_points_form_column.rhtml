@@ -1,8 +1,0 @@
-<% scope ||= nil
-   options = form_element_input_options(column, scope,
-                                        { :class => "text-input",
-                                          :disabled => @available_staff_points.to_f == 0,
-                                          :size => 3,
-                                          :maxlength => 3 }) %>
-<label for="<%= options[:id] -%>"><%= column.label -%></label>
-<%= text_field 'record', column.name, options %><span class="description">(<%= @available_staff_points -%> available)</span>

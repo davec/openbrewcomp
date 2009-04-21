@@ -25,6 +25,8 @@ class Admin::JudgesController < AdministrationController
   active_scaffold :judge do |config|
     config.list.columns = ALL_LIST_COLUMNS
 
+    config.search.columns = [ :dictionary_name, :judge_number ]
+
     config.create.label = 'Create Judge/Steward'
     config.create.link.label = 'Add A Judge/Steward'
     config.create.columns = [ :first_name, :middle_name, :last_name, :goes_by,
@@ -60,10 +62,10 @@ class Admin::JudgesController < AdministrationController
     config.columns[:first_name].label = 'First Name'
     config.columns[:middle_name].label = 'Middle Name'
     config.columns[:last_name].label = 'Last Name'
-    config.columns[:address1].label = 'Address (line 1)'
-    config.columns[:address2].label = 'Address (line 2)'
-    config.columns[:address3].label = 'Address (line 3)'
-    config.columns[:address4].label = 'Address (line 4)'
+    config.columns[:address1].label = 'Address'
+    config.columns[:address2].label = ''
+    config.columns[:address3].label = ''
+    config.columns[:address4].label = ''
     config.columns[:region].label = 'State/Province'
     config.columns[:postcode].label = 'Zip/Postal Code'
     config.columns[:judge_number].label = 'BJCP ID'
@@ -86,7 +88,8 @@ class Admin::JudgesController < AdministrationController
     config.columns << :dictionary_name
     config.columns[:dictionary_name].label = 'Name'
     config.columns[:dictionary_name].sort = true
-    config.columns[:dictionary_name].sort_by :sql => '(last_name||first_name||middle_name)'
+    config.columns[:dictionary_name].sort_by :sql => "LOWER(last_name||first_name||middle_name)"
+    config.columns[:dictionary_name].search_sql = "(first_name||middle_name||last_name)"
 
     config.columns << :postal_address
     config.columns[:postal_address].label = 'Name and Address'
@@ -123,8 +126,24 @@ class Admin::JudgesController < AdministrationController
     config.columns[:time_availabilities].show_blank_record = false
 
     # UI overrides
+    config.columns[:address1].options = { :size => 76, :maxlength => 80 }
+    config.columns[:address2].options = { :size => 76, :maxlength => 80 }
+    config.columns[:address3].options = { :size => 76, :maxlength => 80 }
+    config.columns[:address4].options = { :size => 76, :maxlength => 80 }
     config.columns[:checked_in].form_ui = :checkbox
     config.columns[:checked_in].inplace_edit = true
+    config.columns[:city].options = { :size => 25, :maxlength => 80 }
+    config.columns[:club_name].options = { :size => 30, :maxlength => 60 }
+    config.columns[:comments].options = { :cols => 80, :rows => 8 }
+    config.columns[:email].options = { :size => 40, :maxlength => 100 }
+    config.columns[:first_name].options = { :size => 25, :maxlength => 80 }
+    config.columns[:goes_by].options = { :size => 15, :maxlength => 80 }
+    config.columns[:judge_number].options = { :size => 10, :maxlength => 10 }
+    config.columns[:last_name].options = { :size => 25, :maxlength => 80 }
+    config.columns[:middle_name].options = { :size => 15, :maxlength => 80 }
+    config.columns[:organizer].form_ui = :checkbox
+    config.columns[:phone].options = { :size => 20, :maxlength => 40 }
+    config.columns[:postcode].options = { :size => 10, :maxlength => 20 }
   end
 
   def row

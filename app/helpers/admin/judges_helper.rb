@@ -80,12 +80,91 @@ module Admin::JudgesHelper
     record.time_availabilities.sort_by{|t| t.start_time}.collect(&:label).join("<br />")
   end
 
-  def judge_rank_option_value(rank, extended=false)
-    value = "#{rank.id}"
-    if extended
-      value << ",#{rank.bjcp? ? 't' : 'f'}"
-    end
-    value
+  def club_form_column(record, input_name)
+    options = form_element_input_options(input_name, Judge)
+    options[:name] += '[id]'
+    options[:onchange] = %Q{toggleOtherClubData('#{params[:eid] || params[:id]}',#{Club.other.id})}
+    clubs = Club.all(:conditions => [ 'id <> ?', Club.other.id ],
+                     :order => 'LOWER(name)').collect{|c| [c.name, c.id]}
+    clubs << [ Club.other.name, Club.other.id ]
+
+    select(:record, :club_id, clubs,
+           { :prompt => '- Please select a club -' },
+           options)
   end
+
+  def confirmed_form_column(record, input_name)
+    no_value = false
+    yes_value = true
+    yes_options = form_element_input_options(input_name, Judge)
+    no_options = yes_options.dup
+    no_options[:id] += "_#{pretty_tag_value(no_value)}"
+    yes_options[:id] += "_#{pretty_tag_value(yes_value)}"
+    yes_options[:checked] = true if record.confirmed.nil?
+
+    returning String.new do |str|
+      str << radio_button(:record, :confirmed, yes_value, yes_options)
+      str << %Q{<span class="radioLabel">Yes, I will judge</span>}
+      str << radio_button(:record, :confirmed, no_value, no_options)
+      str << %Q{<span class="radioLabel">No, I am unable to judge</span>}
+    end
+  end
+
+  def judge_rank_form_column(record, input_name)
+    options = form_element_input_options(input_name, Judge)
+    options[:name] += '[id]'
+    options[:onchange] = %Q{showJudgeRankParams('#{params[:eid] || params[:id]}')}
+    judge_ranks = JudgeRank.all(:order => 'position').collect{|r|
+      [ r.description, judge_rank_option_value(r, true) ]
+    }
+
+    select(:record, :judge_rank_id, judge_ranks,
+           { :prompt => '- Please select a rank -' },
+           options)
+  end
+
+  def organizer_form_column(record, input_name)
+    options = form_element_input_options(input_name, Judge)
+    options[:onclick] = %Q{toggleStaffPoints('#{params[:eid] || params[:id]}')} if @is_admin_view
+
+    check_box(:record, :organizer, options)
+  end
+
+  def region_form_column(record, input_name)
+    options = form_element_input_options(input_name, Judge)
+    options[:name] += '[id]'
+    countries = Country.all(:conditions => [ 'is_selectable = ?', true ],
+                            :order => 'name')
+
+    returning String.new do |str|
+      str << %Q{<select id="#{options[:id]}" name="#{options[:name]}">}
+      str << %Q{<option value="">Please select</option>}  if record.region_id.nil?
+      str << option_groups_from_collection_for_select(countries,
+                                                      'regions_by_name', 'name',
+                                                      'id', 'name',
+                                                      record.region_id)
+      str << '</select>'
+    end
+  end
+
+  def staff_points_form_column(record, input_name)
+    options = form_element_input_options(input_name, Judge)
+    options[:disabled] = @available_staff_points.to_f == 0
+    options[:size] = options[:maxsize] = 3
+
+    returning String.new do |str|
+      str << text_field(:record, :staff_points, options)
+      str << %Q{<span class="description">(#{@available_staff_points} available)</span>}
+    end
+  end
+
+  private
+
+    def judge_rank_option_value(rank, extended=false)
+      returning String.new do |value|
+        value << "#{rank.id}"
+        value << ",#{rank.bjcp? ? 't' : 'f'}" if extended
+      end
+    end
 
 end
