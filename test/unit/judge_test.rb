@@ -167,7 +167,8 @@ class JudgeTest < Test::Unit::TestCase
                         :email => 'elvis@graceland',
                         :user_id => @good_user_id)
       assert !judge.save
-      assert_equal I18n.t('activerecord.errors.messages.invalid'), judge.errors.on(:email)
+      #assert_equal I18n.t('activerecord.errors.messages.invalid'), judge.errors.on(:email)
+      assert_equal Authentication.bad_email_message, judge.errors.on(:email)
     end
   end
 

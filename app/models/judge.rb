@@ -30,6 +30,9 @@ class Judge < ActiveRecord::Base
   validates_length_of :email,       :maximum => 100, :allow_blank => true
   validates_length_of :phone,       :maximum =>  40, :allow_blank => true
 
+  validates_format_of :email, :allow_blank => true,
+                      :with => Authentication.email_regex,
+                      :message => Authentication.bad_email_message
   validates_format_of :staff_points, :allow_nil => true,
                       :with => PointAllocation::FORMAT_REGEX,
                       :message => PointAllocation::FORMAT_ERROR
@@ -41,7 +44,6 @@ class Judge < ActiveRecord::Base
 
   validate :validate_presence_of_name
   validate :validate_postal_address
-  validate :validate_email_address
   validate :validate_judge_number
   validate :ensure_either_email_or_phone_provided
   validate :ensure_only_one_organizer
@@ -386,12 +388,6 @@ class Judge < ActiveRecord::Base
         if email.blank? && phone.blank?
           errors.add_to_base("Either an email address or a phone number is required")
         end
-      end
-    end
-
-    def validate_email_address
-      unless email.blank? || Email::validate_address(email)
-        errors.add(:email, I18n.t('activerecord.errors.messages.invalid'))
       end
     end
 

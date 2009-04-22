@@ -225,7 +225,7 @@ class EntrantTest < Test::Unit::TestCase
                             :club_id => @good_club_id,
                             :user_id => @good_user_id)
       assert !entrant.save
-      assert_equal "Email address #{I18n.t('activerecord.errors.messages.invalid')}", entrant.errors.on(:base)
+      assert_equal Authentication.bad_email_message, entrant.errors.on(:email)
     end
   end
 

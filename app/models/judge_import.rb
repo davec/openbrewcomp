@@ -77,7 +77,7 @@ class JudgeImport
                           warnings << "Unrecognized rank (set to #{JudgeRank.find(assigned_rank_id).description})"
                           assigned_rank_id
                         end
-        email = if Email.validate_address(fields[9])
+        email = if Authentication.email_regex.match(fields[9])
                   fields[9]
                 else
                   warnings << 'Invalid email address (discarded)' unless fields[9].blank?

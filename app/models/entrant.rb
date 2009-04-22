@@ -26,13 +26,16 @@ class Entrant < ActiveRecord::Base
   validates_length_of :email,        :maximum => 100, :allow_blank => true
   validates_length_of :phone,        :maximum =>  40, :allow_blank => true
 
+  validates_format_of :email, :allow_blank => true,
+                              :with => Authentication.email_regex,
+                              :message => Authentication.bad_email_message
+
   validate :validate_presence_of_name_for_individual_entrant
   validate :validate_street_address
   validate :validate_city
   validate :validate_region
   validate :validate_postcode
   validate :ensure_either_email_or_phone_provided
-  validate :validate_email_address
 
   attr_accessor :club_name
 
@@ -210,12 +213,6 @@ class Entrant < ActiveRecord::Base
     def ensure_either_email_or_phone_provided
       if email.blank? && phone.blank?
         errors.add_to_base("Either an email address or phone number is required")
-      end
-    end
-
-    def validate_email_address
-      unless email.blank? || Email::validate_address(email)
-        errors.add_to_base("Email address #{I18n.t('activerecord.errors.messages.invalid')}")
       end
     end
 
