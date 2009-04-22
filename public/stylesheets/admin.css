@@ -109,6 +109,24 @@ th {
 }
 
 /*------------------------------
+ News Items
+ ------------------------------*/
+
+.active-scaffold #admin__news_items-create--form span.description,
+.active-scaffold #admin__news_items-tbody span.description {
+  color: #333;
+  font: normal 12px verdana, sans-serif;
+  margin-left: 0.5em;
+}
+.active-scaffold #admin__news_items-tbody div.show-view dd {
+  width: 70%;
+}
+.active-scaffold #admin__news_items-tbody td.last_edit-column {
+  width: 9em;
+}
+
+
+/*------------------------------
  Flights
  ------------------------------*/
 

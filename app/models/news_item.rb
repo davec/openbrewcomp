@@ -18,7 +18,7 @@ class NewsItem < ActiveRecord::Base
   end
 
   def last_edit
-    updated_at.nil? ? created_at : updated_at
+    updated_at || created_at
   end
 
   protected

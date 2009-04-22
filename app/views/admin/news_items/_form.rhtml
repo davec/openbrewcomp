@@ -1,0 +1,20 @@
+<% # Convert the ActiveColumns object to a hash, based on the column name
+   colhash = Hash.new
+   columns.each {|column| colhash[column.name] = column}
+   id = params[:eid] || params[:id]
+%>
+<ol class="form float-style-form">
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:title]), :locals => { :column => colhash[:title] } -%>
+  </li>
+</ol>
+<ol class="form float-style-form">
+  <li class="form-element required">
+    <%= render :partial => form_partial_for_column(colhash[:description_raw]), :locals => { :column => colhash[:description_raw] } -%>
+  </li>
+</ol>
+<ol class="form">
+  <li class="form-element">
+    <span class="description">You may use <%= link_to('Markdown', 'http://daringfireball.net/projects/markdown/', :target => '_blank') %> to format the text.</span>
+  </li>
+</ol>

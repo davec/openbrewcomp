@@ -1,0 +1,3 @@
+<% scope ||= nil %>
+<label for="<%= "record_#{column.name}_#{@record.id}" %>"><%= column.label %></label>
+<%= active_scaffold_input_for column, scope %>

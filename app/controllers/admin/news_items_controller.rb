@@ -25,8 +25,8 @@ class Admin::NewsItemsController < AdministrationController
     # Label overrides
     config.columns[:created_at].label = 'Creation Time'
     config.columns[:updated_at].label = 'Last Update Time'
-    config.columns[:description_raw].label = 'Description'
-    config.columns[:description_encoded].label = 'Formatted Description'
+    config.columns[:description_raw].label = 'Text'
+    config.columns[:description_encoded].label = 'Formatted Text'
 
     # Virtual fields
     config.columns << :last_edit
