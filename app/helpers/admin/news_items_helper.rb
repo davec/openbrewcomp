@@ -9,7 +9,7 @@ module Admin::NewsItemsHelper
   end
 
   def description_raw_column(record)
-    h(truncate(record.description_raw, 100))
+    h(truncate(record.description_raw, :length => 100))
   end
 
   def description_encoded_column(record)
