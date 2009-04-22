@@ -3,7 +3,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 require 'tempfile'
 
-class ExportTest < Test::Unit::TestCase
+class ExportTest < ActiveSupport::TestCase
 
   def setup
     @bad_format = 'no_such_format'

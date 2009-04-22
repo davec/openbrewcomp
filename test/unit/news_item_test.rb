@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class NewsItemTest < Test::Unit::TestCase
+class NewsItemTest < ActiveSupport::TestCase
 
   def test_should_create_new_news_item
     assert_difference 'NewsItem.count' do

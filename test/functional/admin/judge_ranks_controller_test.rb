@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/judge_ranks_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::JudgeRanksController; def rescue_action(e) raise e end; end
-
-class Admin::JudgeRanksControllerTest < Test::Unit::TestCase
+class Admin::JudgeRanksControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::JudgeRanksController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 

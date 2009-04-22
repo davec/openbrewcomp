@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/categories_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::CategoriesController; def rescue_action(e) raise e end; end
-
-class Admin::CategoriesControllerTest < Test::Unit::TestCase
+class Admin::CategoriesControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::CategoriesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 
@@ -77,9 +70,8 @@ class Admin::CategoriesControllerTest < Test::Unit::TestCase
 
   def test_cannot_destroy_category_with_entries
     record = categories(:light_lager)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => record.id
-    end
+    delete :destroy, :id => record.id
+    assert_redirected_to authorization_error_path
   end
 
 end

@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/news_items_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::NewsItemsController; def rescue_action(e) raise e end; end
-
-class Admin::NewsItemsControllerTest < Test::Unit::TestCase
+class Admin::NewsItemsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::NewsItemsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 

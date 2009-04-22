@@ -1,20 +1,12 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/judging_sessions_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::JudgingSessionsController; def rescue_action(e) raise e end; end
-
-class Admin::JudgingSessionsControllerTest < Test::Unit::TestCase
+class Admin::JudgingSessionsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::JudgingSessionsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
-
-    @today      = Date.today
+    @today = Date.today
     @good_session = judging_sessions(:first1)
   end
 
@@ -87,9 +79,8 @@ class Admin::JudgingSessionsControllerTest < Test::Unit::TestCase
   end
 
   def test_cannot_destroy_session_with_flights
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => @good_session.id
-    end
+    delete :destroy, :id => @good_session.id
+    assert_redirected_to authorization_error_path
   end
 
 end

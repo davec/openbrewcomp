@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/contacts_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::ContactsController; def rescue_action(e) raise e end; end
-
-class Admin::ContactsControllerTest < Test::Unit::TestCase
+class Admin::ContactsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::ContactsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 

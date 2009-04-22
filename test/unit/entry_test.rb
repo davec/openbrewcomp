@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class EntryTest < Test::Unit::TestCase
+class EntryTest < ActiveSupport::TestCase
 
   def setup
     @good_entrant_id = entrants(:Team1).id

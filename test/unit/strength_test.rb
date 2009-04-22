@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class StrengthTest < Test::Unit::TestCase
+class StrengthTest < ActiveSupport::TestCase
 
   def setup
     @existing_description = strength(:standard).description

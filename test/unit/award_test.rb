@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class AwardTest < Test::Unit::TestCase
+class AwardTest < ActiveSupport::TestCase
 
   def setup
     @existing_category = categories(:specialty)

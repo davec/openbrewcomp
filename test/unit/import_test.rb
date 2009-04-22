@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class ImportTest < Test::Unit::TestCase
+class ImportTest < ActiveSupport::TestCase
 
   # TODO: Figure out how to effectively test imports
   def test_truth

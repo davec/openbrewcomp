@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class PointAllocationsTest < Test::Unit::TestCase
+class PointAllocationsTest < ActiveSupport::TestCase
 
   def test_should_create_new_record
     assert_difference 'PointAllocation.count' do

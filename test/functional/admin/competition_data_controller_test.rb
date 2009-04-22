@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/competition_data_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::CompetitionDataController; def rescue_action(e) raise e end; end
-
-class Admin::CompetitionDataControllerTest < Test::Unit::TestCase
+class Admin::CompetitionDataControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::CompetitionDataController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
 
     # Since we're mucking around and changing the competition data in many of
@@ -63,8 +56,7 @@ class Admin::CompetitionDataControllerTest < Test::Unit::TestCase
     assert_redirected_to :action => 'index', :id => record.id
   end
 
-  def test_destroy
-    # The destroy action is disabled
+  def test_destroy_action_should_not_be_recognized
     assert_raise(ActionController::UnknownAction) do
       delete :destroy, :id => CompetitionData.instance.id
     end

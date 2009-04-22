@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/judges_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::JudgesController; def rescue_action(e) raise e end; end
-
-class Admin::JudgesControllerTest < Test::Unit::TestCase
+class Admin::JudgesControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::JudgesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
-
     @seated_judge = judges(:recognized_judge)
     @non_seated_judge = judges(:standby)
   end
@@ -145,9 +137,8 @@ class Admin::JudgesControllerTest < Test::Unit::TestCase
   end
 
   def test_cannot_destroy_seated_judge
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => @seated_judge.id
-    end
+    delete :destroy, :id => @seated_judge.id
+    assert_redirected_to authorization_error_path
   end
 
   def test_help

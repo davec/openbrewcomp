@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/point_allocations_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::PointAllocationsController; def rescue_action(e) raise e end; end
-
-class Admin::PointAllocationsControllerTest < Test::Unit::TestCase
+class Admin::PointAllocationsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::PointAllocationsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 

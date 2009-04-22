@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class ContactTest < Test::Unit::TestCase
+class ContactTest < ActiveSupport::TestCase
 
   def test_should_create_new_contact
     assert_difference 'Contact.count' do

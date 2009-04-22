@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/entry_scores_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::EntryScoresController; def rescue_action(e) raise e end; end
-
-class Admin::EntryScoresControllerTest < Test::Unit::TestCase
+class Admin::EntryScoresControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::EntryScoresController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
-
     @competition_name = CompetitionData.instance.name
   end
 
@@ -79,7 +71,7 @@ class Admin::EntryScoresControllerTest < Test::Unit::TestCase
     #assert_redirected_to :action => 'index', :id => record.id
   end
 
-  def test_destroy
+  def test_destroy_action_should_not_be_recognized
     assert_raise(ActionController::UnknownAction) do
       delete :destroy, :id => entries(:i1_1D).id
     end

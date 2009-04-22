@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class FlightTest < Test::Unit::TestCase
+class FlightTest < ActiveSupport::TestCase
 
   def setup
     @existing_name = flights(:light_lager_1).name

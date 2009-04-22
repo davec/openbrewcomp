@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/entries_with_styleinfo_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::EntriesWithStyleinfoController; def rescue_action(e) raise e end; end
-
-class Admin::EntriesWithStyleinfoControllerTest < Test::Unit::TestCase
+class Admin::EntriesWithStyleinfoControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::EntriesWithStyleinfoController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 
@@ -71,7 +64,7 @@ class Admin::EntriesWithStyleinfoControllerTest < Test::Unit::TestCase
     assert_redirected_to :action => 'index', :id => record.id
   end
 
-  def test_destroy
+  def test_destroy_action_should_not_be_recognized
     assert_raise(ActionController::UnknownAction) do
       delete :destroy, :id => get_first_record.id
     end

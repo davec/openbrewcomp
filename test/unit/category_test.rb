@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class CategoryTest < Test::Unit::TestCase
+class CategoryTest < ActiveSupport::TestCase
 
   def setup
     @good_category_id = categories(:specialty).id

@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class SweetnessTest < Test::Unit::TestCase
+class SweetnessTest < ActiveSupport::TestCase
 
   def setup
     @existing_description = sweetness(:sweet).description

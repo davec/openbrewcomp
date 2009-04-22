@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/users_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::UsersController; def rescue_action(e) raise e end; end
-
-class Admin::UsersControllerTest < Test::Unit::TestCase
+class Admin::UsersControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::UsersController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 
@@ -78,9 +71,8 @@ class Admin::UsersControllerTest < Test::Unit::TestCase
 
   def test_cannot_edit_admin_if_not_admin
     login_as(:user_admin)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      get :edit, :id => users(:admin).id
-    end
+    get :edit, :id => users(:admin).id
+    assert_redirected_to authorization_error_path
   end
 
   def test_update
@@ -101,11 +93,10 @@ class Admin::UsersControllerTest < Test::Unit::TestCase
 
   def test_cannot_update_admin_if_not_admin
     login_as(:user_admin)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      record = users(:admin)
-      post :update, :id => record.id,
-                    :record => { :email => 'foo@example.com' }
-    end
+    record = users(:admin)
+    post :update, :id => record.id,
+                  :record => { :email => 'foo@example.com' }
+    assert_redirected_to authorization_error_path
   end
 
   def test_cannot_rename_admin
@@ -126,22 +117,19 @@ class Admin::UsersControllerTest < Test::Unit::TestCase
   end
 
   def test_cannot_destroy_admin_as_admin
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => users(:admin).id
-    end
+    delete :destroy, :id => users(:admin).id
+    assert_redirected_to authorization_error_path
   end
 
   def test_cannot_destroy_admin_as_user_admin
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => users(:admin).id
-    end
+    delete :destroy, :id => users(:admin).id
+    assert_redirected_to authorization_error_path
   end
 
   def test_cannot_destroy_self
     login_as(:user_admin)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => users(:user_admin).id
-    end
+    delete :destroy, :id => users(:user_admin).id
+    assert_redirected_to authorization_error_path
   end
 
 end

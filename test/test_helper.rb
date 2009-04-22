@@ -89,7 +89,7 @@ class Test::Unit::TestCase
     assert_equal "PK\003\004", @response.body[0,4]
   end
 
-  # Determine if a value is contained in the array
+  # Assert that an array contains a specific element
   def assert_included(expected_element, actual_array, message = nil)
     full_message = build_message(message, <<EOT, expected_element, actual_array)
 <?> expected but was
@@ -99,7 +99,7 @@ EOT
   end
 
   # Get an uploadable file (from Rails Cookbook, recipe 7.21)
-  def uploadable_file(relative_path, content_type="application/octet-stream", filename=nil)
+  def uploadable_file(relative_path, content_type = "application/octet-stream", filename = nil)
     file_object = File.open("#{RAILS_ROOT}/#{relative_path}", 'r')
 
     (class << file_object; self; end;).class_eval do

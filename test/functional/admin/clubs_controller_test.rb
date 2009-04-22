@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/clubs_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::ClubsController; def rescue_action(e) raise e end; end
-
-class Admin::ClubsControllerTest < Test::Unit::TestCase
+class Admin::ClubsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::ClubsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 
@@ -21,7 +14,8 @@ class Admin::ClubsControllerTest < Test::Unit::TestCase
     assert_template 'list'
 
     assert_select 'div#content' do
-      assert_select_active_scaffold_index_table Club.count - 1  # The "other club" is excluded from the view
+      # NB, the "other club" is excluded from the view
+      assert_select_active_scaffold_index_table Club.count - 1
     end
   end
 
@@ -45,7 +39,7 @@ class Admin::ClubsControllerTest < Test::Unit::TestCase
     assert_template '_list'
   end
 
-  def test_show
+  def test_show_action_should_not_be_recognized
     assert_raise(ActionController::UnknownAction) do
       get :show, :id => clubs(:rangers).id
     end
@@ -76,9 +70,8 @@ class Admin::ClubsControllerTest < Test::Unit::TestCase
 
   def test_cannot_destroy_club_with_entries
     record = clubs(:ehc)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => record.id
-    end
+    delete :destroy, :id => record.id
+    assert_redirected_to authorization_error_path
   end
 
 end

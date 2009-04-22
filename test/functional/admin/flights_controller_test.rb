@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/flights_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::FlightsController; def rescue_action(e) raise e end; end
-
-class Admin::FlightsControllerTest < Test::Unit::TestCase
+class Admin::FlightsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::FlightsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
-
     @competition_name = CompetitionData.instance.name
   end
 
@@ -269,15 +261,13 @@ class Admin::FlightsControllerTest < Test::Unit::TestCase
     flight = flights(:bos)
     # HACK: Force the assigned flag on, and the completed flag off
     flight.update_attributes(:assigned => true, :completed => false)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => flight.id
-    end
+    delete :destroy, :id => flight.id
+    assert_redirected_to authorization_error_path
   end
 
   def test_cannot_destroy_completed_flight
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => flights(:light_lager_2).id
-    end
+    delete :destroy, :id => flights(:light_lager_2).id
+    assert_redirected_to authorization_error_path
   end
 
 end

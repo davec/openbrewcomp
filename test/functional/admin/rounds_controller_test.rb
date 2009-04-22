@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/rounds_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::RoundsController; def rescue_action(e) raise e end; end
-
-class Admin::RoundsControllerTest < Test::Unit::TestCase
+class Admin::RoundsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::RoundsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 
@@ -88,9 +81,8 @@ class Admin::RoundsControllerTest < Test::Unit::TestCase
 
   def test_cannot_destroy_round_with_flights
     record = rounds(:bos)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => record.id
-    end
+    delete :destroy, :id => record.id
+    assert_redirected_to authorization_error_path
   end
 
 end

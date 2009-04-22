@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../test_helper'
-require 'entries_controller'
 
-# Re-raise errors caught by the controller.
-class EntriesController; def rescue_action(e) raise e end; end
+class EntriesControllerTest < ActionController::TestCase
 
-class EntriesControllerTest < Test::Unit::TestCase
   def setup
-    @controller = EntriesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-
     @competition_name = CompetitionData.instance.name
   end
 

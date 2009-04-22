@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class CompetitionDataTest < Test::Unit::TestCase
+class CompetitionDataTest < ActiveSupport::TestCase
 
   def setup
     CompetitionData.reload!

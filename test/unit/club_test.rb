@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class ClubTest < Test::Unit::TestCase
+class ClubTest < ActiveSupport::TestCase
 
   def setup
     @existing_club = clubs(:rangers).name

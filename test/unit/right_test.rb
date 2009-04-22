@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class RightTest < Test::Unit::TestCase
+class RightTest < ActiveSupport::TestCase
 
   def setup
     @existing_right = rights(:testright).name

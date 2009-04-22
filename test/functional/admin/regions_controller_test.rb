@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/regions_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::RegionsController; def rescue_action(e) raise e end; end
-
-class Admin::RegionsControllerTest < Test::Unit::TestCase
+class Admin::RegionsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::RegionsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 
@@ -78,9 +71,8 @@ class Admin::RegionsControllerTest < Test::Unit::TestCase
 
   def test_cannot_destroy_region_with_entrants
     record = regions(:US_TX)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => record.id
-    end
+    delete :destroy, :id => record.id
+    assert_redirected_to authorization_error_path
   end
 
 end

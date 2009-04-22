@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/sweetness_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::SweetnessController; def rescue_action(e) raise e end; end
-
-class Admin::SweetnessControllerTest < Test::Unit::TestCase
+class Admin::SweetnessControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::SweetnessController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 
@@ -52,7 +45,7 @@ class Admin::SweetnessControllerTest < Test::Unit::TestCase
     assert_template '_list'
   end
 
-  def test_show
+  def test_show_action_should_not_be_recognized
     assert_raise(ActionController::UnknownAction) do
       get :show, :id => sweetness(:medium).id
     end

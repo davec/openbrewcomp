@@ -1,29 +1,17 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../test_helper'
-require 'feed_controller'
 
-# Re-raise errors caught by the controller.
-class FeedController; def rescue_action(e) raise e end; end
-
-class FeedControllerTest < Test::Unit::TestCase
-  fixtures :news_items
-
-  def setup
-    @controller = FeedController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-
-    @feed_name        = CompetitionData.instance.name
-    @feed_description = "#{@feed_name} News"
-  end
+class FeedControllerTest < ActionController::TestCase
 
   def test_read_feed
+    feed_name = CompetitionData.instance.name
+    feed_description = "#{feed_name} News"
     get :news
     assert_select_feed :rss, 2.0 do
       assert_select 'channel' do
-        assert_select 'title', :count => 1, :text => @feed_name
-        assert_select 'description', :count => 1, :text => @feed_description
+        assert_select 'title', :count => 1, :text => feed_name
+        assert_select 'description', :count => 1, :text => feed_description
         assert_select 'item', 5
         10.downto(6) do |n|
           assert_select "item:nth-last-child(#{n-5})" do

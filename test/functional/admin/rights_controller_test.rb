@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/rights_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::RightsController; def rescue_action(e) raise e end; end
-
-class Admin::RightsControllerTest < Test::Unit::TestCase
+class Admin::RightsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::RightsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 

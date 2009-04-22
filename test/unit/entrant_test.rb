@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class EntrantTest < Test::Unit::TestCase
+class EntrantTest < ActiveSupport::TestCase
 
   def setup
     @USTX = regions(:US_TX)

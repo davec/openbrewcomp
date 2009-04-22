@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class CarbonationTest < Test::Unit::TestCase
+class CarbonationTest < ActiveSupport::TestCase
 
   def setup
     @existing_description = carbonation(:still).description

@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/styles_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::StylesController; def rescue_action(e) raise e end; end
-
-class Admin::StylesControllerTest < Test::Unit::TestCase
+class Admin::StylesControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::StylesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
   end
 
@@ -78,9 +71,8 @@ class Admin::StylesControllerTest < Test::Unit::TestCase
 
   def test_cannot_destroy_style_with_entries
     record = styles(:style_1A)
-    assert_raise(ActiveScaffold::RecordNotAllowed) do
-      delete :destroy, :id => record.id
-    end
+    delete :destroy, :id => record.id
+    assert_redirected_to authorization_error_path
   end
 
 end

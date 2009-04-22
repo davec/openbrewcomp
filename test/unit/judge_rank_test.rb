@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class JudgeRankTest < Test::Unit::TestCase
+class JudgeRankTest < ActiveSupport::TestCase
 
   def test_should_create_new_judge_rank
     assert_difference 'JudgeRank.count' do

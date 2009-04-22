@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class StyleTest < Test::Unit::TestCase
+class StyleTest < ActiveSupport::TestCase
 
   def setup
     @good_award_id = awards(:SPC).id

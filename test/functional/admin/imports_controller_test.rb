@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/imports_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::ImportsController; def rescue_action(e) raise e end; end
-
-class Admin::ImportsControllerTest < Test::Unit::TestCase
+class Admin::ImportsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::ImportsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
-
     @competition_name = CompetitionData.instance.name
 
     # In non-admin mode, additional validity checks on the Judge model are

@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class RoundTest < Test::Unit::TestCase
+class RoundTest < ActiveSupport::TestCase
 
   def setup
     @existing_name = rounds(:first).name

@@ -1,17 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/judge_invites_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::JudgeInvitesController; def rescue_action(e) raise e end; end
-
-class Admin::JudgeInvitesControllerTest < Test::Unit::TestCase
+class Admin::JudgeInvitesControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::JudgeInvitesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
 
     # Since we're mucking about with the competition data in some of the
@@ -20,9 +13,6 @@ class Admin::JudgeInvitesControllerTest < Test::Unit::TestCase
     @competition_name = CompetitionData.instance.name
 
     ActionMailer::Base.delivery_method = :test
-    #ActionMailer::Base.perform_deliveries = true
-    #ActionMailer::Base.deliveries = []
-
     @emails = ActionMailer::Base.deliveries
     @emails.clear
   end

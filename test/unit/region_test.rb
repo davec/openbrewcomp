@@ -2,8 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class RegionTest < Test::Unit::TestCase
-  fixtures :regions, :countries
+class RegionTest < ActiveSupport::TestCase
 
   def setup
     @BR = countries(:BR)

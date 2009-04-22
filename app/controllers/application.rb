@@ -129,6 +129,7 @@ class ApplicationController < ActionController::Base
     end
 
     def access_denied
+      flash[:request_url] = request.url  # Save the requested URL
       redirect_to authorization_error_path and return false if logged_in?
       super
     end

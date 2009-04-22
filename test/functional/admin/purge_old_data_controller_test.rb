@@ -1,21 +1,14 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/purge_old_data_controller'
 
-# Re-raise errors caught by the controller
-class Admin::PurgeOldDataController; def rescue_action(e) raise e end; end
-
-class Admin::PurgeOldDataControllerTest < Test::Unit::TestCase
+class Admin::PurgeOldDataControllerTest < ActionController::TestCase
   # PurgeOldData#zap (called from PurgeOldDataController#purge) uses a
   # DB transaction for its processing so transactional fixtures must be
   # disabled for this test suite.
   self.use_transactional_fixtures = false
   
   def setup
-    @controller = Admin::PurgeOldDataController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
 
     # Since we change the competition data during some of the tests, it must

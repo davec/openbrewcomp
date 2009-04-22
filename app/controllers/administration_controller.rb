@@ -6,6 +6,8 @@ class AdministrationController < ApplicationController
 
   before_filter :login_required
 
+  rescue_from ActiveScaffold::RecordNotAllowed, :with => :access_denied
+
   ActiveScaffold.set_defaults do |config|
     config.theme = :blue
   end

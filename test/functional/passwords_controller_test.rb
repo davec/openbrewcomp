@@ -1,23 +1,15 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../test_helper'
-require 'passwords_controller'
 
-# Re-raise errors caught by the controller.
-class PasswordsController; def rescue_action(e) raise e end; end
+class PasswordsControllerTest < ActionController::TestCase
 
-class PasswordsControllerTest < Test::Unit::TestCase
   def setup
-    @controller = PasswordsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-
     @competition_name = CompetitionData.instance.name
 
-    # The delivery_method setting in config/environments/test.rb is no
-    # longer repsected, so we're forced to set it here.
+    # The delivery_method setting in config/environments/test.rb is not
+    # repsected, so we're forced to set it here.
     ActionMailer::Base.delivery_method = :test
-
     @emails = ActionMailer::Base.deliveries
     @emails.clear
   end

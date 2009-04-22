@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/box_check_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::BoxCheckController; def rescue_action(e) raise e end; end
-
-class Admin::BoxCheckControllerTest < Test::Unit::TestCase
+class Admin::BoxCheckControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::BoxCheckController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
-
     @competition_name = CompetitionData.instance.name
   end
 

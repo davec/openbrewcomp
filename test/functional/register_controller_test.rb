@@ -1,23 +1,13 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../test_helper'
-require 'register_controller'
 
-# Re-raise errors caught by the controller.
-class RegisterController; def rescue_action(e) raise e end; end
-
-class RegisterControllerTest < Test::Unit::TestCase
-  fixtures :competition_data
+class RegisterControllerTest < ActionController::TestCase
 
   def setup
-    @controller = RegisterController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-
     # Since we're mucking around with the competition data, it needs to be
     # reloaded prior to each test.
     CompetitionData.reload!
-
     @competition_name = CompetitionData.instance.name
   end
 

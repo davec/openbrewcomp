@@ -1,21 +1,10 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../test_helper'
-require 'main_controller'
 
-# Re-raise errors caught by the controller.
-class MainController; def rescue_action(e) raise e end; end
-
-class MainControllerTest < Test::Unit::TestCase
-  fixtures :competition_data
+class MainControllerTest < ActionController::TestCase
 
   include ActionView::Helpers::TextHelper
-
-  def setup
-    @controller = MainController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
 
   def test_index
     get :index

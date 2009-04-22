@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/../test_helper'
 
-class JudgingSessionTest < Test::Unit::TestCase
+class JudgingSessionTest < ActiveSupport::TestCase
 
   def setup
     @date = Time.now.to_date.to_s

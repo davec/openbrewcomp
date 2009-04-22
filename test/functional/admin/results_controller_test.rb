@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/results_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::ResultsController; def rescue_action(e) raise e end; end
-
-class Admin::ResultsControllerTest < Test::Unit::TestCase
+class Admin::ResultsControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::ResultsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
-
     @competition_name = CompetitionData.instance.name
   end
 

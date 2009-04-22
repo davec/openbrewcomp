@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
 
 require File.dirname(__FILE__) + '/../../test_helper'
-require 'admin/entries_controller'
 
-# Re-raise errors caught by the controller.
-class Admin::EntriesController; def rescue_action(e) raise e end; end
-
-class Admin::EntriesControllerTest < Test::Unit::TestCase
+class Admin::EntriesControllerTest < ActionController::TestCase
 
   def setup
-    @controller = Admin::EntriesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
     login_as(:admin)
-
     @good_entry = entries(:t1_1A)
   end
 
