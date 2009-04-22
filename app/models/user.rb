@@ -135,6 +135,8 @@ class User < ActiveRecord::Base
     return true if current_user.id == User.admin_id
     # No other users can update the admin account
     return false if APP_CONFIG[:admin_name] == login
+    # All other users can update their own accounts
+    return true if current_user.id == id
     # Other admins can update accounts if they have privs to do so
     current_user.roles.detect{|role|
       role.rights.detect{|right|
