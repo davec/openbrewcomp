@@ -24,6 +24,7 @@ th {
 }
 
 .active-scaffold .checkbox-list {
+  margin: 1ex 0;
   max-height: 30ex;
   overflow: auto;
   padding: 0;
@@ -31,6 +32,10 @@ th {
 
 .active-scaffold .checkbox-list li {
   display: block;
+}
+
+.active-scaffold li.form-element dd input[type=checkbox] {
+  margin: 3px 6px 0 0;
 }
 
 /*------------------------------
