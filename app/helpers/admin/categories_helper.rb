@@ -7,8 +7,8 @@ module Admin::CategoriesHelper
   end
 
   def awards_column(record)
-    if record.awards.nil?
-      '-'
+    if record.awards.blank?
+      '<b>Add Awards</b>'
     elsif controller.action_name == 'show'
       h(record.awards.sort_by{|a| [a.category_id,a.position]}.collect(&:to_label).join(', '))
     else

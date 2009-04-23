@@ -39,4 +39,12 @@ class Admin::AwardsController < AdministrationController
     config.columns[:position].options = { :size => 2, :maxlength => 2 }
   end
 
+  protected
+
+    def do_new
+      super
+      @record.position = 1
+      @record.position += @record.category.awards.length if @record.category
+    end
+
 end

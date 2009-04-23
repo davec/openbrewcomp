@@ -7,8 +7,8 @@ module Admin::AwardsHelper
   end
 
   def styles_column(record)
-    if record.styles.nil?
-      '-'
+    if record.styles.blank?
+      '<b>Add Styles</b>'
     elsif controller.action_name == 'show'
       h(record.styles.sort_by{|s| [s.bjcp_category,s.bjcp_subcategory]}.collect(&:to_label).join(', '))
     else

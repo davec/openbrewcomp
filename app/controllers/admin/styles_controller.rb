@@ -71,4 +71,15 @@ class Admin::StylesController < AdministrationController
     config.columns[:require_sweetness].form_ui = :checkbox
   end
 
+  protected
+
+    def do_new
+      super
+      # Initialize some values based on the parent record
+      if @record.award
+        @record.bjcp_category = @record.award.category.position
+        @record.point_qualifier = @record.award.point_qualifier
+      end
+    end
+
 end
