@@ -82,8 +82,9 @@ function toggleAnonLogin()
 {
   var u = $('user_login');
   var p = $('user_password');
+  var o = $('openid_url');
 
-  u.disabled = p.disabled = !(u.disabled || p.disabled);
+  u.disabled = p.disabled = o.disabled = !(u.disabled || p.disabled || o.disabled);
 }
 
 function toggleDiv(id, step)

@@ -10,23 +10,10 @@ class SessionsController < ApplicationController
 
   def create
     logout_keeping_session!
-    anonymous_login = params[:anonymous] == '1'
-    user = anonymous_login \
-      ? User.anonymous_user \
-      : User.authenticate(params[:user][:login], params[:user][:password])
-    if user
-      # Protects against session fixation attacks, causes request forgery
-      # protection if user resubmits an earlier form using back
-      # button. Uncomment if you understand the tradeoffs.
-      # reset_session
-
-      new_cookie_flag = (params[:remember_me] == '1')
-      handle_remember_cookie! new_cookie_flag
-      setup_user_session(user)
+    if using_open_id?
+      open_id_authentication
     else
-      note_failed_signin(anonymous_login)
-      @remember_me = params[:remember_me]
-      render :action => 'new'
+      password_authentication
     end
   end
 
@@ -38,11 +25,60 @@ class SessionsController < ApplicationController
 
   protected
 
-    # Track failed login attempts
-    def note_failed_signin(anonymous_login)
-      #flash[:error] = "Could not log you in as '#{params[:user][:login]}'"
-      flash[:login_error] = anonymous_login ? 'Anonymous login failed, please try again later' : 'Invalid login credentials'
-      logger.warn "Failed login for '#{anonymous_login ? 'anonymous' : params[:user][:login]}' from #{request.remote_ip} at #{Time.now.utc}"
+    def anonymous_login?
+      params[:anonymous] == '1'
+    end
+
+    def open_id_authentication
+      begin
+        authenticate_with_open_id(params[:openid_url],
+                                  :return_to => open_id_complete_url) do |result, identity_url|
+          if result.successful? && user = User.find_by_identity_url(identity_url)
+            successful_login(user)
+          else
+            failed_login(result.message || 'Sorry, no user with that identity URL exists')
+          end
+        end
+      rescue Exception => e
+        failed_login(e.to_s || 'Invalid identity URL')
+      end
+    end
+
+    def password_authentication
+      user = if anonymous_login?
+               User.anonymous_user
+             else
+               User.authenticate(params[:user][:login], params[:user][:password])
+             end
+      if user
+        successful_login(user)
+      else
+        failed_login(anonymous_login? ?
+                     'Anonymous login failed, please try again later' :
+                     'Invalid login credentials')
+      end
+    end
+
+    def successful_login(user)
+      new_cookie_flag = (params[:remember_me] == '1')
+      handle_remember_cookie! new_cookie_flag
+      setup_user_session(user)
+    end
+
+    def failed_login(message = 'Login failed')
+      account = if using_open_id?
+                  params[:openid_url]
+                elsif anonymous_login?
+                  'anonymous'
+                else
+                  params[:user][:login]
+                end
+      logger.warn "Failed login for '#{account}' from #{request.remote_ip} at #{Time.now.utc}"
+
+      error_target = using_open_id? ? :openid_error : :login_error
+      flash[error_target] = message
+      @remember_me = params[:remember_me]
+      render :action => :new
     end
 
 end

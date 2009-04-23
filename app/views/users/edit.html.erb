@@ -1,22 +1,35 @@
-<% @page_title = "Edit Profile for #{@user.login}" %>
+<% name = h(@user.not_using_openid? ? @user.login : @user.display_name)
+   tag = @user.not_using_openid? ? '' : image_tag('openid-logo-small.gif', :alt => '(OpenID)', :size => '25x25')
+   @page_title = "Edit Profile for #{name}"
+   @page_header = "#{@page_title} #{tag}"
+ %>
 
 <div id="user-form">
   <% form_for @user do |f| %>
-    <fieldset class="userpass">
-      <legend>Your Details</legend>
+    <fieldset class="<%= @user.not_using_openid? ? 'userpass' : 'openid' %>">
+      <%- if flash[:profile_error] -%>
+        <div class="flash-error"><%= h flash[:profile_error] %></div>
+      <%- end -%>
       <ol>
-        <li>
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-          <%= f.error_message_on :name, :prepend_text => 'Name ' %>
-        </li>
-        <li>
-          <%= f.label :email %>
-          <%= f.text_field :email %>
-          <%= f.error_message_on :email, :prepend_text => 'Email ' %>
-        </li>
+        <%- if @user.not_using_openid? -%>
+          <li>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+            <%= f.error_message_on :name, :prepend_text => 'Name ' %>
+          </li>
+          <li>
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+            <%= f.error_message_on :email, :prepend_text => 'Email ' %>
+          </li>
+        <%- else -%>
+          <li>
+            <label for="openid_url">OpenID URL</label>
+            <%= text_field_tag :openid_url, params[:openid_url] || params['openid.identity'] %>
+            <%= f.error_message_on :openid_url %>
+          </li>
+        <%- end -%>
       </ol>
-      <div class="flash-error"><%= h flash[:profile_error] %></div>
     </fieldset>
     <div class="form-buttons">
       <%= submit_tag 'Save' %>

@@ -10,13 +10,13 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_select 'html > head > title', 'Create an Account'
     assert_select 'div#account-form > form[method=post]' do
-      assert_select 'fieldset#account' do
-        assert_select 'legend', 'Account Information'
-        assert_select 'ol > li', :count => 3  # login, pw, and pw confirm
+      assert_select 'fieldset.userpass' do
+        assert_select 'legend', 'Your Details'
+        assert_select 'ol > li', :count => 5  # login, pw, pw confirm, name, email
       end
-      assert_select 'fieldset#personal' do
-        assert_select 'legend', 'Personal Information'
-        assert_select 'ol > li', :count => 2  # Name and Email
+      assert_select 'fieldset.openid' do
+        assert_select 'legend', 'Signup with OpenID'
+        assert_select 'ol > li', :count => 1  # OpenID URL
       end
     end
   end
@@ -48,7 +48,6 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_select 'html > head > title', "Edit Profile for #{user.login}"
     assert_select 'div#user-form > form[method=post] > fieldset' do
-      assert_select 'legend', 'Your Details'
       assert_select 'ol > li', :count => 2  # Name and Email
     end
   end
@@ -86,7 +85,7 @@ class UsersControllerTest < ActionController::TestCase
 
     put :update, :id => user.id,
                  :user => { :email => 'nobody@nowhere' }
-    assert_equal 'There was a problem updating your profile.', flash[:profile_error]
+    assert_equal 'Sorry, there was a problem updating your profile.', flash[:profile_error]
     assert_template 'edit'
   end
 
@@ -219,14 +218,14 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
   
-  #def should_not_allow_invalid_openid
-  #  url = '\\'
-  #  assert_no_difference 'User.count' do
-  #    post :create, :openid_url => url
-  #    assert_equal "#{url} is not an OpenID URL", flash[:openid_error]
-  #    assert_response :success
-  #  end
-  #end
+  def should_not_allow_invalid_openid
+    url = '\\'
+    assert_no_difference 'User.count' do
+      post :create, :openid_url => url
+      assert_equal "#{url} is not an OpenID URL", flash[:openid_error]
+      assert_response :success
+    end
+  end
 
   protected
 

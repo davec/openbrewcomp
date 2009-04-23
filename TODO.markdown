@@ -1,8 +1,6 @@
-This is a list of potential changes for the Open Brew Comp system, in no
-particular order.
+This is a list of potential changes for OpenBrewComp, in no particular order.
 
-* Enable OpenID. Most, if not all, of the required OpenID support exists but
-  the UI does not currently provide a means of logging in with OpenID.
+* Migrate to Rails 2.3
 * I18n/L10n work.
 * Resolve CSS issues with the flight management pages in IE.
 * Use role_requirement plugin instead of our hand-rolled roles+rights. (Not

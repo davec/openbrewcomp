@@ -423,9 +423,107 @@ input[type="submit"] {
   margin-left: 18em;
 }
 
+#account-form {
+  font-size: 90%;
+  margin: 0 auto;
+  width: 66%;
+}
+#account-form div.flash-error {
+  margin: 1ex 1em;
+}
+#account-form ol {
+  list-style:none;
+  margin-left: 1em;
+  padding-left: 0;
+}
+#account-form ol.left {
+  float: left;
+  margin: 0 0 0 1em;
+  width: 44%;
+}
+#account-form ol.right {
+  float: right;
+  margin: 0 1em 0 0;
+  width: 44%;
+}
+#account-form li {
+  margin: 1ex 0;
+}
+#account-form label,
+#login-form fieldset.openid label {
+  display: block;
+  margin: 2px;
+  text-align: left;
+}
+#account-form div.formError {
+  margin: 2px;
+}
+#account-form input[type="text"],
+#account-form input[type="password"] {
+  margin: 0 auto 1ex;
+  width: 99%;
+}
+#account-form div.fieldWithErrors input[type="text"],
+#account-form div.fieldWithErrors input[type="password"] {
+  margin-bottom: 0;
+}
+#account-form input#openid_url,
+#login-form input#openid_url {
+  background: #fff url(../images/openid-login.gif) no-repeat scroll 0pt 50%;
+  padding-left: 18px;
+  width: 90%;
+}
+#login-form input#openid_url {
+  width: 85%;
+}
+#account-form input#openid_url:focus,
+#login-form input#openid_url:focus {
+  background-color: #ffc;
+}
+#account-form fieldset {
+  padding: 0 1ex;
+}
+#account-form legend {
+  padding: 0 1ex;
+}
+#account-form .buttons {
+  padding: 1ex;
+  text-align: center;
+}
+#account-form .buttons input {
+  margin: 0 1em;
+}
+#account-form div.separator {
+  font-size: 130%;
+  font-weight: bold;
+  padding: 1ex;
+  text-align: center;
+}
+#account-form p {
+  padding: 0 0.5em;
+}
+#account-form fieldset p {
+  margin-left: 1em;
+  padding-left: 0;
+}
+
+#login-form fieldset.userpass {
+  margin-bottom: 0;
+}
+#login-form fieldset.openid {
+  margin-top: 0;
+}
+#login-form fieldset.openid p {
+  margin-left: 0.5em;
+}
+#login-form div.separator {
+  font-size: 120%;
+  font-weight: bold;
+  text-align: center;
+}
+
 #admin-login-form ol,
 #login-form ol,
-#account-form ol,
 #user-form ol,
 #forgotten-form ol,
 #password-form ol,
@@ -436,7 +534,6 @@ input[type="submit"] {
 
 #admin-login-form li,
 #login-form li,
-#account-form li,
 #user-form li,
 #forgotten-form li,
 #password-form li,
@@ -500,35 +597,17 @@ input[type="submit"] {
 
 #admin-login-form .flash-error,
 #login-form .flash-error,
-#user-form .flash-error,
 #forgotten-form .flash-error,
 #password-form .flash-error,
 #password-reset-form .flash-error {
   margin: 1em 0.5em 0;
   text-align: left;
 }
-
-#account-form {
-  margin: 0 auto;
-  width: 42em;
+#user-form .flash-error {
+  margin: 0 0.5em 1em;
+  text-align: left;
 }
 
-#account-form form {
-  background-color: #f8f8ff;
-  border: 1px solid #7f7f7f;
-  font-family: sans-serif;
-  padding: 1em;
-}
-
-#account-form fieldset {
-  margin-bottom: 3ex;
-}
-
-#account-form legend {
-  font-size: 110%;
-}
-
-#account-form label,
 #user-form label,
 #forgotten-form label,
 #password-form label,
@@ -538,21 +617,6 @@ input[type="submit"] {
   text-align: right;
 }
 
-#account-form #account label {
-  width: 10em;
-}
-#account-form #account div.formError {
-  margin-left: 10.5em;
-}
-
-#account-form #personal label {
-  width: 5em;
-}
-#account-form #personal div.formError {
-  margin-left: 5.5em;
-}
-
-#account-form .form-note,
 #password-form .form-note,
 #password-reset-form .form-note {
   color: #333;
@@ -560,7 +624,6 @@ input[type="submit"] {
   padding: 0 0.25em;
 }
 
-#account-form .field-note,
 #forgotten-form .field-note {
   margin: -1ex 0 2ex 0;
   text-align: justify;
@@ -578,15 +641,12 @@ input[type="submit"] {
 }
 
 #user-form label {
+  display: block;
   text-align: left;
-  width: 3.5em;
-}
-#user-form div.formError {
-  margin-left: 4.0em;
 }
 
 #user-form input[type="text"] {
-  width: 15.0em;
+  width: 19em;
 }
 
 #user-form ul.flash-error,
@@ -601,7 +661,6 @@ input[type="submit"] {
   text-align: left;
 }
 
-#account-form .fieldWithErrors input,
 #user-form .fieldWithErrors input,
 #forgotten-form .fieldWithErrors input,
 #password-form .fieldWithErrors input,
@@ -609,7 +668,6 @@ input[type="submit"] {
   border: 1px solid #f44;
 }
 
-#account-form div.formError,
 #user-form div.formError,
 #forgotten-form div.formError,
 #password-form div.formError

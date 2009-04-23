@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if using_open_id?
       begin
         authenticate_with_open_id(params[:openid_url],
-                                  :return_to => open_id_create_url, 
+                                  :return_to => open_id_create_url,
                                   :optional => [:fullname],
                                   :required => [:nickname, :email]) do |result, identity_url, registration|
           if result.successful?
@@ -48,18 +48,30 @@ class UsersController < ApplicationController
   end
 
   def update
-    if request.put?
-      redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
-      @user = current_user
-      redirect_to user_path(@user) and return if params[:cancel]
-      if @user.update_attributes(:name => params[:user][:name],
-                                 :email => params[:user][:email])
-        flash[:notice] = 'Profile updated'
-        redirect_to user_path(@user)
-      else
-        flash[:profile_error] = 'There was a problem updating your profile.'
-        render :action => 'edit'
+    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
+    @user = current_user
+    redirect_to user_path(@user) and return if params[:cancel]
+    if using_open_id?
+      begin
+        authenticate_with_open_id(params[:openid_url],
+                                  :return_to => open_id_update_url,
+                                  :optional => [:fullname],
+                                  :required => [:nickname, :email]) do |result, identity_url, registration|
+          if result.successful?
+            update_user(:identity_url => identity_url,
+                        :login => registration['nickname'],
+                        :email => registration['email'],
+                        :name => (registration['fullname'] || ''))
+          else
+            failed_update(result.message || 'Sorry, something went wrong')
+          end
+        end
+      rescue Exception => e
+        failed_update(e.to_s)
       end
+    else
+      update_user(:name => params[:user][:name],
+                  :email => params[:user][:email])
     end
   end
 
@@ -111,11 +123,26 @@ class UsersController < ApplicationController
       setup_user_session(user)
     end
   
-    def failed_creation(message = 'Sorry, there was an error creating your account')
+    def failed_creation(message = 'Sorry, there was an error creating your account.')
       error_target = using_open_id? ? :openid_error : :account_error
       flash[error_target] = message
       @user = User.new unless @user
       render :action => :new
+    end
+
+    def update_user(params)
+      if @user.update_attributes(params)
+        flash[:notice] = 'Profile updated'
+        redirect_to user_path(@user)
+      else
+        failed_update
+      end
+    end
+
+    def failed_update(message = 'Sorry, there was a problem updating your profile.')
+      flash[:profile_error] = message
+      @user = current_user
+      render :action => :edit
     end
 
 end

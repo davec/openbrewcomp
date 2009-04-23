@@ -2,70 +2,90 @@
    @user.password = @user.password_confirmation = nil %>
 
 <div id="account-form">
-  <!--%= error_messages_for(:user) %-->
   <% form_for @user do |f| %>
-    <fieldset id="account">
-      <legend>Account Information</legend>
+    <fieldset class="userpass">
+      <%- if flash[:account_error] -%>
+        <div class="flash-error"><%= h flash[:account_error] %></div>
+      <%- end -%>
+      <legend>Your Details</legend>
 
       <div class="field-note">
         <p>
           Please select a login name and password for your account.
-        </p>
-      </div>
-
-      <ol>
-        <li>
-          <%= f.label :login, 'Login Name' %>
-          <%= f.text_field :login, :class => 'text-input', :size => 12, :maxlength => 40 %>
-          <span class="form-note">Must be between 3 and 40 characters</span>
-          <%= f.error_message_on :login, :prepend_text => 'Username ' %>
-        </li>
-        <li>
-          <%= f.label :password, 'Password' %>
-          <%= f.password_field :password, :class => 'text-input', :size => 12, :maxlength => 40 %>
-          <span class="form-note">Must be between 6 and 40 characters</span>
-          <%= f.error_message_on :password, :prepend_text => 'Password ' %>
-        </li>
-        <li>
-          <%= f.label :password_confirmation, 'Confirm Password' %>
-          <%= f.password_field :password_confirmation, :class => 'text-input', :size => 12, :maxlength => 40 %>
-        </li>
-      </ol>
-    </fieldset>
-
-    <fieldset id="personal">
-      <legend>Personal Information</legend>
-
-      <div class="field-note">
-        <p>
           Your name and email address are optional.
         </p>
         <p>
           If you subsequently forget your login information, you can request a
           reset code which will be sent to the email address you specify here.
         </p>
+        <p>
+          Your login name must consist of only letters, numbers, and the
+          characters <code>.</code> <code>-</code> <code>_</code> <code>@</code>
+          and be between 3 and 40 characters in length.
+          Your password must be at least 6 characters in length.
+        </p>
       </div>
 
-      <ol>
+      <ol class="left">
         <li>
-          <%= f.label :name %>
-          <%= f.text_field :name, :class => 'text-input', :size => 40, :maxlength => 80 %>
-          <%= f.error_message_on :name, :prepend_text => 'Name ' %>
+          <%= f.label :login, 'Login Name' %>
+          <%= f.text_field :login, :class => 'text-input', :maxlength => 40 %>
+          <%= f.error_message_on :login, :prepend_text => 'Login name ' %>
         </li>
         <li>
-          <%= f.label :email %>
-          <%= f.text_field :email, :class => 'text-input', :size => 40, :maxlength => 100 %>
+          <%= f.label :password, 'Password' %>
+          <%= f.password_field :password, :class => 'text-input', :maxlength => 40 %>
+          <%= f.error_message_on :password, :prepend_text => 'Password ' %>
+        </li>
+        <li>
+          <%= f.label :password_confirmation, 'Confirm Password' %>
+          <%= f.password_field :password_confirmation, :class => 'text-input', :maxlength => 40 %>
+          <%= f.error_message_on :password_confirmation, :prepend_text => 'Password ' %>
+        </li>
+      </ol>
+      <ol class="right">
+        <li>
+          <%= f.label :name, 'Your Name' %>
+          <%= f.text_field :name, :class => 'text-input', :maxlength => 80 %>
+          <%= f.error_message_on :name, :prepend_text => 'Your Name ' %>
+        </li>
+        <li>
+          <%= f.label :email, 'Email Address' %>
+          <%= f.text_field :email, :class => 'text-input', :maxlength => 100 %>
           <%= f.error_message_on :email, :prepend_text => 'Email ' %>
         </li>
       </ol>
     </fieldset>
 
-    <div class="form-buttons">
+    <div class="separator">
+      OR
+    </div>
+
+    <fieldset class="openid">
+      <%- if flash[:openid_error] -%>
+        <div class="flash-error"><%= h flash[:openid_error] %></div>
+      <%- end -%>
+      <legend>Signup with OpenID</legend>
+
+      <ol>
+        <li>
+          <label for="openid_url">OpenID URL</label>
+          <%= text_field_tag :openid_url, params[:openid_url] || params['openid.identity'] %>
+          <%= f.error_message_on :openid_url %>
+        </li>
+      </ol>
+
+      <p>
+        <%= link_to "What is OpenID?", "http://www.openid.net/" %>
+      </p>
+    </fieldset>
+
+    <div class="buttons">
       <%= submit_tag "Create Account" %>
       <%= submit_tag 'Cancel', { :name => 'cancel' } %>
     </div>
   <% end %>
 </div>
 <script type="text/javascript">
-  Field.focus('user_login');
+  Field.focus('<%= flash[:openid_error] ? 'openid_url' : 'user_login' %>');
 </script>

@@ -123,8 +123,10 @@ class InitializeSystem < ActiveRecord::Migration
       t.datetime :last_logon_at
       t.timestamps
     end
-    add_index :users, :login, :unique => true
-    add_index :users, :email
+    add_index :users, :login
+    add_index :users, [ :login, :identity_url ], :unique => true
+    add_index :users, [ :email, :identity_url ], :unique => true
+    add_index :users, :identity_url, :unique => true
 
     # Create Passwords Table
     create_table :passwords, :force => true do |t|

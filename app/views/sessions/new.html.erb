@@ -1,11 +1,8 @@
-<% @page_title = "#{competition_name} Login"
-   request_is_for_admin_page = !session.nil? && !session[:original_uri].blank? && session[:original_uri][0,7] == '/admin/'
-   login_form_id = "#{request_is_for_admin_page ? 'admin-' : ''}login-form"
-%>
+<% @page_title = "#{competition_name} Login" %>
 
-<div id="<%= login_form_id %>">
+<div id="login-form">
   <% form_for(User.new, :url => session_path, :html => { :id => 'login', :class => nil }) do |f| -%>
-    <fieldset>
+    <fieldset class="userpass">
       <ol>
         <li>
           <%= f.label :login, 'Login Name' %>
@@ -15,75 +12,87 @@
           <%= f.label :password %>
           <%= f.password_field :password, :class => 'text-input', :size => 12, :maxlength => 40 %>
         </li>
-        <% unless request_is_for_admin_page -%>
-          <li>
-            <%= check_box_tag 'anonymous', '1', false, :onclick => 'toggleAnonLogin()' %>
-            <span>Register anonymously</span>
-          </li>
-        <% end -%>
+        <li>
+          <%= check_box_tag 'anonymous', '1', false, :onclick => 'toggleAnonLogin()' %>
+          <span>Register anonymously</span>
+        </li>
         <p class="flash-error"><%= h(flash[:login_error]) %></p>
       </ol>
+    </fieldset>
+
+    <div class="separator">
+      OR
+    </div>
+
+    <fieldset class="openid">
+      <ol>
+        <li>
+          <%= f.label :openid_url, 'OpenID URL' %>
+          <%= text_field_tag :openid_url, params[:openid_url] || params['openid.identity'], :class => 'text-input', :size=> 18 %>
+        </li>
+      </ol>
+      <p class="flash-error"><%= h(flash[:openid_error]) %></p>
+      <p><%= link_to 'What is OpenID?', 'http://www.openid.net/' %></p>
     </fieldset>
 
     <div class="form-buttons">
       <%= submit_tag "Login" %>
     </div>
     <ul id="links">
-      <% unless request_is_for_admin_page -%>
-        <li><%= link_to('Create an account', signup_path) %></li>
-      <% end -%>
+      <li><%= link_to('Create an account', signup_path) %></li>
       <li><%= link_to('I forgot my password', forgot_password_path) %></li>
     </ul>
   <% end -%>
 </div>
-<% unless request_is_for_admin_page -%>
-  <div id="login-instructions">
-    <p>
-      Please log in to access the <%= competition_name %> registration system.
-    </p>
-    <p>
-      If you already have a <%= competition_name %> account, enter your login
-      name and password.
-    </p>
-    <p>
-    If you do not have a <%= competition_name %> account, you can <%= link_to('create one now', signup_path) %>.
-      By creating an account you will be able to take advantage of several
-      features of the registration system that are not otherwise available:
-    </p>
-    <ol>
-      <li>
-        You will be able to add new entries at a later date without having to
-        re-enter your personal information.
-      </li>
-      <li>
-        You will be able to change or delete previously registered entries
-        (as long as those entries have not yet been checked in).
-      </li>
-      <li>
-        If you do not have access to a printer right now, you will be able to
-        print your bottle labels at a later time from a computer that does
-        have access to a printer. Or if you need to reprint bottle labels
-        later, you will be able to do so easily.
-      </li>
-      <li>
-        If you are a member of a brewing team, you can create an account that
-        all members of the team can share, thus ensuring that all of your
-        team entries, regardless of the individual brewer who registers them,
-        are credited to the correct team. (The competition organizers will do
-        their best to ensure that all team entries are credited to the correct
-        team, but if multiple team members register entries with different
-        contact information or different spellings of the team&rsquo;s name,
-        errors in crediting points to the correct team are more likely to
-        occur.)
-      </li>
-    </ol>
-    <p>
-      If you do not wish to create a <%= competition_name %> account, you may
-      may register as an anonymous user. You will only be able to manage the
-      entries you create during the current session.
-    </p>
-  </div>
-<% end -%>
+
+<div id="login-instructions">
+  <p>
+    Please log in to access the <%= competition_name %> registration system.
+  </p>
+  <p>
+    If you already have a <%= competition_name %> account, enter your login
+    name and password or your OpenID.
+  </p>
+  <p>
+    If you do not have a <%= competition_name %> account, you can
+    <%= link_to('create one now', signup_path) %>. By creating an account you
+    will be able to take advantage of several features of the registration
+    system that are not otherwise available:
+  </p>
+  <ol>
+    <li>
+      You will be able to add new entries at a later date without having to
+      re-enter your personal information.
+    </li>
+    <li>
+      You will be able to change or delete previously registered entries
+      (as long as those entries have not yet been checked in).
+    </li>
+    <li>
+      If you do not have access to a printer right now, you will be able to
+      print your bottle labels at a later time from a computer that does
+      have access to a printer. Or if you need to reprint bottle labels
+      later, you will be able to do so easily.
+    </li>
+    <li>
+      If you are a member of a brewing team, you can create an account that
+      all members of the team can share, thus ensuring that all of your
+      team entries, regardless of the individual brewer who registers them,
+      are credited to the correct team. (The competition organizers will do
+      their best to ensure that all team entries are credited to the correct
+      team, but if multiple team members register entries with different
+      contact information or different spellings of the team&rsquo;s name,
+      errors in crediting points to the correct team are more likely to
+      occur.)
+    </li>
+  </ol>
+  <p>
+    If you do not wish to create a <%= competition_name %> account, you may
+    may register as an anonymous user. You will only be able to manage the
+    entries you create during the current session.
+  </p>
+</div>
+
 <script type="text/javascript">
 Form.focusFirstElement('login');
 </script>
