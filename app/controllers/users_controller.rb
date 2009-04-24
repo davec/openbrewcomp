@@ -43,12 +43,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
+    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id && current_user.authorized_for_update?
     @user = current_user
   end
 
   def update
-    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
+    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id && current_user.authorized_for_update?
     @user = current_user
     redirect_to user_path(@user) and return if params[:cancel]
     if using_open_id?
@@ -76,13 +76,13 @@ class UsersController < ApplicationController
   end
 
   def change_password
-    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
+    redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id && current_user.authorized_for_update?
     @user = current_user
   end
 
   def update_password
     if request.put?
-      redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id
+      redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id && current_user.authorized_for_update?
       @user = current_user
       redirect_to user_path(@user) and return if params[:cancel]
       if User.authenticate(@user.login, params[:user][:current_password])

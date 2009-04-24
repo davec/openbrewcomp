@@ -11,14 +11,18 @@
       <dt>Username</dt><dd><%= h @user.login %></dd>
       <dt>Name</dt><dd><%= h @user.name %></dd>
       <dt>Email</dt><dd><%= h @user.email %></dd>
-      <dt>Password</dt><dd><%= link_to '(change)', change_password_user_path(@user) %></dd>
+      <%- if @user.authorized_for_update? -%>
+        <dt>Password</dt><dd><%= link_to '(change)', change_password_user_path(@user) %></dd>
+      <%- end -%>
     <%- else -%>
       <dt>Name</dt><dd><%= h @user.name %></dd>
       <dt>Email</dt><dd><%= h @user.email %></dd>
       <dt>OpenID</dt><dd><%= h @user.identity_url %></dd>
     <%- end -%>
   </dl>
-  <div class="buttons">
-    <%= button_to 'Edit', edit_user_path(@user), :method => :get %>
-  </div>
+  <%- if @user.authorized_for_update? -%>
+    <div class="buttons">
+      <%= button_to 'Edit', edit_user_path(@user), :method => :get %>
+    </div>
+  <%- end -%>
 </div>
