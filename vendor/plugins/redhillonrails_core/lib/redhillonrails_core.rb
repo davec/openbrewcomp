@@ -27,7 +27,7 @@ if defined?(ActiveRecord::ConnectionAdapters::MysqlAdapter) then
   #ActiveRecord::ConnectionAdapters::MysqlColumn.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::MysqlColumn)
   ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::MysqlAdapter)
   # HACK: Attempts to determine the version of MySQL during `rake db:create` fail, but these adapters aren't needed in that task anyway.
-  unless File.basename($0) == 'rake' && !ARGV.grep('db:create').empty?
+  unless File.basename($0) == 'rake' && !ARGV.grep(/\Adb:create\b/).empty?
     if ActiveRecord::Base.connection.send(:version)[0] < 5
       #include MySql4Adapter
       ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::Mysql4Adapter)
