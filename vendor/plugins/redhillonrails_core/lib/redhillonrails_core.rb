@@ -23,14 +23,18 @@ if defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) then
   ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::PostgresqlAdapter)
 end
 if defined?(ActiveRecord::ConnectionAdapters::MysqlAdapter) then
-  ActiveRecord::ConnectionAdapters::MysqlColumn.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::MysqlColumn)
+  # HACK: This mod completely eliminates default values for string columns, breaking the tests
+  #ActiveRecord::ConnectionAdapters::MysqlColumn.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::MysqlColumn)
   ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::MysqlAdapter)
-  if ActiveRecord::Base.connection.send(:version)[0] < 5
-    #include MySql4Adapter
-    ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::Mysql4Adapter)
-  else
-    #include MySql5Adapter
-    ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::Mysql5Adapter)
+  # HACK: Attempts to determine the version of MySQL during `rake db:create` fail, but these adapters aren't needed in that task anyway.
+  unless File.basename($0) == 'rake' && !ARGV.grep('db:create').empty?
+    if ActiveRecord::Base.connection.send(:version)[0] < 5
+      #include MySql4Adapter
+      ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::Mysql4Adapter)
+    else
+      #include MySql5Adapter
+      ActiveRecord::ConnectionAdapters::MysqlAdapter.send(:include, RedHillConsulting::Core::ActiveRecord::ConnectionAdapters::Mysql5Adapter)
+    end
   end
     
 end
