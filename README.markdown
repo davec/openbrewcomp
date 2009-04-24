@@ -131,7 +131,7 @@ of Ruby on Rails,
    necessary since entrants will be able to add their club&rsquo;s name to the
    list if it does not already exist in the database but an initial list of clubs
    that only has your own club name doesn&rsquo;t look so good.
-7. Create your development, test, and production databases: `rake db:create`
+7. Create your development, test, and production databases: `rake db:create:all`
 8. Initialize your development database: `rake db:bootstrap`
 
 ## Testing
