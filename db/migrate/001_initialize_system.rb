@@ -1,7 +1,4 @@
-require 'migration_helper'
-
 class InitializeSystem < ActiveRecord::Migration
-  extend MigrationHelper::ForeignKeys
 
   def self.up
     create_table :categories, :force => true do |t|
@@ -16,7 +13,6 @@ class InitializeSystem < ActiveRecord::Migration
       t.integer :position
       t.references :category, :null => false
     end
-    add_foreign_key :awards, :category_id, :categories
 
     create_table :styles, :force => true do |t|
       t.string  :name, :null => false, :limit => 60
@@ -29,7 +25,6 @@ class InitializeSystem < ActiveRecord::Migration
       t.string  :styleinfo, :null => false, :default => 'n', :limit => 1
       t.references :award, :null => false
     end
-    add_foreign_key :styles, :award_id, :awards
     add_index :styles, [ :bjcp_category, :bjcp_subcategory ], :unique => true
 
     create_table :carbonation, :force => true do |t|
@@ -95,7 +90,6 @@ class InitializeSystem < ActiveRecord::Migration
       t.string :region_code, :limit => 6
       t.references :country, :null => false
     end
-    add_foreign_key :regions, :country_id, :countries
     add_index :regions, [ :country_id, :region_code ], :unique => true
 
     # Create OpenID Tables
@@ -135,7 +129,6 @@ class InitializeSystem < ActiveRecord::Migration
       t.timestamps
       t.references :user, :null => false
     end
-    add_foreign_key :passwords, :user_id, :users
 
     create_table :roles, :force => true do |t|
       t.string :name, :limit => 60, :null => false
@@ -151,14 +144,10 @@ class InitializeSystem < ActiveRecord::Migration
     create_table :rights_roles, :id => false, :force => true do |t|
       t.references :right, :role, :null => false
     end
-    add_foreign_key :rights_roles, :right_id, :rights
-    add_foreign_key :rights_roles, :role_id, :roles
 
     create_table :roles_users, :id => false, :force => true do |t|
       t.references :role, :user, :null => false
     end
-    add_foreign_key :roles_users, :role_id, :roles
-    add_foreign_key :roles_users, :user_id, :users
 
     create_table :competition_data, :force => true do |t|
       t.string   :name, :null => false
@@ -183,7 +172,7 @@ class InitializeSystem < ActiveRecord::Migration
     create_table :clubs, :force => true do |t|
       t.string :name, :null => false, :limit => 80
     end
-    add_index :clubs, :name
+    add_index :clubs, :name, :case_sensitive => false
 
     create_table :rounds, :force => true do |t|
       t.string  :name,     :null => false, :limit => 20
@@ -212,10 +201,6 @@ class InitializeSystem < ActiveRecord::Migration
       t.references :region
       t.references :country, :club, :user, :null => false
     end
-    add_foreign_key :entrants, :region_id, :regions
-    add_foreign_key :entrants, :country_id, :countries
-    add_foreign_key :entrants, :club_id, :clubs
-    add_foreign_key :entrants, :user_id, :users
 
     create_table :entries, :force => true do |t|
       t.string  :name, :null => false, :default => '', :limit => 80
@@ -224,16 +209,10 @@ class InitializeSystem < ActiveRecord::Migration
       t.integer :bottle_code, :place, :bos_place
       t.boolean :send_award, :send_bos_award
       t.timestamps
-      t.references :base_style, :carbonation, :strength, :sweetness
+      t.references :base_style, :references => :styles
+      t.references :carbonation, :strength, :sweetness
       t.references :entrant, :user, :style, :null => false
     end
-    add_foreign_key :entries, :entrant_id, :entrants
-    add_foreign_key :entries, :style_id, :styles
-    add_foreign_key :entries, :base_style_id, :styles
-    add_foreign_key :entries, :carbonation_id, :carbonation
-    add_foreign_key :entries, :strength_id, :strength
-    add_foreign_key :entries, :sweetness_id, :sweetness
-    add_foreign_key :entries, :user_id, :users
 
     create_table :flights, :force => true do |t|
       t.string   :name, :null => false, :limit => 60
@@ -242,15 +221,10 @@ class InitializeSystem < ActiveRecord::Migration
       t.references :round, :award, :null => false
       t.references :judging_session
     end
-    add_foreign_key :flights, :round_id, :rounds
-    add_foreign_key :flights, :award_id, :awards
-    add_foreign_key :flights, :judging_session_id, :judging_sessions
 
     create_table :entries_flights, :id => false, :force => true do |t|
       t.references :entry, :flight,  :null => false
     end
-    add_foreign_key :entries_flights, :entry_id, :entries
-    add_foreign_key :entries_flights, :flight_id, :flights
     add_index :entries_flights, [ :entry_id, :flight_id ]
 
     create_table :judges, :force => true do |t|
@@ -271,23 +245,15 @@ class InitializeSystem < ActiveRecord::Migration
       t.references :region, :country, :club, :judge_rank
       t.references :user, :null => false
     end
-    add_foreign_key :judges, :region_id, :regions
-    add_foreign_key :judges, :country_id, :countries
-    add_foreign_key :judges, :club_id, :clubs
-    add_foreign_key :judges, :user_id, :users
-    add_foreign_key :judges, :judge_rank_id, :judge_ranks
 
     create_table :category_preferences, :force => true do |t|
       t.references :judge, :category, :null => false
     end
-    add_foreign_key :category_preferences, :judge_id, :judges
-    add_foreign_key :category_preferences, :category_id, :categories
 
     create_table :time_availabilities, :force => true do |t|
       t.datetime :start_time, :end_time
       t.references :judge, :null => false
     end
-    add_foreign_key :time_availabilities, :judge_id, :judges
 
     create_table :judgings, :force => true do |t|
       # Role is either Judge ('j') or Steward ('s'). Note that a judge can have
@@ -296,28 +262,22 @@ class InitializeSystem < ActiveRecord::Migration
       t.string :role, :null => false, :default => '', :limit => 1
       t.references :flight, :judge, :null => false
     end
-    add_foreign_key :judgings, :flight_id, :flights
-    add_foreign_key :judgings, :judge_id, :judges
 
     create_table :scores, :force => true do |t|
       t.decimal :score, :null => false, :precision => 4, :scale => 2
       t.references :entry, :judge, :flight, :null => false
     end
-    add_foreign_key :scores, :entry_id, :entries
-    add_foreign_key :scores, :judge_id, :judges
-    add_foreign_key :scores, :flight_id, :flights
 
     create_table :news_items, :force => true do |t|
       t.string :title, :null => false
       t.text :description_raw, :description_encoded, :null => false
       t.timestamps
-      t.references :author, :null => false
+      t.references :author, :null => false, :references => :users
     end
-    add_foreign_key :news_items, :author_id, :users
 
     # Create the table for active_record_store session storage
     create_table :sessions, :force => true do |t|
-      t.string :session_id, :null => false
+      t.string :session_id, :null => false, :references => nil
       t.text :data
       t.timestamps
     end
@@ -331,7 +291,7 @@ class InitializeSystem < ActiveRecord::Migration
         contacts competition_data roles_users rights_roles rights roles passwords
         users regions countries point_allocations judge_ranks sweetness strength
         carbonation styles awards categories open_id_authentication_nonces
-        open_id_authentication_associations ).each do |table_name|
+        open_id_authentication_associations ).reverse.each do |table_name|
       drop_table table_name
     end
   end
