@@ -82,12 +82,12 @@ class Admin::EntriesController < AdministrationController
     config.columns << :registration_code
     config.columns[:registration_code].sort = true
     config.columns[:registration_code].sort_by :sql => 'entries.id'
-    config.columns[:registration_code].search_sql = "CAST((extract(year from entries.created_at) * 10000 + entries.id) AS CHAR(8))"
+    #config.columns[:registration_code].search_sql = "CAST((extract(year from entries.created_at) * 10000 + entries.id) AS CHAR(8))" ## Moved to udpate_config
 
     config.columns << :category
     config.columns[:category].label = 'Style'
     config.columns[:category].sort = true
-    config.columns[:category].sort_by :sql => "lpad(CAST(styles.bjcp_category AS CHAR(2)), 2, '0') || rpad(styles.bjcp_subcategory, 1, '0')"
+    #config.columns[:category].sort_by :sql => "lpad(CAST(styles.bjcp_category AS CHAR(2)), 2, '0') || rpad(styles.bjcp_subcategory, 1, '0')" ## Moved to udpate_config
     config.columns[:category].includes = [ :style ]
     config.columns[:category].search_sql = "(styles.bjcp_category||styles.bjcp_subcategory||' '||styles.name)"
 
@@ -121,7 +121,7 @@ class Admin::EntriesController < AdministrationController
     id = params[:id]
     @entry = Entry.find(id)
     @num_labels_to_print = @entry.style.number_of_bottles_required
-    @competition_name = CompetitionData.instance.name
+    @competition_name = competition_name
     render :layout => 'layouts/simple'
   end
 
@@ -136,7 +136,7 @@ class Admin::EntriesController < AdministrationController
                                          :conditions => [ 'bottle_code is null' ],
                                          :order => 'entrants.id, entries.id')
     unless @entries.empty?
-      @competition_name = CompetitionData.instance.name
+      @competition_name = competition_name
       options_for_rtex = { :filename => "bottle_labels.pdf" }
       options_for_rtex.merge({ :debug => true, :shell_redirect => "> #{File.expand_path(RAILS_ROOT)}/tmp/bottle_labels.rtex.log 2>&1" }) if ENV['RAILS_ENV'] == 'development'
       render options_for_rtex.merge(:layout => false)
@@ -229,6 +229,10 @@ class Admin::EntriesController < AdministrationController
         active_scaffold_config.list.per_page = 99999
         active_scaffold_config.theme = :default
       end
+
+      # Because the sql_* methods are inaccessible at the time the AS config is initialized
+      active_scaffold_config.columns[:registration_code].search_sql = "CAST((#{sql_extract_year_from('entries.created_at')} * 10000 + entries.id) AS CHAR(8))"
+      active_scaffold_config.columns[:category].sort_by :sql => "#{sql_lpad('CAST(styles.bjcp_category AS CHAR(2))', 2, '0')} || #{sql_rpad('styles.bjcp_subcategory', 1, '0')}"
     end
 
     def search_authorized?

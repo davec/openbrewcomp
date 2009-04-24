@@ -29,6 +29,7 @@ class Region < ActiveRecord::Base
   def self.export(format, options = {})
     options = options.merge(:select => 'r.id, r.region_code, r.name, r.country_id',
                             :joins => 'as r inner join countries as c on (c.id = r.country_id)',
+                            :order => 'r.id ASC',
                             :conditions => [ 'c.is_selectable = ?', true ]) if format == 'csv'
     super(format, options)
   end

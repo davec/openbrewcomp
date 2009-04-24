@@ -42,12 +42,12 @@ class Admin::EntriesWithStyleinfoController < AdministrationController
     config.columns << :registration_code
     config.columns[:registration_code].sort = true
     config.columns[:registration_code].sort_by :sql => "entries.id"
-    config.columns[:registration_code].search_sql = "CAST((extract(year from entries.created_at) * 10000 + entries.id) AS CHAR(8))"
+    #config.columns[:registration_code].search_sql = "CAST((extract(year from entries.created_at) * 10000 + entries.id) AS CHAR(8))"  ## Moved to update_config
 
     config.columns << :category
     config.columns[:category].label = 'Style'
     config.columns[:category].sort = true
-    config.columns[:category].sort_by :sql => "lpad(CAST(styles.bjcp_category AS CHAR(2)), 2, '0') || rpad(styles.bjcp_subcategory, 1, '0')"
+    #config.columns[:category].sort_by :sql => "lpad(CAST(styles.bjcp_category AS CHAR(2)), 2, '0') || rpad(styles.bjcp_subcategory, 1, '0')"  ## Moved to update_config
     config.columns[:category].includes = [ :style ]
     config.columns[:category].search_sql = "(styles.bjcp_category||styles.bjcp_subcategory||' '||styles.name)"
 
@@ -89,7 +89,9 @@ class Admin::EntriesWithStyleinfoController < AdministrationController
         end
       active_scaffold_config.columns[:style_info].label = styleinfo_label
 
-      true  # No way to fail
+      # Because the sql_* methods are inaccessible at the time the AS config is initialized
+      active_scaffold_config.columns[:registration_code].search_sql = "CAST((#{sql_extract_year_from('entries.created_at')} * 10000 + entries.id) AS CHAR(8))"
+      active_scaffold_config.columns[:category].sort_by :sql => "#{sql_lpad('CAST(styles.bjcp_category AS CHAR(2))', 2, '0')} || #{sql_rpad('styles.bjcp_subcategory', 1, '0')}"
     end
 
     def conditions_for_collection

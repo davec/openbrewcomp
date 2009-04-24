@@ -2,6 +2,8 @@
 
 class Admin::StylesController < AdministrationController
 
+  before_filter :update_config
+
   cache_sweeper :style_sweeper, :only => [ :create, :update, :destroy ]
 
   active_scaffold :style do |config|
@@ -53,7 +55,7 @@ class Admin::StylesController < AdministrationController
     # Virtual fields
     config.columns << :category
     config.columns[:category].sort = true
-    config.columns[:category].sort_by :sql => "(lpad(CAST(bjcp_category AS CHAR(2)), 2, '0') || rpad(bjcp_subcategory, 1, '0'))"
+    #config.columns[:category].sort_by :sql => "(lpad(CAST(bjcp_category AS CHAR(2)), 2, '0') || rpad(bjcp_subcategory, 1, '0'))"  ## Moved to update_config
     config.list.sorting.add :category, :asc
 
     # List config
@@ -72,6 +74,11 @@ class Admin::StylesController < AdministrationController
   end
 
   protected
+
+    def update_config
+      # Because the sql_* methods are inaccessible at the time the AS config is initialized
+      active_scaffold_config.columns[:category].sort_by :sql => "(#{sql_lpad('CAST(bjcp_category AS CHAR(2))', 2, '0')} || #{sql_rpad('bjcp_subcategory', 1, '0')})"
+    end
 
     def do_new
       super

@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
   include ExceptionNotifiable
   include AuthenticatedSystem
 
+  include DatabaseAbstractions
+
   unless ActionController::Base.consider_all_requests_local
     rescue_from ActiveRecord::RecordNotFound,
                 ActionController::RoutingError,

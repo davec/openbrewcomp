@@ -27,7 +27,7 @@ class Admin::EntryScoresController < AdministrationController
 
     config.columns << :category
     config.columns[:category].sort = true
-    config.columns[:category].sort_by :sql => "lpad(CAST(styles.bjcp_category AS CHAR(2)), 2, '0') || rpad(styles.bjcp_subcategory, 1, '0')"
+    #config.columns[:category].sort_by :sql => "lpad(CAST(styles.bjcp_category AS CHAR(2)), 2, '0') || rpad(styles.bjcp_subcategory, 1, '0')"
     config.columns[:category].includes = [ :style ]
 
     # Field sorting options
@@ -58,7 +58,11 @@ class Admin::EntryScoresController < AdministrationController
         active_scaffold_config.label = params[:award] || '(Unknown)'
         active_scaffold_config.theme = :default
       end
+
+      # Because the sql_* methods are inaccessible at the time the AS config is initialized
+      active_scaffold_config.columns[:category].sort_by :sql => "(#{sql_lpad('CAST(bjcp_category AS CHAR(2))', 2, '0')} || #{sql_rpad('bjcp_subcategory', 1, '0')})"
     end
+
 
     def search_authorized?
       @is_full_list
