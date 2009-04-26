@@ -3,16 +3,16 @@
 
 cancel_selector = "##{element_form_id(:action => :update)} a.cancel".to_json
 
-#### BEGIN ADDITION ####
-
-print_flight_sheets_div_action = Round.unassigned_flights?(@record.round.position) ? 'visible' : 'hidden'
-
-#### END ADDITION ####
-
 if controller.send :successful?
   page << "$$(#{cancel_selector}).first().link.close_with_refresh();"
   page.replace active_scaffold_calculations_id, :partial => 'list_calculations' if active_scaffold_config.list.columns.any? {|c| c.calculation?}
+
+  #### BEGIN ADDITION ####
+
+  print_flight_sheets_div_action = Round.unassigned_flights?(@record.round.position) ? 'visible' : 'hidden'
   page << "if ($('#{print_flight_sheets_div_id}')) $('#{print_flight_sheets_div_id}').style.visibility = '#{print_flight_sheets_div_action}'"
+
+  #### END ADDITION ####
 else
   page << "l = $$(#{cancel_selector}).first().link;"
   page.replace element_form_id(:action => :update), :partial => 'update_form'
