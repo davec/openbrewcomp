@@ -302,6 +302,21 @@ Past versions of the software have been deployed to groups of
 
 Fork the source, hack away, push it up, and send a pull request.
 
+## License
+
+OpenBrewComp is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License, in file COPYING, for
+more details.
+
+Note that OpenBrewComp makes use of several plugins which may be under a
+different, GPL-compatible, license.
+
 ## Copyright
 
 Copyright © 2007-2009 David Cato
