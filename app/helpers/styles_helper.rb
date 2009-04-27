@@ -6,16 +6,14 @@ module StylesHelper
     if description_url =~ %r{\A(ftp|https?)://}
       external_link = description_url
     else
-      parts = description_url.split('/').delete_if{|a| a.blank?}
+      parts = description_url.split('/').delete_if{|a| a.empty?}
       # If the URL is terminated by a / no action should be specified
       action = parts.pop unless description_url[-1,1] == '/'
-      # NOTE: In the test environment, a leading / is required on the
-      # controller name for the admin tests to pass, but including a
-      # leading / in any other environment causes a routing error.
-      options = { :controller => "#{ENV['RAILS_ENV'] == 'test' ? '/' : ''}#{parts.join('/')}" }
+
+      options = { :controller => "/#{parts.join('/')}" }
       options[:action] = action unless action.nil?
     end
-    link_to h(link), external_link.nil? ? options : external_link
+    link_to(h(link), external_link || options)
   end
 
   def special_styles
