@@ -194,7 +194,7 @@ div.info {
   text-indent: 0;
 }
 .bottlelabel th {
-  letter-spacing: 0.1em
+  letter-spacing: 0.1em;
   font-size: 14pt;
   font-variant: small-caps;
   font-weight: bold;

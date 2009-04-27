@@ -151,7 +151,6 @@ html > body #footer {
   display: block;
   font: bold 12px sans-serif;
   padding: 4px 6px;
-  *padding: 2px 6px 6px;  /* adjust for IE */
   width: auto;
   /* use rounded borders where possible */
   -moz-border-radius-topright: 0.5em;
