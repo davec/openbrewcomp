@@ -3,7 +3,9 @@
 class RegisterController < ApplicationController
 
   before_filter :get_registration_status
-  before_filter :login_required, :only => [ :online, :judge_confirmation ]
+  #before_filter :login_required, :only => [ :online, :judge_confirmation ]
+  before_filter :login_required, :only => [ :online, :judge_confirmation ],
+                                 :if => :is_registration_open?
 
   # If the start of registration is less than 2 weeks away,
   # tell us how much time remains before registration opens.
@@ -42,13 +44,11 @@ class RegisterController < ApplicationController
     @competition_name = CompetitionData.instance.name
   end
 
-  protected
-
-    def check_authentication
-      super if @is_registration_open
-    end
-
   private
+
+    def is_registration_open?
+      @is_registration_open
+    end
 
     def get_registration_status
       @registration_status        = competition_data.registration_status

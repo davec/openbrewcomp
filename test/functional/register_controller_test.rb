@@ -63,7 +63,25 @@ class RegisterControllerTest < ActionController::TestCase
     end
   end
 
-  def test_online_nil_start_and_end_times
+  def test_should_show_registration_not_available_message_when_start_and_end_times_not_defined
+    cd = CompetitionData.instance
+    cd.entry_registration_start_time_utc = nil
+    cd.entry_registration_end_time_utc = nil
+    cd.judge_registration_start_time_utc = nil
+    cd.judge_registration_end_time_utc = nil
+
+    get :online
+    assert_response :success
+
+    # Verify the correct status text exists
+    assert_select 'div#content' do
+      assert_select 'p', Regexp.new(CompetitionData::REGISTRATION_STATUS_UNKNOWN)
+      assert_select 'p + p#registration-countdown', 0
+      assert_select 'div#online-entries', 0
+    end
+  end
+
+  def test_online_nil_start_and_end_times_when_logged_in
     login_as(:admin)
 
     cd = CompetitionData.instance
@@ -117,15 +135,19 @@ class RegisterControllerTest < ActionController::TestCase
     assert_select 'div#online-entries', 1
   end
 
-  def test_online_future_start_time_more_than_2_weeks_away
-    login_as(:admin)
+  def test_should_show_countdown_timer_when_start_time_less_than_2_weeks_away
+    now = Time.now
+    start_time = now + 1.week
+    end_time = now + 4.weeks
+
+    expected_opening_message = "Registration will open in #{TimeInterval.difference_in_words(now, start_time)}."
 
     cd = CompetitionData.instance
-    cd.entry_registration_start_time_utc = 4.weeks.from_now.utc
-    cd.entry_registration_end_time_utc = 8.weeks.from_now.utc
-    cd.judge_registration_start_time_utc = 4.weeks.from_now.utc
-    cd.judge_registration_end_time_utc = 8.weeks.from_now.utc
-    cd.local_timezone = 'UTC'
+    cd.local_timezone = 'UTC' #"Etc/GMT#{'%+d' % (Time.now.gmt_offset/3600)}"
+    cd.entry_registration_start_time = start_time
+    cd.entry_registration_end_time = end_time
+    cd.judge_registration_start_time = start_time
+    cd.judge_registration_end_time = end_time
 
     get :online
     assert_response :success
@@ -133,12 +155,13 @@ class RegisterControllerTest < ActionController::TestCase
     # Verify the correct status text exists
     assert_select 'div#content' do
       assert_select 'p', Regexp.new(CompetitionData::REGISTRATION_STATUS_FUTURE)
-      assert_select 'p#registration-countdown', 0
+      assert_select 'p#registration-countdown', 1
+      assert_select 'p#registration-countdown', expected_opening_message
       assert_select 'div#online-entries', 0
     end
   end
 
-  def test_online_future_start_time_less_than_2_weeks_away
+  def test_online_future_start_time_less_than_2_weeks_away_when_logged_in
     login_as(:admin)
 
     now = Time.now
@@ -166,7 +189,66 @@ class RegisterControllerTest < ActionController::TestCase
     end
   end
 
-  def test_online_past_end_time
+  def test_should_not_show_countdown_timer_when_start_time_more_than_2_weeks_away
+    cd = CompetitionData.instance
+    cd.entry_registration_start_time_utc = 4.weeks.from_now.utc
+    cd.entry_registration_end_time_utc = 8.weeks.from_now.utc
+    cd.judge_registration_start_time_utc = 4.weeks.from_now.utc
+    cd.judge_registration_end_time_utc = 8.weeks.from_now.utc
+    cd.local_timezone = 'UTC'
+
+    get :online
+    assert_response :success
+
+    # Verify the correct status text exists
+    assert_select 'div#content' do
+      assert_select 'p', Regexp.new(CompetitionData::REGISTRATION_STATUS_FUTURE)
+      assert_select 'p#registration-countdown', 0
+      assert_select 'div#online-entries', 0
+    end
+  end
+
+  def test_online_future_start_time_more_than_2_weeks_away_when_logged_in
+    login_as(:admin)
+
+    cd = CompetitionData.instance
+    cd.entry_registration_start_time_utc = 4.weeks.from_now.utc
+    cd.entry_registration_end_time_utc = 8.weeks.from_now.utc
+    cd.judge_registration_start_time_utc = 4.weeks.from_now.utc
+    cd.judge_registration_end_time_utc = 8.weeks.from_now.utc
+    cd.local_timezone = 'UTC'
+
+    get :online
+    assert_response :success
+
+    # Verify the correct status text exists
+    assert_select 'div#content' do
+      assert_select 'p', Regexp.new(CompetitionData::REGISTRATION_STATUS_FUTURE)
+      assert_select 'p#registration-countdown', 0
+      assert_select 'div#online-entries', 0
+    end
+  end
+
+  def test_should_show_registration_window_closed_when_past_end_time
+    cd = CompetitionData.instance
+    cd.entry_registration_start_time_utc = 1.week.ago.utc
+    cd.entry_registration_end_time_utc = 1.hour.ago.utc
+    cd.judge_registration_start_time_utc = 1.week.ago.utc
+    cd.judge_registration_end_time_utc = 1.hour.ago.utc
+    cd.local_timezone = 'UTC'
+
+    get :online
+    assert_response :success
+
+    # Verify the correct status text exists
+    assert_select 'div#content' do
+      assert_select 'p', Regexp.new(CompetitionData::REGISTRATION_STATUS_PAST)
+      assert_select 'p#registration-countdown', 0
+      assert_select 'div#online-entries', 0
+    end
+  end
+
+  def test_online_past_end_time_when_logged_in
     login_as(:admin)
 
     cd = CompetitionData.instance
