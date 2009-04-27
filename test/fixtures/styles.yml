@@ -1274,7 +1274,7 @@ style_28D:
   bjcp_subcategory: D
 special:
   name: Competition Special
-  description_url: styles/special
+  description_url: /styles/special
   require_carbonation: false
   require_strength: false
   require_sweetness: false
