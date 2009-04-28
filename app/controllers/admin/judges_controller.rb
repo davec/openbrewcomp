@@ -130,6 +130,8 @@ class Admin::JudgesController < AdministrationController
     config.columns[:address2].options = { :size => 76, :maxlength => 80 }
     config.columns[:address3].options = { :size => 76, :maxlength => 80 }
     config.columns[:address4].options = { :size => 76, :maxlength => 80 }
+    config.columns[:confirmed].form_ui = :checkbox
+    config.columns[:confirmed].inplace_edit = true
     config.columns[:checked_in].form_ui = :checkbox
     config.columns[:checked_in].inplace_edit = true
     config.columns[:city].options = { :size => 25, :maxlength => 80 }

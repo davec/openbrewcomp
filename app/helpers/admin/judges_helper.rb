@@ -33,7 +33,13 @@ module Admin::JudgesHelper
   end
 
   def confirmed_column(record)
-    unless record.confirmed.nil?
+    # The same comments in #checked_in_column (above) apply here
+    if [ 'index', 'row', 'update_table' ].include?(controller.action_name) and record.authorized_for?(:action => :update, :column => :confirmed)
+      column = ActiveScaffold::DataStructures::Column.new(:confirmed, record.class)
+      column.inplace_edit = true
+      column.form_ui = :checkbox
+      format_inplace_edit_column(record, column)
+    else
       record.confirmed? ? 'Yes' : 'No'
     end
   end
