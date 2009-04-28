@@ -141,8 +141,8 @@ module Admin::FlightsHelper
       judges = panel[0]
       stewards = panel[1]
 
-      (judges.sort{|x,y| x.judge.dictionary_name <=> y.judge.dictionary_name}.collect{|j| h j.judge.name} +
-       stewards.sort{|x,y| x.judge.dictionary_name <=> y.judge.dictionary_name}.collect{|j| %Q{#{h j.judge.name} <span style="font-weight: normal">(Steward)</span>} }).join('<br />')
+      (judges.sort{|x,y| x.judge.dictionary_name <=> y.judge.dictionary_name}.collect{|j| link_to(h(j.judge.name), admin_judge_path(j.judge), :popup => true)} +
+       stewards.sort{|x,y| x.judge.dictionary_name <=> y.judge.dictionary_name}.collect{|j| %Q{#{link_to(h(j.judge.name), admin_judge_path(j.judge), :popup => true)} <span style="font-weight: normal">(Steward)</span>} }).join('<br />')
     end
 
     def entries_table(record, action)

@@ -17,7 +17,6 @@ This is a list of potential changes for OpenBrewComp, in no particular order.
   each entry is linked to the show page for the entry. Similarly, when viewing
   the list of entries, the list of flights the entry is in is available.
 * Include scores in the flight show panel.
-* Include a link to the judge records when viewing a flight.
 * Only the PDF version of the box check report is really necessary.
 * Improved handling of judge signup. As currently written, BJCP IDs must be
   unique, but if a judge attempts to sign up without using the registration
