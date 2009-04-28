@@ -2,7 +2,7 @@
 <% columns.each do |column| -%>
   <tr class="<%= cycle('even-record', 'odd-record') %>">
     <td class="column-name"><%= column.label.sub("*", "").strip -%></td>
-    <td class="column-value"><%= column.name == :entrant ? link_to(get_column_value(@record, column), entrant_admin_entry_path(@record), :popup => true) : get_column_value(@record, column) -%></td>
+    <td class="column-value"><%= column.name == :entrant ? link_to(get_column_value(@record, column), entrant_admin_entry_path(@record.entrant), :popup => true) : get_column_value(@record, column) -%></td>
   </tr>
 <% end -%>
 </table>
