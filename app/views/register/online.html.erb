@@ -1,11 +1,11 @@
 <% @page_title = "#{competition_name} Online Registration" %>
 
-<% content_for :stylesheet do %>
+<%- content_for :stylesheet do -%>
   <%= active_scaffold_includes :default, :cache => 'cache/active_scaffold_default' %>
   <%= stylesheet_link_tag 'active_scaffold-overrides', :media => nil %>
-<% end %>
+<%- end -%>
 
-<% if @is_registration_open %>
+<%- if @is_registration_open -%>
   <% if ENV['RAILS_ENV'] == 'staging' %>
     <div class="flash-error">
       <strong>NOTE:</strong> All data entered is for testing purposes only and
@@ -19,7 +19,7 @@
   </p>
 
   <ol id="online-registration">
-    <% if @is_entry_registration_open -%>
+    <%- if @is_entry_registration_open -%>
       <li id="online-entries-item">
         <div class="step" onclick="toggleDiv('online-entries', true)">
           <span class="step-marker" id="online-entries-step-marker"></span>
@@ -33,7 +33,7 @@
                   onclick="toggleDiv('online-entries', true);">Close</span>
             <div class="clearfloat"></div>
             <%= render :active_scaffold => 'admin/entrants',
-                       :constraints => { :user_id => current_user.id } -%>
+                       :constraints => { :user_id => current_user.id } %>
           </div>
         </div>
       </li>
@@ -86,16 +86,18 @@
           </div>
         </div>
       </li>
-    <% else -%>
-      <div class="disabled-step">
-        <span class="step-marker"></span>
-        <span class="step-text">
-          Online entry registration <%= @entry_registration_status -%>
-        </span>
-      </div>
-    <% end -%>
+    <%- else -%>
+      <li>
+        <div class="disabled-step">
+          <span class="step-marker"></span>
+          <span class="step-text">
+            Online entry registration <%= @entry_registration_status %>
+          </span>
+        </div>
+      </li>
+    <%- end -%>
 
-    <% if @is_judge_registration_open -%>
+    <%- if @is_judge_registration_open -%>
       <li id="online-judges-item">
         <div class="step" onclick="toggleDiv('online-judges', true)">
           <span class="step-marker" id="online-judges-step-marker"></span>
@@ -109,41 +111,43 @@
                   onclick="toggleDiv('online-judges', true);">Close</span>
             <div class="clearfloat"></div>
             <%= render :active_scaffold => 'admin/judges',
-                       :constraints => { :user_id => current_user.id } -%>
+                       :constraints => { :user_id => current_user.id } %>
           </div>
         </div>
       </li>
-    <% else -%>
-      <div class="disabled-step">
-        <span class="step-marker"></span>
-        <span class="step-text">
-          Online judge registration <%= @judge_registration_status -%>
-        </span>
-      </div>
-    <% end -%>
+    <%- else -%>
+      <li>
+        <div class="disabled-step">
+          <span class="step-marker"></span>
+          <span class="step-text">
+            Online judge registration <%= @judge_registration_status %>
+          </span>
+        </div>
+      </li>
+    <%- end -%>
   </ol>
 
-  <% if @auto_open_judge -%>
+  <%- if @auto_open_judge -%>
     <script type="text/javascript">
       if ($('online-judges')) {
         toggleDiv('online-judges', true);
-        <% if flash[:edit_selector]
+        <%- if flash[:edit_selector]
              edit_selector = flash[:edit_selector].sub('__ID__', @auto_edit_judge_id.to_s) -%>
           <%= "$(#{edit_selector}).action_link.open();" %>
-        <% end -%>
+        <%- end -%>
       }
     </script>
-  <% end -%>
+  <%- end -%>
 
-<% else %>
+<%- else -%>
 
   <p>
-    Online registration for <%= competition_name -%> <%= @registration_status -%>.
+    Online registration for <%= competition_name %> <%= @registration_status %>.
   </p>
-  <% unless @time_to_go.nil? -%>
+  <%- unless @time_to_go.nil? -%>
     <p id="registration-countdown">
-      Registration will open in <%= @time_to_go -%>.
+      Registration will open in <%= @time_to_go %>.
     </p>
-  <% end -%>
+  <%- end -%>
 
-<% end %>
+<%- end -%>
