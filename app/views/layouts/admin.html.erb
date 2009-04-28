@@ -25,30 +25,33 @@
     <%= render :partial => "layouts/header" %>
 
     <div id="content">
-      <% unless current_user.nil? -%>
+      <%- if current_user -%>
         <div id="user-info">
           <span>Logged in as <%= current_user.display_name -%></span>
         </div>
-      <% end -%>
-      <div id="clearheader"></div>
-      <%= page_header_tag if @page_header || @page_title %>
-      <% if flash[:error] -%>
+      <%- end -%>
+      <%- if @page_header || @page_title -%>
+        <%= page_header_tag %>
+      <%- else -%>
+        <div id="clearheader"></div>
+      <%- end -%>
+      <%- if flash[:error] -%>
         <div class="flash-error">
           <p><%= flash[:error] %></p>
         </div>
-      <% elsif flash[:warning] -%>
+      <%- elsif flash[:warning] -%>
         <div class="flash-warning">
           <p><%= flash[:warning] %></p>
         </div>
-      <% elsif flash[:message] -%>
+      <%- elsif flash[:message] -%>
         <div class="flash-message">
           <p><%= flash[:message] %></p>
         </div>
-      <% elsif flash[:notice] -%>
+      <%- elsif flash[:notice] -%>
         <div class="flash-notice">
           <p><%= flash[:notice] %></p>
         </div>
-      <% end -%>
+      <%- end -%>
       <%= yield %>
     </div>
     <div id="clearfooter"></div>
