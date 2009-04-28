@@ -9,18 +9,15 @@ class MainController < ApplicationController
 
     now = Time.now.utc
     start_time = competition_data.competition_start_time_utc
-    unless start_time.nil? || start_time <= now
+    @days_to_go = unless start_time.nil? || start_time <= now
       # Determine the timezone offset, in minutes, of the client.  If not
       # provided, default to the timezone offset defined for the competition.
       tzoffset = browser_timezone_offset || (start_time - competition_data.competition_start_time).to_i / 60
 
-      @days_to_go = ((competition_data.competition_start_time.at_midnight.since(tzoffset*60) - now)/86400).ceil
-      @event_name = competition_name
-      @seconds_to_go = start_time - now
+      (competition_data.competition_start_time.to_date - (now - tzoffset*60).to_date).to_i
     else
       # The competition date is undefined or it's in the past
-      @days_to_go = -1
-      @seconds_to_go = -1
+      -1
     end
   end
 

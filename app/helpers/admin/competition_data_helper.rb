@@ -36,7 +36,14 @@ module Admin::CompetitionDataHelper
   end
 
   def local_timezone_form_column(record, input_name)
-    zones = TZInfo::Timezone.all.collect { |z| [ z.to_s, z.name ] }
+    # NOTE: Leave out the GMT-based timezones. Their names are confusing (TZInfo
+    # uses the Olsen timezone database which uses POSIX rules for the offset
+    # values, and these are the reverse of what most people expect when working
+    # with timezones) and not terribly useful since they do not support any
+    # DST offsets (daylight saving time is regional and cannot be applied to a
+    # generic GMT-based offset). It's better to only offer geographically-based
+    # timezones instead (plus UTC).
+    zones = TZInfo::Timezone.all.collect{|z| [ z.to_s, z.name ] unless z.to_s =~ /GMT/}.compact
     select :record, :local_timezone, zones,
            { :prompt => '- Please select a time zone -'},
            { :name => input_name }

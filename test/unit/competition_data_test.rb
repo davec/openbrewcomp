@@ -4,6 +4,12 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CompetitionDataTest < ActiveSupport::TestCase
 
+  # IMPORTANT NOTE REGARDING TIMEZONES:
+  #
+  # TZInfo uses the Olson timezone database which uses POSIX rules for
+  # timezone offset names. Confusingly, when you want what is conventionally
+  # known as GMT-6, you must specify GMT+6 to get the intended timezone.
+
   def setup
     CompetitionData.reload!
   end
@@ -105,16 +111,12 @@ class CompetitionDataTest < ActiveSupport::TestCase
     cd = CompetitionData.instance
     cd.competition_date = nil
     assert cd.save
-    #assert !cd.save
-    #assert_equal I18n.t('activerecord.errors.messages.blank'), cd.errors.on(:competition_date)
   end
 
   def test_should_update_with_nil_competition_start_time
     cd = CompetitionData.instance
     cd.competition_start_time_utc = nil
     assert cd.save
-    #assert !cd.save
-    #assert_equal I18n.t('activerecord.errors.messages.blank'), cd.errors.on(:competition_start_time)
   end
 
   def test_string_time_values_in_utc
@@ -169,9 +171,9 @@ class CompetitionDataTest < ActiveSupport::TestCase
 
   def test_status_entry_open
     cd = CompetitionData.instance
-    cd.local_timezone = "Etc/GMT#{'%+d' %(Time.now.gmt_offset/3600)}"
-    cd.entry_registration_start_time = 1.hour.ago
-    cd.entry_registration_end_time = 1.hour.from_now
+    cd.local_timezone = "Etc/GMT#{'%+d' %(-Time.now.gmt_offset/3600)}"
+    cd.entry_registration_start_time = 1.hour.ago.localtime
+    cd.entry_registration_end_time = 1.hour.from_now.localtime
 
     assert cd.is_entry_registration_open?
     assert !cd.is_entry_registration_future?
@@ -180,9 +182,9 @@ class CompetitionDataTest < ActiveSupport::TestCase
 
   def test_status_entry_future
     cd = CompetitionData.instance
-    cd.local_timezone = "Etc/GMT#{'%+d' %(Time.now.gmt_offset/3600)}"
-    cd.entry_registration_start_time = 1.hour.from_now
-    cd.entry_registration_end_time = 1.day.from_now
+    cd.local_timezone = "Etc/GMT#{'%+d' %(-Time.now.gmt_offset/3600)}"
+    cd.entry_registration_start_time = 1.hour.from_now.localtime
+    cd.entry_registration_end_time = 1.day.from_now.localtime
 
     assert !cd.is_entry_registration_open?
     assert cd.is_entry_registration_future?
@@ -191,9 +193,9 @@ class CompetitionDataTest < ActiveSupport::TestCase
 
   def test_status_entry_past
     cd = CompetitionData.instance
-    cd.local_timezone = "Etc/GMT#{'%+d' %(Time.now.gmt_offset/3600)}"
-    cd.entry_registration_start_time = 1.day.ago
-    cd.entry_registration_end_time = 1.hour.ago
+    cd.local_timezone = "Etc/GMT#{'%+d' %(-Time.now.gmt_offset/3600)}"
+    cd.entry_registration_start_time = 1.day.ago.localtime
+    cd.entry_registration_end_time = 1.hour.ago.localtime
 
     assert !cd.is_entry_registration_open?
     assert !cd.is_entry_registration_future?
@@ -235,9 +237,9 @@ class CompetitionDataTest < ActiveSupport::TestCase
 
   def test_status_judge_open
     cd = CompetitionData.instance
-    cd.local_timezone = "Etc/GMT#{'%+d' %(Time.now.gmt_offset/3600)}"
-    cd.judge_registration_start_time = 1.hour.ago
-    cd.judge_registration_end_time = 1.hour.from_now
+    cd.local_timezone = "Etc/GMT#{'%+d' %(-Time.now.gmt_offset/3600)}"
+    cd.judge_registration_start_time = 1.hour.ago.localtime
+    cd.judge_registration_end_time = 1.hour.from_now.localtime
 
     assert cd.is_judge_registration_open?
     assert !cd.is_judge_registration_future?
@@ -246,9 +248,9 @@ class CompetitionDataTest < ActiveSupport::TestCase
 
   def test_status_judge_future
     cd = CompetitionData.instance
-    cd.local_timezone = "Etc/GMT#{'%+d' %(Time.now.gmt_offset/3600)}"
-    cd.judge_registration_start_time = 1.hour.from_now
-    cd.judge_registration_end_time = 1.day.from_now
+    cd.local_timezone = "Etc/GMT#{'%+d' %(-Time.now.gmt_offset/3600)}"
+    cd.judge_registration_start_time = 1.hour.from_now.localtime
+    cd.judge_registration_end_time = 1.day.from_now.localtime
 
     assert !cd.is_judge_registration_open?
     assert cd.is_judge_registration_future?
@@ -257,9 +259,9 @@ class CompetitionDataTest < ActiveSupport::TestCase
 
   def test_status_judge_past
     cd = CompetitionData.instance
-    cd.local_timezone = "Etc/GMT#{'%+d' %(Time.now.gmt_offset/3600)}"
-    cd.judge_registration_start_time = 1.day.ago
-    cd.judge_registration_end_time = 1.hour.ago
+    cd.local_timezone = "Etc/GMT#{'%+d' %(-Time.now.gmt_offset/3600)}"
+    cd.judge_registration_start_time = 1.day.ago.localtime
+    cd.judge_registration_end_time = 1.hour.ago.localtime
 
     assert !cd.is_judge_registration_open?
     assert !cd.is_judge_registration_future?
@@ -275,7 +277,7 @@ class CompetitionDataTest < ActiveSupport::TestCase
     # Now, we'll change the timezone from UTC to GMT-6 which should leave
     # the local time unchanged and advance the UTC time by 6 hours.
     original_local_competition_start_time = cd.competition_start_time.dup
-    cd.local_timezone = 'Etc/GMT-6'
+    cd.local_timezone = 'Etc/GMT+6'
     assert_equal 6.0, (cd.competition_start_time_utc - cd.competition_start_time)/3600.0
     assert_equal original_local_competition_start_time, cd.competition_start_time
   end

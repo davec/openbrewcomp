@@ -4,7 +4,7 @@
 
 <% if @days_to_go > 0 -%>
   <div id="countdown">
-    <%= pluralize(@days_to_go, 'day') -%> until <%= @event_name -%>
+    <%= pluralize(@days_to_go, 'day') -%> until <%= competition_name -%>
   </div>
 <% end -%>
 

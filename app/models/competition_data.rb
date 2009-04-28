@@ -34,8 +34,8 @@ class CompetitionData < ActiveRecord::Base
   attr_reader :competition_start_time, :timezone
   def entry_registration_start_time=(time)
     t = mktime(time)
-    write_attribute(:entry_registration_start_time_utc, t)
-    @entry_registration_start_time = to_local(t)
+    write_attribute(:entry_registration_start_time_utc, to_utc(t))
+    @entry_registration_start_time = t
   end
   def entry_registration_start_time_utc=(time)
     t = mktime(time)
@@ -44,8 +44,8 @@ class CompetitionData < ActiveRecord::Base
   end
   def entry_registration_end_time=(time)
     t = mktime(time)
-    write_attribute(:entry_registration_end_time_utc, t)
-    @entry_registration_end_time = to_local(t)
+    write_attribute(:entry_registration_end_time_utc, to_utc(t))
+    @entry_registration_end_time = t
   end
   def entry_registration_end_time_utc=(time)
     t = mktime(time)
@@ -54,8 +54,8 @@ class CompetitionData < ActiveRecord::Base
   end
   def judge_registration_start_time=(time)
     t = mktime(time)
-    write_attribute(:judge_registration_start_time_utc, t)
-    @judge_registration_start_time = to_local(t)
+    write_attribute(:judge_registration_start_time_utc, to_utc(t))
+    @judge_registration_start_time = t
   end
   def judge_registration_start_time_utc=(time)
     t = mktime(time)
@@ -64,8 +64,8 @@ class CompetitionData < ActiveRecord::Base
   end
   def judge_registration_end_time=(time)
     t = mktime(time)
-    write_attribute(:judge_registration_end_time_utc, t)
-    @judge_registration_end_time = to_local(t)
+    write_attribute(:judge_registration_end_time_utc, to_utc(t))
+    @judge_registration_end_time = t
   end
   def judge_registration_end_time_utc=(time)
     t = mktime(time)
@@ -74,8 +74,8 @@ class CompetitionData < ActiveRecord::Base
   end
   def competition_start_time=(time)
     t = mktime(time)
-    write_attribute(:competition_start_time_utc, t)
-    @competition_start_time = to_local(t)
+    write_attribute(:competition_start_time_utc, to_utc(t))
+    @competition_start_time = t
   end
   def competition_start_time_utc=(time)
     t = mktime(time)
@@ -235,12 +235,12 @@ class CompetitionData < ActiveRecord::Base
 
   def to_utc(time)
     return time if @timezone.name == 'UTC' || time.nil?
-    @timezone.utc_to_local time
+    @timezone.local_to_utc(time)
   end
 
   def to_local(time)
     return time if @timezone.name == 'UTC' || time.nil?
-    @timezone.local_to_utc time
+    @timezone.utc_to_local(time)
   end
 
   # Create a Time object from the given object which may be a Time or any object
