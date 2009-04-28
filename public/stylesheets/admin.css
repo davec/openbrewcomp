@@ -360,8 +360,8 @@ th {
   font-weight: bold;
 }
 #flight-assignments-view .openstep {
-  background-color: #ffffbb;
-  border: 2px solid #fae2bb;
+  background-color: #ffebcd;
+  border: 2px solid #ffd699;
   margin-left: 22px;
   margin-right: 1em;
   min-width: 96%;
