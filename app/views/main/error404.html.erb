@@ -1,5 +1,5 @@
 <% @page_title = 'Page Not Found' %>
-<!-- <%= request.url %> -->
+<!-- <%= flash[:request_url] || request.url %> -->
 <div id="dead-link">
   <p>
     We&rsquo;re sorry, the page you were looking for is not available.

@@ -189,6 +189,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Error pages
   map.authorization_error '/denied', :controller => 'main', :action => 'error403'
+  map.not_found_error '/not_found', :controller => 'main', :action => 'error404'
   
   # Handle everything else as a customized 404 error
   map.error '*path', :controller => 'main', :action => 'error404'

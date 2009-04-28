@@ -18,7 +18,7 @@ class Admin::FlightsControllerTest < ActionController::TestCase
     assert_select 'div#content > h1', "#{@competition_name} Flights"
   end
 
-  def test_assign
+  def test_should_show_assign_page_with_form_hidden
     get :assign
     assert_response :success
 
@@ -26,10 +26,69 @@ class Admin::FlightsControllerTest < ActionController::TestCase
     assert_select 'html > head > title', "#{@competition_name} Flight Assignments"
     assert_select 'div#content' do
       assert_select 'h1', "#{@competition_name} Flight Assignments"
+      assert_select 'div#auto-assign-flights[style="display:none"] > div#auto-assign-form > form[method=post]'
       assert_select 'div#flight-assignments-view > ol' do
         assert_select 'li', :count => Award.find_public_awards.length
       end
     end
+  end
+
+  def test_should_show_assign_page_with_form_visible
+    # Remove all flights
+    Judging.destroy_all
+    Flight.destroy_all
+
+    get :assign
+    assert_response :success
+
+    # Verify the page contents
+    assert_select 'html > head > title', "#{@competition_name} Flight Assignments"
+    assert_select 'div#content' do
+      assert_select 'h1', "#{@competition_name} Flight Assignments"
+      assert_select 'div#auto-assign-flights[style="display:none"]', 0
+      assert_select 'div#auto-assign-flights > div#auto-assign-form > form[method=post]'
+      assert_select 'div#flight-assignments-view > ol' do
+        assert_select 'li', :count => Award.find_public_awards.length
+      end
+    end
+  end
+
+  def test_should_auto_assign_flights
+    # Remove all flights
+    Judging.destroy_all
+    Flight.destroy_all
+
+    post :assign, :flight => { :min => 4, :max => 8 }
+    assert_response :success
+    assert_template 'assign'
+  end
+
+  def test_auto_assign_flight_errors
+    # Remove all flights
+    Judging.destroy_all
+    Flight.destroy_all
+
+    post :assign
+    assert_equal 'Must specify minimum and maximum values', flash[:errors]
+
+    post :assign, :flight => { :min => '', :max => '' }
+    assert_included 'The minimum number of entries must not be blank', flash[:errors]
+    assert_included 'The maximum number of entries must not be blank', flash[:errors]
+
+    post :assign, :flight => { :min => '2.5', :max => '7.5' }
+    assert_included 'The minimum number of entries must be an integer value', flash[:errors]
+    assert_included 'The maximum number of entries must be an integer value', flash[:errors]
+
+    post :assign, :flight => { :min => '-1', :max => '-1' }
+    assert_included 'The minimum number of entries must be greater than zero', flash[:errors]
+    assert_included 'The maximum number of entries must be greater than zero', flash[:errors]
+
+    post :assign, :flight => { :min => '4', :max => '4' }
+    assert_equal 'The maximum number of entries must be greater than the minimum number of entries', flash[:errors]
+
+    post :assign, :flight => { :min => '8', :max => '4' }
+    assert_equal 'The maximum number of entries must be greater than the minimum number of entries', flash[:errors]
+
   end
 
   def test_manage
@@ -188,19 +247,29 @@ class Admin::FlightsControllerTest < ActionController::TestCase
     end
   end
 
-  def test_print_single_flight
+  def test_should_print_flight_sheets_for_single_flight
     get :print, :id => flights(:light_lager_1).id
     assert_response :success
     assert_pdf_response
   end
 
-  def test_print_all_flights_for_round
+  def test_should_not_print_flight_sheets_for_invalid_flight
+    get :print, :id => Flight.maximum(:id)+1
+    assert_redirected_to not_found_error_path
+  end
+
+  def test_should_print_all_flight_sheets_for_round
     # HACK: Reset the BOS flight status to allow printing of the flight sheets
     flights(:bos).update_attribute(:completed, false)
 
     get :print, :round => rounds(:bos).position
     assert_response :success
     assert_pdf_response
+  end
+
+  def test_should_not_print_flight_sheets_for_invalid_round
+    get :print, :round => 42
+    assert_redirected_to not_found_error_path
   end
 
   def test_new

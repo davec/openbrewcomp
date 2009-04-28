@@ -136,6 +136,11 @@ class ApplicationController < ActionController::Base
       super
     end
 
+    def redirect_to_error
+      flash[:request_url] = request.url  # Save the requested URL
+      redirect_to not_found_error_path
+    end
+
     def redirect_to_login_after_expired_session
       flash[:login_error] = 'Your session has expired. Please log in again.'
       respond_to do |format|

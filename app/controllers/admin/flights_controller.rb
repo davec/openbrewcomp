@@ -97,38 +97,16 @@ class Admin::FlightsController < AdministrationController
   def assign
     @awards = get_awards
     if request.post?
-      errors = []
-      raw_min_entries = params[:flight][:min]
-      raw_max_entries = params[:flight][:max]
-      if raw_min_entries.blank?
-        errors << 'The minimum number of entries must not be blank'
-      elsif !is_integer?(raw_min_entries)
-        errors << 'The mininum number of entries is not an integer number'
-      elsif raw_min_entries.to_i <= 0
-        errors << 'The minumum number of entries must be greater than zero'
-      else
-        min_entries = raw_min_entries.to_i
-      end
-      if raw_max_entries.blank?
-        errors << 'The maximum number of entries must not be blank'
-      elsif !is_integer?(raw_max_entries)
-        errors << 'The maximum number of entries is not an integer number'
-      elsif raw_max_entries.to_i <= 0
-        errors << 'The maximum number of entries must be greater than zero'
-      elsif defined?(min_entries) && raw_max_entries.to_i <= min_entries
-        errors << 'The maximum number of entries must be greater than the minimum number of entries'
-      else
-        max_entries = raw_max_entries.to_i
-      end
+      errors = validate_auto_assign_params(params[:flight])
       if errors.empty?
         # Generate first-round flights and assign entries
+        min_entries = params[:flight][:min].to_i
+        max_entries = params[:flight][:max].to_i
         @awards.each do |award|
           award.create_flights_and_assign_entries(min_entries, max_entries)
         end
-      elsif errors.length == 1
-        flash[:errors] = errors[0]
       else
-        flash[:errors] = errors
+        flash[:errors] = errors.length == 1 ? errors[0] : errors
       end
     end
     @can_auto_assign_flights = Flight.count == 0
@@ -145,7 +123,7 @@ class Admin::FlightsController < AdministrationController
   end
 
   def delete_flight
-    flight = Flight.find(params[:id]) rescue nil
+    flight = Flight.find_by_id(params[:id])
     unless flight.nil? || flight.protected?
       flight.entries.delete_all
 
@@ -167,14 +145,14 @@ class Admin::FlightsController < AdministrationController
   end
 
   def assign_entry
-    entry = Entry.find(params[:entry]) rescue nil
+    entry = Entry.find_by_id(params[:entry])
     # If an entry has more than one flight, it's in the second round (or BOS)
     # and can't be reassigned to a different first round flight.  We should
     # never see such a situation
     raise 'Entry assignment not valid for post-first round flights' if entry.flights.length > 1
 
     unless entry.nil?
-      new_flight = Flight.find(params[:id]) rescue nil
+      new_flight = Flight.find_by_id(params[:id])
       old_flight = Flight.find(entry.flights[0].flight_id) unless entry.flights.empty?
       # Remove the entry from the flight it's currently assigned to, if any
       old_flight.entries.delete(entry) unless old_flight.nil?
@@ -187,7 +165,7 @@ class Admin::FlightsController < AdministrationController
   end
 
   def manage
-    @rounds = Round.find(:all, :order => :position)
+    @rounds = Round.all(:order => :position)
   end
 
   def all_flights
@@ -241,13 +219,12 @@ class Admin::FlightsController < AdministrationController
 
   def print
     if params.key?(:id)
-      flight = Flight.find(params[:id],
-                           :include => [ :round, :entries ]) rescue nil
+      flight = Flight.find_by_id(params[:id],
+                                 :include => [ :round, :entries ])
       print_flight_sheets flight
     elsif params.key?(:round)
-      flights = Flight.find(:all,
-                            :include => [ :round, :entries ],
-                            :conditions => [ 'rounds.position = ? AND flights.assigned = ? AND flights.completed = ?', params[:round], false, false ])
+      flights = Flight.all(:include => [ :round, :entries ],
+                           :conditions => [ 'rounds.position = ? AND flights.assigned = ? AND flights.completed = ?', params[:round], false, false ])
       print_flight_sheets flights
     else
       raise ArgumentException, 'Must specify :id or :round'
@@ -266,7 +243,7 @@ class Admin::FlightsController < AdministrationController
     # provide any feedback to the user.
 
     @successful = false
-    @flight = Flight.find(params[:id]) rescue nil
+    @flight = Flight.find_by_id(params[:id])
     unless @flight.nil?
       @flight.entries.each{|entry| entry.update_attribute(:second_round, true)}
       @successful = @flight.update_attribute(:completed, true)
@@ -281,7 +258,7 @@ class Admin::FlightsController < AdministrationController
   end
 
   def ineligible_judges
-    award = Award.find(params[:award_id] || active_scaffold_constraints[:award_id]) rescue nil
+    award = Award.find_by_id(params[:award_id] || active_scaffold_constraints[:award_id])
     unless award.nil?
       @award_name = award.name
       @ineligible_judges = award.find_all_entrants.sort{|x,y| x.dictionary_name <=> y.dictionary_name}
@@ -375,7 +352,7 @@ class Admin::FlightsController < AdministrationController
     end
 
     def push_authorized?
-      @is_full_list || active_scaffold_constraints[:round] == 1
+      @is_full_list || active_scaffold_constraints[:round] == Round.first
     end
 
     #def print_authorized?
@@ -401,33 +378,59 @@ class Admin::FlightsController < AdministrationController
     end
 
     def get_awards(public = true)
-      categories = Category.find(:all,
-                                 :include => [ :awards, :styles ],
-                                 :conditions => [ 'categories.is_public = ?', public ],
-                                 :order => 'categories.position, awards.position')
+      categories = Category.all(:include => [ :awards, :styles ],
+                                :conditions => [ 'categories.is_public = ?', public ],
+                                :order => 'categories.position, awards.position')
       categories.inject([]){|arr,c| arr << c.awards}.flatten
     end
 
     def print_flight_sheets(*flights)
-      @flights = flights.flatten
-      unless @flights.empty?
-        filename = case @flights.length
-                   when 1
-                     "flight_#{@flights[0].id}"
-                   else
-                     @flights[0].round.name.downcase.gsub(/[-:\/\\ ]/, '_')
-                   end
-        options_for_rtex = { :preprocess => true, :filename => "#{filename}.pdf" }
-        options_for_rtex.merge({ :debug => true, :shell_redirect => "> #{File.expand_path(RAILS_ROOT)}/tmp/flight_sheets.rtex.log 2>&1" }) if ENV['RAILS_ENV'] == 'development'
-        render options_for_rtex.merge(:layout => false)
-      else
-        flash[:error] = 'No flights found'
-        redirect_to(:back)
-      end
+      @flights = flights.flatten.compact
+
+      # @flights should never be empty unless someone is hacking URLs
+      redirect_to_error and return if @flights.empty?
+
+      filename = case @flights.length
+                 when 1
+                   "flight_#{@flights[0].id}"
+                 else
+                   @flights[0].round.name.downcase.gsub(/[-:\/\\ ]/, '_')
+                 end
+      options_for_rtex = { :preprocess => true, :filename => "#{filename}.pdf" }
+      options_for_rtex.merge({ :debug => true, :shell_redirect => "> #{File.expand_path(RAILS_ROOT)}/tmp/flight_sheets.rtex.log 2>&1" }) if ENV['RAILS_ENV'] == 'development'
+      render options_for_rtex.merge(:layout => false)
     end
 
     def get_default_judging_session
       @default_judging_session = JudgingSession.find(:first, :conditions => [ '? BETWEEN start_time AND end_time ', Time.now.utc ])
+    end
+
+  private
+
+    def validate_auto_assign_params(params)
+      return 'Must specify minimum and maximum values' if params.nil?
+      raw_min_entries = params[:min]
+      raw_max_entries = params[:max]
+      returning Array.new do |errors|
+        if raw_min_entries.blank?
+          errors << 'The minimum number of entries must not be blank'
+        elsif !is_integer?(raw_min_entries)
+          errors << 'The minimum number of entries must be an integer value'
+        elsif raw_min_entries.to_i <= 0
+          errors << 'The minimum number of entries must be greater than zero'
+        else
+          min_entries = raw_min_entries.to_i
+        end
+        if raw_max_entries.blank?
+          errors << 'The maximum number of entries must not be blank'
+        elsif !is_integer?(raw_max_entries)
+          errors << 'The maximum number of entries must be an integer value'
+        elsif raw_max_entries.to_i <= 0
+          errors << 'The maximum number of entries must be greater than zero'
+        elsif defined?(min_entries) && raw_max_entries.to_i <= min_entries
+          errors << 'The maximum number of entries must be greater than the minimum number of entries'
+        end
+      end
     end
 
 end
