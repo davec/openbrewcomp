@@ -70,6 +70,21 @@ class ApplicationController < ActionController::Base
       render rtex_options
     end
 
+    def geocode_ip
+      session[:geocode_ip] ||= begin
+        location = IpGeocoder.geocode(request.remote_ip)
+        location.success ? location : nil
+      end
+    end
+
+    # Get the region from the specified geolocation (as returned by geocode_ip)
+    # constrained by the selectable countries (i.e., if +geolocation+ specifies
+    # a country that is not selectable, no region is returned).
+    def get_region_from(geolocation)
+      Region.find_by_sql(['SELECT * FROM regions WHERE region_code = ? AND country_id = (SELECT id FROM countries WHERE country_code = ? AND is_selectable = ?)',
+                         geolocation.state, geolocation.country_code, true]).first
+    end
+
   private
 
     def setup_user_session(user)

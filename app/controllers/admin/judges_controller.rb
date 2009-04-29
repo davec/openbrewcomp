@@ -186,8 +186,8 @@ class Admin::JudgesController < AdministrationController
       if session[:last_region_id]
         @record.region_id = session[:last_region_id]
       elsif session[:geocode_ip]
-        geoloc = session[:geocode_ip]
-        @record.region_id = Region.find_by_sql(['SELECT id FROM regions WHERE region_code = ? AND country_id = (SELECT id FROM countries WHERE country_code = ? AND is_selectable = ?)', geoloc.state, geoloc.country_code, true])[0].id rescue nil
+        region = get_region_from(session[:geocode_ip])
+        @record.region_id = region[:id] if region
       end
     end
 
@@ -256,14 +256,6 @@ class Admin::JudgesController < AdministrationController
         active_scaffold_config.label = 'Judges/Stewards'
         active_scaffold_config.list.per_page = 20
         active_scaffold_config.theme = :default
-      end
-    end
-
-    def geocode_ip
-      session[:geocode_ip] ||= begin
-        #location = IpGeocoder.geocode(ENV['RAILS_ENV'] == 'development' ? '66.93.40.13' : request.remote_ip)
-        location = IpGeocoder.geocode(request.remote_ip)
-        location.success ? location : nil
       end
     end
 
