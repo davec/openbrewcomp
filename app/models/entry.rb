@@ -271,6 +271,10 @@ class Entry < ActiveRecord::Base
       !Controller.admin_view?
     end
 
+    def flights_authorized?
+      Controller.admin_view?
+    end
+
   private
 
     def validate_style(style)

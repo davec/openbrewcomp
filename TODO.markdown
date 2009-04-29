@@ -13,9 +13,6 @@ This is a list of potential changes for OpenBrewComp, in no particular order.
 * Have the ability to generate a partial BOS pull sheet before the completion
   of all second round flights (to reduce the delay in sitting the BOS panel
   after the completion of second round).
-* Cross reference entries and flights so, for example, when viewing a flight
-  each entry is linked to the show page for the entry. Similarly, when viewing
-  the list of entries, the list of flights the entry is in is available.
 * Include scores in the flight show panel.
 * Improved handling of judge signup. As currently written, BJCP IDs must be
   unique, but if a judge attempts to sign up without using the registration

@@ -8,7 +8,7 @@ class Admin::EntriesController < AdministrationController
     config.label = 'Entries'
 
     config.list.columns = [ :bottle_code, :registration_code,
-                            :category, :name ]
+                            :category, :name, :flights ]
 
     config.search.columns = [ :bottle_code, :registration_code,
                               :category, :name ]
@@ -29,7 +29,10 @@ class Admin::EntriesController < AdministrationController
     config.show.columns = [ :registration_code, :bottle_code, :checked_in, :odd_bottle,
                             :name, :entrant, :category, :base_category,
                             :carbonation, :strength, :sweetness,
-                            :style_info, :competition_notes ]
+                            :style_info, :competition_notes, :flights ]
+
+    # Sorting on the flights column isn't particularly useful (what's the sort criteria anyway?)
+    config.columns[:flights].sort = false
 
     # Subform columns updated in the flights controller.
     # This list is different between each round (second_round is set in

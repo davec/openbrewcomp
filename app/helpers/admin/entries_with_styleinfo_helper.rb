@@ -17,6 +17,10 @@ module Admin::EntriesWithStyleinfoHelper
     record.competition_notes.blank? ? "-" : h(record.competition_notes).gsub("\n", "<br />")
   end
 
+  def entrant_column(record)
+    link_to(h(record.entrant.name), entrant_admin_entry_path(record.entrant), :popup => true)
+  end
+
   def registration_code_form_column(record, input_name)
     %Q{<span class="readonly">#{record.registration_code}</span>}
   end

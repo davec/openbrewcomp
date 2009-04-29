@@ -181,7 +181,7 @@ module Admin::FlightsHelper
           style_category = entry.base_style.category
         end
 
-        rv << %Q{<tr class="#{cycle('odd-record', 'even-record')}"><td class="entry">#{h entry.bottle_code}}
+        rv << %Q{<tr class="#{cycle('odd-record', 'even-record')}"><td class="entry">#{action == 'show' ? link_to(h(entry.bottle_code), admin_entry_path(entry), :popup => true) : h(entry.bottle_code)}}
         unless action == 'show'
           # Force a hidden form field containing the entry ID.
           # This is required to allow the entry to be saved.
