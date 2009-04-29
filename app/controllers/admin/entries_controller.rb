@@ -140,9 +140,7 @@ class Admin::EntriesController < AdministrationController
                                          :order => 'entrants.id, entries.id')
     unless @entries.empty?
       @competition_name = competition_name
-      options_for_rtex = { :filename => "bottle_labels.pdf" }
-      options_for_rtex.merge({ :debug => true, :shell_redirect => "> #{File.expand_path(RAILS_ROOT)}/tmp/bottle_labels.rtex.log 2>&1" }) if ENV['RAILS_ENV'] == 'development'
-      render options_for_rtex.merge(:layout => false)
+      render_pdf 'bottle_labels.pdf'
     else
       # We should not normally get here since the 'Print All' link should be
       # hidden if no entries have been registered.

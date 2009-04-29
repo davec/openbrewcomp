@@ -80,10 +80,8 @@ class Admin::ResultsController < AdministrationController
   def entrant_covers
     @entrants = Entrant.all(:include => [ :entries ],
                             :conditions => 'entries.bottle_code IS NOT NULL',
-                            :order => 'entrants.club_id')
-    options_for_rtex = { :preprocess => true, :filename => "cover_sheets.pdf" }
-    options_for_rtex.merge({ :debug => true, :shell_redirect => "> #{File.expand_path(RAILS_ROOT)}/tmp/covers.rtex.log 2>&1" }) if ENV['RAILS_ENV'] == 'development'
-    render options_for_rtex.merge(:layout => false)
+                            :order => 'entrants.club_id, lower(entrants.last_name||entrants.first_name||entrants.middle_name||entrants.team_name)')
+    render_pdf 'cover_sheets.pdf', :preprocess => true
   end
 
   # Generate cover sheets for each entry. This is an alternative to the
@@ -91,12 +89,9 @@ class Admin::ResultsController < AdministrationController
   # wish to use them and instead generate the automatically from the
   # competition data in the database.
   def entry_covers
-    competition_data = CompetitionData.instance
     @competition_name = competition_data.name
     @entries = Entry.find_by_sql(sql_for(:scores))
-    options_for_rtex = { :preprocess => true, :filename => "entry_cover_sheets.pdf" }
-    options_for_rtex.merge({ :debug => true, :shell_redirect => "> #{File.expand_path(RAILS_ROOT)}/tmp/entry_covers.rtex.log 2>&1" }) if ENV['RAILS_ENV'] == 'development'
-    render options_for_rtex.merge(:layout => false)
+    render_pdf 'entry_cover_sheets.pdf', :preprocess => true
   end
 
   def scores

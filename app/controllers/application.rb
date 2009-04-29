@@ -60,6 +60,16 @@ class ApplicationController < ActionController::Base
       competition_data.is_registration_open?
     end
 
+    def render_pdf(filename, options = {})
+      basename = File.basename(filename, '.*')
+      rtex_options = options.merge({ :filename => "#{basename}.pdf",
+                                     :layout => false })
+      rtex_options.merge!({ :debug => true,
+                            :shell_redirect => "> #{RAILS_ROOT}/tmp/#{basename}.rtex.log 2>&1" }) if ENV['RAILS_ENV'] == 'development'
+
+      render rtex_options
+    end
+
   private
 
     def setup_user_session(user)

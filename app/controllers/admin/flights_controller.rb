@@ -396,9 +396,7 @@ class Admin::FlightsController < AdministrationController
                  else
                    @flights[0].round.name.downcase.gsub(/[-:\/\\ ]/, '_')
                  end
-      options_for_rtex = { :preprocess => true, :filename => "#{filename}.pdf" }
-      options_for_rtex.merge({ :debug => true, :shell_redirect => "> #{File.expand_path(RAILS_ROOT)}/tmp/flight_sheets.rtex.log 2>&1" }) if ENV['RAILS_ENV'] == 'development'
-      render options_for_rtex.merge(:layout => false)
+      render_pdf filename, :preprocess => true
     end
 
     def get_default_judging_session
