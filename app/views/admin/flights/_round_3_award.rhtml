@@ -3,7 +3,8 @@
 %>
 <div class="flights-for-award" id="<%= dom_id %>-flights">
   <%= render :active_scaffold => '/admin/flights',
-             :params => { :award => round_3_award.name },
+             :params => { :award => round_3_award.name,
+                          :award_id => round_3_award.id },
              :constraints => { :award => round_3_award,
                                :round => Round.bos } -%>
 </div>
