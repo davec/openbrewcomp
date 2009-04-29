@@ -15,10 +15,6 @@ class Entry < ActiveRecord::Base
 
   named_scope :checked_in, :conditions => 'bottle_code IS NOT NULL'
 
-  #validates_presence_of :style_id
-  #validates_presence_of :base_style_id,
-  #                      :if => lambda { |e| !e.style.nil? && e.style.id == Style.first_time.id }
-
   validates_length_of :name, :maximum => 80, :allow_blank => true
 
   validates_uniqueness_of :bottle_code, :allow_nil => true,

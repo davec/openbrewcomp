@@ -129,8 +129,7 @@
         \multicolumn{1}{c}{\textbf{\large Entry}} & \multicolumn{1}{c}{\textbf{\large Style}} & \multicolumn{1}{c}{\textbf{\large Score}} & \multicolumn{1}{c}{\textbf{\large <%= flag_column %>}} & \multicolumn{1}{c}{\textbf{\large Notes}} \\
         %\LTmidrule
         \endhead
-        <% first_time_id = Style.first_time[:id]
-           is_first_time_category = flight.award.style_ids.length == 1 && flight.award.style_ids[0] == first_time_id
+        <% is_first_time_category = flight.award.style_ids.length == 1 && flight.award.styles.first.first_time?
            sort_keys = is_first_time_category \
              ? lambda{|e| [e.base_style.bjcp_category,e.base_style.bjcp_subcategory,e.bottle_code]} \
              : lambda{|e| [e.style.bjcp_category,e.style.bjcp_subcategory,e.bottle_code]}

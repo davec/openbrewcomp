@@ -147,7 +147,7 @@ module Admin::FlightsHelper
 
     def entries_table(record, action)
       is_mcab_comp = competition_data.mcab?
-      is_first_time_category = record.award.style_ids.length == 1 && record.award.style_ids[0] == Style.first_time.id
+      is_first_time_category = record.award.style_ids.length == 1 && record.award.styles.first.first_time?
       sort_keys = is_first_time_category \
         ? lambda{|e| [e.base_style.bjcp_category,e.base_style.bjcp_subcategory,e.bottle_code]} \
         : lambda{|e| [e.style.bjcp_category,e.style.bjcp_subcategory,e.bottle_code]}
@@ -265,7 +265,7 @@ module Admin::FlightsHelper
     def rtex_style_notes(entry)
       base_style = entry.base_category
       unless base_style.blank?
-        prefix = 'Base Style: ' unless entry.style_id == Style.first_time.id
+        prefix = 'Base Style: ' unless entry.style.first_time?
         base_style = "\\textbf{\\small{#{prefix}#{l(base_style)}}}"
       end
       carbonation = "\\textbf{\\small{Carbonation: #{l(entry.carbonation.description)}}}" if entry.style.require_carbonation?

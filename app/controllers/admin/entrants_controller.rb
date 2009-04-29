@@ -136,14 +136,6 @@ class Admin::EntrantsController < AdministrationController
       session[:last_region_id] = record.region_id
     end
 
-    #def find_if_allowed(id, action)
-    #  # Admins can delete an entrant regardless of any restrictions that
-    #  # prevent a non-admin from deleting the entrant.
-    #  return Entrant.find(id) if @is_admin_view
-    #
-    #  super(id, action)
-    #end
-
     def authorized?
       @is_admin_view = session[:entrants_admin_view] = active_scaffold_constraints[:user_id].nil?
       if @is_admin_view

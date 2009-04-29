@@ -6,8 +6,7 @@
    title ||= flight.nil? ? 'Unassigned' : flight.name.truncate(8)
    ro_tag = (!flight.nil? && flight.protected?) ? 'readonly' : ''
    pick_status = (!flight.nil? && flight.protected?) ? 'inactive' : 'active'
-   first_time_id = Style.first_time[:id]
-   is_first_time_category = award.style_ids.length == 1 && award.style_ids[0] == first_time_id
+   is_first_time_category = award.style_ids.length == 1 && award.styles.first.first_time?
    sort_keys = is_first_time_category \
      ? lambda{|e| [e.base_style.bjcp_category,e.base_style.bjcp_subcategory,e.bottle_code]} \
      : lambda{|e| [e.style.bjcp_category,e.style.bjcp_subcategory,e.bottle_code]}

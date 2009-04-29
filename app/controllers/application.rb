@@ -45,10 +45,6 @@ class ApplicationController < ActionController::Base
   helper :results
   helper :styles
 
-  ActiveScaffold.set_defaults do |config|
-    config.ignore_columns.add [ :lock_version ]
-  end
-
   protected
 
     def competition_data

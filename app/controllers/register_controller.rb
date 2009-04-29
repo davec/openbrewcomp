@@ -3,7 +3,6 @@
 class RegisterController < ApplicationController
 
   before_filter :get_registration_status
-  #before_filter :login_required, :only => [ :online, :judge_confirmation ]
   before_filter :login_required, :only => [ :online, :judge_confirmation ],
                                  :if => :is_registration_open?
 
@@ -19,7 +18,6 @@ class RegisterController < ApplicationController
                             registration_start_time_utc)
       @time_to_go = TimeInterval.difference_in_words(Time.now.utc, registration_start_time_utc)
     elsif competition_data.is_registration_open?
-      @time_to_close = registration_time_remaining
       @auto_open_judge = flash[:auto_open_judge]
       @auto_edit_judge_id = flash[:auto_edit_judge_id]
       flash.keep#(:warning)
@@ -59,13 +57,13 @@ class RegisterController < ApplicationController
       @is_judge_registration_open = competition_data.is_judge_registration_open?
     end
 
-    @@end_of_time = Time.at(0x7fffffff)  # The end of time as we know it
+    END_OF_TIME = Time.at(0x7fffffff).freeze  # The end of time as we know it
     def registration_time_remaining
       # If no end time is set, use a date "far" in the future -- we pick the
       # end of Unix time (2038-01-18T15:14:07Z) since anything beyond this
       # point causes Ruby to throw a TypeError in Date#-.
       ([ competition_data.entry_registration_end_time,
-         competition_data.judge_registration_end_time].compact.max || @@end_of_time) - Time.now.utc
+         competition_data.judge_registration_end_time].compact.max || END_OF_TIME) - Time.now.utc
     end
 
 end
