@@ -58,7 +58,7 @@ class Style < ActiveRecord::Base
   # found, a dummy record is returned (which avoids littering the code with
   # checks for a nil return from this method).
   def self.first_time
-    Rails.cache.fetch(:first_time_style) { Style.find(:first, :conditions => "LOWER(name) LIKE 'first_time%'") || Struct.new(:id, :name).new(-1, 'Dummy') }
+    Rails.cache.fetch(:first_time_style) { Style.find(:first, :conditions => "LOWER(name) LIKE 'first_time%'") || Struct.new(:id, :name, :bjcp_category, :bjcp_subcategory).new(-1, 'Dummy', 0, '') }
   end
 
   def first_time?

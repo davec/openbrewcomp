@@ -130,6 +130,11 @@ class EntryTest < ActiveSupport::TestCase
                         :user_id => @good_user_id)
       assert entry.save
     end
+    # HACK: Clear the associated cache object.
+    # If it's not cleared, and the unit tests are run in combination with the
+    # functional tests (as is done with `rake test:coverage`), then subsequent
+    # tests that reference the first-time style will fail.
+    Rails.cache.delete(:first_time_style)
   end
 
   def test_should_create_first_time_entry_with_base_style
