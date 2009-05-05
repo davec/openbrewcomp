@@ -569,6 +569,7 @@ input[type="submit"] {
 
 #admin-login-form label,
 #login-form label {
+  clear: left;  /* Hack for IE8 (doesn't impact others) */
   float: left;
   padding: 0.25ex 0.25em 0 0;
   text-align: left;
@@ -578,6 +579,9 @@ input[type="submit"] {
 #admin-login-form input[type="text"], #admin-login-form input[type="password"],
 #login-form input[type="text"], #login-form input[type="password"] {
   width: 50%;
+}
+#login-form input#anonymous {
+  clear: left;  /* Hack for IE8 (doesn't impact others) */
 }
 
 #admin-login-form #links,
