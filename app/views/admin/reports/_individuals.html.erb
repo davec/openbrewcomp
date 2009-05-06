@@ -12,18 +12,18 @@
     </tr>
   </tfoot>
   <tbody>
-    <% if individuals.length > 0 -%>
-      <% individuals.each do |elem| -%>
+    <%- if individuals.length > 0 -%>
+      <%- individuals.each do |record| -%>
         <tr class="<%= cycle('even-record', 'odd-record') %>">
-          <td><%= h elem[0] %></td>
-          <td><%= h elem[1] %></td>
-          <td class="numeric"><%= elem[2] %></td>
+          <td><%= h record.name %></td>
+          <td><%= h record.club.name %></td>
+          <td class="numeric"><%= record.entry_count %></td>
         </tr>
-      <% end -%>
-    <% else -%>
+      <%- end -%>
+    <%- else -%>
       <tr>
         <td colspan="3" align="center"><em>No individual entries could be found</em></td>
       </tr>
-    <% end -%>
+    <%- end -%>
   </tbody>
 </table>

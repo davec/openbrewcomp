@@ -7,11 +7,7 @@ class Admin::ReportsController < AdministrationController
   end
 
   def report_entries_by_individual
-    conditions = 'entrants.is_team = ?';
-    conditions << ' AND entries.bottle_code IS NOT NULL' if params[:type] == 'processed'
-    entrants = Entrant.all(:conditions => [ conditions, false ], :include => [ :entries ])
-    # TODO: Perform secondary sort on entrant name in ascending alphabetical order
-    @individuals = entrants.reject{|e| e.entries.length == 0}.collect{|e| [ e.name, e.club.name, e.entries.length ]}.sort_by{|a| a[2]}.reverse
+    @individuals = Entrant.find_by_sql(sql_for(:individuals))
 
     if request.xhr?
       render :partial => 'individuals', :object => @individuals, :layout => false
@@ -21,11 +17,7 @@ class Admin::ReportsController < AdministrationController
   end
 
   def report_entries_by_team
-    conditions = 'entrants.is_team = ?';
-    conditions << ' AND entries.bottle_code IS NOT NULL' if params[:type] == 'processed'
-    entrants = Entrant.all(:conditions => [ conditions, true ], :include => [ :entries ])
-    # TODO: Perform secondary sort on entrant name in ascending alphabetical order
-    @teams = entrants.reject{|e| e.entries.length == 0}.collect{|e| [ e.name, e.club.name, e.entries.length ]}.sort_by{|a| [ a[2], a[0], a[1] ]}.reverse
+    @teams = Entrant.find_by_sql(sql_for(:teams))
 
     if request.xhr?
       render :partial => 'teams', :object => @teams, :layout => false
@@ -35,10 +27,7 @@ class Admin::ReportsController < AdministrationController
   end
 
   def report_entries_by_club
-    conditions = 'entries.bottle_code IS NOT NULL' if params[:type] == 'processed'
-    clubs = Club.all(:conditions => conditions, :include => [ :entries ])
-    # TODO: Perform secondary sort on club name in ascending alphabetical order
-    @clubs = clubs.reject{|c| c.entries.length == 0}.collect{|c| [ c.name, c.entries.length ]}.sort_by{|a| a[1]}.reverse
+    @clubs = Club.find_by_sql(sql_for(:clubs))
 
     if request.xhr?
       render :partial => 'clubs', :object => @clubs, :layout => false
@@ -48,26 +37,24 @@ class Admin::ReportsController < AdministrationController
   end
 
   def report_entries_by_style
-    # FIXME: The entries table cannot be included here. Something wrong with
-    # the model defs? Thus, a lot of additional work in the template.
-    @categories = Category.find(:all,
-                                :include => [ :awards, :styles ],
-                                :conditions => [ 'categories.is_public = ?', true ])
+    @categories = Category.all(:include => [ :awards, :styles ],
+                               :conditions => [ 'categories.is_public = ?', true ],
+                               :order => 'categories.position, awards.position, styles.bjcp_category, styles.bjcp_subcategory')
+    @style_counts = Style.find_by_sql(sql_for(:style_counts)).inject({}){|hsh,v|
+      hsh[v.id] = v.entry_count.to_i
+      hsh
+    }
 
     if request.xhr?
-      render :partial => 'categories', :object => @categories, :layout => false
+      render :partial => 'categories', :object => @categories, :layout => false,
+                                       :locals => { :style_counts => @style_counts }
     else
       render :template => "#{params[:controller]}/categories"
     end
   end
 
   def report_entries_by_region
-    sql = 'SELECT COUNT(e.id) AS entry_count, c.name AS country_name, r.* FROM (((entries AS e INNER JOIN entrants ON (entrants.id = e.entrant_id)) INNER JOIN countries AS c ON (c.id = entrants.country_id)) INNER JOIN regions AS r ON (r.id = entrants.region_id))'
-    sql << ' WHERE e.bottle_code IS NOT NULL' if params[:type] == 'processed'
-    sql << ' GROUP BY c.name, '
-    sql << Region.columns.collect{|c| "r.#{c.name}"}.join(', ')
-    sql << ' ORDER BY c.name, r.name'
-    @regions = Region.find_by_sql(sql)
+    @regions = Region.find_by_sql(sql_for(:regions))
 
     if request.xhr?
       render :partial => 'regions', :object => @regions, :layout => false
@@ -77,13 +64,7 @@ class Admin::ReportsController < AdministrationController
   end
 
   def report_excess_entries
-    sql = 'SELECT styles.award_id, awards.name AS award_name, e.* FROM (((entrants AS e INNER JOIN entries ON (e.id = entries.entrant_id)) INNER JOIN styles ON (entries.style_id = styles.id)) INNER JOIN awards ON (styles.award_id = awards.id))'
-    sql << ' WHERE entries.bottle_code IS NOT NULL' if params[:type] == 'processed'
-    sql << ' GROUP BY styles.award_id, awards.name, '
-    sql << Entrant.columns.collect{|c| "e.#{c.name}"}.join(', ')
-    sql << " HAVING COUNT(styles.award_id) > #{Award::MAX_ENTRIES}" if Award::MAX_ENTRIES
-    sql << ' ORDER BY e.id, styles.award_id'
-    @entrants = Entrant.find_by_sql(sql)
+    @entrants = Award::MAX_ENTRIES ? Entrant.find_by_sql(sql_for(:excess_entries)) : nil
 
     if request.xhr?
       render :partial => 'excess', :object => @entrants, :layout => false
@@ -100,5 +81,71 @@ class Admin::ReportsController < AdministrationController
       render :template => "#{params[:controller]}/judges"
     end
   end
+
+  private
+
+    def sql_for(type, pretty_print = false)
+      sql = case type
+            when :individuals, :teams
+              t = %Q{
+  SELECT COUNT(e.id) AS entry_count, b.*
+  FROM ((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
+                      INNER JOIN clubs AS c ON (c.id = b.club_id))
+  WHERE b.is_team = ?
+        #{params[:type] == 'processed' ? 'AND e.bottle_code IS NOT NULL' : ''}
+  GROUP BY #{Entrant.columns.collect{|c| "b.#{c.name}"}.join(', ')}
+  ORDER BY entry_count DESC, lower(#{type == :individuals ? 'b.last_name||b.first_name||b.middle_name' : 'b.team_name'})
+}
+              [ t, type == :teams ]
+            when :clubs
+              %Q{
+  SELECT COUNT(e.id) AS entry_count, c.*
+  FROM ((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
+                      INNER JOIN clubs AS c ON (c.id = b.club_id))
+  #{params[:type] == 'processed' ? 'WHERE e.bottle_code IS NOT NULL' : ''}
+  GROUP BY #{Club.columns.collect{|c| "c.#{c.name}"}.join(', ')}
+  ORDER BY entry_count DESC, lower(c.name)
+}
+            when :style_counts
+              %Q{
+  SELECT COUNT(e.id) AS entry_count, s.id
+  FROM (entries AS e INNER JOIN styles AS s ON (s.id = e.style_id))
+  #{params[:type] == 'processed' ? 'WHERE e.bottle_code IS NOT NULL' : ''}
+  GROUP BY s.id
+}
+            when :regions
+              %Q{
+  SELECT COUNT(e.id) AS entry_count, c.name AS country_name, r.*
+  FROM (((entries AS e INNER JOIN entrants ON (entrants.id = e.entrant_id))
+                       INNER JOIN countries AS c ON (c.id = entrants.country_id))
+                       INNER JOIN regions AS r ON (r.id = entrants.region_id))
+  #{params[:type] == 'processed' ? 'WHERE e.bottle_code IS NOT NULL' : ''}
+  GROUP BY c.name, #{Region.columns.collect{|c| "r.#{c.name}"}.join(', ')}
+  ORDER BY c.name, r.name
+}
+            when :excess_entries
+              %Q{
+  SELECT styles.award_id, awards.name AS award_name, e.*
+  FROM (((entrants AS e INNER JOIN entries ON (e.id = entries.entrant_id))
+                        INNER JOIN styles ON (entries.style_id = styles.id))
+                        INNER JOIN awards ON (styles.award_id = awards.id))
+  #{params[:type] == 'processed' ? 'WHERE entries.bottle_code IS NOT NULL' : ''}
+  GROUP BY styles.award_id, awards.name, #{Entrant.columns.collect{|c| "e.#{c.name}"}.join(', ')}
+  HAVING COUNT(styles.award_id) > #{Award::MAX_ENTRIES}
+  ORDER BY e.id, styles.award_id
+}
+            end
+
+      unless pretty_print
+        # Remove unnecessary whitespace
+        if sql.is_a?(Array)
+          sql.first.squish!
+        else
+          sql.squish!
+        end
+      end
+
+      sql
+    end
 
 end

@@ -1,14 +1,15 @@
 <% show_checked_in = params[:type] == 'processed'
-   column_count = show_checked_in ? 6 : 5 -%>
+   column_count = show_checked_in ? 6 : 5
+%>
 
 <table class="reporttable">
   <thead>
     <tr class="table-header">
       <th class="left">Entrant</th>
       <th class="left">Award</th>
-      <% if show_checked_in -%>
+      <%- if show_checked_in -%>
         <th class="numeric">Bottle<br />Code</th>
-      <% end -%>
+      <%- end -%>
       <th class="left">Registration<br />Code</th>
       <th class="left">Style</th>
       <th class="numeric">Count</th>
@@ -20,42 +21,42 @@
     </tr>
   </tfoot>
   <tbody>
-    <% if excess.length > 0 -%>
-      <% excess.group_by{|e| [ e.dictionary_name, e.id ]}.sort.each do |e|
+    <%- if excess.length > 0 -%>
+      <%- excess.group_by{|e| [ e.dictionary_name, e.id ]}.sort.each do |e|
          entrant = e[1][0] -%>
         <tr class="category-header">
-          <th colspan="<%= column_count - 1 %>"><%= link_to(h(entrant.dictionary_name), nested_admin_entrant_path(entrant, :method => '_get', :associations => 'entries'), :popup => true) %></th>
+          <th colspan="<%= column_count - 1 %>"><%= link_to(h(entrant.name), nested_admin_entrant_path(entrant, :method => '_get', :associations => 'entries'), :popup => true) %></th>
           <th>&nbsp;</th>
         </tr>
-        <% e[1].sort{|x,y| x.award_id <=> y.award_id}.each do |award|
-           conditions = 'style_id in (?)'
-           conditions << ' and bottle_code is not null' if show_checked_in
-           entries = entrant.entries.find(:all,
-                                          :conditions => [ conditions, Award.find(award.award_id).styles.map(&:id) ],
-                                          :order => 'style_id ASC, id ASC') -%>
+        <%- e[1].sort{|x,y| x.award_id <=> y.award_id}.each do |award|
+            conditions = 'style_id in (?)'
+            conditions << ' and bottle_code is not null' if show_checked_in
+            entries = entrant.entries.find(:all,
+                                           :conditions => [ conditions, Award.find(award.award_id).styles.map(&:id) ],
+                                           :order => 'style_id ASC, id ASC') -%>
           <tr class="award-header">
             <th>&nbsp;</th>
             <th colspan="<%= column_count - 2 %>"><%= h award.award_name %></th>
             <th class="numeric"><%= entries.length %></th>
           </tr>
-          <% entries.each do |entry| -%>
+          <%- entries.each do |entry| -%>
             <tr>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
-              <% if show_checked_in -%>
+              <%- if show_checked_in -%>
                 <td class="numeric"><%= entry.bottle_code %></td>
-              <% end -%>
+              <%- end -%>
               <td><%= entry.registration_code %></td>
               <td><%= entry.category %></td>
               <td>&nbsp;</td>
             </tr>
-          <% end -%>
-        <% end -%>
-      <% end -%>
-    <% else -%>
+          <%- end -%>
+        <%- end -%>
+      <%- end -%>
+    <%- else -%>
       <tr>
         <td colspan="<%= column_count %>" align="center"><em>No excess entries could be found</em></td>
       </tr>
-    <% end -%>
+    <%- end -%>
   </tbody>
 </table>

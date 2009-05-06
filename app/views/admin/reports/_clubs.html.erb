@@ -1,4 +1,4 @@
-<% total_entries = clubs.inject(0){|sum,a| sum + a[1]} %>
+<% total_entries = clubs.inject(0){|sum,a| sum + a.entry_count.to_i} %>
 
 <table class="reporttable">
   <thead>
@@ -13,21 +13,21 @@
     </tr>
   </tfoot>
   <tbody>
-    <% if clubs.length > 0 -%>
-      <% clubs.each do |elem| -%>
+    <%- if clubs.length > 0 -%>
+      <%- clubs.each do |record| -%>
         <tr class="<%= cycle('even-record', 'odd-record') %>">
-          <td><%= h elem[0] %></td>
-          <td class="numeric"><%= elem[1] %></td>
+          <td><%= h record.name %></td>
+          <td class="numeric"><%= record.entry_count %></td>
         </tr>
-      <% end -%>
+      <%- end -%>
       <tr class="total">
         <th>Total</th>
         <th class="numeric"><%= number_with_delimiter(total_entries) %></th>
       </tr>
-    <% else # This should only happen if there are no entries at all -%>
+    <%- else # This should only happen if there are no entries at all -%>
       <tr>
         <td colspan="3" align="center"><em>No club entries could be found</em></td>
       </tr>
-    <% end -%>
+    <%- end -%>
   </tbody>
 </table>

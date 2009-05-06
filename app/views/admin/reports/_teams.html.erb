@@ -12,18 +12,18 @@
     </tr>
   </tfoot>
   <tbody>
-    <% if teams.length > 0 -%>
-      <% teams.each do |elem| -%>
+    <%- if teams.length > 0 -%>
+      <%- teams.each do |record| -%>
         <tr class="<%= cycle('even-record', 'odd-record') %>">
-          <td><%= h elem[0] %></td>
-          <td><%= h elem[1] %></td>
-          <td class="numeric"><%= elem[2] %></td>
+          <td><%= h record.name %></td>
+          <td><%= h record.club.name %></td>
+          <td class="numeric"><%= record.entry_count %></td>
         </tr>
-      <% end -%>
-    <% else -%>
+      <%- end -%>
+    <%- else -%>
       <tr>
         <td colspan="2" align="center"><em>No team entries could be found</em></td>
       </tr>
-    <% end -%>
+    <%- end -%>
   </tbody>
 </table>

@@ -1,10 +1,3 @@
-<% show_checked_in = params[:type] == 'processed'
-   # Calculate the total from categories instead of going directly to
-   # Entries.count in case entries have been added since categories was
-   # obtained (unlikely, but still possible).
-   total_entries = categories.inject(0){|sum,c| sum + c.awards.inject(0){|sum,a| sum + a.styles.inject(0){|sum,s| sum + (show_checked_in ? s.entries.checked_in.length : s.entries.length)}}}
-%>
-
 <table class="reporttable">
   <thead>
     <tr class="table-header">
@@ -18,29 +11,30 @@
     </tr>
   </tfoot>
   <tbody>
-    <% categories.sort{|x,y| x.position <=> y.position}.each do |category| -%>
+    <%- categories.sort_by{|c| c.position}.each do |category| -%>
       <tr class="category-header">
         <th colspan="4"><%= h category.name %></th>
       </tr>
-      <% category.awards.sort{|x,y| x.position <=> y.position}.each do |award| -%>
+      <%- category.awards.sort_by{|a| a.position}.each do |award| -%>
         <tr class="award-header">
           <th>&nbsp;</th>
           <th colspan="2"><%= h award.name %></th>
-          <th class="numeric"><%= award.styles.inject(0){|sum,s| sum + (show_checked_in ? s.entries.checked_in.length : s.entries.length)} %></th>
+          <th class="numeric"><%= award.styles.inject(0){|sum,s| sum + (style_counts[s.id] || 0)} %></th>
         </tr>
-        <% award.styles.sort{|x,y| "#{x.bjcp_category}#{x.bjcp_subcategory}" <=> "#{y.bjcp_category}#{y.bjcp_subcategory}"}.each do |style| -%>
+        <%- award.styles.sort_by{|s| s.category}.each do |style| -%>
           <tr>
             <td>&nbsp;</td>
             <td><%= style.category %></td>
             <td><%= style.name %></td>
-            <td class="numeric"><%= show_checked_in ? style.entries.checked_in.length : style.entries.length %></td>
+            <td class="numeric"><%= style_counts[style.id] || 0 %></td>
           </tr>
-        <% end -%>
-      <% end -%>
-    <% end -%>
+        <%- end -%>
+      <%- end -%>
+    <%- end -%>
     <tr class="total">
       <th colspan="3">Total</th>
-      <th class="numeric"><%= number_with_delimiter(total_entries) %></th>
+      <th class="numeric"><%= number_with_delimiter(style_counts.values.inject(0){|sum,c| sum + c}) %></th>
+
     </tr>
   </tbody>
 </table>

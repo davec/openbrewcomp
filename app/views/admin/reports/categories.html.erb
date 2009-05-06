@@ -1,4 +1,4 @@
 <% @page_header = "Entries by Style"
    @page_title = "#{competition_name} #{@page_header}" %>
 
-<%= render :partial => 'categories', :object => @categories %>
+<%= render :partial => 'categories', :object => @categories, :locals => { :style_counts => @style_counts } %>
