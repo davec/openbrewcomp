@@ -24,9 +24,9 @@ class MainControllerTest < ActionController::TestCase
     # whose local day is May 2).
 
     start_times = [
-      Time.today + 1.week + 12.hours,  # One week from now @ noon (local time)
-      Time.today + 1.day  + 12.hours,  # One day from now @ noon (local time)
-      Time.today - 1.week + 12.hours,  # One week ago
+      Date.today + 1.week + 12.hours,  # One week from now @ noon (local time)
+      Date.today + 1.day  + 12.hours,  # One day from now @ noon (local time)
+      Date.today - 1.week + 12.hours,  # One week ago
     ]
     local_dates = {
       hours_til_tomorrow     => start_times.zip([ 6, 0, 0 ]), # After midnight local time
