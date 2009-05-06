@@ -18,6 +18,7 @@ This is a list of potential changes for OpenBrewComp, in no particular order.
   unique, but if a judge attempts to sign up without using the registration
   key sent in the email invite, they're prevented from doing so because they're
   already listed in the judge table.
+* Improve the PDF bottle label generation to reduce the amount of blank space
   on the page when fewer than 3 bottles are required.
 * Also need to investigate the ramifications of requiring more than 3 bottles
   for a category, though such a requirement is unlikely which probably puts this
