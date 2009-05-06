@@ -40,7 +40,6 @@ module Admin::JudgingSessionsHelper
           rv << %Q{<tr class="#{cycle('odd-record', 'even-record')}"><td class="flight">#{h flight.name}</td><td>#{flight.round.position}</td><td>#{h flight.status_label}</td></tr>}
         end
         rv << '</table>'
-        rv
       end
     end
 

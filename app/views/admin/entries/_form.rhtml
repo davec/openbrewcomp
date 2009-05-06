@@ -1,7 +1,7 @@
 <% # Convert the ActiveColumns object to a hash, based on the column name
    colhash = Hash.new
    columns.each {|column| colhash[column.name] = column}
-   id = params[:eid] || params[:id]
+   id = [ params[:eid], params[:id] ].compact.join('_')
 %>
 <div class="form-instructions">
   <p>
@@ -85,5 +85,5 @@
   <% end -%>
 </div>
 <script type="text/javascript">
-showStyleParams('<%= params[:eid] || params[:id] %>');
+  showStyleParams('<%= id %>');
 </script>
