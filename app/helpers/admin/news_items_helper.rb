@@ -9,10 +9,18 @@ module Admin::NewsItemsHelper
   end
 
   def description_raw_column(record)
-    h(truncate(record.description_raw, :length => 100))
+    # Only show the, possibly truncated, first paragraph of text
+    description = record.description_raw.split("\n")
+    str = truncate(description.first, :length => 80)
+    str += ' ...' if description.length > 1 && str[-3,3] != '...'
+    h(str)
   end
 
-  def description_encoded_column(record)
+  def description_raw_show_column(record)
+    %Q(<div class="formatted-preview">#{simple_format(h record.description_raw)}</div>)
+  end
+
+  def description_encoded_show_column(record)
     %Q(<div class="formatted-preview">#{record.description_encoded}</div>)
   end
 

@@ -130,6 +130,25 @@ th {
   width: 9em;
 }
 
+div.formatted-preview p {
+  padding-bottom: 1ex;
+}
+div.formatted-preview ol,
+div.formatted-preview ul {
+  list-style-position: outside;
+  margin: 0;
+}
+div.formatted-preview ol {
+  list-style-type: decimal;
+}
+div.formatted-preview ul {
+  list-style-type: disc;
+}
+div.formatted-preview ol li,
+div.formatted-preview ul li {
+  margin-left: 2em;
+  padding-left: 0.5em;
+}
 
 /*------------------------------
  Flights

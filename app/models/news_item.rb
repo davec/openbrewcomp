@@ -13,10 +13,6 @@ class NewsItem < ActiveRecord::Base
 
   attr_accessible :title, :description_raw, :description_encoded
 
-  def description_encoded
-    self.description_raw.nil? ? nil : NewsItem.encode(self.description_raw)
-  end
-
   def last_edit
     updated_at || created_at
   end
@@ -24,11 +20,12 @@ class NewsItem < ActiveRecord::Base
   protected
 
     def before_save
-      self.description_encoded = NewsItem.encode(self.description_raw)
+      self.description_encoded = NewsItem.encode(description_raw)
     end
 
   private
 
+    # HACK: This is here only because the test fixtures need access to it.
     def self.encode(text)
       RDiscount.new(text).to_html
     end
