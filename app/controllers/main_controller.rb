@@ -21,14 +21,13 @@ class MainController < ApplicationController
     end
   end
 
-  def error403
-    @contacts = Contact.to_hash
-    render :status => 403
-  end
-
-  def error404
-    @contacts = Contact.to_hash
-    render :status => 404
+  [ 403, 404, 500 ].each do |status|
+    class_eval %{
+      def error#{status}
+        @contacts = Contact.to_hash
+        render :status => #{status}
+      end
+    }, __FILE__, __LINE__
   end
 
 end

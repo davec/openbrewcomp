@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
                 ActionController::RoutingError,
                 ActionController::UnknownController,
                 ActionController::UnknownAction,
-                RuntimeError,
                 :with => :dispatch_error
     rescue_from ActionController::InvalidAuthenticityToken,
                 :with => :redirect_to_login_after_expired_session
@@ -113,41 +112,46 @@ class ApplicationController < ActionController::Base
     end
 
     # Handle errors we don't rescue_from
-    def rescue_action_in_public(exception)
-      respond_to do |format|
-        format.html {
-          super exception
-        }
-        format.js {
-          render_error interpret_status(response_code_for_rescue(exception))
-        }
-      end
-    end
-
-    def rescue_action_locally(exception)
-      respond_to do |format|
-        format.html {
-          super exception
-        }
-        format.js {
-          render_error interpret_status(response_code_for_rescue(exception))
-        }
-      end
-    end
-
-    def render_error(status = nil)
-      respond_to do |format|
-        format.html {
-          render :template => "#{hash_for_error_url[:controller]}/#{hash_for_error_url[:action]}"
-        }
-        format.js {
-          if status.nil?
-            render(:text => 'Page not found', :status => 404)
-          else
-            code, error = status.split(' ', 2)
-            render(:text => error, :status => code)
+    [ :rescue_action_in_public, :rescue_action_locally ].each do |action|
+      class_eval %{
+        def #{action}(exception)
+          @request_status = interpret_status(response_code_for_rescue(exception))
+          respond_to do |format|
+            format.html {
+              super exception
+            }
+            format.js {
+              render_error @request_status
+            }
           end
-        }
+        end
+      }, __FILE__, __LINE__
+    end
+
+    def render_error(status = '404 Not Found')
+      respond_to do |format|
+        format.html do
+          render :template => "#{hash_for_error_url[:controller]}/#{hash_for_error_url[:action]}"
+        end
+        format.js do
+          code, error = status.split(' ', 2)
+          render(:text => error, :status => code)
+        end
+      end
+    end
+
+    # Override ExceptionNotifiable#render_500 to provide our customized 500 page
+    def render_500
+      status = @request_status || '500 Internal Server Error'
+      respond_to do |format|
+        format.html do
+          flash[:request_status] = status  # Save the request status
+          render :template => "#{hash_for_fatal_error_url[:controller]}/#{hash_for_fatal_error_url[:action]}"
+        end
+        format.js do
+          code, error = status.split(' ', 2)
+          render(:text => error, :status => code)
+        end
       end
     end
 
