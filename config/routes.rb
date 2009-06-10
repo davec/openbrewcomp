@@ -41,9 +41,9 @@ ActionController::Routing::Routes.draw do |map|
   map.signup           '/signup',          :controller => 'users',     :action => 'new'
   map.forgot_password  '/forgot_password', :controller => 'passwords', :action => 'new'
   map.change_password  '/change_password/:reset_code', :controller => 'passwords', :action => 'reset'
-  map.open_id_complete '/opensession',     :controller => 'sessions',  :action => 'create', :requirements => { :method => :get }
-  map.open_id_create   '/opencreate',      :controller => 'users',     :action => 'create', :requirements => { :method => :get }
-  map.open_id_update   '/openupdate',      :controller => 'users',     :action => 'update', :requirements => { :method => :get }
+  map.open_id_complete '/opensession',     :controller => 'sessions',  :action => 'create', :conditions => { :method => :get }
+  map.open_id_create   '/opencreate',      :controller => 'users',     :action => 'create', :conditions => { :method => :get }
+  map.open_id_update   '/openupdate',      :controller => 'users',     :action => 'update', :conditions => { :method => :get }
 
   map.resources :users, :member => { :change_password => :get,
                                      :update_password => :put }
