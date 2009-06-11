@@ -17,7 +17,7 @@ module Admin::NewsItemsHelper
   end
 
   def description_raw_show_column(record)
-    %Q(<div class="formatted-preview">#{simple_format(h record.description_raw)}</div>)
+    %Q(<div class="formatted-preview">#{simple_format(h(record.description_raw))}</div>)
   end
 
   def description_encoded_show_column(record)
