@@ -1028,6 +1028,13 @@ table#flight-tracker caption {
   text-align: left;
   width: 8em;
 }
+.active-scaffold #as_admin__judges-tbody .edit-view ol#time-availabilities {
+  margin-top: 1ex;
+}
+.active-scaffold #as_admin__judges-tbody .edit-view ol li ol {
+  margin: 0;
+  padding: 0;
+}
 
 /*------------------------------
  Competition Data
