@@ -58,7 +58,7 @@ module ActiveScaffold
       def render_list_column(text, column, record)
         if column.link
           link = column.link
-          associated = record.send(column.association.name) if column.association
+          associated = record.send(column.association.name) if column.association && !column.association.through_reflection
           url_options = params_for(:action => nil, :id => record.id, :link => text)
           url_options[:parent_controller] = params[:controller] if link.controller and link.controller.to_s != params[:controller]
           url_options[:id] = associated.id if associated and link.controller and link.controller.to_s != params[:controller]
