@@ -217,6 +217,11 @@ class Judge < ActiveRecord::Base
     flights.empty?
   end
 
+  def flights_authorized_for_read?
+    return true if new_record?
+    existing_record_check? && !flights.empty?
+  end
+
   protected
 
     def after_initialize
