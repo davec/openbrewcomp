@@ -154,20 +154,24 @@ div.formatted-preview ul li {
  Flights
  ------------------------------*/
 
+.active-scaffold .nested-view.flights-view li.horizontal-sub-form,
 #flights-view li.sub-form {
   clear: both;
   margin: 0;
   padding: 2px 0 0 0;
 }
+.active-scaffold .nested-view.flights-view li.horizontal-sub-form dl,
 #flights-view li.sub-form dl {
   clear: both;
 }
+.active-scaffold .nested-view.flights-view li.horizontal-sub-form dt,
 #flights-view li.sub-form dt {
   float: left;
   margin: 4px 0;
   padding: 0 0 6px 0;
   width: 12em;
 }
+.active-scaffold .nested-view.flights-view li.horizontal-sub-form dd,
 #flights-view li.sub-form dd {
   float: left;
   margin-left: 0;
@@ -185,6 +189,7 @@ div.formatted-preview ul li {
   height: 16px;
   padding: 4px 4px 0px 20px;
 }
+.active-scaffold .nested-view.flights-view li.horizontal-sub-form label,
 #flights-view li.sub-form label {
   display: block;
   font-weight: bold;
@@ -665,7 +670,7 @@ span.delete-button {
 #as_admin__rounds-content div.nested-view td.status-column {
   width: 10em;
 }
-#flight-management-view table.flight-entries,
+.active-scaffold table.flight-entries,
 #scores-view table.entry-scores {
   font: bold 14px arial, sans-serif;
   border-bottom: 1px solid #aff7a8;
