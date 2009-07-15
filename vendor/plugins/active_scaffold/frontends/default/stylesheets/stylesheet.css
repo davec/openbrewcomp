@@ -290,6 +290,10 @@ background-color: #1F7F00;
 background: transparent;
 }
 
+.active-scaffold .active-scaffold .active-scaffold-header {
+margin-right: 15px;
+}
+
 .active-scaffold .active-scaffold .active-scaffold-header h2 {
 font-size: 12px;
 font-weight: bold;
@@ -298,6 +302,11 @@ font-weight: bold;
 .blue-theme .active-scaffold .active-scaffold-header h2,
 .active-scaffold .active-scaffold .active-scaffold-footer {
 color: #444;
+}
+
+.active-scaffold .active-scaffold .active-scaffold-header div.actions {
+top: 0px;
+right: 0px;
 }
 
 .active-scaffold .active-scaffold .active-scaffold-header div.actions a {
@@ -732,7 +741,7 @@ padding: 0 5px 0 1px;
 background: none;
 }
 
-.active-scaffold .sub-form label {
+.active-scaffold .horizontal-sub-form label {
 display: none;
 }
 
@@ -754,9 +763,10 @@ vertical-align: top;
 color: #999;
 }
 
-.active-scaffold .sub-form table td.actions {
+.active-scaffold .sub-form .actions {
 vertical-align: middle;
 background-color: transparent;
+clear: left;
 }
 
 .active-scaffold .sub-form .association-record a.destroy {

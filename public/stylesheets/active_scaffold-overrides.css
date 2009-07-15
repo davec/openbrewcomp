@@ -149,7 +149,7 @@
 .active-scaffold .active-scaffold td.inline-adapter-cell {
   background-color: #faf0e0;  /* same as body */
 }
-.active-scaffold tbody.before-header td.inline-adapter-cell,
+.active-scaffold tbody.before-header td,
 .active-scaffold tbody.records td.inline-adapter-cell {
   padding: 0;
 }

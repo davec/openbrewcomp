@@ -5,7 +5,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require 'stringio'
 
-class Test::Unit::TestCase
+class ActiveSupport::TestCase
   include AuthenticatedTestHelper
 
   # Transactional fixtures accelerate your tests by wrapping each test method
@@ -72,20 +72,20 @@ class Test::Unit::TestCase
 
   # Assert that the response contains PDF content
   def assert_pdf_response
-    assert @response.headers['Content-Length'] > 0
-    assert_equal 'application/pdf', @response.headers['type']
+    assert @response.headers['Content-Length'].to_i > 0
+    assert_equal 'application/pdf', @response.headers['Content-Type']
     assert_kind_of Proc, @response.body
     output = StringIO.new
     assert_nothing_raised { @response.body.call(@response, output) }
-    assert_equal output.size, @response.headers['Content-Length']
+    assert_equal output.size, @response.headers['Content-Length'].to_i
     output.rewind
     assert_match /%PDF-1.\d/, output.read(8)
   end
 
   # Assert that the response contains ZIP content
   def assert_zip_response
-    assert @response.headers['Content-Length'] > 0
-    assert_equal 'application/zip', @response.headers['type']
+    assert @response.headers['Content-Length'].to_i > 0
+    assert_equal 'application/zip', @response.headers['Content-Type']
     assert_equal "PK\003\004", @response.body[0,4]
   end
 

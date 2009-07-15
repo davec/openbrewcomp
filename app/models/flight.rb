@@ -162,7 +162,7 @@ class Flight < ActiveRecord::Base
         self.assigned = false
         self.completed = true
       else
-        errors.add_to_base("Status must be #{FlightStatus.key_value_pairs.values.to_sentence(:connector => 'or')}")
+        errors.add_to_base("Status must be #{FlightStatus.key_value_pairs.values.to_sentence(:words_connector => 'or')}")
       end
       true
     end

@@ -2,9 +2,7 @@
 
 # The production environment is meant for finished, "live" apps.
 # Code is not reloaded between requests
-# HACK: Avoid eager loading of application classes during migrations.
-# TODO: Remove this hack for Rails 2.3 (where it is no longer needed)
-config.cache_classes = !(File.basename($0) == "rake" && !ARGV.grep(/db:/).empty?)
+config.cache_classes = true
 
 # Enable threaded mode
 # config.threadsafe!
@@ -15,13 +13,7 @@ config.cache_classes = !(File.basename($0) == "rake" && !ARGV.grep(/db:/).empty?
 # Full error reports are disabled and caching is turned on
 config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
-
-# HACK: If deploying in a sub-directory, set relative_url_root because it's not
-# picked up from the web server since Rails 2.2.
-# See http://code.google.com/p/phusion-passenger/issues/detail?id=169 and
-# http://rails.lighthouseapp.com/projects/8994-ruby-on-rails/tickets/1946
-# for more info.
-# config.action_controller.relative_url_root = '/openbrewcomp'
+config.action_view.cache_template_loading            = true
 
 # Use a different cache store in production
 # config.cache_store = :mem_cache_store

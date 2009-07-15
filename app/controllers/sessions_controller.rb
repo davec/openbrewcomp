@@ -51,6 +51,7 @@ class SessionsController < ApplicationController
                User.authenticate(params[:user][:login], params[:user][:password])
              end
       if user
+        self.current_user = user
         successful_login(user)
       else
         failed_login(anonymous_login? ?

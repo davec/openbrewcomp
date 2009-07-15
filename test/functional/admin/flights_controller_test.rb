@@ -290,8 +290,7 @@ class Admin::FlightsControllerTest < ActionController::TestCase
 
   def test_search
     get :update_table, :search => 'BOS'
-    assert_response :success
-    assert_template '_list'
+    assert_redirected_to :action => 'index'
   end
 
   def test_show
@@ -312,7 +311,7 @@ class Admin::FlightsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (modified)" }
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_destroy
@@ -323,7 +322,7 @@ class Admin::FlightsControllerTest < ActionController::TestCase
     assert_difference('Flight.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_cannot_destroy_assigned_flight

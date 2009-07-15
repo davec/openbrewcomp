@@ -74,8 +74,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
 
   def test_search
     get :update_table, :search => 'pro'
-    assert_response :success
-    assert_template '_list'
+    assert_redirected_to :action => 'index'
   end
 
   def test_show
@@ -96,7 +95,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :last_name => "#{record.last_name} Jr." }
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_update_time_available
@@ -133,7 +132,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
     assert_difference('Judge.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_cannot_destroy_seated_judge

@@ -1,6 +1,5 @@
 This is a list of potential changes for OpenBrewComp, in no particular order.
 
-* Migrate to Rails 2.3
 * I18n/L10n work.
 * Resolve CSS issues with the flight management pages in IE.
 * Use role_requirement plugin instead of our hand-rolled roles+rights. (Not

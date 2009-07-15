@@ -41,8 +41,7 @@ class Admin::JudgeRanksControllerTest < ActionController::TestCase
 
   def test_search
     get :update_table, :search => 'master'
-    assert_response :success
-    assert_template '_list'
+    assert_redirected_to :action => 'index'
   end
 
   def test_show
@@ -63,7 +62,7 @@ class Admin::JudgeRanksControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :description => "#{record.description} (modified)" }
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_destroy
@@ -71,7 +70,7 @@ class Admin::JudgeRanksControllerTest < ActionController::TestCase
     assert_difference('JudgeRank.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
 end

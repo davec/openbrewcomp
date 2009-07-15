@@ -71,8 +71,7 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
 
   def test_search
     get :update_table, :search => 'Brewer'
-    assert_response :success
-    assert_template '_list'
+    assert_redirected_to :action => 'index'
   end
 
   def test_show
@@ -93,7 +92,7 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :last_name => "#{record.last_name} Jr." }
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_delete
@@ -101,7 +100,7 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
     assert_difference('Entrant.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_help

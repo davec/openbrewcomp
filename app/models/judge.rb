@@ -338,7 +338,7 @@ class Judge < ActiveRecord::Base
     
     def validate_region
       if country.nil? || country.region_required?
-        region_name = country.nil? ? "state" : country.region_name.split('/').to_sentence(:connector => "or")
+        region_name = country.nil? ? "state" : country.region_name.split('/').to_sentence(:words_connector => "or")
         if region_id.nil?
           # We need to handle a special case for Ireland: The county name is not
           # required if the city name is the same as the county name.  (If no

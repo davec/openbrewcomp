@@ -98,7 +98,7 @@ spent addressing such environments.
 ## Dependencies
 
 + [Ruby](http://www.ruby-lang.org/) 1.8.6 (not tested with 1.8.7 or 1.9)
-+ [Ruby on Rails](http://rubyonrails.org/) 2.2.x
++ [Ruby on Rails](http://rubyonrails.org/) 2.3.x
 + A supported database (tested with [PostgreSQL](http://www.postgresql.org/) 8.3.7,
   [MySQL](http://www.mysql.com/) 5.0.77, and [SQLite](http://www.sqlite.org/) 3.6.11)
 + A working [LaTeX](http://www.latex-project.org/) installation such as the one

@@ -43,8 +43,7 @@ class Admin::JudgingSessionsControllerTest < ActionController::TestCase
 
   def test_search
     get :update_table, :search => 'Session'
-    assert_response :success
-    assert_template '_list'
+    assert_redirected_to :action => 'index'
   end
 
   def test_show
@@ -67,7 +66,7 @@ class Admin::JudgingSessionsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :description => "#{record.description} (modified)" }
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_destroy_session_without_flights
@@ -75,7 +74,7 @@ class Admin::JudgingSessionsControllerTest < ActionController::TestCase
     assert_difference('JudgingSession.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_cannot_destroy_session_with_flights

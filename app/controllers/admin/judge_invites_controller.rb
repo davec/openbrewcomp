@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class Admin::JudgeInvitesController < AdministrationController
-  around_filter :retardase_inhibitor
+  before_filter :set_action_mailer_options, :only => :send_email
 
   def index
     judge_registration_open = competition_data.is_judge_registration_open?

@@ -309,7 +309,7 @@ class Entry < ActiveRecord::Base
 
     def excess_error_message(category_entries, style, html_formatting = true)
       msg = entrant.name
-      msg << " has #{pluralize(category_entries.length, 'entry')} (#{category_entries.collect{|e| Controller.admin_view? ? e.bottle_code : e.registration_code}.to_sentence(:skip_last_comma => true)}) in the #{style.award.name} category."
+      msg << " has #{pluralize(category_entries.length, 'entry')} (#{category_entries.collect{|e| Controller.admin_view? ? e.bottle_code : e.registration_code}.to_sentence(:last_word_connector => true)}) in the #{style.award.name} category."
       msg << (html_formatting ? "<br />" : "\n\n")
       msg << "A maximum of #{pluralize(Award::MAX_ENTRIES, 'entry')} per award category is allowed."
       msg

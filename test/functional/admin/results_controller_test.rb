@@ -70,8 +70,8 @@ class Admin::ResultsControllerTest < ActionController::TestCase
     assert_response :success
 
     # Verify the downloaded file
-    assert @response.headers['Content-Length'] > 0
-    assert_equal 'text/plain', @response.headers['type']
+    assert @response.headers['Content-Length'].to_i > 0
+    assert_equal 'text/plain', @response.headers['Content-Type']
     assert_match /<table class="resultstable"[^>]*>/, @response.body
   end
 
@@ -97,9 +97,9 @@ class Admin::ResultsControllerTest < ActionController::TestCase
     assert_response :success
 
     # Verify the downloaded file
-    assert @response.headers['Content-Length'] > 0
-    #assert_equal 'application/xml', @response.headers['type']
-    assert_equal 'application/octet-stream', @response.headers['type']
+    assert @response.headers['Content-Length'].to_i > 0
+    #assert_equal 'application/xml', @response.headers['Content-Type']
+    assert_equal 'application/octet-stream', @response.headers['Content-Type']
 
     assert_select 'OrgReport' do
       assert_select 'CompData'
@@ -135,9 +135,9 @@ class Admin::ResultsControllerTest < ActionController::TestCase
     assert_response :success
 
     # Verify the downloaded file
-    assert @response.headers['Content-Length'] > 0
-    #assert_equal 'text/csv', @response.headers['type']
-    assert_equal 'application/octet-stream', @response.headers['type']
+    assert @response.headers['Content-Length'].to_i > 0
+    #assert_equal 'text/csv', @response.headers['Content-Type']
+    assert_equal 'application/octet-stream', @response.headers['Content-Type']
   end
 
   def test_results_generate_entrant_covers

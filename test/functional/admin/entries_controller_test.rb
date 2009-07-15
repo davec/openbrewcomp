@@ -22,7 +22,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
   def test_new
     # Cannot create a new entry from the entries scaffold; instead, it must be
     # created from an entries scaffold nested within the and entrants scaffold.
-    assert_raise(ActionController::MethodNotAllowed) do
+    assert_raise(ActiveScaffold::ActionNotAllowed) do
       get :new
     end
   end
@@ -30,15 +30,14 @@ class Admin::EntriesControllerTest < ActionController::TestCase
   def test_create
     # Cannot create a new entry from the entries scaffold; instead, it must be
     # created from an entries scaffold nested within the and entrants scaffold.
-    assert_raise(ActionController::MethodNotAllowed) do
+    assert_raise(ActiveScaffold::ActionNotAllowed) do
       post :create, :record => { :style_id => styles(:style_1A).id }
     end
   end
 
   def test_search
     get :update_table, :search => Date.today.year
-    assert_response :success
-    assert_template '_list'
+    assert_redirected_to :action => 'index'
   end
 
   def test_show
@@ -59,7 +58,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => 'New Name' }
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_destroy
@@ -67,7 +66,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     assert_difference('Entry.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_print

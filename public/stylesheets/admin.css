@@ -117,16 +117,16 @@ th {
  News Items
  ------------------------------*/
 
-.active-scaffold #admin__news_items-create--form span.description,
-.active-scaffold #admin__news_items-tbody span.description {
+.active-scaffold #as_admin__news_items-create--form span.description,
+.active-scaffold #as_admin__news_items-tbody span.description {
   color: #333;
   font: normal 12px verdana, sans-serif;
   margin-left: 0.5em;
 }
-.active-scaffold #admin__news_items-tbody div.show-view dd {
+.active-scaffold #as_admin__news_items-tbody div.show-view dd {
   width: 70%;
 }
-.active-scaffold #admin__news_items-tbody td.last_edit-column {
+.active-scaffold #as_admin__news_items-tbody td.last_edit-column {
   width: 9em;
 }
 
@@ -653,16 +653,16 @@ span.delete-button {
 #flight-management-view td.assigned_time-column {
   width: 18em;
 }
-#admin__rounds-content div.nested-view td.assigned_time-column,
-#admin__rounds-content div.nested-view td.completed_time-column {
+#as_admin__rounds-content div.nested-view td.assigned_time-column,
+#as_admin__rounds-content div.nested-view td.completed_time-column {
   width: 12em;
 }
 #flight-management-view td.entry_count-column,
-#admin__rounds-content div.nested-view td.entry_count-column {
+#as_admin__rounds-content div.nested-view td.entry_count-column {
   width: 5em;
 }
 #flight-management-view td.status-column,
-#admin__rounds-content div.nested-view td.status-column {
+#as_admin__rounds-content div.nested-view td.status-column {
   width: 10em;
 }
 #flight-management-view table.flight-entries,
@@ -740,6 +740,7 @@ table#flight-tracker td span.completed,
 }
 table#flight-tracker {
   border: 2px solid #c0c0c0;
+  line-height: 1.25;
   margin-left: auto;
   margin-right: auto;
   margin-top: 4ex;
@@ -999,26 +1000,26 @@ table#flight-tracker caption {
   margin-bottom: 1ex;
 }
 
-.active-scaffold #admin__judges-tbody span.description {
+.active-scaffold #as_admin__judges-tbody span.description {
   color: #666;
   font: normal 11px verdana, sans-serif;
   margin-left: 1em;
 }
-.active-scaffold #admin__judges-tbody td.confirmed-column,
-.active-scaffold #admin__judges-tbody td.checked_in-column,
-.active-scaffold #admin__judges-tbody td.organizer-column,
-.active-scaffold #admin__judges-tbody td.is_bos_judge-column,
-.active-scaffold #admin__judges-tbody td.judge_points-column,
-.active-scaffold #admin__judges-tbody td.steward_points-column,
-.active-scaffold #admin__judges-tbody td.staff_points-column {
+.active-scaffold #as_admin__judges-tbody td.confirmed-column,
+.active-scaffold #as_admin__judges-tbody td.checked_in-column,
+.active-scaffold #as_admin__judges-tbody td.organizer-column,
+.active-scaffold #as_admin__judges-tbody td.is_bos_judge-column,
+.active-scaffold #as_admin__judges-tbody td.judge_points-column,
+.active-scaffold #as_admin__judges-tbody td.steward_points-column,
+.active-scaffold #as_admin__judges-tbody td.staff_points-column {
   text-align: center;
   width: 6em;
 }
-.active-scaffold #admin__judges-tbody td.judge_number-column {
+.active-scaffold #as_admin__judges-tbody td.judge_number-column {
   text-align: left;
   width: 6em;
 }
-.active-scaffold #admin__judges-tbody td.updated_at-column {
+.active-scaffold #as_admin__judges-tbody td.updated_at-column {
   text-align: left;
   width: 8em;
 }
@@ -1027,15 +1028,15 @@ table#flight-tracker caption {
  Competition Data
  ------------------------------*/
 
-.active-scaffold #admin__competition_data-tbody li.form-element dt {
+.active-scaffold #as_admin__competition_data-tbody li.form-element dt {
   padding-bottom: 2ex;
   /*width: 10em;*/
 }
-.active-scaffold #admin__competition_data-tbody input.text-input,
-.active-scaffold #admin__competition_data-tbody select {
+.active-scaffold #as_admin__competition_data-tbody input.text-input,
+.active-scaffold #as_admin__competition_data-tbody select {
   margin-bottom: 4px;
 }
-.active-scaffold #admin__competition_data-tbody span.description {
+.active-scaffold #as_admin__competition_data-tbody span.description {
   clear: both;
   color: #333;
   float: left;

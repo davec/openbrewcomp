@@ -31,7 +31,7 @@ class PasswordsControllerTest < ActionController::TestCase
     email = @emails.first
     assert_equal "[#{@competition_name}] You have requested to change your password", email.subject
     assert_equal recipient, email.to[0]
-    assert_match /^#{users(:aaron).login}, you can change your password at this URL:$.*^The link will expire in 3 days.$/m, email.body
+    assert_match /^#{users(:aaron).login}, you can change your password at this URL:$\s*^#{@request.protocol}#{@request.host_with_port}\/change_password\/[[:xdigit:]]+$\s*^The link will expire in 3 days.$/m, email.body
   end
 
   def test_should_not_email_reset_code_on_unknown_email_address

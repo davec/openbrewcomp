@@ -35,7 +35,7 @@ class MainControllerTest < ActionController::TestCase
     }
 
     local_dates.each do |adjust, values|
-      @request.cookies['TZ'] = CGI::Cookie.new('TZ', "#{server_timezone_cookie_value - adjust*60}")
+      @request.cookies['TZ'] = "#{server_timezone_cookie_value - adjust*60}"
       values.each do |pair|
         cd.competition_start_time, days_to_go = pair
         expected_opening_message = "#{pluralize(days_to_go, 'day')} until #{cd.name}"

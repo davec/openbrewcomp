@@ -1,6 +1,6 @@
 class PasswordsController < ApplicationController
-  around_filter :retardase_inhibitor, :only => :create
   before_filter :login_prohibited
+  before_filter :set_action_mailer_options, :only => :create
 
   def new
     @password = Password.new

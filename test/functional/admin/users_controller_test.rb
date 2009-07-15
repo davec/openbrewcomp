@@ -53,8 +53,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
 
   def test_search
     get :update_table, :search => 'testuser7'
-    assert_response :success
-    assert_template '_list'
+    assert_redirected_to :action => 'index'
   end
 
   def test_show
@@ -81,14 +80,14 @@ class Admin::UsersControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} is not a number" }
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_update_admin
     record = users(:admin)
     post :update, :id => record.id,
                   :record => { :email => 'foo@example.com' }
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_cannot_update_admin_if_not_admin
@@ -113,7 +112,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_difference('User.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_cannot_destroy_admin_as_admin

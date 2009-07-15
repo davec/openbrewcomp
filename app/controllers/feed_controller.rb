@@ -2,7 +2,6 @@
 
 class FeedController < ApplicationController
   layout nil
-  session :off
 
   # To get the correct MIME type applied to the RSS feed, we need to set the
   # Content-Type header in an after filter. Unless the feed is cached, then

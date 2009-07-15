@@ -35,8 +35,7 @@ class Admin::NewsItemsControllerTest < ActionController::TestCase
 
   def test_search
     get :update_table, :search => 'News Item 2'
-    assert_response :success
-    assert_template '_list'
+    assert_redirected_to :action => 'index'
   end
 
   def test_show
@@ -58,7 +57,7 @@ class Admin::NewsItemsControllerTest < ActionController::TestCase
                     :record => { :title => "#{record.title} (modified)",
                                  :description_raw => "#{record.description_raw} (modified)" }
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
   def test_destroy
@@ -66,7 +65,7 @@ class Admin::NewsItemsControllerTest < ActionController::TestCase
     assert_difference('NewsItem.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index', :id => record.id
+    assert_redirected_to :action => 'index'
   end
 
 end

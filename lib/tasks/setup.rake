@@ -135,7 +135,6 @@ common: &common_settings
   competition_name: "#{$config[:competition_name]}"
   admin_name: "#{$config[:admin_name]}"
   account_mgmt_email: "#{$config[:account_mgmt_email]}"
-  forgery_protect_key: "#{ActiveSupport::SecureRandom.hex(32)}"
 
 development: &non_production_settings
   <<: *common_settings
