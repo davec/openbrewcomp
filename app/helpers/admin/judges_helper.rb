@@ -121,8 +121,11 @@ module Admin::JudgesHelper
     options[:name] += '[id]'
     options[:onchange] = %Q{showJudgeRankParams('#{params[:eid] || params[:id]}')}
     judge_ranks = JudgeRank.all(:order => 'position').collect{|r|
-      [ r.description, judge_rank_option_value(r, true) ]
-    }
+      # HACK: Don't offer the N/A rank on new records.
+      # (It's a special rank which is only used for importing BJCP judge
+      # lists that sometimes include such a value for the judge rank.)
+      [ r.description, judge_rank_option_value(r, true) ] unless record.new_record? && r.description == 'N/A'
+    }.compact
 
     select(:record, :judge_rank_id, judge_ranks,
            { :prompt => '- Please select a rank -' },
