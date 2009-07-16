@@ -25,7 +25,7 @@ class MainController < ApplicationController
     class_eval %{
       def error#{status}
         @contacts = Contact.to_hash
-        render :status => #{status}
+        render :layout => true, :status => #{status}
       end
     }, __FILE__, __LINE__
   end
