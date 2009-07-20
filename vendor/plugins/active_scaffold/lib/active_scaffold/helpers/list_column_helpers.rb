@@ -58,7 +58,7 @@ module ActiveScaffold
       def render_list_column(text, column, record)
         if column.link
           link = column.link
-          associated = record.send(column.association.name) if column.association && !column.association.through_reflection
+          associated = record.send(column.association.name) if column.association
           url_options = params_for(:action => nil, :id => record.id, :link => text)
           url_options[:parent_controller] = params[:controller] if link.controller and link.controller.to_s != params[:controller]
           url_options[:id] = associated.id if associated and link.controller and link.controller.to_s != params[:controller]
@@ -78,7 +78,14 @@ module ActiveScaffold
 
           # check authorization
           if column.association
-            authorized = (associated ? associated : column.association.klass).authorized_for?(:action => link.crud_type)
+            associated_for_authorized = if associated.blank?
+              column.association.klass
+            elsif associated.is_a? Array
+              associated.first
+            else
+              associated
+            end
+            authorized = associated_for_authorized.authorized_for?(:action => link.crud_type)
             authorized = authorized and record.authorized_for?(:action => :update, :column => column.name) if link.crud_type == :create
           else
             authorized = record.authorized_for?(:action => link.crud_type)
