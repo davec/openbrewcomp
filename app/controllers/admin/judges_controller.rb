@@ -79,7 +79,7 @@ class Admin::JudgesController < AdministrationController
     config.columns[:time_availabilities].label = 'Available Judging Times'
 
     # Sorting
-    config.columns[:judge_rank].sort_by :sql => 'position'
+    config.columns[:judge_rank].sort_by :sql => 'judge_ranks.position'
     config.columns[:judge_rank].clear_link
 
     # Virtual fields
