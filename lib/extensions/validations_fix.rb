@@ -17,7 +17,7 @@ module ActiveRecord
               if configuration[:message]
                 record.errors.add(attr_name, configuration[:message])
               else
-                record.errors.add(attr_name, ActiveRecord::Errors.default_error_messages[:invalid])
+                record.errors.add(attr_name, I18n.t('activerecord.errors.messages.invalid'))
                 association.errors.each do |error_name, error_value|
                   record.errors.add(error_name, error_value)
                 end
