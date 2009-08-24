@@ -52,7 +52,7 @@ module ApplicationHelper
   # If an asset ID is included, which is defined to be anything following the
   # last (and only) '?', it it exists, in the path, it is first removed.
   def file_size(source)
-    source = source.sub(Regexp.new("^#{ActionController::Base.asset_host}#{@controller.request.relative_url_root}"), "")
+    source = source.sub(Regexp.new("^#{ActionController::Base.asset_host}#{ActionController::Base.relative_url_root}"), "")
     filename = "#{RAILS_ROOT}/public/#{source.split('?').first}"
     size = File.stat(filename).size
   rescue
