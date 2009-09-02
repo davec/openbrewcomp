@@ -2,7 +2,7 @@
 
 class SessionCleanup
   def self.purge_expired_sessions
-    CGI::Session::ActiveRecordStore::Session.destroy_all(
+    ActiveRecord::SessionStore::Session.destroy_all(
       [ 'updated_at < ?', 2.hours.ago ]
     )
   end
