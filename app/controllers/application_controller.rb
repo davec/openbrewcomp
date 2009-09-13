@@ -155,6 +155,27 @@ class ApplicationController < ActionController::Base
     def access_denied
       flash[:request_url] = request.url  # Save the requested URL
       redirect_to authorization_error_path and return false if logged_in?
+
+      if request.xhr?
+        flash[:notice] = "Your session has expired. Please log in again."
+
+        # HACK: ActionController::Base#render_with_active_scaffold checks
+        # params[:adapter] and @rendering_adapter.nil? to determine
+        # whether to render with AS. We just want to redirect to the login
+        # page and skip the extra crap that the AS rendering code generates.
+        # (Including the extra code isn't fatal, but it causes the raw JS
+        # code to be shown briefly before the redirect happens.)
+        params.delete(:adapter)
+        #@rendering_adapter = true
+
+        render(:update) do |page|
+          page << %{<script type="text/javascript">\n//<![CDATA[\n}
+          page.redirect_to(login_url)
+          page << %{\n//]]>\n</script>}
+        end
+        return false
+      end
+
       super
     end
 

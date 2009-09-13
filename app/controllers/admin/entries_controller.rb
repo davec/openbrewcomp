@@ -211,7 +211,7 @@ class Admin::EntriesController < AdministrationController
     end
 
     def authorized?
-      @is_admin_view = !params[:parent_model] || session[:entrants_admin_view]
+      @is_admin_view = !params[:parent_model] || !!session[:entrants_admin_view]
       if @is_admin_view && params[:action] != 'bottle_labels'
         super
       else
