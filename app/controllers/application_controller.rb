@@ -155,7 +155,7 @@ class ApplicationController < ActionController::Base
     def access_denied
       flash[:request_url] = request.url  # Save the requested URL
       redirect_to authorization_error_path and return false if logged_in?
-
+debugger
       if request.xhr?
         flash[:notice] = "Your session has expired. Please log in again."
 
@@ -174,6 +174,11 @@ class ApplicationController < ActionController::Base
           page << %{\n//]]>\n</script>}
         end
         return false
+      elsif current_user.nil? && params[:nested] == "true" && request.referer == online_registration_url
+        # This path is taken if bottle labels are printed after the session has expired.
+        # NOTE: Do not store the requested URI for a redirect after login.
+        flash[:notice] = "Your session has expired. Please log in again."
+        redirect_to login_path and return false
       end
 
       super
