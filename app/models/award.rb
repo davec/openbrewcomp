@@ -240,15 +240,14 @@ class Award < ActiveRecord::Base
     styles.all?{|s| s.entries.empty?}
   end
 
-  protected
+  # Return the number of (processed) entries for this award
+  def entry_count
+    Entry.count(:all,
+                :joins => 'AS e INNER JOIN styles AS s ON (s.id = e.style_id)',
+                :conditions => [ 'e.style_id IN (?) AND e.bottle_code IS NOT NULL', styles.collect(&:id) ])
+  end
 
-    # Return the number of (processed) entries for this award
-    def entry_count
-      Entry.count(:all,
-                 #:select => 'e.*',
-                  :joins => 'AS e INNER JOIN styles AS s ON (s.id = e.style_id)',
-                  :conditions => [ 'e.style_id IN (?) AND e.bottle_code IS NOT NULL', styles.collect(&:id) ])
-    end
+  protected
 
     def before_validation
       name.squish! unless name.nil?

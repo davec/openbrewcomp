@@ -18,7 +18,7 @@
   </ul>
 </div>
 <script type="text/javascript">
-  $A($('flights-view').getElementsByClassName('empty-message')).each(function(e) {
+  $A($('flights-view').select('.flights-for-award.non-empty .empty-message')).each(function(e) {
     e.update('Awaiting completion of <%= Round.first.name.downcase -%> flights')
   });
 </script>
