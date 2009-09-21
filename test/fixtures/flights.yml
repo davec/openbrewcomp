@@ -135,7 +135,7 @@ smoked:
 ### Best of Show
 
 bos:
-  name: BOS
+  name: Best of Show
   award: bos
   round: bos
   assigned: false

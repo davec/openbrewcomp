@@ -37,7 +37,7 @@ class Flight < ActiveRecord::Base
   end
 
   def status_label
-     pushed? ? 'Pushed' : FlightStatus.new(self.status).label
+    pushed? ? 'Pushed' : (final? ? FlightStatus.new(self.status).label : 'Incomplete')
   end
 
   def max_judges
@@ -135,6 +135,14 @@ class Flight < ActiveRecord::Base
 
   def unassigned?
     !protected?
+  end
+
+  def final?
+    # For BOS flights, have all associated second round flights been completed?
+    return true unless round && round == Round.bos
+    award.awards_for_bos.all?{|award|
+      award.flights.select{|f| f.round == Round.second}.all?{|f| f.completed?}
+    }
   end
 
   def authorized_for_destroy?

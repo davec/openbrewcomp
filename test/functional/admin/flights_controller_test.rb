@@ -233,14 +233,63 @@ class Admin::FlightsControllerTest < ActionController::TestCase
       awards.each do |award|
         assert_select "li#award#{award.id}-item > div.flights-for-award > div.active-scaffold" do
           assert_select 'div.active-scaffold-header > h2', award.name
-          unless award.flights.empty?
-            assert_select 'div > table > tbody.records > tr.record', :count => 1
-          else
-            assert_select 'div > table > tbody.messages' do
-              assert_select 'tr', :count => 1
-              assert_select 'p.empty-message', { :count => 1,
-                                                 :text => I18n.t('active_scaffold.no_entries') }
-            end
+          assert_select 'div > table > tbody.records > tr.record', :count => 1
+        end
+      end
+    end
+  end
+
+  def test_list_round_3_flights_with_majority_of_second_round_flights_incomplete
+    # Discard the BOS flight
+    flight = flights(:bos)
+    flight.update_attribute(:completed, false)
+    flight.destroy
+    # Mark all but one second round flight as incomplete
+    Flight.all.select{|flight| flight.round == Round.second}.each_with_index{|flight,index| flight.update_attribute(:completed, false) if index > 0}
+
+    # With no second round flights complete, the BOS flight list should be empty
+    get :round_3
+    assert_response :success
+    assert_template 'round_flights'
+
+    awards = Award.find_non_public_awards
+    assert_select 'div#content > div#flight-management-view > div#flights-view > ul' do
+      assert_select 'li', :count => awards.length
+      awards.each do |award|
+        assert_select "li#award#{award.id}-item > div.flights-for-award > div.active-scaffold" do
+          assert_select 'div.active-scaffold-header > h2', award.name
+          assert_select 'div > table > tbody.messages' do
+            assert_select 'tr', :count => 1
+            assert_select 'p.empty-message', { :count => 1,
+                                               :text => I18n.t('active_scaffold.no_entries') }
+          end
+        end
+      end
+    end
+  end
+
+  def test_list_round_3_flights_with_majority_of_second_round_flights_complete
+    # Discard the BOS flight
+    flight = flights(:bos)
+    flight.update_attribute(:completed, false)
+    flight.destroy
+    # Mark a second round flight as incomplete
+    flights(:smoked).update_attribute(:completed, false)
+
+    # With a majority of second round flights complete, the BOS flight list should be
+    # generated, but the list should indicate that it is incomplete.
+    get :round_3
+    assert_response :success
+    assert_template 'round_flights'
+
+    awards = Award.find_non_public_awards
+    assert_select 'div#content > div#flight-management-view > div#flights-view > ul' do
+      assert_select 'li', :count => awards.length
+      awards.each do |award|
+        assert_select "li#award#{award.id}-item > div.flights-for-award > div.active-scaffold" do
+          assert_select 'div.active-scaffold-header > h2', award.name
+          assert_select 'div > table > tbody.records > tr.record', :count => 1 do
+            assert_select 'td.status-column > span.incomplete', 'Incomplete'
           end
         end
       end
@@ -289,7 +338,7 @@ class Admin::FlightsControllerTest < ActionController::TestCase
   end
 
   def test_search
-    get :update_table, :search => 'BOS'
+    get :update_table, :search => 'Best'
     assert_redirected_to :action => 'index'
   end
 

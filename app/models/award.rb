@@ -122,31 +122,39 @@ class Award < ActiveRecord::Base
     end
   end
 
-  def create_best_of_show_flight
-    return if category.is_public?  # The BOS awards are "non-public"
-    return unless flights.empty?
-
-    # Determine which awards comprise this particular BOS award
+  def awards_for_bos
     qualified_awards = Award.find(:all, :conditions => [ 'point_qualifier = ?', true ])
     award_groups = qualified_awards.partition{|a| Category::MEAD_CIDER_RANGE.member?(a.category.position)}
-    award_group_for_bos = case name
-                          when /Beer/
-                            award_groups[1]
-                          when /Mead/
-                            award_groups[0]
-                          else
-                            qualified_awards
-                          end
+    return case name
+           when /Beer/
+             award_groups[1]
+           when /Mead/
+             award_groups[0]
+           else
+             qualified_awards
+           end
+  end
+
+  def create_best_of_show_flight
+    return if category.is_public?  # The BOS awards are "non-public"
+
+    # Determine which awards comprise this particular BOS award
+    award_group_for_bos = awards_for_bos
 
     # Proceed only if
     # (1) first- and second-round flights exist, and
-    # (2) all second-round flights are complete.
-    unless award_group_for_bos.any?{ |award|
-      (award.flights.empty? && award.entry_count > 0) ||
-      award.flights.detect{ |flight|
-        (flight.round == Round.second && !flight.completed?) ||
-        (flight.round == Round.first && !flight.completed?)}
+    # (2) the majority of second-round flights are complete.
+    return if award_group_for_bos.any?{|award|
+      award.entry_count > 0 &&
+      (award.flights.empty? ||  # No flights
+       award.flights.detect{|flight| flight.round == Round.second }.nil?)  # No second round flight
+    }
+    complete, incomplete = award_group_for_bos.collect{|award|
+      award.flights.select{|flight|
+        flight.round == Round.second
       }
+    }.flatten.partition{|flight| flight.completed?}
+    if complete.length > incomplete.length
       # Get all first place entries in this award category
       entries = Entry.find(:all,
                            :select => 'e.*',
@@ -157,12 +165,15 @@ class Award < ActiveRecord::Base
                                             }.flatten ])
 
       Flight.transaction do
-        flight = Flight.create(:name => "#{name}",
-                               :award_id => id,
-                               :round_id => Round.bos.id)
-        flight.entries.push(*entries)
-        flights << flight
-
+        flight = Flight.find_or_create_by_name(:name => "#{name}",
+                                               :award_id => id,
+                                               :round_id => Round.bos.id)
+        if flight.entries.empty?
+          flight.entries.push(*entries)
+          flights << flight
+        else
+          flight.entries.push(*(entries - flight.entries))
+        end
         if CompetitionData.instance.mcab?
           # Automatically flag MCAB QEs where the MCAB QS is not split into multiple awards
           entries.each do |entry|

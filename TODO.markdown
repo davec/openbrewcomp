@@ -9,9 +9,6 @@ This is a list of potential changes for OpenBrewComp, in no particular order.
 * Add support for assigned scores, i.e, the combined score assigned by the
   judge panel, instead of automatically generated average scores (though judge
   panels seem to compute an average score for the assigned score anyway).
-* Have the ability to generate a partial BOS pull sheet before the completion
-  of all second round flights (to reduce the delay in sitting the BOS panel
-  after the completion of second round).
 * Include scores in the flight show panel.
 * Improved handling of judge signup. As currently written, BJCP IDs must be
   unique, but if a judge attempts to sign up without using the registration

@@ -727,6 +727,11 @@ span.delete-button {
  Flight Tracker
  ------------------------------*/
 
+.active-scaffold td.status-column span.incomplete {
+  background-color: #f00000;
+  color: #e6f2ff;
+  font-weight: bold;
+}
 table#flight-tracker td span.unassigned,
 .active-scaffold td.status-column span.unassigned {
   color: #f00000;
