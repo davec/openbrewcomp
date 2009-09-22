@@ -20,8 +20,7 @@ class Admin::ResultsController < AdministrationController
     # TODO: Is HTML sufficient, or do we also need to produce PDF?
 
     # Generate category award winners (place, MCAB QE, style, entry_name, entrant, club)
-    medals = Entrant.find_by_sql(sql_for(:medals) % 'DESC')
-    @medals = medals.inject({}) {|hash,record|
+    @medals = Entrant.find_by_sql([sql_for(:medals) % 'DESC', true]).inject({}) {|hash,record|
       hash[record.sort_position.to_i] = [] if hash[record.sort_position.to_i].nil?
       record.mcab_qe = (!record.mcab_qe.nil? && ['1','t'].include?(record.mcab_qe)) if record.mcab_qe.kind_of?(String)
       hash[record.sort_position.to_i] += [ record ]
@@ -37,17 +36,17 @@ class Admin::ResultsController < AdministrationController
     end
 
     # Generate Individual point totals (place, name, club, points)
-    @individuals = Entrant.find_by_sql([sql_for(:individuals), false, true])
+    @individuals = Entrant.find_by_sql(sql_for(:individuals))
 
     # Generate Club point totals (place, club, points)
-    @clubs = Club.find_by_sql([sql_for(:clubs), true, Club.independent.id])
+    @clubs = Club.find_by_sql(sql_for(:clubs))
   end
 
   def web
     # Send the generated page to the client.
 
     # Generate category award winners (place, MCAB QE, style, entry_name, entrant, club)
-    @medals = Entrant.find_by_sql(sql_for(:medals) % 'ASC').inject({}) {|hash,record|
+    @medals = Entrant.find_by_sql([sql_for(:medals) % 'ASC', true]).inject({}) {|hash,record|
       hash[record.sort_position.to_i] = [] if hash[record.sort_position.to_i].nil?
       record.mcab_qe = (!record.mcab_qe.nil? && ['1','t'].include?(record.mcab_qe)) if record.mcab_qe.kind_of?(String)
       hash[record.sort_position.to_i] += [ record ]
@@ -64,13 +63,13 @@ class Admin::ResultsController < AdministrationController
 
     # Generate Individual point totals (place, name, club, points)
     sql = sql_for(:individuals).dup
-    ActiveRecord::Base.connection.add_limit!(sql, { :limit => 5 })
-    @individuals = Entrant.find_by_sql([sql, false, true])
+    ActiveRecord::Base.connection.add_limit!(sql[0], { :limit => 5 })
+    @individuals = Entrant.find_by_sql(sql)
 
     # Generate Club point totals (place, club, points)
     sql = sql_for(:clubs).dup
-    ActiveRecord::Base.connection.add_limit!(sql, { :limit => 5 })
-    @clubs = Club.find_by_sql([sql, true, Club.independent.id])
+    ActiveRecord::Base.connection.add_limit!(sql[0], { :limit => 5 })
+    @clubs = Club.find_by_sql(sql)
 
     send_data(render_to_string(:layout => false), :filename => 'results.html.erb', :type => 'text/plain') if params[:mode] == 'download'
   end
@@ -188,42 +187,38 @@ class Admin::ResultsController < AdministrationController
       sql = case type
             when :medals
               %q{
-  SELECT a.name AS award_name, e.place AS place, e.mcab_qe AS mcab_qe, s.name AS style_name, e.name AS entry_name, e.id AS entry_id, e.send_award AS send_award, b.*, c.position * 10 + a.position AS sort_position
-  FROM ((((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
-                        INNER JOIN styles AS s ON (s.id = e.style_id))
-                        INNER JOIN awards AS a ON (a.id = s.award_id))
-                        INNER JOIN categories AS c ON (c.id = a.category_id))
-  WHERE e.place IS NOT NULL
-  ORDER BY c.position, a.position, e.place %s
+  SELECT a.name AS award_name, c.position * 10 + a.position AS sort_position, tmp.*
+  FROM categories AS c LEFT OUTER JOIN awards AS a ON (c.id = a.category_id)
+                       LEFT OUTER JOIN (SELECT a.id AS award_id, e.place AS place, e.mcab_qe AS mcab_qe, s.name AS style_name, e.name AS entry_name, e.id AS entry_id, e.send_award AS send_award, b.*
+                                        FROM entries AS e, entrants AS b, styles AS s, awards AS a, categories AS c
+                                        WHERE e.place IS NOT NULL AND b.id = e.entrant_id AND s.id = e.style_id AND a.id = s.award_id AND c.id = a.category_id) AS tmp ON (a.id = tmp.award_id)
+  WHERE c.is_public = ?
+  ORDER BY sort_position, a.position, place %s
 }
 
             when :bos
               %q{
   SELECT e.bos_place AS place, s.name AS style_name, e.name AS entry_name, e.id AS entry_id, e.send_bos_award AS send_bos_award, b.*
-  FROM ((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
-                      INNER JOIN styles AS s ON (s.id = e.style_id))
-  WHERE e.bos_place IS NOT NULL AND s.bjcp_category %s (?)
+  FROM entries AS e, entrants AS b, styles AS s
+  WHERE e.bos_place IS NOT NULL AND s.bjcp_category %s (?) AND b.id = e.entrant_id AND s.id = e.style_id
   ORDER BY e.bos_place %s
 }
 
             when :mcab
               [ %q{
   SELECT s.bjcp_category AS qualifying_style, c.name AS qualifying_style_name, b.*
-  FROM ((((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
-                        INNER JOIN styles AS s ON (s.id = e.style_id))
-                        INNER JOIN awards AS a ON (a.id = s.award_id))
-                        INNER JOIN categories AS c ON (c.id = a.category_id))
-  WHERE e.mcab_qe = ?
+  FROM entries AS e, entrants AS b, styles AS s, awards AS a, categories AS c
+  WHERE e.mcab_qe = ? AND b.id = e.entrant_id AND s.id = e.style_id AND a.id = s.award_id AND c.id = a.category_id
   ORDER BY s.bjcp_category
 }, true ]
 
             when :scores
+              # NOTE: This computes the average score for each entry.
+              # FIXME: Alter SQL when support for assigned scores is added.
               %q{
   SELECT a.name AS award_name, s.name AS style_name, e.*, c.position * 10 + a.position AS sort_position, (SELECT AVG(score) FROM scores WHERE scores.entry_id = e.id GROUP BY entry_id) AS score
-  FROM (((entries AS e INNER JOIN styles AS s ON (s.id = e.style_id))
-                       INNER JOIN awards AS a ON (a.id = s.award_id))
-                       INNER JOIN categories AS c ON (c.id = a.category_id))
-  WHERE e.bottle_code IS NOT NULL
+  FROM entries AS e, styles AS s, awards AS a, categories AS c
+  WHERE e.bottle_code IS NOT NULL AND s.id = e.style_id AND a.id = s.award_id AND c.id = a.category_id
   ORDER BY c.position, a.position, COALESCE(e.place, 99), score DESC, e.bottle_code
 }
 
@@ -237,25 +232,22 @@ class Admin::ResultsController < AdministrationController
             # these SQL statements must change.
 
             when :individuals
-              %Q{
+              [ %Q{
   SELECT 4 * count(e.place) - sum(e.place) AS points, b.*
-  FROM ((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
-                      INNER JOIN styles AS s ON (s.id = e.style_id))
-  WHERE b.is_team = ? AND e.place < 4 AND s.point_qualifier = ?
+  FROM entries AS e, entrants AS b, styles AS s
+  WHERE b.is_team = ? AND e.place < 4 AND s.point_qualifier = ? AND b.id = e.entrant_id AND s.id = e.style_id
   GROUP BY b.id, #{Entrant.columns.collect(){|c| "b.#{c.name}" unless c.name == 'id'}.compact.join(', ')}
   ORDER BY points DESC, COALESCE(last_name || first_name || middle_name, team_name) ASC
-}
+}, false, true ]
 
             when :clubs
-              %Q{
+              [ %Q{
   SELECT 4 * count(e.place) - sum(e.place) AS points, c.*
-  FROM (((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
-                       INNER JOIN clubs AS c ON (c.id = b.club_id))
-  INNER JOIN styles AS s ON (s.id = e.style_id))
-  WHERE e.place IS NOT NULL AND s.point_qualifier = ? AND c.id <> ?
+  FROM entries AS e, entrants AS b, clubs AS c, styles AS s
+  WHERE e.place IS NOT NULL AND s.point_qualifier = ? AND c.id <> ? AND b.id = e.entrant_id AND c.id = b.club_id AND s.id = e.style_id
   GROUP BY c.id, #{Club.columns.collect(){|c| "c.#{c.name}" unless c.name == 'id'}.compact.join(', ')}
   ORDER BY points DESC, c.name ASC
-}
+}, true, Club.independent.id ]
             end
 
       unless pretty_print

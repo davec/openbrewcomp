@@ -33,31 +33,35 @@
   </tr>
 <% medals.each do |record|
      place = record.place.to_i > 3 ? "HM" : record.place -%>
-  <tr>
-    <% if include_send_column
-         field_id = "record_entries_#{record.entry_id}"
-         loading_indicator_id = "entry-award-update-indicator-#{record.entry_id}"
-    -%>
-      <td>
-        <%= check_box_tag(field_id, 1, record.send_award?,
-                          { :name => "record[entries][#{record.entry_id}][send_award]",
-                            :onclick => remote_function(:url => { :action => 'send_award',
-                                                                  :only_path => false,
-                                                                  :id => record.entry_id },
-                                                        :with => "'status=' + encodeURIComponent(checked)",
-                                                        :before => "$('#{loading_indicator_id}').style.visibility = 'visible'",
-                                                        :complete => "$('#{loading_indicator_id}').style.visibility = 'hidden'") }) %>
-        <span id="<%= loading_indicator_id %>" style="visibility:hidden;">
-          <%= image_tag("active_scaffold/default/indicator.gif",
-                        :class => "loading-indicator",
-                        :size => "16x16") %>
-        </span>
-      </td>
-    <% end -%>
-    <td><%= h place %> <%= mcab_qe_tag if record.mcab_qe %></td>
-    <td><%= h record.style_name %></td>
-    <td><%= h record.entry_name %></td>
-    <td><%= h record.expanded_name %></td>
-    <td><%= h record.club.name %></td>
+  <%- unless record.id.nil? -%>
+    <tr>
+      <%- if include_send_column
+            field_id = "record_entries_#{record.entry_id}"
+            loading_indicator_id = "entry-award-update-indicator-#{record.entry_id}"
+      -%>
+        <td>
+          <%= check_box_tag(field_id, 1, record.send_award?,
+                            { :name => "record[entries][#{record.entry_id}][send_award]",
+                              :onclick => remote_function(:url => { :action => 'send_award',
+                                                                    :only_path => false,
+                                                                    :id => record.entry_id },
+                                                          :with => "'status=' + encodeURIComponent(checked)",
+                                                          :before => "$('#{loading_indicator_id}').style.visibility = 'visible'",
+                                                          :complete => "$('#{loading_indicator_id}').style.visibility = 'hidden'") }) %>
+          <span id="<%= loading_indicator_id %>" style="visibility:hidden;">
+            <%= image_tag("active_scaffold/default/indicator.gif",
+                          :class => "loading-indicator",
+                          :size => "16x16") %>
+          </span>
+        </td>
+      <% end -%>
+      <td><%= h place %> <%= mcab_qe_tag if record.mcab_qe %></td>
+      <td><%= h record.style_name %></td>
+      <td><%= h record.entry_name %></td>
+      <td><%= h record.expanded_name %></td>
+      <td><%= h record.club.name %></td>
+  <%- else -%>
+    <td colspan="<%= num_columns %>" class="no-medals">No medals awarded</td>
+  <%- end -%>
   </tr>
 <% end -%>

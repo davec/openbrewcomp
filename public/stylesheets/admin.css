@@ -776,6 +776,15 @@ table#flight-tracker caption {
 }
 
 /*------------------------------
+ Results
+ ------------------------------*/
+
+.resultstable td.no-medals {
+  font-style: italic;
+  text-align: center;
+}
+
+/*------------------------------
  Scores
  ------------------------------*/
 
