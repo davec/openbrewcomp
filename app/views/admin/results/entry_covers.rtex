@@ -26,7 +26,7 @@
 
     \clearpage
     \begin{center}
-      \Huge{\textbf{<%= @competition_name -%>}}
+      \Huge{\textbf{<%= l competition_name -%>}}
 
       \LARGE{Entry Cover Sheet}
 

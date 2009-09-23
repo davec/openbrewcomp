@@ -88,7 +88,6 @@ class Admin::ResultsController < AdministrationController
   # wish to use them and instead generate the automatically from the
   # competition data in the database.
   def entry_covers
-    @competition_name = competition_data.name
     @entries = Entry.find_by_sql(sql_for(:scores))
     render_pdf 'entry_cover_sheets.pdf', :preprocess => true
   end
