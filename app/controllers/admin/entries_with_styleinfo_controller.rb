@@ -47,7 +47,8 @@ class Admin::EntriesWithStyleinfoController < AdministrationController
     config.columns << :category
     config.columns[:category].label = 'Style'
     config.columns[:category].sort = true
-    #config.columns[:category].sort_by :sql => "lpad(CAST(styles.bjcp_category AS CHAR(2)), 2, '0') || rpad(styles.bjcp_subcategory, 1, '0')"  ## Moved to update_config
+    #config.columns[:category].sort_by :sql => "lpad(CAST(styles.bjcp_category AS CHAR(2)), 2, '0') || rpad(styles.bjcp_subcategory, 1, '0')"
+    config.columns[:category].sort_by :method => 'category_sort_value'
     config.columns[:category].includes = [ :style ]
     config.columns[:category].search_sql = "(styles.bjcp_category||styles.bjcp_subcategory||' '||styles.name)"
 
@@ -91,7 +92,6 @@ class Admin::EntriesWithStyleinfoController < AdministrationController
 
       # Because the sql_* methods are inaccessible at the time the AS config is initialized
       active_scaffold_config.columns[:registration_code].search_sql = "CAST((#{sql_extract_year_from('entries.created_at')} * 10000 + entries.id) AS CHAR(8))"
-      active_scaffold_config.columns[:category].sort_by :sql => "#{sql_lpad('CAST(styles.bjcp_category AS CHAR(2))', 2, '0')} || #{sql_rpad('styles.bjcp_subcategory', 1, '0')}"
     end
 
     def conditions_for_collection
