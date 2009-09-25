@@ -55,7 +55,9 @@ module ActiveScaffold
 
       # run the configuration
       @active_scaffold_config = ActiveScaffold::Config::Core.new(model_id)
+      @active_scaffold_config_block = block
       self.active_scaffold_config.configure &block if block_given?
+      self.active_scaffold_config._configure_sti unless self.active_scaffold_config.sti_children.nil?
       self.active_scaffold_config._load_action_columns
       self.links_for_associations
 
@@ -93,6 +95,7 @@ module ActiveScaffold
           end
         end
       end
+      self.active_scaffold_config._add_sti_create_links if self.active_scaffold_config.add_sti_create_links?
     end
 
     # Create the automatic column links. Note that this has to happen when configuration is *done*, because otherwise the Nested module could be disabled. Actually, it could still be disabled later, couldn't it?
@@ -102,7 +105,7 @@ module ActiveScaffold
         next unless column.link.nil? and column.autolink
         if column.plural_association?
           # note: we can't create nested scaffolds on :through associations because there's no reverse association.
-          column.set_link('nested', :parameters => {:associations => column.name.to_sym}) #unless column.through_association?
+          column.set_link('nested', :parameters => {:associations => column.name.to_sym}, :html_options => {:class => column.name}) #unless column.through_association?
         elsif column.polymorphic_association?
           # note: we can't create inline forms on singular polymorphic associations
           column.clear_link
@@ -118,7 +121,7 @@ module ActiveScaffold
           column.actions_for_association_links.delete :new unless actions.include? :create
           column.actions_for_association_links.delete :edit unless actions.include? :update
           column.actions_for_association_links.delete :show unless actions.include? :show
-          column.set_link(:none, :controller => controller.controller_path, :crud_type => nil)
+          column.set_link(:none, :controller => controller.controller_path, :crud_type => nil, :html_options => {:class => column.name})
         end
       end
     end
@@ -134,11 +137,25 @@ module ActiveScaffold
     end
 
     def active_scaffold_paths
-      @active_scaffold_paths ||= ActionView::PathSet.new(@active_scaffold_overrides + @active_scaffold_custom_paths + @active_scaffold_frontends) unless @active_scaffold_overrides.nil? || @active_scaffold_custom_paths.nil? || @active_scaffold_frontends.nil?
+      return @active_scaffold_paths unless @active_scaffold_paths.nil?
+
+      @active_scaffold_paths = ActionView::PathSet.new
+      @active_scaffold_paths.concat @active_scaffold_overrides unless @active_scaffold_overrides.nil?
+      @active_scaffold_paths.concat @active_scaffold_custom_paths unless @active_scaffold_custom_paths.nil?
+      @active_scaffold_paths.concat @active_scaffold_frontends unless @active_scaffold_frontends.nil?
+      @active_scaffold_paths
     end
 
     def active_scaffold_config
-       @active_scaffold_config || self.superclass.instance_variable_get('@active_scaffold_config')
+      if @active_scaffold_config.nil?
+        config = self.superclass.active_scaffold_config if self.superclass.respond_to? :active_scaffold_config
+        self.active_scaffold config.model, &active_scaffold_config_block unless config.nil?
+      end
+      @active_scaffold_config
+    end
+
+    def active_scaffold_config_block
+      @active_scaffold_config_block || self.superclass.instance_variable_get(:@active_scaffold_config_block)
     end
 
     def active_scaffold_config_for(klass)
