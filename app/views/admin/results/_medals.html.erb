@@ -32,6 +32,7 @@
     <td width="<%= main_column_width_pct %>%">Club</td>
   </tr>
 <%- medals.each do |record|
+      style_name = record.style_id.to_i == Style.first_time[:id] ? Style.find_by_id(record.base_style_id).name : record.style_name
       place = record.place.to_i > 3 ? "HM" : record.place -%>
   <tr>
     <%- unless record.id.nil? -%>
@@ -56,7 +57,7 @@
         </td>
       <%- end -%>
       <td><%= h place %> <%= mcab_qe_tag if record.mcab_qe %></td>
-      <td><%= h record.style_name %></td>
+      <td><%= h style_name %></td>
       <td><%= h record.entry_name %></td>
       <td><%= h record.expanded_name %></td>
       <td><%= h record.club.name %></td>

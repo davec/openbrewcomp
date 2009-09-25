@@ -188,7 +188,7 @@ class Admin::ResultsController < AdministrationController
               %q{
   SELECT a.name AS award_name, c.position * 10 + a.position AS sort_position, tmp.*
   FROM categories AS c LEFT OUTER JOIN awards AS a ON (c.id = a.category_id)
-                       LEFT OUTER JOIN (SELECT a.id AS award_id, e.place AS place, e.mcab_qe AS mcab_qe, s.name AS style_name, e.name AS entry_name, e.id AS entry_id, e.send_award AS send_award, b.*
+                       LEFT OUTER JOIN (SELECT a.id AS award_id, e.place AS place, e.mcab_qe AS mcab_qe, s.name AS style_name, e.name AS entry_name, e.id AS entry_id, e.send_award AS send_award, e.style_id AS style_id, e.base_style_id AS base_style_id, b.*
                                         FROM entries AS e, entrants AS b, styles AS s, awards AS a, categories AS c
                                         WHERE e.place IS NOT NULL AND b.id = e.entrant_id AND s.id = e.style_id AND a.id = s.award_id AND c.id = a.category_id) AS tmp ON (a.id = tmp.award_id)
   WHERE c.is_public = ?
