@@ -1,14 +1,14 @@
-<% award = Award.find_by_name(medals[0].award_name)
-   num_columns = 5
-   main_column_width_pct = 24
-   include_send_column ||= false
-   if include_send_column
-     num_columns += 1
-     main_column_width_pct -= 1
-   end
-   mcab_qe_tag ||= CompetitionData.instance.mcab? ? mcab_qe : ''
-   entry_count = award.styles.inject(0){|sum,s| sum + s.entries.checked_in.length}
-   styles = award.styles.collect{|s| [ s.category, s.description_url ]}
+<%- award = Award.find_by_name(medals[0].award_name)
+    num_columns = 5
+    main_column_width_pct = 24
+    include_send_column ||= false
+    if include_send_column
+      num_columns += 1
+      main_column_width_pct -= 1
+    end
+    mcab_qe_tag ||= CompetitionData.instance.mcab? ? mcab_qe : ''
+    entry_count = award.styles.inject(0){|sum,s| sum + s.entries.checked_in.length}
+    styles = award.styles.collect{|s| [ s.category, s.description_url ]}
 -%>
   <tr>
     <th colspan="<%= num_columns %>">
@@ -22,19 +22,19 @@
     </th>
   </tr>
   <tr class="header">
-    <% if include_send_column -%>
+    <%- if include_send_column -%>
     <td width="4%">Send?</td>
-    <% end -%>
+    <%- end -%>
     <td width="4%">Place</td>
     <td width="<%= main_column_width_pct %>%">Description</td>
     <td width="<%= main_column_width_pct %>%">Entry Name</td>
     <td width="<%= main_column_width_pct %>%">Brewer(s)</td>
     <td width="<%= main_column_width_pct %>%">Club</td>
   </tr>
-<% medals.each do |record|
-     place = record.place.to_i > 3 ? "HM" : record.place -%>
-  <%- unless record.id.nil? -%>
-    <tr>
+<%- medals.each do |record|
+      place = record.place.to_i > 3 ? "HM" : record.place -%>
+  <tr>
+    <%- unless record.id.nil? -%>
       <%- if include_send_column
             field_id = "record_entries_#{record.entry_id}"
             loading_indicator_id = "entry-award-update-indicator-#{record.entry_id}"
@@ -54,14 +54,14 @@
                           :size => "16x16") %>
           </span>
         </td>
-      <% end -%>
+      <%- end -%>
       <td><%= h place %> <%= mcab_qe_tag if record.mcab_qe %></td>
       <td><%= h record.style_name %></td>
       <td><%= h record.entry_name %></td>
       <td><%= h record.expanded_name %></td>
       <td><%= h record.club.name %></td>
-  <%- else -%>
-    <td colspan="<%= num_columns %>" class="no-medals">No medals awarded</td>
-  <%- end -%>
+    <%- else -%>
+      <td colspan="<%= num_columns %>" class="no-medals">No medals awarded</td>
+    <%- end -%>
   </tr>
-<% end -%>
+<%- end -%>
