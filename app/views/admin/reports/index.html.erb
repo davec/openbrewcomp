@@ -1,6 +1,7 @@
 <% @page_title = "#{competition_name} Reports"
-   registered = 'registered'
-   processed = 'processed'
+   registered = "registered"
+   processed = "processed"
+   unprocessed = "unprocessed"
    default_view = @has_processed_entries ? processed : registered %>
 
 <div id="reports-menu">
@@ -8,14 +9,19 @@
     <div id="type-selector">
       <span>Entries to report:</span><br />
       <div title="All registered entries">
-        <%= radio_button_tag 'report', registered, default_view == registered,
+        <%= radio_button_tag :report, registered, default_view == registered,
                              { :onclick => "setReportType('#{registered}');" } %>
         <span class="radioLabel">Registered</span>
       </div>
       <div title="All entries that have been assigned a bottle code">
-        <%= radio_button_tag 'report', processed, default_view == processed,
+        <%= radio_button_tag :report, processed, default_view == processed,
                              { :onclick => "setReportType('#{processed}');" } %>
         <span class="radioLabel">Processed</span>
+      </div>
+      <div title="All entries that have not been assigned a bottle code">
+        <%= radio_button_tag :report, unprocessed, default_view == unprocessed,
+                             { :onclick => "setReportType('#{unprocessed}');" } %>
+        <span class="radioLabel">Unprocessed</span>
       </div>
     </div>
   <% end -%>

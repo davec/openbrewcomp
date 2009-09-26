@@ -85,54 +85,63 @@ class Admin::ReportsController < AdministrationController
   private
 
     def sql_for(type, pretty_print = false)
+      processed_condition = case params[:type]
+                            when "processed"
+                              "entries.bottle_code IS NOT NULL"
+                            when "unprocessed"
+                              "entries.bottle_code IS NULL"
+                            else
+                              nil
+                            end
       sql = case type
             when :individuals, :teams
+              name_column = type == :individuals \
+                            ? "entrants.last_name||entrants.first_name||entrants.middle_name" \
+                            : "entrants.team_name"
               t = %Q{
-  SELECT COUNT(e.id) AS entry_count, b.*
-  FROM ((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
-                      INNER JOIN clubs AS c ON (c.id = b.club_id))
-  WHERE b.is_team = ?
-        #{params[:type] == 'processed' ? 'AND e.bottle_code IS NOT NULL' : ''}
-  GROUP BY #{Entrant.columns.collect{|c| "b.#{c.name}"}.join(', ')}
-  ORDER BY entry_count DESC, lower(#{type == :individuals ? 'b.last_name||b.first_name||b.middle_name' : 'b.team_name'})
+  SELECT COUNT(entries.id) AS entry_count, entrants.*
+  FROM entries, entrants, clubs
+  WHERE entrants.is_team = ? AND entrants.id = entries.entrant_id AND clubs.id = entrants.club_id
+        #{"AND #{processed_condition}" unless processed_condition.nil?}
+  GROUP BY #{Entrant.columns.collect{|c| "entrants.#{c.name}"}.join(", ")}
+  ORDER BY entry_count DESC, lower(#{name_column})
 }
               [ t, type == :teams ]
             when :clubs
               %Q{
-  SELECT COUNT(e.id) AS entry_count, c.*
-  FROM ((entries AS e INNER JOIN entrants AS b ON (b.id = e.entrant_id))
-                      INNER JOIN clubs AS c ON (c.id = b.club_id))
-  #{params[:type] == 'processed' ? 'WHERE e.bottle_code IS NOT NULL' : ''}
-  GROUP BY #{Club.columns.collect{|c| "c.#{c.name}"}.join(', ')}
-  ORDER BY entry_count DESC, lower(c.name)
+  SELECT COUNT(entries.id) AS entry_count, clubs.*
+  FROM entries, entrants, clubs
+  WHERE entrants.id = entries.entrant_id AND clubs.id = entrants.club_id
+        #{"AND #{processed_condition}" unless processed_condition.nil?}
+  GROUP BY #{Club.columns.collect{|c| "clubs.#{c.name}"}.join(", ")}
+  ORDER BY entry_count DESC, lower(clubs.name)
 }
             when :style_counts
               %Q{
-  SELECT COUNT(e.id) AS entry_count, s.id
-  FROM (entries AS e INNER JOIN styles AS s ON (s.id = e.style_id))
-  #{params[:type] == 'processed' ? 'WHERE e.bottle_code IS NOT NULL' : ''}
-  GROUP BY s.id
+  SELECT COUNT(entries.id) AS entry_count, styles.id
+  FROM entries, styles
+  WHERE styles.id = entries.style_id
+        #{"AND #{processed_condition}" unless processed_condition.nil?}
+  GROUP BY styles.id
 }
             when :regions
               %Q{
-  SELECT COUNT(e.id) AS entry_count, c.name AS country_name, r.*
-  FROM (((entries AS e INNER JOIN entrants ON (entrants.id = e.entrant_id))
-                       INNER JOIN countries AS c ON (c.id = entrants.country_id))
-                       INNER JOIN regions AS r ON (r.id = entrants.region_id))
-  #{params[:type] == 'processed' ? 'WHERE e.bottle_code IS NOT NULL' : ''}
-  GROUP BY c.name, #{Region.columns.collect{|c| "r.#{c.name}"}.join(', ')}
-  ORDER BY c.name, r.name
+  SELECT COUNT(entries.id) AS entry_count, countries.name AS country_name, regions.*
+  FROM entries, entrants, countries, regions
+  WHERE entrants.id = entries.entrant_id AND countries.id = entrants.country_id AND regions.id = entrants.region_id
+        #{"AND #{processed_condition}" unless processed_condition.nil?}
+  GROUP BY countries.name, #{Region.columns.collect{|c| "regions.#{c.name}"}.join(", ")}
+  ORDER BY countries.name, regions.name
 }
             when :excess_entries
               %Q{
-  SELECT styles.award_id, awards.name AS award_name, e.*
-  FROM (((entrants AS e INNER JOIN entries ON (e.id = entries.entrant_id))
-                        INNER JOIN styles ON (entries.style_id = styles.id))
-                        INNER JOIN awards ON (styles.award_id = awards.id))
-  #{params[:type] == 'processed' ? 'WHERE entries.bottle_code IS NOT NULL' : ''}
-  GROUP BY styles.award_id, awards.name, #{Entrant.columns.collect{|c| "e.#{c.name}"}.join(', ')}
+  SELECT styles.award_id, awards.name AS award_name, entrants.*
+  FROM entries, entrants, styles, awards
+  WHERE entrants.id = entries.entrant_id AND styles.id = entries.style_id AND awards.id = styles.award_id
+        #{"AND #{processed_condition}" unless processed_condition.nil?}
+  GROUP BY styles.award_id, awards.name, #{Entrant.columns.collect{|c| "entrants.#{c.name}"}.join(", ")}
   HAVING COUNT(styles.award_id) > #{Award::MAX_ENTRIES}
-  ORDER BY e.id, styles.award_id
+  ORDER BY entrants.id, styles.award_id
 }
             end
 
