@@ -224,7 +224,8 @@ class Admin::FlightsController < AdministrationController
       print_flight_sheets flight
     elsif params.key?(:round)
       flights = Flight.all(:include => [ :round, :entries ],
-                           :conditions => [ 'rounds.position = ? AND flights.assigned = ? AND flights.completed = ?', params[:round], false, false ])
+                           :conditions => [ 'rounds.position = ? AND flights.assigned = ? AND flights.completed = ?', params[:round], false, false ],
+                           :order => 'flights.award_id, flights.id')
       print_flight_sheets flights
     else
       raise ArgumentException, 'Must specify :id or :round'
