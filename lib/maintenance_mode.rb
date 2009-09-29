@@ -7,7 +7,7 @@ module MaintenanceMode
   protected
 
     def disabled?
-      require 'hpricot'
+      require 'nokogiri'
 
       maintfile = "#{RAILS_ROOT}/public/system/maintenance.html"
       if FileTest::exist?(maintfile)
@@ -19,8 +19,8 @@ module MaintenanceMode
                       :status => '503 Service Unavailable')
           }
           format.js {
-            doc = open(maintfile) { |f| Hpricot(f) }
-            send_data((doc/"p").collect{|e| e.inner_html.squish}.join("\n\n"),
+            doc = Nokogiri::HTML(open(maintfile))
+            send_data(doc.xpath("//p").collect{|e| e.inner_html.squish}.join("\n\n"),
                       :type => 'text/plain; charset=utf-8',
                       :status => '503 Service Unavailable')
           }
