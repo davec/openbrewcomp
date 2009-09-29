@@ -59,7 +59,7 @@ module Admin::JudgesHelper
 
   def staff_points_column(record)
     return '-' if record.organizer?
-    "%.1f" % record.staff_points if record.staff_points
+    "%.1f" % record.staff_points if record.staff_points > 0
   end
 
   def judge_points_column(record)
@@ -160,6 +160,7 @@ module Admin::JudgesHelper
     options = form_element_input_options(input_name, Judge)
     options[:disabled] = @available_staff_points.to_f == 0
     options[:size] = options[:maxsize] = 3
+    options[:class] = "#{options[:class]} text-input".strip
 
     returning String.new do |str|
       str << text_field(:record, :staff_points, options)

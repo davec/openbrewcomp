@@ -32,12 +32,13 @@ class Admin::RightsControllerTest < ActionController::TestCase
                                  :action => '*' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_rights_path
   end
 
   def test_search
-    get :update_table, :search => rights(:testright).name
-    assert_redirected_to :action => 'index'
+    name = rights(:testright).name
+    get :update_table, :search => name
+    assert_redirected_to admin_rights_path(:search => name)
   end
 
   def test_show
@@ -58,7 +59,7 @@ class Admin::RightsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :description => "#{record.description} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_rights_path
   end
 
   def test_destroy
@@ -66,7 +67,7 @@ class Admin::RightsControllerTest < ActionController::TestCase
     assert_difference('Right.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_rights_path
   end
 
   def test_unauthorized_access

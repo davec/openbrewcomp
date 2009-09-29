@@ -120,7 +120,7 @@ class Judge < ActiveRecord::Base
   end
 
   def is_staff?
-    !staff_points.nil? && staff_points > 0.0
+    staff_points > 0.0
   end
 
   # Return a numeric value to be used in a boolean sort
@@ -130,7 +130,7 @@ class Judge < ActiveRecord::Base
 
   def available_staff_points
     [ PointAllocation.organizer_points - earned_points,
-      @staff_points + Judge.unallocated_staff_points ].min
+      staff_points + Judge.unallocated_staff_points ].min
   end
 
   def self.unallocated_staff_points
@@ -145,7 +145,7 @@ class Judge < ActiveRecord::Base
 
   def points
     return PointAllocation.organizer_points if organizer?
-    @staff_points + earned_points + @steward_points
+    staff_points + earned_points + @steward_points
   end
 
   def role
@@ -229,9 +229,9 @@ class Judge < ActiveRecord::Base
       # that a flight is updated after being marked complete with the various
       # point buckets stored in the judge's record.
 
-      @staff_points = staff_points || 0
+      self.staff_points = attributes["staff_points"] || 0.0
       @judge_points = @steward_points = @bos_points = 0.0
-      return if organizer?
+      return if organizer? || new_record?
 
       judging_sessions = judgings.reject{|sess| sess.flight.judging_session.nil?}
       non_bos_sessions = judging_sessions.reject{|sess| sess.flight.round == Round.bos}
@@ -261,9 +261,6 @@ class Judge < ActiveRecord::Base
       # competition, but no steward points are awarded if judge points
       # are also awarded.
       @steward_points = [ judging_sessions.select{|sess| sess.role == Judging::ROLE_STEWARD}.group_by{|sess| sess.flight.judging_session.date}.length * 0.5, 1.0 ].min unless @judge_points > 0.0 || judging_sessions.empty?
-
-      # Save the existing staff points for later validation
-      @staff_points = staff_points || 0
     end
 
     def before_validation
@@ -279,7 +276,6 @@ class Judge < ActiveRecord::Base
       elsif !country_id.nil?
         self.country = Country.find(country_id)
       end
-      self.staff_points = nil if staff_points == 0 || organizer?
     end
 
     def after_validation
@@ -294,24 +290,20 @@ class Judge < ActiveRecord::Base
       # Discard a judge number for non-BJCP ranks
       self.judge_number = nil unless judge_rank && judge_rank.bjcp?
       
-      # If club_name is specified, add it to the clubs table first then
-      # use the new club's id for the club_id field.
+      # If club_name is specified, add it to the clubs table
       if club_id == Club.other.id && !club_name.blank?
         club_name.squish!
 
         # TODO: More sophisticated checking for similar, not just identical,
         # club names.
 
-        club = Club.create(:name => club_name)
-        begin
-          club.save!
-        rescue
-          # Save error, probably because the record already exists; verify
-          club = Club.find_by_name(club_name)
-          return false if club.nil?  # Bail out if the club does not exist
-        end
-        self.club_id = club.id
-        self.club = Club.find(club.id)
+        # This doesn't quite do what we want since there's no way to check
+        # for case-insenitive matches.
+        #self.club = Club.find_or_create_by_name(club_name)
+
+        record = Club.first(:conditions => [ 'LOWER(name) = ?', club_name.downcase ])
+        record = Club.create(:name => club_name) if record.nil?
+        self.club = record
       end
     end
 
@@ -417,7 +409,7 @@ class Judge < ActiveRecord::Base
 
     def validate_staff_points
       if Controller.admin_view?
-        errors.add(:staff_points, "must not exceed #{available_staff_points}") unless staff_points.nil? || staff_points <= available_staff_points
+        errors.add(:staff_points, "must not exceed #{available_staff_points}") unless staff_points <= available_staff_points
       end
     end
 

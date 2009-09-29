@@ -53,7 +53,7 @@ class Admin::CompetitionDataControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_competition_data_index_path
   end
 
   def test_destroy_action_should_not_be_recognized

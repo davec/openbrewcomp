@@ -31,7 +31,7 @@ class Admin::CarbonationControllerTest < ActionController::TestCase
       post :create, :record => { :description => description }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_carbonation_index_path
 
     # Verify that the record's position is at the end of the list
     record = Carbonation.find_by_description(description)
@@ -40,8 +40,9 @@ class Admin::CarbonationControllerTest < ActionController::TestCase
   end
 
   def test_search
-    get :update_table, :search => 'petillant'
-    assert_redirected_to :action => 'index'
+    name = "petillant"
+    get :update_table, :search => name
+    assert_redirected_to admin_carbonation_index_path(:search => name)
   end
 
   def test_show_action_should_not_be_recognized
@@ -62,7 +63,7 @@ class Admin::CarbonationControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :description => "#{record.description} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_carbonation_index_path
   end
 
   def test_destroy
@@ -70,7 +71,7 @@ class Admin::CarbonationControllerTest < ActionController::TestCase
     assert_difference('Carbonation.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_carbonation_index_path
   end
 
 end

@@ -30,8 +30,9 @@ class Admin::EntriesWithStyleinfoControllerTest < ActionController::TestCase
   end
 
   def test_search
-    get :update_table, :search => Date.today.year
-    assert_redirected_to :action => 'index'
+    year = Date.today.year
+    get :update_table, :search => year
+    assert_redirected_to admin_entries_with_styleinfo_index_path(:search => year)
   end
 
   def test_show
@@ -52,7 +53,7 @@ class Admin::EntriesWithStyleinfoControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :style_info => "#{record.style_info} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entries_with_styleinfo_index_path
   end
 
   def test_purge_style_info
@@ -60,7 +61,7 @@ class Admin::EntriesWithStyleinfoControllerTest < ActionController::TestCase
     assert_difference('get_record_count', -1) do
       post :update, :id => record.id, :record => { :style_info => '' }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entries_with_styleinfo_index_path
   end
 
   def test_destroy_action_should_not_be_recognized

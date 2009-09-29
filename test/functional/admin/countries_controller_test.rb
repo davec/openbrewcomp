@@ -30,12 +30,13 @@ class Admin::CountriesControllerTest < ActionController::TestCase
                                  :country_code => 'AC' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_countries_path
   end
 
   def test_search
-    get :update_table, :search => 'island'
-    assert_redirected_to :action => 'index'
+    name = "island"
+    get :update_table, :search => name
+    assert_redirected_to admin_countries_path(:search => name)
   end
 
   def test_show
@@ -56,7 +57,7 @@ class Admin::CountriesControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_countries_path
   end
 
   def test_destroy
@@ -64,7 +65,7 @@ class Admin::CountriesControllerTest < ActionController::TestCase
     assert_difference('Country.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_countries_path
   end
 
   def test_cannot_destroy_country_with_entrants

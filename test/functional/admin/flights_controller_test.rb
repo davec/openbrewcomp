@@ -334,12 +334,13 @@ class Admin::FlightsControllerTest < ActionController::TestCase
                                  :award => { :id => Award.find(:first, :order => 'id').id.to_s } }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_flights_path
   end
 
   def test_search
-    get :update_table, :search => 'Best'
-    assert_redirected_to :action => 'index'
+    name = "Best"
+    get :update_table, :search => name
+    assert_redirected_to admin_flights_path(:search => name)
   end
 
   def test_show
@@ -360,7 +361,7 @@ class Admin::FlightsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_flights_path
   end
 
   def test_destroy
@@ -371,7 +372,7 @@ class Admin::FlightsControllerTest < ActionController::TestCase
     assert_difference('Flight.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_flights_path
   end
 
   def test_cannot_destroy_assigned_flight

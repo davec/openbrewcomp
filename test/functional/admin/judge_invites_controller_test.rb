@@ -34,7 +34,7 @@ class Admin::JudgeInvitesControllerTest < ActionController::TestCase
     message = 'This is a test'
 
     post :send_email, :invite => { :message => message }
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judge_invitations_path
     assert_equal "Spawned process to send email to #{email_count} judges.", flash[:notice]
     assert_equal email_count, @emails.size
     email1 = @emails.first
@@ -48,7 +48,7 @@ class Admin::JudgeInvitesControllerTest < ActionController::TestCase
     message = 'This is a test'
 
     post :send_email, :invite => { :subject => subject, :message => message }
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judge_invitations_path
     assert_equal "Spawned process to send email to #{email_count} judges.", flash[:notice]
     assert_equal email_count, @emails.size
     email1 = @emails.first
@@ -58,7 +58,7 @@ class Admin::JudgeInvitesControllerTest < ActionController::TestCase
 
   def test_should_not_send_with_empty_message
     post :send_email, :invite => { :message => '' }
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judge_invitations_path
     assert_equal 'You must provide a message', flash[:judge_invite_error]
     assert_equal 0, @emails.size
   end
@@ -69,7 +69,7 @@ class Admin::JudgeInvitesControllerTest < ActionController::TestCase
     message = 'This is a test'
 
     post :send_email, :invite => { :target => target, :message => message }
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judge_invitations_path
     assert_equal "Spawned process to send email to #{email_count} judges.", flash[:notice]
     assert_equal email_count, @emails.size
     email1 = @emails.first
@@ -83,7 +83,7 @@ class Admin::JudgeInvitesControllerTest < ActionController::TestCase
     message = 'This is a test'
 
     post :send_email, :invite => { :target => target, :message => message }
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judge_invitations_path
     assert_equal "Spawned process to send email to #{email_count} judges.", flash[:notice]
     assert_equal email_count, @emails.size
     email1 = @emails.first

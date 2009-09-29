@@ -31,7 +31,7 @@ class Admin::RoundsControllerTest < ActionController::TestCase
       post :create, :record => { :name => name }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_rounds_path
 
     # Verify that the record's position is at the end of the list
     record = Round.find_by_name(name)
@@ -40,8 +40,9 @@ class Admin::RoundsControllerTest < ActionController::TestCase
   end
 
   def test_search
-    get :update_table, :search => 'first'
-    assert_redirected_to :action => 'index'
+    name = "first"
+    get :update_table, :search => name
+    assert_redirected_to admin_rounds_path(:search => name)
   end
 
   def test_show
@@ -62,7 +63,7 @@ class Admin::RoundsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (redux)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_rounds_path
   end
 
   def test_destroy
@@ -75,7 +76,7 @@ class Admin::RoundsControllerTest < ActionController::TestCase
     assert_difference('Round.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_rounds_path
   end
 
   def test_cannot_destroy_round_with_flights

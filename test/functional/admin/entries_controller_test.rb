@@ -36,8 +36,9 @@ class Admin::EntriesControllerTest < ActionController::TestCase
   end
 
   def test_search
-    get :update_table, :search => Date.today.year
-    assert_redirected_to :action => 'index'
+    year = Date.today.year
+    get :update_table, :search => year
+    assert_redirected_to admin_entries_path(:search => year)
   end
 
   def test_show
@@ -58,7 +59,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => 'New Name' }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entries_path
   end
 
   def test_destroy
@@ -66,7 +67,7 @@ class Admin::EntriesControllerTest < ActionController::TestCase
     assert_difference('Entry.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entries_path
   end
 
   def test_print

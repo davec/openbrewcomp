@@ -136,7 +136,7 @@ class Entrant < ActiveRecord::Base
         # for case-insenitive matches.
         #self.club = Club.find_or_create_by_name(club_name)
 
-        record = Club.find(:first, :conditions => [ 'LOWER(name) = ?', club_name.downcase ])
+        record = Club.first(:conditions => [ 'LOWER(name) = ?', club_name.downcase ])
         record = Club.create(:name => club_name) if record.nil?
         self.club = record
       end

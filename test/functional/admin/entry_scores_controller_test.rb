@@ -68,7 +68,7 @@ class Admin::EntryScoresControllerTest < ActionController::TestCase
     #record = entries(:i1_1D)
     #post :update, :id => record.id,
     #              :record => { 'What goes here?' }
-    #assert_redirected_to :action => 'index'
+    #assert_redirected_to admin_entry_score_path
   end
 
   def test_destroy_action_should_not_be_recognized

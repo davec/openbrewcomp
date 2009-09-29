@@ -34,7 +34,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
                                  :judge_number => 'A0987' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judges_path
   end
 
   def test_create_with_time_availability
@@ -53,7 +53,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
                     }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judges_path
   end
 
   def test_create_with_category_preferences
@@ -69,12 +69,13 @@ class Admin::JudgesControllerTest < ActionController::TestCase
                     }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judges_path
   end
 
   def test_search
-    get :update_table, :search => 'pro'
-    assert_redirected_to :action => 'index'
+    name = "pro"
+    get :update_table, :search => name
+    assert_redirected_to admin_judges_path(:search => name)
   end
 
   def test_show
@@ -95,7 +96,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :last_name => "#{record.last_name} Jr." }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judges_path
   end
 
   def test_update_time_available
@@ -111,7 +112,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
                       }
                     }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judges_path
   end
 
   def test_update_category_preferences
@@ -124,7 +125,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
                       }
                     }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judges_path
   end
 
   def test_destroy
@@ -132,7 +133,7 @@ class Admin::JudgesControllerTest < ActionController::TestCase
     assert_difference('Judge.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judges_path
   end
 
   def test_cannot_destroy_seated_judge

@@ -32,7 +32,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
                                  :password_confirmation => 'password' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_users_path
   end
 
   def test_create_case_sensitivity
@@ -44,7 +44,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
                                  :password_confirmation => 'password' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_users_path
 
     record = User.find_by_login(login.downcase)
     assert_not_nil record
@@ -52,8 +52,9 @@ class Admin::UsersControllerTest < ActionController::TestCase
   end
 
   def test_search
-    get :update_table, :search => 'testuser7'
-    assert_redirected_to :action => 'index'
+    name = "testuser7"
+    get :update_table, :search => name
+    assert_redirected_to admin_users_path(:search => name)
   end
 
   def test_show
@@ -80,14 +81,14 @@ class Admin::UsersControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} is not a number" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_users_path
   end
 
   def test_update_admin
     record = users(:admin)
     post :update, :id => record.id,
                   :record => { :email => 'foo@example.com' }
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_users_path
   end
 
   def test_cannot_update_admin_if_not_admin
@@ -112,7 +113,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_difference('User.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_users_path
   end
 
   def test_cannot_destroy_admin_as_admin

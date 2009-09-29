@@ -31,12 +31,13 @@ class Admin::AwardsControllerTest < ActionController::TestCase
                                  :category => { :id => categories(:first_time).id.to_s } }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_awards_path
   end
 
   def test_search
-    get :update_table, :search => 'lager'
-    assert_redirected_to :action => 'index'
+    name = "lager"
+    get :update_table, :search => name
+    assert_redirected_to admin_awards_path(:search => name)
   end
 
   def test_show
@@ -57,7 +58,7 @@ class Admin::AwardsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_awards_path
   end
 
   def test_destroy
@@ -65,7 +66,7 @@ class Admin::AwardsControllerTest < ActionController::TestCase
     assert_difference('Award.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_awards_path
   end
 
   def test_cannot_destroy_award_with_entries

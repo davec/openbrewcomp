@@ -40,12 +40,13 @@ class Admin::PointAllocationsControllerTest < ActionController::TestCase
                                  :judge => judge_points }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_point_allocations_path
   end
 
   def test_search
-    get :update_table, :search => '3.0'
-    assert_redirected_to :action => 'index'
+    value = "3.0"
+    get :update_table, :search => value
+    assert_redirected_to admin_point_allocations_path(:search => value)
   end
 
   def test_show
@@ -65,7 +66,7 @@ class Admin::PointAllocationsControllerTest < ActionController::TestCase
     assert_no_difference 'PointAllocation.count' do
       post :update, :id => record.id, :record => { :judge => record.judge + 0.5 }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_point_allocations_path
   end
 
   def test_delete
@@ -73,7 +74,7 @@ class Admin::PointAllocationsControllerTest < ActionController::TestCase
     assert_difference('PointAllocation.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_point_allocations_path
   end
 
 end

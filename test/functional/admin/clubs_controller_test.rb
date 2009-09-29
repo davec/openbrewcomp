@@ -30,12 +30,13 @@ class Admin::ClubsControllerTest < ActionController::TestCase
       post :create, :record => { :name => 'New Club' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_clubs_path
   end
 
   def test_search
-    get :update_table, :search => 'rangers'
-    assert_redirected_to :action => 'index'
+    name = "rangers"
+    get :update_table, :search => name
+    assert_redirected_to admin_clubs_path(:search => name)
   end
 
   def test_show_action_should_not_be_recognized
@@ -56,7 +57,7 @@ class Admin::ClubsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_clubs_path
   end
 
   def test_destroy
@@ -64,7 +65,7 @@ class Admin::ClubsControllerTest < ActionController::TestCase
     assert_difference('Club.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_clubs_path
   end
 
   def test_cannot_destroy_club_with_entries

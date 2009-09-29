@@ -33,7 +33,7 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
                                  :club => { :id => clubs(:independent).id } }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entrants_path
   end
 
   def test_create_with_existing_club_of_different_case
@@ -50,7 +50,7 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
                                  :club_name => clubs(:rangers).name.upcase }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entrants_path
   end
 
   def test_create_with_new_club
@@ -66,12 +66,13 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
                                  :club_name => 'A New Club' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entrants_path
   end
 
   def test_search
-    get :update_table, :search => 'Brewer'
-    assert_redirected_to :action => 'index'
+    name = "Brewer"
+    get :update_table, :search => name
+    assert_redirected_to admin_entrants_path(:search => name)
   end
 
   def test_show
@@ -92,7 +93,7 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :last_name => "#{record.last_name} Jr." }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entrants_path
   end
 
   def test_delete
@@ -100,7 +101,7 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
     assert_difference('Entrant.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_entrants_path
   end
 
   def test_help

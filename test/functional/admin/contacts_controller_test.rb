@@ -31,12 +31,13 @@ class Admin::ContactsControllerTest < ActionController::TestCase
                                  :email => 'testmail@example.com' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_contacts_path
   end
 
   def test_search
-    get :update_table, :search => 'coordinator'
-    assert_redirected_to :action => 'index'
+    name = "coordinator"
+    get :update_table, :search => name
+    assert_redirected_to admin_contacts_path(:search => name)
   end
 
   def test_show
@@ -57,7 +58,7 @@ class Admin::ContactsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_contacts_path
   end
 
   def test_destroy
@@ -65,7 +66,7 @@ class Admin::ContactsControllerTest < ActionController::TestCase
     assert_difference('Contact.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_contacts_path
   end
 
 end

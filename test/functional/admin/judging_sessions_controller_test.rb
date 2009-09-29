@@ -33,7 +33,7 @@ class Admin::JudgingSessionsControllerTest < ActionController::TestCase
       post :create, :record => { :description => description, :date => @today }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judging_sessions_path
 
     # Verify that the record's position is at the end of the list
     record = JudgingSession.find_by_description(description)
@@ -42,8 +42,9 @@ class Admin::JudgingSessionsControllerTest < ActionController::TestCase
   end
 
   def test_search
-    get :update_table, :search => 'Session'
-    assert_redirected_to :action => 'index'
+    name = "Session"
+    get :update_table, :search => name
+    assert_redirected_to admin_judging_sessions_path(:search => name)
   end
 
   def test_show
@@ -66,7 +67,7 @@ class Admin::JudgingSessionsControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :description => "#{record.description} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judging_sessions_path
   end
 
   def test_destroy_session_without_flights
@@ -74,7 +75,7 @@ class Admin::JudgingSessionsControllerTest < ActionController::TestCase
     assert_difference('JudgingSession.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_judging_sessions_path
   end
 
   def test_cannot_destroy_session_with_flights

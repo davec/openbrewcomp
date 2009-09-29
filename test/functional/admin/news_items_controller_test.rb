@@ -30,12 +30,13 @@ class Admin::NewsItemsControllerTest < ActionController::TestCase
                                  :description_raw => 'Testing news item creation' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_news_items_path
   end
 
   def test_search
-    get :update_table, :search => 'News Item 2'
-    assert_redirected_to :action => 'index'
+    name = "News Item 2"
+    get :update_table, :search => name
+    assert_redirected_to admin_news_items_path(:search => name)
   end
 
   def test_show
@@ -57,7 +58,7 @@ class Admin::NewsItemsControllerTest < ActionController::TestCase
                     :record => { :title => "#{record.title} (modified)",
                                  :description_raw => "#{record.description_raw} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_news_items_path
   end
 
   def test_destroy
@@ -65,7 +66,7 @@ class Admin::NewsItemsControllerTest < ActionController::TestCase
     assert_difference('NewsItem.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_news_items_path
   end
 
 end

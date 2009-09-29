@@ -8,8 +8,14 @@ if controller.send :successful?
 
   #### BEGIN ADDITION ####
 
-  page.replace 'competition-organizer', :partial => 'competition_organizer' if @is_admin_view
-  page.replace 'unallocated-staff-points', :partial => 'unallocated_staff_points' if @is_admin_view
+  if @is_admin_view
+    page.replace 'competition-organizer',
+                 :partial => 'competition_organizer',
+                 :locals => { :competition_organizer => @options[:competition_organizer] }
+    page.replace 'unallocated-staff-points',
+                 :partial => 'unallocated_staff_points',
+                 :locals => { :unallocated_staff_points => @options[:unallocated_staff_points] }
+  end
 
   #### END ADDITION ####
 

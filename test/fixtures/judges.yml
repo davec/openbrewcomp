@@ -111,6 +111,7 @@ experienced_judge:
   judge_rank: experienced
   confirmed: true
   checked_in: true
+  staff_points: 0.5
   user: admin
   access_key: <%= Digest::MD5.hexdigest((object_id + rand(255)).to_s) %>
 

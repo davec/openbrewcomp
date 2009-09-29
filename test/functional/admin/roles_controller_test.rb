@@ -30,12 +30,13 @@ class Admin::RolesControllerTest < ActionController::TestCase
                                  :description => 'New Role Description' }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_roles_path
   end
 
   def test_search
-    get :update_table, :search => roles(:testrole).name
-    assert_redirected_to :action => 'index'
+    name = roles(:testrole).name
+    get :update_table, :search => name
+    assert_redirected_to admin_roles_path(:search => name)
   end
 
   def test_show
@@ -56,7 +57,7 @@ class Admin::RolesControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :description => "#{record.description} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_roles_path
   end
 
   def test_destroy
@@ -64,7 +65,7 @@ class Admin::RolesControllerTest < ActionController::TestCase
     assert_difference('Role.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_roles_path
   end
 
   def test_non_admin_access

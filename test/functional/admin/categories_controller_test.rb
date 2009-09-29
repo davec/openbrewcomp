@@ -30,12 +30,13 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
                                  :position => Category.maximum(:position)+1 }
     end
     assert assigns(:record).valid?
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_categories_path
   end
 
   def test_search
-    get :update_table, :search => 'lager'
-    assert_redirected_to :action => 'index'
+    name = "lager"
+    get :update_table, :search => name
+    assert_redirected_to admin_categories_path(:search => name)
   end
 
   def test_show
@@ -56,7 +57,7 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
       post :update, :id => record.id,
                     :record => { :name => "#{record.name} (modified)" }
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_categories_path
   end
 
   def test_destroy
@@ -64,7 +65,7 @@ class Admin::CategoriesControllerTest < ActionController::TestCase
     assert_difference('Category.count', -1) do
       delete :destroy, :id => record.id
     end
-    assert_redirected_to :action => 'index'
+    assert_redirected_to admin_categories_path
   end
 
   def test_cannot_destroy_category_with_entries
