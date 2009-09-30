@@ -51,10 +51,12 @@ class Admin::FlightsController < AdministrationController
     config.columns[:round].includes = [ :round, :award ]
     config.columns[:round].sort_by :sql => 'rounds.position'
     config.columns[:round].search_sql = 'rounds.name'
+    config.columns[:round].clear_link
 
     config.columns[:award].includes = [ :award ]
     config.columns[:award].sort_by :sql => '(10.0*awards.category_id+awards.position)'
     config.columns[:award].search_sql = 'awards.name'
+    config.columns[:award].clear_link
 
     config.columns[:name].sort_by :sql => 'flights.name'
 

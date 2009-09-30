@@ -37,6 +37,8 @@ class Admin::AwardsController < AdministrationController
     config.columns[:point_qualifier].form_ui = :checkbox
     config.columns[:name].options = { :size => 40, :maxlength => 60 }
     config.columns[:position].options = { :size => 2, :maxlength => 2 }
+
+    config.columns[:category].clear_link
   end
 
   protected

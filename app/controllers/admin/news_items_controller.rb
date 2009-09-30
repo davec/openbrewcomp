@@ -46,6 +46,8 @@ class Admin::NewsItemsController < AdministrationController
     config.columns[:title].options = { :size => 64, :maxlength => 255 }
     config.columns[:description_raw].form_ui = :textarea
     config.columns[:description_raw].options = { :cols => 80, :rows => 12 }
+
+    config.columns[:author].clear_link
   end
 
   protected

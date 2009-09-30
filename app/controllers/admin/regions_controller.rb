@@ -18,6 +18,7 @@ class Admin::RegionsController < AdministrationController
 
     config.columns[:country].includes = [ :country ]
     config.columns[:country].sort_by :sql => 'countries.name'
+    config.columns[:country].clear_link
 
     # Label overrides
     config.columns[:name].label = 'Region Name'

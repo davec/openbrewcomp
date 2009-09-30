@@ -100,6 +100,8 @@ class Admin::EntrantsController < AdministrationController
     config.columns[:postcode].options = { :size => 10, :maxlength => 20 }
     config.columns[:team_members].options = { :size => 76, :maxlength => 255 }
     config.columns[:team_name].options = { :size => 76, :maxlength => 80 }
+
+    config.columns[:club].clear_link
   end
 
   def help
