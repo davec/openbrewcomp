@@ -26,7 +26,7 @@ module Admin::EntriesHelper
 
   def flights_column(record)
     # Don't display any "pushed" flights
-    record.flights.reject{|f| f.send(:pushed?)}.collect{|f| h(f.to_label)}.join(', ')
+    record.flights.reject(&:pushed?).collect(&:to_label).join(', ')
   end
 
   def registration_code_form_column(record, input_name)

@@ -228,6 +228,7 @@ class Admin::EntriesController < AdministrationController
         active_scaffold_config.list.per_page = nested? ? 25 : 100
         active_scaffold_config.theme = :blue
       else
+        active_scaffold_config.list.columns.exclude [ :flights ]
         active_scaffold_config.list.per_page = 99999
         active_scaffold_config.theme = :default
       end
