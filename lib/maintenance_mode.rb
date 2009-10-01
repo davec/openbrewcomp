@@ -7,23 +7,26 @@ module MaintenanceMode
   protected
 
     def disabled?
-      require 'nokogiri'
+      require 'rexml/document'
 
       maintfile = "#{RAILS_ROOT}/public/system/maintenance.html"
       if FileTest::exist?(maintfile)
+        response_type = 'text/html; charset=utf-8'
+        response_status = '503 Service Unavailable'
+
         respond_to do |format|
-          format.html {
+          format.html do
             send_file(maintfile,
-                      :type => 'text/html; charset=utf-8',
                       :disposition => 'inline',
-                      :status => '503 Service Unavailable')
-          }
-          format.js {
-            doc = Nokogiri::HTML(open(maintfile))
-            send_data(doc.xpath("//p").collect{|e| e.inner_html.squish}.join("\n\n"),
-                      :type => 'text/plain; charset=utf-8',
-                      :status => '503 Service Unavailable')
-          }
+                      :type => response_type,
+                      :status => response_status)
+          end
+          format.js do
+            doc = REXML::Document.new(open(maintfile))
+            send_data(doc.elements.collect("//p"){|e| e.text.squish}.join("\n\n"),
+                      :type => response_type,
+                      :status => response_status)
+          end
         end
         @performed_render = true
       end
