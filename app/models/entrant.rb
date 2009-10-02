@@ -62,9 +62,10 @@ class Entrant < ActiveRecord::Base
     [ address1, address2, address3, address4 ].delete_if(&:blank?).join("\n")
   end
 
-  def postal_address
+  def postal_address(options = {})
     addr = eval country.address_format
-    if Country.include_country_in_address?(country.country_code)
+    maybe_include_country = options[:include_country].nil? || options[:include_country]
+    if maybe_include_country and Country.include_country_in_address?(country.country_code)
       addr << "\n"
       if country.country_address_name.nil?
         addr << country.name.sub(/\([^)]*\)$/,'').squish.upcase
@@ -72,7 +73,7 @@ class Entrant < ActiveRecord::Base
         addr << country.country_address_name.upcase
       end
     end
-    addr
+    addr.strip.squeeze("\n")
   end
 
   # Export settings

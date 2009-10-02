@@ -9,11 +9,10 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{epic}
-\usepackage[noheadfoot, letterpaper, landscape, scale=1.0, body={10.0in,7.5in}]{geometry}
+\usepackage[noheadfoot, letterpaper, landscape, scale=1.0, body={10.0in,7.75in}]{geometry}
 
 \pagestyle{empty}
 
-%\columnsep 0.5in
 \columnsep 24pt
 \columnseprule 1pt
 
@@ -49,24 +48,22 @@
                      \textbf{Club} & #4 \\
                \textbf{Entry Name} & #5 \\
                     \textbf{Style} & #6 \\
-        \textbf{Registration Code} & \textbf{\textsf{\Large{\newline #7}}}%\\[-1ex] \\
+        \textbf{Registration Code} & \textbf{\textsf{\LARGE{\newline #7}}}
       %\bottomrule
     \end{tabular}
   }
 
 \begin{document}
 
-<%- @entries.in_groups_of(2) do |pair|
-      pair.compact! -%>
-  \begin{multicols}{2}
-    \raggedcolumns
-
-  <%- pair.each do |e| -%>
+\begin{multicols}{2}
+  \raggedcolumns
+  <%- columns = @entries.collect{|e| [e] * e.style.number_of_bottles_required}.flatten.in_groups_of(3,false) -%>
+  <%- columns.each do |slice| -%>
     \columnbreak
     \begin{center}
       \divider
-      <%- e.style.number_of_bottles_required.times do -%>
-        \bottlelabel{<%= l(e.entrant.postal_address).gsub("\n"," \\\\newline ") -%>}%
+      <%- slice.each do |e| -%>
+        \bottlelabel{<%= l(e.entrant.postal_address(:include_country => false)).gsub("\n"," \\\\newline ") -%>}%
                     {<%= l(e.entrant.phone) -%>}%
                     {<%= l(e.entrant.email) -%>}%
                     {<%= l(e.entrant.club.name) -%>}%
@@ -78,15 +75,11 @@
     \end{center}
     \vspace*{\fill}
   <%- end -%>
-  <%- if pair.length.odd? -%>
-    % Render a blank column to keep the previous, odd-numbered,
-    % set of labels from flowing into the adjacent column
+  <%- if columns.length.odd? -%>
+    % Render a blank column to keep the previous set of labels from flowing into the adjacent column.
     \columnbreak
     \vspace*{\fill}
   <%- end -%>
-
-  \end{multicols}
-  \pagebreak
-<%- end -%>
+\end{multicols}
 
 \end{document}

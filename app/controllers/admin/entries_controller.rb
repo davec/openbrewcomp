@@ -134,10 +134,9 @@ class Admin::EntriesController < AdministrationController
   end
 
   def bottle_labels
-    # For development, redirect latex output to a log file in the rails tmp directory
     @entries = current_user.entries.find(:all,
                                          :include => [ :entrant, :style ],
-                                         :conditions => [ 'bottle_code is null' ],
+                                         :conditions => [ 'bottle_code IS NULL' ],
                                          :order => 'entrants.id, entries.id')
     unless @entries.empty?
       @competition_name = competition_name
