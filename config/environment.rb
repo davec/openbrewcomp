@@ -24,7 +24,7 @@ Rails::Initializer.run do |config|
   # They can then be installed with "rake gems:install" on new installations.
   # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
   config.gem 'fastercsv', :version => '>=1.4.0'
-  config.gem 'andre-geokit', :version => '>=1.2.5', :lib => 'geokit',
+  config.gem 'andre-geokit', :version => '>=1.5.0', :lib => 'geokit',
                :source => 'http://gems.github.com'
   config.gem 'rdiscount', :version => '>=1.3.4'
   # Using rtex as a plugin instead until bugs are fixed, presumably in 2.1.2
