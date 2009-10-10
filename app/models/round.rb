@@ -14,8 +14,7 @@ class Round < ActiveRecord::Base
   has_many :flights
 
   validates_presence_of :name
-  validates_uniqueness_of :name, :case_sensitive => false,
-                                 :message => 'already exists'
+  validates_uniqueness_of :name, :case_sensitive => false, :message => 'already exists'
   validates_length_of :name, :maximum => 20, :allow_blank => true
   
   validates_presence_of :position
@@ -35,10 +34,10 @@ class Round < ActiveRecord::Base
   end
 
   def self.completed?(round_number)
-    rounds = Round.find(:all, :conditions => [ 'position IN (?)', (1..round_number) ]) rescue nil
+    rounds = Round.all(:include => :flights, :conditions => [ 'position IN (?)', (1..round_number) ]) rescue nil
     raise ArgumentException if rounds.nil?
     rounds.all?{ |round|
-      round.flights.length > 0 && round.flights.all?{ |flight| flight.completed? }
+      round.flights.size > 0 && round.flights.all?{ |flight| flight.completed? }
     }
   end
 
