@@ -72,32 +72,33 @@ module Admin::FlightsHelper
   end
 
   def award_form_column(record, input_name)
+    return %Q{<span class="readonly">#{h Award.find(record.award_id).name}</span>} unless record.new_record?
+
     options = form_element_input_options(input_name, Flight)
-    options[:name] += '[id]'
-    awards = Award.find(:all,
-                        :order => 'category_id, position').collect { |a| [ a.name, a.id ] }
-    select :record, :award_id, awards,
-           { :prompt => '- Select an award category -' },
+    options[:name] += "[id]"
+    select :record, :award_id,
+           Award.all(:order => "category_id, position").collect { |a| [ a.name, a.id ] },
+           { :prompt => "- Select an award category -" },
            options
   end
 
   def round_form_column(record, input_name)
+    return %Q{<span class="readonly">#{h Round.find(record.round_id).name}</span>} unless record.new_record?
+
     options = form_element_input_options(input_name, Flight)
-    options[:name] += '[id]'
-    rounds = Round.find(:all,
-                        :order => 'id').collect { |r| [ r.name, r.id ] }
-    select :record, :round_id, rounds,
-           { :prompt => '- Select a round -' },
+    options[:name] += "[id]"
+    select :record, :round_id,
+           Round.all(:order => "id").collect { |r| [ r.name, r.id ] },
+           { :prompt => "- Select a round -" },
            options
   end
 
   def judging_session_form_column(record, input_name)
     options = form_element_input_options(input_name, Flight)
-    options[:name] += '[id]'
-    sessions = JudgingSession.find(:all,
-                                   :order => 'position').collect { |s| [ s.description, s.id ] }
-    select :record, :judging_session_id, sessions,
-           { :prompt => '- Select a judging session -' },
+    options[:name] += "[id]"
+    select :record, :judging_session_id,
+           JudgingSession.all(:order => "position").collect { |s| [ s.description, s.id ] },
+           { :prompt => "- Select a judging session -" },
            options
   end
 
