@@ -5,7 +5,7 @@
     Results cannot be generated until judging is complete.
   </p>
 <% else -%>
-  <ul>
+  <ul id="results-menu">
     <li><%= link_to('Score Summary', admin_score_summary_path) %></li>
     <li><%= link_to('Awards Ceremony Results', admin_live_results_path) %></li>
     <li><%= link_to('Web Page Results', admin_web_results_path) %> (<%= link_to('download', admin_web_results_path(:mode => 'download'), :popup => true) %>)</li>

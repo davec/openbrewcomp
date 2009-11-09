@@ -69,7 +69,7 @@ th {
   width: 16%;
 }
 
-#admin-menu ul li ul, ul#flight-menu, ul#import-menu, ul#export-menu {
+#admin-menu ul li ul, ul#flight-menu, ul#import-menu, ul#export-menu, ul#results-menu {
   list-style: none;
   margin-left: 0.5em;
 }
@@ -89,6 +89,12 @@ th {
   text-decoration: none;
   width: 6em;
 }
+#results-menu a {
+  color: #0080a4;
+  display: inline;
+  padding: 1px;
+  text-decoration: none;
+}
 
 #admin-menu span.access-denied {
   color: #666;
@@ -98,16 +104,16 @@ th {
   width: 6em;
 }
 
-#flight-menu a, #export-menu a {
+#flight-menu a, #export-menu a, #import-menu a, #results-menu a {
   font-size: 110%;
+}
+#flight-menu a, #export-menu a {
   width: 10em;
 }
 #import-menu a {
-  font-size: 110%;
   width: 14em;
 }
-#admin-menu a:hover, #flight-menu a:hover,
-#import-menu a:hover, #export-menu a:hover {
+#admin-menu a:hover, #flight-menu a:hover, #import-menu a:hover, #export-menu a:hover, #results-menu a:hover {
   background-color: #0080a4;
   /*color: #0000f0;*/
   color: #ffba80;
