@@ -17,6 +17,12 @@ class JudgingSession < ActiveRecord::Base
 
   validate :ensure_start_time_earlier_than_end_time
 
+  named_scope :current_and_past, { :conditions => [ 'date <= ?', Date.today ], :order => :position }
+
+  def self.dates
+    all(:select => 'DISTINCT date', :conditions => 'date IS NOT NULL', :order => 'date').map(&:date)
+  end
+
   def to_label
     description
   end
@@ -27,10 +33,6 @@ class JudgingSession < ActiveRecord::Base
 
   def completed_flight_count
     flights.select(&:completed?).length
-  end
-
-  def self.dates
-    find_by_sql("SELECT DISTINCT date FROM #{table_name} WHERE date IS NOT NULL ORDER BY date").collect{|obj| obj.date}
   end
 
   def authorized_for_destroy?

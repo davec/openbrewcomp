@@ -97,7 +97,7 @@ module Admin::FlightsHelper
     options = form_element_input_options(input_name, Flight)
     options[:name] += "[id]"
     select :record, :judging_session_id,
-           JudgingSession.all(:order => "position").collect { |s| [ s.description, s.id ] },
+           JudgingSession.current_and_past.collect { |s| [ s.description, s.id ] },
            { :prompt => "- Select a judging session -" },
            options
   end

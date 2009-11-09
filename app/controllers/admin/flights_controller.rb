@@ -403,7 +403,8 @@ class Admin::FlightsController < AdministrationController
     end
 
     def get_default_judging_session
-      @default_judging_session = JudgingSession.find(:first, :conditions => [ '? BETWEEN start_time AND end_time ', Time.now.utc ])
+      @default_judging_session = JudgingSession.first(:conditions => [ '? BETWEEN start_time AND end_time OR date = ?',
+                                                                       Time.now.utc, Date.today ])
     end
 
   private
