@@ -49,7 +49,7 @@ namespace :deploy do
   # with mods for Capistrano 2.
 
   desc "Create database.yml in shared/config"
-  task :after_setup, :roles => :app do
+  task :create_database_yml, :roles => :app do
     database_config = ERB.new(<<-EOF).result(binding)
 defaults: &defaults
   adapter: postgresql
@@ -71,7 +71,7 @@ EOF
   end
 
   desc "Link in the production database.yml"
-  task :after_update_code, :roles => :app do
+  task :link_database_yml, :roles => :app do
     run "ln -nfs #{deploy_to}/#{shared_dir}/config/database.yml #{release_path}/config/database.yml"
   end
 
@@ -130,4 +130,6 @@ end
 
 before("deploy:setup") { set :use_sudo, false }
 before("deploy:cleanup") { set :use_sudo, false }
+after("deploy:setup", "deploy:create_database_yml")
+after("deploy:update_code", "deploy:link_database_yml")
 
