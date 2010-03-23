@@ -1,20 +1,19 @@
-<% @page_title = "#{competition_name} Entry Forms"
-   show_xpdf_link = /Windows/.match(request.env['HTTP_USER_AGENT']).nil? %>
+<% @page_title = "#{competition_name} Entry Forms" %>
 
 <p>
   All the forms you need to enter <%= competition_name %> can be found on this page.
   You will need a PDF viewer program to read the forms. If you need a PDF
-  viewer, <% if show_xpdf_link %>either get
-  <%= link_to(image_tag('getxpdf.png',
-                        :class => 'icon',
-                        :alt => 'Xpdf',
-                        :size => '88x31'),
-              'http://www.foolabs.com/xpdf/download.html') %> or<% end %>
+  viewer,
   <%= link_to(image_tag('get_adobe_reader.gif',
                         :class => 'icon',
                         :alt => 'get Adobe Reader',
                         :size => '112x33'),
-              'http://www.adobe.com/products/acrobat/readstep2.html') %>.
+              'http://www.adobe.com/products/acrobat/readstep2.html') %> or
+  <%= link_to(image_tag('pdfreaders-free.png',
+                        :class => 'icon',
+                        :alt => 'get a free PDF reader',
+                        :size => '112x33'),
+              'http://pdfreaders.org/') %>.
 </p>
 
 <p>
