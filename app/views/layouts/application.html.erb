@@ -6,11 +6,12 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <%= meta_description_tag %>
   <%= page_title_tag %>
-  <%= javascript_include_tag :defaults, :cache => 'cache/base' %>
-  <%= yield :stylesheet %>
+  <%= auto_discovery_link_tag :rss, rss_feed_url %>
   <%= stylesheet_link_tag 'application', :media => nil %>
   <%= stylesheet_link_tag 'screen', :media => "screen" %>
   <%= stylesheet_link_tag 'print', :media => "print" %>
+  <%= javascript_include_tag :defaults, :cache => 'cache/base' %>
+  <%= yield :stylesheet %><%# must be after JS includes due to AS baggage for online registration %>
   <!--[if IE]>
     <![if lt IE 8]>
       <%= stylesheet_link_tag 'ie_hacks', :media => "screen" %>
@@ -21,7 +22,6 @@
       <%= javascript_include_tag 'ie_hacks' %>
     <![endif]>
   <![endif]-->
-  <%= auto_discovery_link_tag :rss, rss_feed_url %>
 </head>
 <body <%= @body_attributes || '' -%>>
   <div id="bodyWrapper">
