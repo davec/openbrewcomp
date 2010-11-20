@@ -155,8 +155,8 @@ class Admin::ResultsController < AdministrationController
       :flights => flight_count,
       :organizer => organizer.nil? ? '-' : organizer.name
     }
-    @bjcp_judges = Judge.bjcp_judges.reject{|j| j.points == 0}
-    @non_bjcp_judges = Judge.non_bjcp_judges.reject{|j| j.points == 0}
+    @bjcp_judges = Judge.bjcp.reject{|j| j.points == 0}
+    @non_bjcp_judges = Judge.non_bjcp.reject{|j| j.points == 0}
     respond_to do |format|
       format.html
       #format.xml { render(:layout => false) }  # For debugging in the browser, not for production

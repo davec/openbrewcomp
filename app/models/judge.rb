@@ -13,7 +13,12 @@ class Judge < ActiveRecord::Base
   has_many :time_availabilities, :dependent => :destroy
   has_many :category_preferences, :dependent => :destroy
 
+  named_scope :checked_in, :conditions => [ 'checked_in = ?', true ]
   named_scope :confirmed, :conditions => [ 'confirmed = ?', true ]
+  named_scope :unconfirmed, :conditions => 'confirmed IS NULL'
+  named_scope :has_email, :conditions => [ 'email IS NOT NULL AND email <> ?', '' ]
+  named_scope :bjcp, :conditions => 'judge_number IS NOT NULL'
+  named_scope :non_bjcp, :conditions => 'judge_number IS NULL'
   named_scope :order, lambda {|order| { :order => order } }
 
   validates_presence_of :club_name, :if => lambda { |a| a.club_id == Club.other.id }
@@ -167,34 +172,22 @@ class Judge < ActiveRecord::Base
   end
 
   def self.find_all_available
-    find(:all,
-         :conditions => [ 'checked_in = ?', true ],
-         :order => 'last_name||first_name||middle_name')
-  end
-
-  def self.bjcp_judges
-    Judge.find(:all, :conditions => 'judge_number IS NOT NULL')
-  end
-
-  def self.non_bjcp_judges
-    Judge.find(:all, :conditions => 'judge_number IS NULL')
+    Judge.checked_in.order('last_name, first_name, middle_name')
   end
 
   def self.organizer
-    Judge.find(:first, :conditions => [ 'organizer = ?', true ])
+    Judge.first(:conditions => [ 'organizer = ?', true ])
   end
 
   def self.email_count(options = {})
-    conditions = get_conditions_for_target(options[:target])
-    Judge.count(:conditions => conditions)
+    scope_for_target(options[:target]).count
   end
 
   def self.email_invites(options = {})
     sent = failed = 0
     message = options.delete(:message)
     target  = options.delete(:target)
-    conditions = get_conditions_for_target(target)
-    Judge.paginated_each(:per_page => 100, :conditions => conditions) do |judge|
+    scope_for_target(target).find_each(:batch_size => 100) do |judge|
       begin
         JudgeMailer.deliver_judge_invite(judge,
                                          format_message(message, judge),
@@ -427,15 +420,15 @@ class Judge < ActiveRecord::Base
         gsub(JudgeInvite.tokens[:full_name].first, judge.name)
     end
 
-    def self.get_conditions_for_target(target)
+    def self.scope_for_target(target)
+      scope = Judge.has_email
       case target
       when 'confirmed'
-        [ "email IS NOT NULL AND email <> '' AND confirmed = ?", true ]
+        scope.confirmed
       when 'unconfirmed'
-        "email IS NOT NULL AND email <> '' AND confirmed IS NULL"
-      else
-        "email IS NOT NULL AND email <> ''"
+        scope.unconfirmed
       end
+      scope
     end
 
 end

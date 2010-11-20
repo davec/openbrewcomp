@@ -216,4 +216,22 @@ class JudgeTest < ActiveSupport::TestCase
     end
   end
 
+  def test_should_count_judges_with_email_addresses
+    assert_equal Judge.email_count, Judge.count
+  end
+
+  def test_should_exclude_judges_without_email_addresses
+    # Create judge without an email address
+    Judge.create(:first_name => 'New',
+                 :last_name => 'Judge',
+                 :judge_rank_id => @experienced_id,
+                 :address1 => '1234 Crack House Lane',
+                 :address2 => 'Apt. 23C',
+                 :city => 'Houston',
+                 :region_id => @USTX.id,
+                 :postcode => '77005',
+                 :user_id => @good_user_id)
+    assert_equal Judge.email_count, Judge.count - 1
+  end
+
 end
