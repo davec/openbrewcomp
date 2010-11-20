@@ -193,10 +193,9 @@ other:
 independent:
   id: 1
   name: 'Independent'
-<% CLUB_NAMES.each do |name|
-     i = '1' %>
+<% CLUB_NAMES.each_with_index do |name, i| %>
 club<%= i %>:
-  id: <%= i.succ! %>
+  id: <%= i + 2 %>
   name: <%= name %>
 <% end %>
       EOD
