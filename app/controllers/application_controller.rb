@@ -155,7 +155,7 @@ class ApplicationController < ActionController::Base
     def access_denied
       flash[:request_url] = request.url  # Save the requested URL
       redirect_to authorization_error_path and return false if logged_in?
-debugger
+
       if request.xhr?
         flash[:notice] = "Your session has expired. Please log in again."
 
