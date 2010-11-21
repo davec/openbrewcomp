@@ -23,7 +23,7 @@ module Admin::FlightsHelper
 
   def status_column(record)
     status = record.status_label
-    return status unless ['row', 'table', 'update_table', 'push'].include? controller.action_name
+    return status unless %w(row table push).include? controller.action_name
     %Q{<span class="#{status.downcase}">#{status.titleize}</span>}
   end
 

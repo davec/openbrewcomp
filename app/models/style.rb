@@ -68,8 +68,8 @@ class Style < ActiveRecord::Base
   # Export settings
   self.csv_columns = [ 'id', 'bjcp_category', 'bjcp_subcategory', 'name', 'award_id' ]
 
-  def authorized_for_destroy?
-    # Can only destroy if there are no entries registered in this style
+  def authorized_for_delete?
+    # Can only delete if there are no entries registered in this style
     entries.empty?
   end
 

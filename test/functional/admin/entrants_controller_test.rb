@@ -71,8 +71,8 @@ class Admin::EntrantsControllerTest < ActionController::TestCase
 
   def test_search
     name = "Brewer"
-    get :update_table, :search => name
-    assert_redirected_to admin_entrants_path(:search => name)
+    get :index, :search => name
+    assert_template 'list'
   end
 
   def test_show

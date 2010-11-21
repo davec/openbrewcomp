@@ -52,7 +52,7 @@ class Admin::EntriesController < AdministrationController
     # print links.
     config.action_links.add 'print',
                             :label=> 'Print',
-                            :type => :record,
+                            :type => :member,
                             :action => 'print',
                             :crud_type => 'print',
                             :popup => true
@@ -60,7 +60,7 @@ class Admin::EntriesController < AdministrationController
     # Add a help link
     config.action_links.add 'help',
                             :label => 'Help',
-                            :type => :table,
+                            :type => :collection,
                             :action => 'help',
                             :inline => true,
                             :position => :top,

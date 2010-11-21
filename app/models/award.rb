@@ -235,8 +235,8 @@ class Award < ActiveRecord::Base
     find_non_public_awards
   end
 
-  def authorized_for_destroy?
-    # Can only destroy if there are no entries registered in this award category
+  def authorized_for_delete?
+    # Can only delete if there are no entries registered in this award category
     styles.all?{|s| s.entries.empty?}
   end
 

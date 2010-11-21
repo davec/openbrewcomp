@@ -145,7 +145,7 @@ class Flight < ActiveRecord::Base
     }
   end
 
-  def authorized_for_destroy?
+  def authorized_for_delete?
     # Users must be logged in to delete a flight
     return false unless current_user
     # and logged-in users can generally delete flights

@@ -126,7 +126,7 @@ class Entry < ActiveRecord::Base
     self.bottle_code.nil?
   end
 
-  def authorized_for_destroy?
+  def authorized_for_delete?
     # Users must be logged in to delete an entry
     return false unless current_user
     # and logged-in users can generally delete entries

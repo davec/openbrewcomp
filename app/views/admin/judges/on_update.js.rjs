@@ -1,10 +1,11 @@
-# Modified copy of active_scaffold/frontends/default/view/on_update.rjs
+# Modified copy of active_scaffold/frontends/default/view/on_update.js.rjs
 # to update the competition organizer and unallocated staff points values.
 
 cancel_selector = "##{element_form_id(:action => :update)} a.cancel".to_json
 
 if controller.send :successful?
-  page << "$$(#{cancel_selector}).first().link.close_with_refresh();"
+  updated_row = render :partial => 'list_record', :locals => {:record => @record} if params[:parent_controller].nil?
+  page << "$$(#{cancel_selector}).first().link.close('#{escape_javascript(updated_row)}');"
 
   #### BEGIN ADDITION ####
 

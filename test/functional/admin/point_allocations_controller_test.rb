@@ -45,8 +45,8 @@ class Admin::PointAllocationsControllerTest < ActionController::TestCase
 
   def test_search
     value = "3.0"
-    get :update_table, :search => value
-    assert_redirected_to admin_point_allocations_path(:search => value)
+    get :index, :search => value
+    assert_template 'list'
   end
 
   def test_show

@@ -41,8 +41,8 @@ class Admin::CarbonationControllerTest < ActionController::TestCase
 
   def test_search
     name = "petillant"
-    get :update_table, :search => name
-    assert_redirected_to admin_carbonation_index_path(:search => name)
+    get :index, :search => name
+    assert_template 'list'
   end
 
   def test_show_action_should_not_be_recognized

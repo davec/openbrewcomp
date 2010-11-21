@@ -34,8 +34,8 @@ class Region < ActiveRecord::Base
     super(format, options)
   end
 
-  def authorized_for_destroy?
-    # Can only destroy if there are no associated entrants
+  def authorized_for_delete?
+    # Can only delete if there are no associated entrants
     entrants.empty?
   end
 

@@ -12,7 +12,7 @@ class Config::CreateTest < Test::Unit::TestCase
   
   def test_default_options
     assert !@config.create.persistent
-    assert !@config.create.edit_after_create
+    assert @config.create.action_after_create.nil?
     assert_equal 'Create Modelstub', @config.create.label
   end
 
@@ -27,7 +27,7 @@ class Config::CreateTest < Test::Unit::TestCase
     blank = {}
     assert_equal blank, link.html_options
     assert_equal :get, link.method
-    assert_equal :table, link.type
+    assert_equal :collection, link.type
     assert_equal :create, link.crud_type
     assert_equal :create_authorized?, link.security_method
   end
@@ -48,8 +48,8 @@ class Config::CreateTest < Test::Unit::TestCase
     assert @config.create.persistent
   end
  
-  def test_edit_after_create
-    @config.create.edit_after_create = true
-    assert @config.create.edit_after_create
+  def test_action_after_create
+    @config.create.action_after_create = :edit
+    assert_equal :edit, @config.create.action_after_create
   end
 end

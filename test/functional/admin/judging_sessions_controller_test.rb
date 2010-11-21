@@ -43,8 +43,8 @@ class Admin::JudgingSessionsControllerTest < ActionController::TestCase
 
   def test_search
     name = "Session"
-    get :update_table, :search => name
-    assert_redirected_to admin_judging_sessions_path(:search => name)
+    get :index, :search => name
+    assert_template 'list'
   end
 
   def test_show

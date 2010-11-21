@@ -145,8 +145,8 @@ class User < ActiveRecord::Base
     }
   end
 
-  def authorized_for_destroy?
-    # Neither the admin account nor the current user account can be destroyed
+  def authorized_for_delete?
+    # Neither the admin account nor the current user account can be deleted
     self.login != APP_CONFIG[:admin_name] && self.id != current_user.id
   end
 

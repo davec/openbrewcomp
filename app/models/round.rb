@@ -53,8 +53,8 @@ class Round < ActiveRecord::Base
                  :conditions => [ 'r.position = ? AND f.assigned = ? AND f.completed = ?', round_number, false, false ]) > 0
   end
 
-  def authorized_for_destroy?
-    # Can only destroy if there are no associated flights
+  def authorized_for_delete?
+    # Can only delete if there are no associated flights
     flights.empty?
   end
 

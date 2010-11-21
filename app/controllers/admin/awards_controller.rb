@@ -2,6 +2,8 @@
 
 class Admin::AwardsController < AdministrationController
 
+  before_filter :update_config, :only => [ :create ]
+
   cache_sweeper :award_sweeper, :only => [ :create, :update, :destroy ]
 
   active_scaffold :award do |config|
@@ -49,4 +51,10 @@ class Admin::AwardsController < AdministrationController
       @record.position += @record.category.awards.length if @record.category
     end
 
+    def update_config
+      # WARNING: We're abusing action_after_create to open a new styles form.
+      # The way we're (ab)using it only works for XHR requests. It should be a
+      # controller action, but that doesn't fit with the current design of the form.
+      active_scaffold_config.create.action_after_create = request.xhr? ? 'styles-nested' : nil
+    end
 end

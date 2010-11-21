@@ -19,10 +19,9 @@ module Admin::JudgesHelper
     #
     # We create a "dummy" column -- because we don't seem to have access to the
     # real column in the caller -- to pass off to the format_inplace_edit_column
-    # method to get the correct output for the checkbox for the index, row, and
-    # update_table actions, when updates are allowed.  Otherwise, we show a
-    # Yes/No string.
-    if [ 'index', 'row', 'update_table' ].include?(controller.action_name) and record.authorized_for?(:action => :update, :column => :checked_in)
+    # method to get the correct output for the checkbox for the index and row
+    # actions, when updates are allowed.  Otherwise, we show a Yes/No string.
+    if %w(index row).include?(controller.action_name) and record.authorized_for?(:action => :update, :column => :checked_in)
       column = ActiveScaffold::DataStructures::Column.new(:checked_in, record.class)
       column.inplace_edit = true
       column.form_ui = :checkbox
@@ -34,7 +33,7 @@ module Admin::JudgesHelper
 
   def confirmed_column(record)
     # The same comments in #checked_in_column (above) apply here
-    if [ 'index', 'row', 'update_table' ].include?(controller.action_name) and record.authorized_for?(:action => :update, :column => :confirmed)
+    if %w(index row).include?(controller.action_name) and record.authorized_for?(:action => :update, :column => :confirmed)
       column = ActiveScaffold::DataStructures::Column.new(:confirmed, record.class)
       column.inplace_edit = true
       column.form_ui = :checkbox

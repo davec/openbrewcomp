@@ -83,7 +83,7 @@ class Admin::EntriesWithStyleinfoController < AdministrationController
       Controller.nested_view = nested?
 
       styleinfo_label = case params[:action]
-        when 'index', 'update_table'
+        when 'index'
           'Style Information'
         else
           'Pertinent Style Information<br />(for the judges)'

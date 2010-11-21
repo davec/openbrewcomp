@@ -28,8 +28,8 @@ class Club < ActiveRecord::Base
     super(format, options)
   end
 
-  def authorized_for_destroy?
-    # Can only destroy if there are no entries associated with this club
+  def authorized_for_delete?
+    # Can only delete if there are no entries associated with this club
     entries.empty?
   end
 

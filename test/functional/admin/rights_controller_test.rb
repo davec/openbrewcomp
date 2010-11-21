@@ -37,8 +37,8 @@ class Admin::RightsControllerTest < ActionController::TestCase
 
   def test_search
     name = rights(:testright).name
-    get :update_table, :search => name
-    assert_redirected_to admin_rights_path(:search => name)
+    get :index, :search => name
+    assert_template 'list'
   end
 
   def test_show

@@ -37,8 +37,8 @@ class Admin::EntriesControllerTest < ActionController::TestCase
 
   def test_search
     year = Date.today.year
-    get :update_table, :search => year
-    assert_redirected_to admin_entries_path(:search => year)
+    get :index, :search => year
+    assert_template 'list'
   end
 
   def test_show

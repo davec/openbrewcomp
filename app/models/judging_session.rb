@@ -35,7 +35,7 @@ class JudgingSession < ActiveRecord::Base
     flights.select(&:completed?).length
   end
 
-  def authorized_for_destroy?
+  def authorized_for_delete?
     # Users must be logged in to delete a judging session
     return false unless current_user
     # and logged-in users can generally delete judging sessions

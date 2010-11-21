@@ -337,11 +337,12 @@ class Admin::FlightsControllerTest < ActionController::TestCase
     assert_redirected_to admin_flights_path
   end
 
-  def test_search
-    name = "Best"
-    get :update_table, :search => name
-    assert_redirected_to admin_flights_path(:search => name)
-  end
+  # TODO: Re-enable this test when flight searching is restored
+  # def test_search
+  #   name = "Best"
+  #   get :index, :search => name
+  #   assert_template 'list'
+  # end
 
   def test_show
     get :show, :id => flights(:smoked_1).id

@@ -42,7 +42,7 @@ class Admin::EntrantsController < AdministrationController
     # Add a help link
     config.action_links.add 'help',
                             :label => 'Help',
-                            :type => :table,
+                            :type => :collection,
                             :action => 'help',
                             :inline => true,
                             :position => :top,
@@ -157,6 +157,11 @@ class Admin::EntrantsController < AdministrationController
         active_scaffold_config.list.per_page = 20
         active_scaffold_config.theme = :default
       end
+
+      # WARNING: We're abusing action_after_create to open a new entries form.
+      # The way we're (ab)using it only works for XHR requests. It should be a
+      # controller action, but that doesn't fit with the current design of the form.
+      active_scaffold_config.create.action_after_create = request.xhr? ? 'entries-nested' : nil
     end
 
     def search_authorized?

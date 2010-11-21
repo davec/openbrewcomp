@@ -79,7 +79,7 @@ class Entrant < ActiveRecord::Base
   # Export settings
   self.csv_columns = [ 'id', 'name', 'is_team', 'team_members', 'address1', 'address2', 'city', 'region_id', 'country_id', 'postcode', 'email', 'phone', 'club_id' ]
 
-  def authorized_for_destroy?
+  def authorized_for_delete?
     # Users must be logged in to delete entrants
     return false unless current_user
     # and logged-in users can generally delete entrants

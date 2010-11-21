@@ -1,0 +1,6 @@
+<% if defined?(record) && record.warning %>
+  <% javascript_tag do %>
+    setTimeout(function() { alert(record.warning); }, 500);
+  <% end %>
+<% end %>
+<%= render :super, :locals => local_assigns %>

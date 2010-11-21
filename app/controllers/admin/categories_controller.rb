@@ -2,6 +2,8 @@
 
 class Admin::CategoriesController < AdministrationController
 
+  before_filter :update_config, :only => [ :create ]
+
   cache_sweeper :category_sweeper, :only => [ :create, :update, :destroy ]
 
   active_scaffold :category do |config|
@@ -12,6 +14,7 @@ class Admin::CategoriesController < AdministrationController
     config.create.label = 'Create Category'
     config.create.link.label = 'New Category'
     config.create.columns = [ :name, :position, :is_public ]
+    config.create.action_after_create = 'awards-nested'
 
     config.update.columns = [ :name, :position, :is_public ]
 
@@ -37,5 +40,14 @@ class Admin::CategoriesController < AdministrationController
     config.columns[:name].options = { :size => 40, :maxlength => 60 }
     config.columns[:position].options = { :size => 2, :maxlength => 2 }
   end
+
+  protected
+
+    def update_config
+      # WARNING: We're abusing action_after_create to open a new styles form.
+      # The way we're (ab)using it only works for XHR requests. It should be a
+      # controller action, but that doesn't fit with the current design of the form.
+      active_scaffold_config.create.action_after_create = request.xhr? ? 'styles-nested' : nil
+    end
 
 end

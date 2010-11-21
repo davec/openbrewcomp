@@ -60,7 +60,7 @@ class Judge < ActiveRecord::Base
   attr_protected :staff_points, :organizer, :access_key, :checked_in, :confirmed
 
   # @is_admin_view is set by the controller when the record is instantiated to
-  # provide the necessary information to the authorized_for_destroy? method to
+  # provide the necessary information to the authorized_for_delete? method to
   # deterine whether the delete action is to be enabled in the view.
   attr_writer :is_admin_view
 
@@ -201,7 +201,7 @@ class Judge < ActiveRecord::Base
     [ sent, failed ]
   end
 
-  def authorized_for_destroy?
+  def authorized_for_delete?
     # Users must be logged in to delete judges
     return false unless current_user
     # and logged-in users can generally delete judges

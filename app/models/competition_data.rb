@@ -113,9 +113,9 @@ class CompetitionData < ActiveRecord::Base
   end
   private_class_method :new, :allocate
 
-  # Advise AS that creates and destroys are not allowed
+  # Advise AS that creates and deletes are not allowed
   def authorized_for?(action)
-    ![ :create, :destroy ].include?(action[:action].to_sym)
+    ![ :create, :delete ].include?(action[:action].to_sym)
   end
 
   @@competition_data = nil

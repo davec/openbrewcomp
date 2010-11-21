@@ -52,7 +52,7 @@ class Admin::JudgesController < AdministrationController
     # Add a help link
     config.action_links.add 'help',
                             :label => 'Help',
-                            :type => :table,
+                            :type => :collection,
                             :action => 'help',
                             :inline => true,
                             :position => :top,
@@ -166,7 +166,7 @@ class Admin::JudgesController < AdministrationController
     def do_list
       super
       # Record the admin view status in each record (required by the model's
-      # authorized_for_destroy? method). This seems to be the only way the model
+      # authorized_for_delete? method). This seems to be the only way the model
       # can know whether it's being used in an admin view.
       @records.each do |record|
         record.is_admin_view = @is_admin_view

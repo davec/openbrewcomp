@@ -36,8 +36,8 @@ class Admin::AwardsControllerTest < ActionController::TestCase
 
   def test_search
     name = "lager"
-    get :update_table, :search => name
-    assert_redirected_to admin_awards_path(:search => name)
+    get :index, :search => name
+    assert_template 'list'
   end
 
   def test_show

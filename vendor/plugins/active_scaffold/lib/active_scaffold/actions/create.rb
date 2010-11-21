@@ -20,6 +20,10 @@ module ActiveScaffold::Actions
     end
 
     protected
+    def response_location
+      url_for(params_for(:action => "show", :id => @record.id)) if successful?
+    end
+
     def new_respond_to_html
       if successful?
         render(:action => 'create')
@@ -38,14 +42,16 @@ module ActiveScaffold::Actions
           if successful?
             render :action => 'on_create.js'
           else
-            render :action => 'form_messages_on_create.js'
+            render :action => 'form_messages_on_save.js'
           end
         end
       else
         if successful?
           flash[:info] = as_(:created_model, :model => @record.to_label)
-          if active_scaffold_config.create.edit_after_create
-            redirect_to params.merge(:action => "edit", :id => @record.id)
+          if action = active_scaffold_config.create.action_after_create
+            redirect_to params_for(:action => action, :id => @record.id)
+          elsif active_scaffold_config.create.persistent
+            redirect_to params_for(:action => "new")
           else
             return_to_main
           end
@@ -65,15 +71,15 @@ module ActiveScaffold::Actions
     end
 
     def create_respond_to_xml
-      render :xml => response_object.to_xml, :content_type => Mime::XML, :status => response_status
+      render :xml => response_object.to_xml(:only => active_scaffold_config.create.columns.names), :content_type => Mime::XML, :status => response_status, :location => response_location
     end
 
     def create_respond_to_json
-      render :text => response_object.to_json, :content_type => Mime::JSON, :status => response_status
+      render :text => response_object.to_json(:only => active_scaffold_config.create.columns.names), :content_type => Mime::JSON, :status => response_status, :location => response_location
     end
 
     def create_respond_to_yaml
-      render :text => response_object.to_yaml, :content_type => Mime::YAML, :status => response_status
+      render :text => Hash.from_xml(response_object.to_xml(:only => active_scaffold_config.create.columns.names)).to_yaml, :content_type => Mime::YAML, :status => response_status, :location => response_location
     end
 
     def constraints_for_nested_create

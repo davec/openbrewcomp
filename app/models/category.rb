@@ -39,8 +39,8 @@ class Category < ActiveRecord::Base
   # Export settings
   self.csv_columns = [ 'id', 'name' ]
 
-  def authorized_for_destroy?
-    # Can only destroy if there are no entries registered in this category
+  def authorized_for_delete?
+    # Can only delete if there are no entries registered in this category
     styles.all?{|s| s.entries.empty?}
   end
 

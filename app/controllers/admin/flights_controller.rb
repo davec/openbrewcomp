@@ -66,7 +66,7 @@ class Admin::FlightsController < AdministrationController
     config.action_links.add 'push',
                             :label => 'Push',
                             :method => :post,
-                            :type => :record,
+                            :type => :member,
                             :action => 'push',
                             :crud_type => 'push',
                             :inline => true,
@@ -75,7 +75,7 @@ class Admin::FlightsController < AdministrationController
     # Print flight and pull sheets for the flight
     config.action_links.add 'print',
                             :label => 'Print',
-                            :type => :record,
+                            :type => :member,
                             :action => 'print',
                             :crud_type => 'print',
                             :popup => true
@@ -83,7 +83,7 @@ class Admin::FlightsController < AdministrationController
     # Add a "Show Ineligible Judges" link
     config.action_links.add 'entrants',
                             :label => 'Show Ineligible Judges',
-                            :type => :table,
+                            :type => :collection,
                             :action => 'ineligible_judges',
                             :inline => true,
                             :position => :top,
@@ -351,7 +351,9 @@ class Admin::FlightsController < AdministrationController
     end
 
     def search_authorized?
-      @is_full_list
+      # TODO: Restore search in full flight list
+      false
+      #@is_full_list
     end
 
     def push_authorized?
