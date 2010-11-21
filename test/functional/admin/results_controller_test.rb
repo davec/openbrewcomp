@@ -111,7 +111,7 @@ class Admin::ResultsControllerTest < ActionController::TestCase
       end
       assert_select 'Comments', comments_text
       assert_select 'IPAddress'
-      assert_select 'SubmissionDate', Time.now.strftime("%a, %d %B %Y %I:%M %P")
+      assert_select 'SubmissionDate', Time.now.strftime("%A, %d %B %Y %I:%M %P")
     end
   end
 

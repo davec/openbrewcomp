@@ -33,5 +33,5 @@ xml.OrgReport do
   end
   xml.Comments(@comments)
   xml.IPAddress(request.remote_ip)
-  xml.SubmissionDate(Time.now.strftime("%a, %d %B %Y %I:%M %P"))
+  xml.SubmissionDate(Time.now.strftime("%A, %d %B %Y %I:%M %P"))
 end
