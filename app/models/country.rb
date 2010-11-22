@@ -24,6 +24,11 @@ class Country < ActiveRecord::Base
 
   named_scope :selectable, :conditions => [ 'is_selectable = ?', true ]
 
+  include Comparable
+  def <=>(other)
+    name.downcase <=> other.name.downcase
+  end
+
   def regions_by_name
     Region.in_country(self).all(:order => 'name')
   end

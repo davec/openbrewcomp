@@ -105,6 +105,11 @@ class Judge < ActiveRecord::Base
     addr
   end
 
+  include Comparable
+  def <=>(other)
+    dictionary_name.downcase <=> other.dictionary_name.downcase
+  end
+
   attr_reader :steward_points
 
   def judge_points(include_bos_points = true)

@@ -51,7 +51,7 @@ module Admin::CountriesHelper
     end
 
     def sorted_regions(record)
-      record.regions.sort_by(&:name)
+      record.regions.sort
     end
 
 end

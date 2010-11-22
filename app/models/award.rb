@@ -22,6 +22,11 @@ class Award < ActiveRecord::Base
                           :message => 'already exists'
   validates_numericality_of :position, :only_integer => true, :allow_blank => true
 
+  include Comparable
+  def <=>(other)
+    [ category.position, position ] <=> [ other.category.position, other.position ]
+  end
+
   # Export settings
   self.csv_columns = [ 'id', 'name', 'category_id' ]
 
@@ -209,7 +214,7 @@ class Award < ActiveRecord::Base
                               :conditions => [ 'a.point_qualifier = ? AND c.position IN (?) AND e.place = 1',
                                                true, category_ids ])
                end
-    entrants.uniq.sort{|x,y| x.dictionary_name <=> y.dictionary_name}
+    entrants.uniq.sort
   end
 
   def self.find_awards_with_multiple_first_round_flights

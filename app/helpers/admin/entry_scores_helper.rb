@@ -49,7 +49,7 @@ module Admin::EntryScoresHelper
       }
       rv << %Q{<div class="scores-table-title">#{flight.round.name}</div>} if flights.length > 1
       rv << %Q{<table class="entry-scores"><tr><th>Judge</th><th>Score</th></tr>}
-      judges.sort_by(&:dictionary_name).each_with_index do |judge,idx|
+      judges.sort.each_with_index do |judge,idx|
         rv << '<tr>'
         rv << %Q{<td class="judge">#{h judge.name}</td>}
         rv << '<td class="score">'

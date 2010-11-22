@@ -1,7 +1,7 @@
 <ol id="category-preferences">
   <% scope ||= nil
      options = form_element_input_options(column, scope)
-     categories = Category.is_public.sort_by(&:position).collect {|c| [ c.name_with_index, c.id ]}
+     categories = Category.is_public.sort.map {|c| [ c.name_with_index, c.id ]}
      temp_id = generate_temporary_id.to_i
 
      1.upto(CategoryPreference::MAX_PREFERENCES) do |i|

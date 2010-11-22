@@ -11,17 +11,17 @@
     </tr>
   </tfoot>
   <tbody>
-    <%- categories.sort_by{|c| c.position}.each do |category| -%>
+    <%- categories.sort.each do |category| -%>
       <tr class="category-header">
         <th colspan="4"><%= h category.name %></th>
       </tr>
-      <%- category.awards.sort_by{|a| a.position}.each do |award| -%>
+      <%- category.awards.sort.each do |award| -%>
         <tr class="award-header">
           <th>&nbsp;</th>
           <th colspan="2"><%= h award.name %></th>
           <th class="numeric"><%= award.styles.inject(0){|sum,s| sum + (style_counts[s.id] || 0)} %></th>
         </tr>
-        <%- award.styles.sort_by{|s| s.category}.each do |style| -%>
+        <%- award.styles.sort.each do |style| -%>
           <tr>
             <td>&nbsp;</td>
             <td><%= style.category %></td>

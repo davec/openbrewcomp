@@ -24,6 +24,11 @@ class Region < ActiveRecord::Base
 
   named_scope :in_country, lambda { |country| { :conditions => [ 'country_id = ?', country.id ] } }
 
+  include Comparable
+  def <=>(other)
+    name.downcase <=> other.name.downcase
+  end
+
   # Export settings
   self.csv_columns = [ 'id', 'region_code', 'name', 'country_id' ]
 

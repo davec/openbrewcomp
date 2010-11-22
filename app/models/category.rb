@@ -32,6 +32,11 @@ class Category < ActiveRecord::Base
                          :message => "must not be between #{CATEGORY_RANGE.begin} and #{CATEGORY_RANGE.end}",
                          :if => lambda { |c| !c.is_public? }
 
+  include Comparable
+  def <=>(other)
+    position <=> other.position
+  end
+
   def name_with_index
     "#{position} – #{name}"
   end

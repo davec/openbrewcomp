@@ -45,6 +45,11 @@ class Style < ActiveRecord::Base
     point_qualifier? ? 3 : 2
   end
 
+  include Comparable
+  def <=>(other)
+    [ bjcp_category, bjcp_subcategory ] <=> [ other.bjcp_category, other.bjcp_subcategory ]
+  end
+
   def category
     [ bjcp_category, bjcp_subcategory ].join
   end
