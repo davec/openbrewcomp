@@ -14,11 +14,11 @@ module Admin::EntrantsHelper
     if record.entries.blank?
       '<b>Add Entries</b>'
     else
-      #entries = record.entries.sort{|x,y| x.id <=> y.id}.collect{|v| v.to_label}
+      #entries = record.entries.sort{|x,y| x.id <=> y.id}.map{|v| v.to_label}
 
       ## Show the first few entries
       #num_to_show = 3
-      #entries = record.entries.sort{|x,y| x.id <=> y.id}.first(num_to_show+1).collect(&:to_label)
+      #entries = record.entries.sort{|x,y| x.id <=> y.id}.first(num_to_show+1).map(&:to_label)
       #entries[num_to_show] = '…' if entries.length == num_to_show+1  # replace the Nth value with a horizontal ellipsis (U2026)
       #h(entries.join(', '))
 
@@ -30,8 +30,7 @@ module Admin::EntrantsHelper
     options = form_element_input_options(input_name, Entrant)
     options[:name] += '[id]'
     options[:onchange] = %Q{toggleOtherClubData('#{params[:eid] || params[:id]}',#{Club.other.id})}
-    clubs = Club.all(:conditions => [ 'id <> ?', Club.other.id ],
-                     :order => 'LOWER(name)').collect{|c| [c.name, c.id]}
+    clubs = Club.named.all(:order => 'LOWER(name)').map{|c| [c.name, c.id]}
     clubs << [ Club.other.name, Club.other.id ]
 
     select(:record, :club_id, clubs,
@@ -60,8 +59,7 @@ module Admin::EntrantsHelper
   def region_form_column(record, input_name)
     options = form_element_input_options(input_name, Entrant)
     options[:name] += '[id]'
-    countries = Country.all(:conditions => [ 'is_selectable = ?', true ],
-                            :order => 'name')
+    countries = Country.selectable.all(:order => 'name')
 
     returning String.new do |str|
       str << %Q{<select id="#{options[:id]}" name="#{options[:name]}">}

@@ -42,25 +42,25 @@ module Admin::EntriesWithStyleinfoHelper
   end
 
   def carbonation_form_column(record, input_name)
-    rv = ''
     options = form_element_input_options(input_name, Entry)
     options[:disabled] = true
-    Carbonation.all(:order => 'position').each do |c|
-      options[:id] += "_#{pretty_tag_value(c.id)}"
-      rv << radio_button(:record, :carbonation_id, c.id, options)
-      rv << %Q{<span class="radioLabel">#{c.description}</span>}
+    returning String.new do |str|
+      Carbonation.all(:order => 'position').each do |c|
+        options[:id] += "_#{pretty_tag_value(c.id)}"
+        str << radio_button(:record, :carbonation_id, c.id, options)
+        str << %Q{<span class="radioLabel">#{c.description}</span>}
+      end
     end
-    rv
   end
 
   def strength_form_column(record, input_name)
     options = form_element_input_options(input_name, Entry)
     options[:disabled] = true
-    returning String.new do |rv|
+    returning String.new do |str|
       Strength.all(:order => 'position').each do |s|
         options[:id] += "_#{pretty_tag_value(s.id)}"
-        rv << radio_button(:record, :strength_id, s.id, options)
-        rv << %Q{<span class="radioLabel">#{s.description}</span>}
+        str << radio_button(:record, :strength_id, s.id, options)
+        str << %Q{<span class="radioLabel">#{s.description}</span>}
       end
     end
   end
@@ -68,11 +68,11 @@ module Admin::EntriesWithStyleinfoHelper
   def sweetness_form_column(record, input_name)
     options = form_element_input_options(input_name, Entry)
     options[:disabled] = true
-    returning String.new do |rv|
+    returning String.new do |str|
       Sweetness.all(:order => 'position').each do |s|
         options[:id] += "_#{pretty_tag_value(s.id)}"
-        rv << radio_button(:record, :sweetness_id, s.id, options)
-        rv << %Q{<span class="radioLabel">#{s.description}</span>}
+        str << radio_button(:record, :sweetness_id, s.id, options)
+        str << %Q{<span class="radioLabel">#{s.description}</span>}
       end
     end
   end

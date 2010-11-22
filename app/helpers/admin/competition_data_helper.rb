@@ -43,7 +43,9 @@ module Admin::CompetitionDataHelper
     # DST offsets (daylight saving time is regional and cannot be applied to a
     # generic GMT-based offset). It's better to only offer geographically-based
     # timezones instead (plus UTC).
-    zones = TZInfo::Timezone.all.collect{|z| [ z.to_s, z.name ] unless z.to_s =~ /GMT/}.compact
+    zones = TZInfo::Timezone.all.
+              reject { |z| z.to_s =~ /GMT/ }.
+              map { |z| [ z.to_s, z.name ] }
     select :record, :local_timezone, zones,
            { :prompt => '- Please select a time zone -'},
            { :name => input_name }

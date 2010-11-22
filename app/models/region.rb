@@ -22,6 +22,8 @@ class Region < ActiveRecord::Base
 
   validates_presence_of :country_id
 
+  named_scope :in_country, lambda { |country| { :conditions => [ 'country_id = ?', country.id ] } }
+
   # Export settings
   self.csv_columns = [ 'id', 'region_code', 'name', 'country_id' ]
 

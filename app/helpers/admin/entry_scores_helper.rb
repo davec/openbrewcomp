@@ -11,11 +11,7 @@ module Admin::EntryScoresHelper
   end
 
   def scores_column(record)
-    if record.scores.nil?
-      'N/A'
-    else
-      record.scores.collect(&:score).join(', ')
-    end
+    record.scores.nil? ? 'N/A' : record.scores.map(&:score).join(', ')
   end
 
   def award_container_id(award)

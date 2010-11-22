@@ -18,7 +18,7 @@ module Admin::FlightsHelper
   end
 
   def round_column(record)
-    record.round.name.gsub(/round/i,'')
+    record.round.name.gsub(/round/i, '')
   end
 
   def status_column(record)
@@ -29,34 +29,28 @@ module Admin::FlightsHelper
 
   def assigned_time_column(record)
     return '' if record.assigned_time.nil?
-    return record.assigned_time.strftime(TIME_FORMAT_VERBOSE) if controller.action_name == 'show'
-    return record.assigned_time.strftime(TIME_FORMAT_SHORT) if Controller.nested_view?
-    return record.assigned_time.strftime(TIME_FORMAT_VERBOSE) if record.assigned?
+    record.assigned_time.strftime(Controller.nested_view? ? TIME_FORMAT_SHORT : TIME_FORMAT_VERBOSE)
+  end
+
+  def assigned_time_show_column(record)
+    record.assigned_time.nil? ? '' : record.assigned_time.strftime(TIME_FORMAT_VERBOSE)
   end
 
   def completed_time_column(record)
     return '' if record.completed_time.nil?
-    return record.completed_time.strftime(TIME_FORMAT_VERBOSE) if controller.action_name == 'show'
-    return record.completed_time.strftime(TIME_FORMAT_SHORT) if Controller.nested_view?
-    return record.completed_time.strftime(TIME_FORMAT_VERBOSE) if record.completed?
+    record.completed_time.strftime(Controller.nested_view? ? TIME_FORMAT_SHORT : TIME_FORMAT_VERBOSE)
   end
 
-  def judgings_column(record)
-    if controller.action_name == 'show'
-      judges_table(record, controller.action_name)
-    else
-      super
-    end
+  def completed_time_show_column(record)
+    record.completed_time.nil? ? '' : record.completed_time.strftime(TIME_FORMAT_VERBOSE)
   end
 
-  def entries_column(record)
-    # This is only used in the show method
-    if controller.action_name == 'show'
-      entries_table(record, controller.action_name)
-    else
-      raise "Action '#{controller.action_name}' not recognized"
-      #h(record.entries.sort.collect(&:bottle_code).join(', '))
-    end
+  def judgings_show_column(record)
+    judges_table(record)
+  end
+
+  def entries_show_column(record)
+    entries_table(record, controller.action_name)
   end
 
   def status_form_column(record, input_name)
@@ -77,7 +71,7 @@ module Admin::FlightsHelper
     options = form_element_input_options(input_name, Flight)
     options[:name] += "[id]"
     select :record, :award_id,
-           Award.all(:order => "category_id, position").collect { |a| [ a.name, a.id ] },
+           Award.all(:order => "category_id, position").map { |a| [ a.name, a.id ] },
            { :prompt => "- Select an award category -" },
            options
   end
@@ -88,7 +82,7 @@ module Admin::FlightsHelper
     options = form_element_input_options(input_name, Flight)
     options[:name] += "[id]"
     select :record, :round_id,
-           Round.all(:order => "id").collect { |r| [ r.name, r.id ] },
+           Round.all(:order => "id").map { |r| [ r.name, r.id ] },
            { :prompt => "- Select a round -" },
            options
   end
@@ -97,7 +91,7 @@ module Admin::FlightsHelper
     options = form_element_input_options(input_name, Flight)
     options[:name] += "[id]"
     select :record, :judging_session_id,
-           JudgingSession.current_and_past.collect { |s| [ s.description, s.id ] },
+           JudgingSession.current_and_past.map { |s| [ s.description, s.id ] },
            { :prompt => "- Select a judging session -" },
            options
   end
@@ -137,13 +131,13 @@ module Admin::FlightsHelper
 
   private
 
-    def judges_table(record, action)
+    def judges_table(record)
       panel = record.judgings.partition{|r| r.role == Judging::ROLE_JUDGE}
       judges = panel[0]
       stewards = panel[1]
 
-      (judges.sort{|x,y| x.judge.dictionary_name <=> y.judge.dictionary_name}.collect{|j| link_to(h(j.judge.name), admin_judge_path(j.judge), :popup => true)} +
-       stewards.sort{|x,y| x.judge.dictionary_name <=> y.judge.dictionary_name}.collect{|j| %Q{#{link_to(h(j.judge.name), admin_judge_path(j.judge), :popup => true)} <span style="font-weight: normal">(Steward)</span>} }).join('<br />')
+      (judges.sort{|x,y| x.judge.dictionary_name <=> y.judge.dictionary_name}.map{|j| link_to(h(j.judge.name), admin_judge_path(j.judge), :popup => true)} +
+       stewards.sort{|x,y| x.judge.dictionary_name <=> y.judge.dictionary_name}.map{|j| %Q{#{link_to(h(j.judge.name), admin_judge_path(j.judge), :popup => true)} <span style="font-weight: normal">(Steward)</span>} }).join('<br />')
     end
 
     def entries_table(record, action)

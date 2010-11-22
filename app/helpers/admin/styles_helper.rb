@@ -35,14 +35,14 @@ module Admin::StylesHelper
   end
 
   def styleinfo_form_column(record, input_name)
-    rv = ''
-    options = form_element_input_options(input_name, Style)
-    StyleInfo.key_value_pairs.each do |s|
-      options[:id] += "_#{pretty_tag_value(s[0])}"
-      rv << radio_button(:record, :styleinfo, s[0], options)
-      rv << %Q{<span class="radioLabel">#{s[1]}</span>}
+    returning String.new do |str|
+      options = form_element_input_options(input_name, Style)
+      StyleInfo.key_value_pairs.each do |s|
+        options[:id] += "_#{pretty_tag_value(s[0])}"
+        str << radio_button(:record, :styleinfo, s[0], options)
+        str << %Q{<span class="radioLabel">#{s[1]}</span>}
+      end
     end
-    rv
   end
 
   # The override for description_url must be defined here (not in the
@@ -58,8 +58,7 @@ module Admin::StylesHelper
   def award_form_column(record, input_name)
     options = form_element_input_options(input_name, Style)
     options[:name] += '[id]'
-    awards = Award.find(:all,
-                        :order => 'category_id, position').collect {|a| [ a.name, a.id ]}
+    awards = Award.all(:order => 'category_id, position').map {|a| [ a.name, a.id ]}
     select :record, :award_id, awards,
            { :prompt => '- Select an award category -' },
            options

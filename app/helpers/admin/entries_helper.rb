@@ -26,7 +26,7 @@ module Admin::EntriesHelper
 
   def flights_column(record)
     # Don't display any "pushed" flights
-    record.flights.reject(&:pushed?).collect(&:to_label).join(', ')
+    record.flights.reject(&:pushed?).map(&:to_label).join(', ')
   end
 
   def registration_code_form_column(record, input_name)
@@ -117,7 +117,7 @@ module Admin::EntriesHelper
       select_options[:name] += '[id]' if options[:append_id]
       select_options[:onchange] = %Q{showStyleParams('#{[ params[:eid], params[:id] ].compact.join("_")}')}
       styles = Style.all(:conditions => options[:conditions],
-                         :order => 'bjcp_category, bjcp_subcategory').collect {
+                         :order => 'bjcp_category, bjcp_subcategory').map {
         |s| [ style_option_label(s), style_option_value(s, options[:extended_option_values] || true) ]
       }
       select :record, :style_id, styles,

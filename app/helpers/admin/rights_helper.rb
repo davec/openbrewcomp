@@ -7,7 +7,7 @@ module Admin::RightsHelper
   end
 
   def roles_column(record)
-    record.roles.nil? ? '-' : h(record.roles.collect(&:name).sort.join(', '))
+    record.roles.nil? ? '-' : h(record.roles.map(&:name).sort.join(', '))
   end
 
 end

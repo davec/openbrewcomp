@@ -3,17 +3,26 @@
 module Admin::RolesHelper
 
   def rights_column(record)
-    if record.rights.nil?
-      '-'
-    elsif controller.action_name == 'show'
-      record.rights.group_by{|r| r.to_label.sub(/\w+ (.*)/, '\1')}.sort.collect{|e| "#{h e[1][0].to_label.sub(/\w+ (.*)/, '\1').titleize} (#{e[1].collect{|r| h r.to_label.sub(/(\w+) .*/, '\1').capitalize}.sort.join(', ')})"}.join('<br />')
-    else
-      record.rights.collect{|r| h r.to_label.sub(/\w+ (.*)/, '\1').titleize}.sort.uniq.join(', ')
-    end
+    return '-' if record.rights.nil?
+    record.rights.
+      map{ |r| r.to_label.sub(/\w+ (.*)/, '\1').titleize }.
+      sort.
+      uniq.
+      map{ |r| h(r) }.
+      join(', ')
+  end
+
+  def rights_show_column(record)
+    return '-' if record.rights.nil?
+    record.rights.
+      group_by{|r| r.to_label.sub(/\w+ (.*)/, '\1')}.
+      sort.
+      map{|e| "#{h(e[1][0].to_label.sub(/\w+ (.*)/, '\1').titleize)} (#{e[1].map{|r| h(r.to_label.sub(/(\w+) .*/, '\1').capitalize)}.sort.join(', ')})"}.
+      join('<br />')
   end
 
   def users_column(record)
-    record.users.nil? ? '-' : h(record.users.collect(&:login).sort.join(', '))
+    record.users.nil? ? '-' : h(record.users.map(&:login).sort.join(', '))
   end
 
   def options_for_association_conditions(association)

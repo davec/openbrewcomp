@@ -22,10 +22,10 @@ class Country < ActiveRecord::Base
   validates_presence_of :postcode_pattern,
                         :unless => lambda {|c| c.postcode_canonify.blank?}
 
+  named_scope :selectable, :conditions => [ 'is_selectable = ?', true ]
+
   def regions_by_name
-    Region.find(:all,
-                :conditions => [ 'country_id = ?', self.id ],
-                :order => 'name')
+    Region.in_country(self).all(:order => 'name')
   end
 
   def validate_postcode(str)

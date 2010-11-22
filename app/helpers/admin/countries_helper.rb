@@ -7,18 +7,17 @@ module Admin::CountriesHelper
   end
 
   def regions_column(record)
-    if record.regions.blank?
-      '-'
-    else
-      regions = record.regions.sort_by(&:name).collect(&:to_label)
-      if controller.action_name == 'show'
-        h(regions.join("\n")).gsub("\n",'<br />')
-      else
-        num_to_show = 3
-        regions[num_to_show] = '…' if regions.length > num_to_show+1  # replace the Nth value with a horizontal ellipsis (U2026)
-        h(regions.first(num_to_show+1).join(', '))
-      end
-    end
+    return '-' if record.regions.blank?
+
+    num_to_show = 3
+    regions = sorted_regions(record).first(num_to_show+1).map(&:to_label)
+    regions[num_to_show] = '…' if regions.length > num_to_show+1  # replace the Nth value with a horizontal ellipsis (U2026)
+    h(regions.join(', '))
+  end
+
+  def regions_show_column(record)
+    return '-' if record.regions.blank?
+    sorted_regions(record).map{|r| h(r.to_label)}.join('<br />')
   end
 
   def region_name_optional_column(record)
@@ -30,14 +29,14 @@ module Admin::CountriesHelper
   end
 
   def address_alignment_form_column(record, input_name)
-    rv = ''
     options = form_element_input_options(input_name, Country)
-    [ 'l', 'c', 'r' ].each do |t|
-      options[:id] += "_#{t}"
-      rv << radio_button(:record, :address_alignment, t, options)
-      rv << %Q{<span class="radioLabel">#{address_alignment_label(t)}</span>}
+    returning String.new do |str|
+      %w(l c r).each do |t|
+        options[:id] += "_#{t}"
+        str << radio_button(:record, :address_alignment, t, options)
+        str << %Q{<span class="radioLabel">#{address_alignment_label(t)}</span>}
+      end
     end
-    rv
   end
 
   private
@@ -49,6 +48,10 @@ module Admin::CountriesHelper
         when 'c', 'C' : "Center"
         else            "Unknown"
       end
+    end
+
+    def sorted_regions(record)
+      record.regions.sort_by(&:name)
     end
 
 end

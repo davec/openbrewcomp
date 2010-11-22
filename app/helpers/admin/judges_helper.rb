@@ -48,7 +48,11 @@ module Admin::JudgesHelper
   end
 
   def comments_column(record)
-    controller.action_name == 'show' ? h(record.comments) : h(truncate(record.comments, :length => 20))
+    h(truncate(record.comments, :length => 20))
+  end
+
+  def comments_show_column(record)
+    h record.comments
   end
 
   def is_bos_judge_column(record)
@@ -77,20 +81,19 @@ module Admin::JudgesHelper
 
   def category_preferences_column(record)
     return '-' if record.category_preferences.empty?
-    record.category_preferences.collect(&:label).join("<br />")
+    record.category_preferences.map(&:label).join("<br />")
   end
 
   def time_availabilities_column(record)
     return '-' if record.time_availabilities.empty?
-    record.time_availabilities.sort_by{|t| t.start_time}.collect(&:label).join("<br />")
+    record.time_availabilities.sort_by{|t| t.start_time}.map(&:label).join("<br />")
   end
 
   def club_form_column(record, input_name)
     options = form_element_input_options(input_name, Judge)
     options[:name] += '[id]'
     options[:onchange] = %Q{toggleOtherClubData('#{params[:eid] || params[:id]}',#{Club.other.id})}
-    clubs = Club.all(:conditions => [ 'id <> ?', Club.other.id ],
-                     :order => 'LOWER(name)').collect{|c| [c.name, c.id]}
+    clubs = Club.named.all(:order => 'LOWER(name)').map{|c| [c.name, c.id]}
     clubs << [ Club.other.name, Club.other.id ]
 
     select(:record, :club_id, clubs,
@@ -119,7 +122,7 @@ module Admin::JudgesHelper
     options = form_element_input_options(input_name, Judge)
     options[:name] += '[id]'
     options[:onchange] = %Q{showJudgeRankParams('#{params[:eid] || params[:id]}')}
-    judge_ranks = JudgeRank.all(:order => 'position').collect{|r|
+    judge_ranks = JudgeRank.all(:order => 'position').map{|r|
       # HACK: Don't offer the N/A rank on new records.
       # (It's a special rank which is only used for importing BJCP judge
       # lists that sometimes include such a value for the judge rank.)
@@ -141,8 +144,7 @@ module Admin::JudgesHelper
   def region_form_column(record, input_name)
     options = form_element_input_options(input_name, Judge)
     options[:name] += '[id]'
-    countries = Country.all(:conditions => [ 'is_selectable = ?', true ],
-                            :order => 'name')
+    countries = Country.selectable.all(:order => 'name')
 
     returning String.new do |str|
       str << %Q{<select id="#{options[:id]}" name="#{options[:name]}">}

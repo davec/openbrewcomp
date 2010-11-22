@@ -19,6 +19,8 @@ class Club < ActiveRecord::Base
     @@independent ||= Club.find_by_name('Independent')
   end
 
+  named_scope :named, :conditions => [ 'id <> ?', @@other.id ]
+
   # Export settings
   self.csv_columns = [ 'id', 'name' ]
 
