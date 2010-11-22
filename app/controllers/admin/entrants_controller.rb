@@ -32,9 +32,7 @@ class Admin::EntrantsController < AdministrationController
     config.show.columns = [ :postal_address, :is_team, :team_members,
                             :email, :phone, :club ]
 
-    # TODO: The following does not work, so we use a more generic message instead.
-    #config.delete.link.confirm = lambda { "Deleting #{@record.name} will also delete all entries registered by, or for, #{@record.name}.\n\nAre you sure you want to delete #{@record.name}?" }
-    config.delete.link.confirm = "Deleting a brewer will also delete all associated entries registered by, or for, the brewer.\n\nAre you sure you want to delete the brewer?"
+    config.delete.link.confirm = :are_you_sure_delete_of_entrant
 
     # Disable sorting of the entries column (it's pointless)
     config.columns[:entries].sort = false
