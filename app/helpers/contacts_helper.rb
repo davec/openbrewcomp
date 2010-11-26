@@ -2,20 +2,12 @@
 
 module ContactsHelper
 
-  def coordinator_name
-    @contacts['coordinator']['name']
+  Contact.roles.each do |role|
+    %w(name email foo).each do |prop|
+      define_method "#{role}_#{prop}".to_sym do
+        @contacts[role][prop] || "Zombie #{role.titleize} #{prop.titleize}"
+      end
+    end
   end
-  def coordinator_email
-    @contacts['coordinator']['email']
-  end
-
-  def webmaster_name
-    @contacts['webmaster']['name']
-  end
-  def webmaster_email
-    @contacts['webmaster']['email']
-  end
-
-  # Add additional contact_name/email methods as required
 
 end

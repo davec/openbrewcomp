@@ -25,4 +25,8 @@ class Contact < ActiveRecord::Base
     }
   end
 
+  def self.roles
+    find(:all).map(&:role)
+  end
+
 end
