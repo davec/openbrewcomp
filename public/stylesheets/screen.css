@@ -25,7 +25,7 @@ body {
  * #f0f0f0 = not quite white
  * #ffffff = white
  */
-#navigation li.off ul, #navigation li.on ul {
+#navigation li ul {
   background-color: #191970;
 }
 #navigation li.on ul {
@@ -38,30 +38,31 @@ body {
   background-color: #f0f0f0;
   color: #191970;
 }
+#navigation li a:hover {
+  background-color: #191970;
+  color: #ffffff;
+}
 #navigation li.on a {
-  color: #ffffff;
   background-color: #ffaf54;
-}
-#navigation li.on ul a, #navigation li.off ul a {
   color: #ffffff;
 }
-#navigation li.on:hover ul a, #navigation li.over ul li a {
-  background-color: #191970;
-}
-#navigation li.off a:hover, #navigation li.on a:hover {
-  background-color: #191970;
-  color: #ffffff;
-}
-#navigation li.off ul a, #navigation li.on ul a { /* sub-navigation formatting */
+#navigation li ul li a {
   background-color: #191970;
   color: #ffaf54;
 }
-#navigation li.off ul li a:hover, #navigation li.on ul li a:hover {
-  background-color: #191970;
+#navigation li.on ul li a {
+  color: #191970;
+}
+#navigation li.on ul li.on a {
   color: #ffffff;
 }
-#navigation li.on ul a {
-  background-color: #ffaf54;
+#navigation li.on:hover ul li a, #navigation li.over ul li a {
+  background-color: #191970;
+  color: #ffaf54;
+}
+#navigation li.on:hover ul li a:hover, #navigation li.over ul li a:hover {
+  background-color: #191970;
+  color: #ffffff;
 }
 
 /**

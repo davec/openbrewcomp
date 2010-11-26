@@ -87,6 +87,21 @@ module ApplicationHelper
     end
   end
 
+  def nav_class_for(path)
+    paths = [path].flatten
+
+    v = paths.any?{|p|
+      if p =~ /\Ahttps?:\/\/.+\z/
+        current_page?(p)
+      elsif p[-1,1] == '/'
+        controller.controller_path.starts_with?(p)
+      else
+        controller.controller_path == p
+      end
+    }
+    %Q{class="#{v ? 'on' : 'off'}"}
+  end
+
   private
 
     def page_title

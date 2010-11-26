@@ -3,50 +3,72 @@
     <span><%= APP_CONFIG[:competition_name] %></span>
   </div>
   <ul id="navigation">
-    <li class="<%= controller.controller_path == 'main' ? 'on' : 'off' %>">
+    <li <%= nav_class_for('main') %>>
       <%= link_to('Home', root_url) %>
       <ul>
         <li></li>
       </ul>
     </li>
-    <li class="<%= controller.controller_path == 'about' ? 'on' : 'off' %>">
+    <li <%= nav_class_for('about') %>>
       <%= link_to('About', about_path) %>
       <ul>
-        <li><%= link_to('News', news_path) %></li>
-        <li><%= link_to('Contacts', contacts_path) %></li>
-        <li><%= link_to('Privacy Policy', privacy_path) %></li>
-        <li><%= link_to('FAQ', faq_path) %></li>
+        <li <%= nav_class_for(news_url) %>>
+          <%= link_to('News', news_path) %>
+        </li>
+        <li <%= nav_class_for(contacts_url) %>>
+          <%= link_to('Contacts', contacts_path) %>
+        </li>
+        <li <%= nav_class_for(privacy_url) %>>
+          <%= link_to('Privacy Policy', privacy_path) %>
+        </li>
+        <li <%= nav_class_for(faq_url) %>>
+          <%= link_to('FAQ', faq_path) %>
+        </li>
       </ul>
     </li>
-    <li class="<%= controller.controller_path == 'entries' ? 'on' : 'off' %>">
+    <li <%= nav_class_for('entries') %>>
       <%= link_to('Entries', entries_path) %>
       <ul>
-        <li><%= link_to('Rules', rules_path) %></li>
-        <li><%= link_to('Shipping', shipping_path) %></li>
-        <li><%= link_to('Awards', awards_path) %></li>
+        <li <%= nav_class_for([rules_url,entries_url]) %>>
+          <%= link_to('Rules', rules_path) %>
+        </li>
+        <li <%= nav_class_for(shipping_url) %>>
+          <%= link_to('Shipping', shipping_path) %>
+        </li>
+        <li <%= nav_class_for(awards_url) %>>
+          <%= link_to('Awards', awards_path) %>
+        </li>
       </ul>
     </li>
-    <li class="<%= controller.controller_path == 'styles' ? 'on' : 'off' %>">
+    <li <%= nav_class_for('styles') %>>
       <%- cache(:navigation_styles) do -%>
         <%= link_to('Styles', styles_path) %>
         <ul>
-          <li><%= link_to('All Styles', all_styles_path) %></li>
+          <li <%= nav_class_for(all_styles_url) %>>
+            <%= link_to('All Styles', all_styles_path) %>
+          </li>
           <%- special_styles.each do |style| -%>
-            <li><%= create_description_link(style.name, style.description_url) %></li>
+            <li <%= nav_class_for(style.description_url) %>>
+              <%= create_description_link(style.name, style.description_url) %>
+            </li>
           <%- end -%>
         </ul>
       <%- end -%>
     </li>
-    <li class="<%= controller.controller_path == 'register' ? 'on' : 'off' %>">
+    <li <%= nav_class_for('register') %>>
       <%= link_to('Register', registration_path) %>
       <ul>
-        <li><%= link_to('Registration Forms', registration_forms_path) %></li>
-        <li><%= link_to('Online Registration', online_registration_path) %></li>
+        <li <%= nav_class_for(registration_forms_url) %>>
+          <%= link_to('Registration Forms', registration_forms_path) %>
+        </li>
+        <li <%= nav_class_for(online_registration_url) %>>
+          <%= link_to('Online Registration', online_registration_path) %>
+        </li>
       </ul>
     </li>
     <%- if current_user -%>
       <%- unless current_user.is_anonymous? -%>
-        <li class="<%= controller.controller_path == 'users' ? 'on' : 'off' %>">
+        <li <%= nav_class_for('users') %>>
           <%= link_to('My Account', user_path(current_user)) %>
           <ul>
             <li></li>
@@ -54,7 +76,7 @@
         </li>
       <%- end -%>
       <%- if current_user.is_admin? -%>
-        <li class="<%= controller.controller_path[0,6] == 'admin/' ? 'on' : 'off' %>">
+        <li <%= nav_class_for('admin/') %>>
           <%= link_to('Admin', admin_path) %>
           <ul>
             <li></li>
@@ -68,16 +90,16 @@
         </ul>
       </li>
     <%- else -%>
-      <li class="<%= controller.controller_path == 'sessions' ? 'on' : 'off' %>">
+      <li <%= nav_class_for('sessions') %>>
         <%= link_to('Login', login_path) %>
         <ul>
           <li></li>
         </ul>
       </li>
-      <%- if [ 'passwords', 'users' ].include?(controller.controller_path)
-           # Provide a dummy element for the account actions that are available
-           # to users who are not logged in.  This allows the sub-menu bar to be
-           # drawn (rather than leaving a naked menu with floating tabs). -%>
+      <%- if %w(passwords users).include?(controller.controller_path)
+            # Provide a dummy element for the account actions that are available
+            # to users who are not logged in. This allows the sub-menu bar to be
+            # drawn (rather than leaving a naked menu with floating tabs). -%>
         <li class="on">
           <ul>
             <li></li>
