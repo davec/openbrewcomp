@@ -17,7 +17,7 @@
       <%= stylesheet_link_tag 'ie_hacks', :media => "screen" %>
       <![if lt IE 7]>
         <%= stylesheet_link_tag 'ie-print_hacks', :media => "print" %>
-        <%= javascript_include_tag 'pngfix' %>
+        <%= javascript_include_tag 'pngfix', :defer => "defer" %>
       <![endif]>
       <%= javascript_include_tag 'ie_hacks' %>
     <![endif]>
