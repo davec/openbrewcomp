@@ -19,7 +19,7 @@ catch (e) {}
 
 if (version >= 5.5 && filters) {
   $A(document.images).each(function(img) {
-    if (!img.src.toLowerCase().endsWith('png')) return;
+    if (!img.src.split('?').first().toLowerCase().endsWith('.png')) return;
     
     var span = new Element('span', { id: img.id, className: img.className, title: (img.title || img.alt) }).
       setStyle({
