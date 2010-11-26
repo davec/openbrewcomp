@@ -8,6 +8,7 @@ coverage
 db/development_structure.sql
 log/*.log
 tmp/**/*
+tmp/*.zip
 public/blank.html
 public/blank_iframe.html
 public/**/active_scaffold
