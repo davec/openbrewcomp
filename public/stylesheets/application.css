@@ -491,8 +491,23 @@ input[type="submit"] {
   text-align: center;
 }
 #account-form .buttons input {
-  margin: 0 1em;
+  margin: 0 0.5em;
 }
+#account-form a.cancel,
+#password-form a.cancel,
+#user-form a.cancel {
+  color: #06c;
+  font: bold 14px sans-serif;
+  margin: 0 0.5em;
+  padding: 1px 2px;
+  text-decoration: none;
+}
+#account-form a.cancel:hover,
+#password-form a.cancel:hover,
+#user-form a.cancel:hover {
+  background-color: #ff9;
+}
+
 #account-form div.separator {
   font-size: 130%;
   font-weight: bold;

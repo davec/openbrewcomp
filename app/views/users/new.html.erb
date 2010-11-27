@@ -82,10 +82,10 @@
 
     <div class="buttons">
       <%= submit_tag "Create Account" %>
-      <%= submit_tag 'Cancel', { :name => 'cancel' } %>
+      <%= link_to 'Cancel', login_path, :class => 'cancel' %>
     </div>
   <% end %>
 </div>
-<script type="text/javascript">
-  Field.focus('<%= flash[:openid_error] ? 'openid_url' : 'user_login' %>');
-</script>
+<%- javascript_tag do -%>
+  Field.focus('<%= flash[:openid_error] ? "openid_url" : "user_login" %>');
+<%- end -%>

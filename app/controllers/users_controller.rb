@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
  
   def create
-    redirect_to login_path and return if params[:cancel]
     flash.clear
     logout_keeping_session!
     if using_open_id?
@@ -84,7 +83,6 @@ class UsersController < ApplicationController
     if request.put?
       redirect_to authorization_error_path and return unless params[:id].to_i == current_user.id && current_user.authorized_for_update?
       @user = current_user
-      redirect_to user_path(@user) and return if params[:cancel]
       if User.authenticate(@user.login, params[:user][:current_password])
         if @user.update_attributes(:current_password => params[:user][:current_password],
                                    :password => params[:user][:password],
