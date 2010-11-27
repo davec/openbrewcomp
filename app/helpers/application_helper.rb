@@ -71,6 +71,10 @@ module ApplicationHelper
     image_tag 'psgzicon_small.gif', :class => 'icon', :alt => '(GZipped PostScript Format)', :title => 'GZipped PostScript File', :size => '17x17'
   end
 
+  def zip_icon
+    image_tag 'zipicon_small.png', :class => 'icon', :alt => '(Zip Archive)', :title => 'Zip Archive', :size => '16x16'
+  end
+
   def link_to_with_icon(name, target = {}, options = {})
     icon = ''
     include_size = options.delete(:size)

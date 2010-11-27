@@ -81,7 +81,7 @@ th {
   margin: 0;
 }
 
-#admin-menu a, #flight-menu a, #import-menu a, #export-menu a {
+#admin-menu a, #flight-menu a, #import-menu a {
   color: #0080a4;
   display: block;
   padding: 4px;
@@ -89,7 +89,7 @@ th {
   text-decoration: none;
   width: 6em;
 }
-#results-menu a {
+#results-menu a, #export-menu a {
   color: #0080a4;
   display: inline;
   padding: 1px;
@@ -107,11 +107,14 @@ th {
 #flight-menu a, #export-menu a, #import-menu a, #results-menu a {
   font-size: 110%;
 }
-#flight-menu a, #export-menu a {
+#flight-menu a {
   width: 10em;
 }
 #import-menu a {
   width: 14em;
+}
+#export-menu a {
+  width: auto;
 }
 #admin-menu a:hover, #flight-menu a:hover, #import-menu a:hover, #export-menu a:hover, #results-menu a:hover {
   background-color: #0080a4;
