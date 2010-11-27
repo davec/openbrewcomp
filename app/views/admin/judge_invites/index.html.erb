@@ -41,6 +41,7 @@
       <div class="form-buttons">
         <%= submit_tag 'Send', :disable_with => 'Sending...' %>
         <%= submit_tag 'Reset', :type => 'reset' %>
+        <%= link_to 'Cancel', admin_path, :class => 'cancel' %>
       </div>
     <% end -%>
   </div>

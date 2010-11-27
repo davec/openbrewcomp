@@ -949,6 +949,11 @@ table#flight-tracker caption {
   text-align: right;
   width: 6em;
 }
+#email-form .radioLabel {
+  margin: 0 1em 0 0.25em;
+  font-family: verdana, sans-serif;
+  font-size: 90%;
+}
 #email-form form .form-buttons {
   clear: both;
   margin: 1em 6em;
@@ -1095,4 +1100,26 @@ table#flight-tracker caption {
   clear: both;
   padding-top: 1ex;
   text-align: left;
+}
+
+/**
+ * Cancel links
+ */
+#bjcp-report a.cancel,
+#mcab-report a.cancel,
+#email-form a.cancel,
+#import-form a.cancel,
+#purge-form a.cancel {
+  color: #06c;
+  font: bold 14px sans-serif;
+  margin: 0 0.5em;
+  padding: 1px 2px;
+  text-decoration: none;
+}
+#bjcp-report a.cancel:hover,
+#mcab-report a.cancel:hover,
+#email-form a.cancel:hover,
+#import-form a.cancel:hover,
+#purge-form a.cancel:hover {
+  background-color: #ff9;
 }

@@ -63,6 +63,7 @@
       </p>
       <div class="form-buttons">
         <%= submit_tag button_label, :disabled => !ok_to_submit %>
+        <%= link_to 'Cancel', admin_results_path, :class => 'cancel' %>
       </div>
     <% end -%>
   </div>

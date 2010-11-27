@@ -16,6 +16,7 @@
                 :url => { :format => 'csv' } do |form| %>
       <div class="form-buttons">
         <%= submit_tag button_label %>
+        <%= link_to 'Cancel', admin_results_path, :class => 'cancel' %>
       </div>
     <% end -%>
   </div>

@@ -30,6 +30,7 @@
 
     <div class="form-buttons">
       <%= submit_tag 'Import', :disable_with => 'Importing...' %>
+      <%= link_to 'Cancel', admin_import_path, :class => 'cancel' %>
     </div>
   <% end %>
 </div>
