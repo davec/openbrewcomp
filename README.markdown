@@ -108,9 +108,7 @@ spent addressing such environments.
   `inputenc`, `longtable`, `multicol`, `pifont`, and `textpos`.
 
 OpenBrewComp makes use of several gems and plugins. The required plugins are
-included in the distribution and the gems can be easily installed. Run `rake gems`
-to see the list of gems. You must include http://gems.github.com in your gems
-sources before installing the gems.
+included in the distribution and the gems are easily installed with Bundler.
 
 ## Setup
 
@@ -120,19 +118,35 @@ of Ruby on Rails,
 1. Download the source, either `git clone git://github.com/davec/openbrewcomp`
    or download a zip or tar archive by clicking the _download_ button at the
    top of the project&rsquo;s github page and unzip/untar it to a local directory.
-2. Copy `config/database.yml.example` to `config/database.yml` and edit it for
+2. Install Bundler, either running as `root` or using `sudo`:
+
+        gem install bundler
+
+3. Copy `config/database.yml.example` to `config/database.yml` and edit it for
    your environment.
-3. Run `rake setup` to generate the required configuration files.
-4. Run `rake gems:install` to install the required gems.
-5. Edit `db/fixtures/contacts.yml` and set the contact information for your
+4. Edit `Gemfile` to activate the database gem(s) required for your environment.
+5. Install the required gems:
+
+        bundle install
+
+6. Generate the required configuration files:
+
+        rake setup
+
+7. Edit `db/fixtures/contacts.yml` and set the contact information for your
    competition coordinator and webmaster.
-6. (optional) Edit `db/fixtures/clubs.yml` to set an initial list of clubs
+8. (optional) Edit `db/fixtures/clubs.yml` to set an initial list of clubs
    that will be shown in a selection box for an entrant. This is not strictly
    necessary since entrants will be able to add their club&rsquo;s name to the
    list if it does not already exist in the database but an initial list of clubs
    that only has your own club name doesn&rsquo;t look so good.
-7. Create your development, test, and production databases: `rake db:create:all`
-8. Initialize your development database: `rake db:bootstrap`
+9. Create your development, test, and production databases:
+
+        rake db:create:all
+
+10. Initialize your development database:
+
+        rake db:bootstrap
 
 ## Testing
 

@@ -1,4 +1,5 @@
 require 'erb'
+require 'bundler/capistrano'
 
 default_run_options[:pty] = true
 stage_branches = { :production => "master",

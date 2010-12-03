@@ -1,5 +1,6 @@
 *~
 .DS_Store
+.bundle
 TAGS
 db/development_structure.sql
 config/database.yml
