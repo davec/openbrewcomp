@@ -97,10 +97,10 @@ spent addressing such environments.
 
 ## Dependencies
 
-+ [Ruby](http://www.ruby-lang.org/) 1.8.6 (not tested with 1.8.7 or 1.9)
-+ [Ruby on Rails](http://rubyonrails.org/) 2.3.x
-+ A supported database (tested with [PostgreSQL](http://www.postgresql.org/) 8.3.7,
-  [MySQL](http://www.mysql.com/) 5.0.77, and [SQLite](http://www.sqlite.org/) 3.6.11)
++ [Ruby](http://www.ruby-lang.org/) 1.8.7 (not tested with 1.9.x)
++ [Ruby on Rails](http://rubyonrails.org/) 2.3.5
++ A supported database (tested with [PostgreSQL](http://www.postgresql.org/) 8.4,
+  [MySQL](http://www.mysql.com/) 5.1, and [SQLite](http://www.sqlite.org/) 3.7)
 + A working [LaTeX](http://www.latex-project.org/) installation such as the one
   provided by [TeXLive](http://www.tug.org/texlive/) (tested with TeXLive 2007
   and 2008), though any modern TeX system should work. The following packages
