@@ -2,7 +2,7 @@
   <%- columns.each do |column| -%>
     <tr class="<%= cycle('even-record', 'odd-record') %>">
       <td class="column-name"><%= column.label.sub("*", "").strip %></td>
-      <td class="column-value"><%= get_column_value(@record, column) %></td>
+      <td class="column-value"><%= show_column_value(@record, column) %></td>
     </tr>
   <%- end -%>
 </table>
