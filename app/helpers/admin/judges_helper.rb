@@ -48,7 +48,7 @@ module Admin::JudgesHelper
   end
 
   def comments_column(record)
-    h(truncate(record.comments, :length => 20))
+    h(truncate(record.comments, :length => 100))
   end
 
   def comments_show_column(record)
