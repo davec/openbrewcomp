@@ -73,12 +73,16 @@ th {
   list-style: none;
   margin-left: 0.5em;
 }
+#admin-menu ul li ul {
+  margin-left: 5%;
+}
 
 #admin-menu ul li ul li {
   float: none;
   font-size: 90%;
   font-weight: normal;
   margin: 0;
+  width: 100%;
 }
 
 #admin-menu a, #flight-menu a, #import-menu a {
@@ -87,7 +91,6 @@ th {
   padding: 4px;
   *padding: 2px;  /* adjust for IE */
   text-decoration: none;
-  width: 6em;
 }
 #results-menu a, #export-menu a {
   color: #0080a4;
@@ -104,6 +107,9 @@ th {
   width: 6em;
 }
 
+#admin-menu a {
+  width: 90%;
+}
 #flight-menu a, #export-menu a, #import-menu a, #results-menu a {
   font-size: 110%;
 }
