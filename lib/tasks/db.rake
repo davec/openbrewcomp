@@ -5,8 +5,21 @@ namespace :db do
     raise "Bootstrapping a non-empty database is not allowed" if CompetitionData.count > 0
     announce "Loading data"
     time = Benchmark.measure do
-      Dir.glob("#{RAILS_ROOT}/db/fixtures/*.yml").sort.each do |file|
-         Fixtures.create_fixtures('db/fixtures', File.basename(file, '.*'))
+      fixture_dir = "#{RAILS_ROOT}/db/fixtures"
+      all_fixtures = Dir.glob("#{fixture_dir}/*.yml").map { |f| File.basename(f, ".yml") }
+      special_fixtures = %w(countries regions)
+      mass_load_fixtures = all_fixtures - special_fixtures
+
+      import = Import.new({})
+      import.instance_variable_set(:@tables, mass_load_fixtures)
+      import.instance_variable_set(:@files, mass_load_fixtures.map{|f| "${f}.yml"})
+      fixtures_in_order = import.send(:determine_load_order)
+
+      ActiveRecord::Base.connection.transaction do
+        special_fixtures.each do |fixture|
+          Fixtures.create_fixtures(fixture_dir, fixture)
+        end
+        Fixtures.create_fixtures(fixture_dir, fixtures_in_order)
       end
     end
     announce "Data loaded (%.4fs)" % time.real
